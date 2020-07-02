@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ChapterCreate = () => (
-
   <main>
     <form action="submit" name="chapterCreate">
       <input type="text" id="chapterCreate-edit" name="chapterCreate-edit" />
