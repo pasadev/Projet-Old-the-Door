@@ -4,6 +4,7 @@ import React from 'react';
 // == Import : local
 // Components
 import Home from 'src/components/Home';
+import Register from 'src/components/Register';
 
 // == Import
 import './styles.scss';
@@ -11,7 +12,7 @@ import './styles.scss';
 // == Components
 const App = () => (
   <div className="app">
-    <Home />
+    <Register />
   </div>
 );
 
