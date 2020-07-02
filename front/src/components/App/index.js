@@ -4,6 +4,7 @@ import React from 'react';
 // == Import : local
 // Components
 import Home from 'src/components/Home';
+import Connexion from'src/components/Connexion';
 
 // == Import
 import './styles.scss';
@@ -12,6 +13,7 @@ import './styles.scss';
 const App = () => (
   <div className="app">
     <Home />
+    <Connexion />
   </div>
 );
 
