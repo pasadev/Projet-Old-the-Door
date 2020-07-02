@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AdventureSmall from 'src/components/Home/AdventureSmall';
+import AdventureSmall from 'src/components/AdventureSmall';
 
 import './home.scss';
 
@@ -25,9 +25,11 @@ const Home = () => (
       <h2>
         Découvrez les dernières aventures crées par les joueurs !
       </h2>
-      <AdventureSmall />
-      <AdventureSmall />
-      <AdventureSmall />
+      <div className="adventureSmall-container">
+        <AdventureSmall />
+        <AdventureSmall />
+        <AdventureSmall />
+      </div>
     </section>
   </main>
 );

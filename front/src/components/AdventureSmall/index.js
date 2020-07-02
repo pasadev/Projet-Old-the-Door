@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './adventureSmall.scss';
+
 const AdventureSmall = () => (
   <div className="adventureSmall">
     <h3 className="adventureSmall-title">
@@ -9,7 +11,7 @@ const AdventureSmall = () => (
       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       Enim eaque possimus adipisci odit porro, nulla officiis blanditiis perspiciatis inventore
     </p>
-    <link
+    <link // or a button?
       className="adventureSmall-link"
       rel=""
       href="#"
