@@ -6,6 +6,7 @@ import React from 'react';
 import Home from 'src/components/Home';
 // import Register from 'src/components/Register';
 // import Adventures from 'src/components/Adventures';
+import Team from 'src/components/Team';
 
 // == Import
 import './styles.scss';
@@ -14,6 +15,7 @@ import './styles.scss';
 const App = () => (
   <div className="app">
     <Home />
+    <Team />
   </div>
 );
 
