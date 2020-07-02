@@ -52,6 +52,16 @@ class Chapter
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasChapters")
+     */
+    private $forStory;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Chapter::class, orphanRemoval=true)
+     */
+    private $parentChapter;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +147,30 @@ class Chapter
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getForStory(): ?Story
+    {
+        return $this->forStory;
+    }
+
+    public function setForStory(?Story $forStory): self
+    {
+        $this->forStory = $forStory;
+
+        return $this;
+    }
+
+    public function getParentChapter(): ?self
+    {
+        return $this->parentChapter;
+    }
+
+    public function setParentChapter(?self $parentChapter): self
+    {
+        $this->parentChapter = $parentChapter;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,7 +20,8 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=128)
+     * The unique property allow to check that we don't have the same email twice
+     * @ORM\Column(type="string", length=128, unique=true)
      */
     private $email;
 
@@ -51,6 +54,22 @@ class User
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updated_at;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Story::class, mappedBy="author")
+     */
+    private $stories;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Party::class, mappedBy="player")
+     */
+    private $playedParties;
+
+    public function __construct()
+    {
+        $this->stories = new ArrayCollection();
+        $this->playedParties = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +156,68 @@ class User
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Story[]
+     */
+    public function getStories(): Collection
+    {
+        return $this->stories;
+    }
+
+    public function addStory(Story $story): self
+    {
+        if (!$this->stories->contains($story)) {
+            $this->stories[] = $story;
+            $story->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStory(Story $story): self
+    {
+        if ($this->stories->contains($story)) {
+            $this->stories->removeElement($story);
+            // set the owning side to null (unless already changed)
+            if ($story->getAuthor() === $this) {
+                $story->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Party[]
+     */
+    public function getPlayedParties(): Collection
+    {
+        return $this->playedParties;
+    }
+
+    public function addPlayedParty(Party $playedParty): self
+    {
+        if (!$this->playedParties->contains($playedParty)) {
+            $this->playedParties[] = $playedParty;
+            $playedParty->setPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlayedParty(Party $playedParty): self
+    {
+        if ($this->playedParties->contains($playedParty)) {
+            $this->playedParties->removeElement($playedParty);
+            // set the owning side to null (unless already changed)
+            if ($playedParty->getPlayer() === $this) {
+                $playedParty->setPlayer(null);
+            }
+        }
 
         return $this;
     }

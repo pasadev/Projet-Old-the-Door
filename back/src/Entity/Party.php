@@ -32,6 +32,16 @@ class Party
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="playedParties")
+     */
+    private $player;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasParties")
+     */
+    private $forStory;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +79,30 @@ class Party
     public function setUpdatedAt(?\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getPlayer(): ?User
+    {
+        return $this->player;
+    }
+
+    public function setPlayer(?User $player): self
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    public function getForStory(): ?Story
+    {
+        return $this->forStory;
+    }
+
+    public function setForStory(?Story $forStory): self
+    {
+        $this->forStory = $forStory;
 
         return $this;
     }
