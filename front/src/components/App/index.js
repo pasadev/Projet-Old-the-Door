@@ -6,6 +6,10 @@ import React from 'react';
 import Home from 'src/components/Home';
 import Connexion from'src/components/Connexion';
 
+// import Register from 'src/components/Register';
+// import Adventures from 'src/components/Adventures';
+
+
 // == Import
 import './styles.scss';
 
@@ -13,7 +17,6 @@ import './styles.scss';
 const App = () => (
   <div className="app">
     <Home />
-    <Connexion />
   </div>
 );
 
