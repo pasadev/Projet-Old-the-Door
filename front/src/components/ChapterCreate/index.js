@@ -9,7 +9,12 @@ const ChapterCreate = () => (
       <input type="text" id="nomChapitre" name="nomChapitre" />
       <input type="text" id="texteChapitre" name="texteChapitre" />
 
-      <button type="submit">C'est parti</button>
+      <input type="text" id="clef" name="clef" />
+      <input type="text" id="serrure" name="serrure" />
+      <div className="messageReussite"> message de reussite</div>
+
+      <button type="submit"> Chapitre suivant</button>
+      <button type="submit"> Fin de l'aventure</button>
     </form>
   </main>
 );
