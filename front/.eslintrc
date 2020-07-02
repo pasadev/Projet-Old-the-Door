@@ -38,8 +38,8 @@
       "alias": {
         "extensions": [".js"],
         "map": [
-          ["src", "./src"],
-          ["app", "./src"]
+          ["src", "./front/src"],
+          ["app", "./front/src"]
         ]
       }
     }
