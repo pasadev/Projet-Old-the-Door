@@ -65,6 +65,11 @@ class User
      */
     private $playedParties;
 
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $nickname;
+
     public function __construct()
     {
         $this->stories = new ArrayCollection();
@@ -218,6 +223,18 @@ class User
                 $playedParty->setPlayer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
 
         return $this;
     }
