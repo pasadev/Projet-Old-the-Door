@@ -1,13 +1,17 @@
 // == Import npm
 import React from 'react';
 
+// == Import : local
+// Components
+import Home from 'src/components/Home';
+
 // == Import
 import './styles.scss';
 
 // == Components
 const App = () => (
   <div className="app">
-    <h1>O'ld the door</h1>
+    <Home />
   </div>
 );
 
