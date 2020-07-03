@@ -48,12 +48,12 @@ class User
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_at;
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Story::class, mappedBy="author")
@@ -143,24 +143,36 @@ class User
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->updated_at = $updated_at;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getNickname(): ?string
+    {
+        return $this->nickname;
+    }
+
+    public function setNickname(string $nickname): self
+    {
+        $this->nickname = $nickname;
 
         return $this;
     }
@@ -227,15 +239,5 @@ class User
         return $this;
     }
 
-    public function getNickname(): ?string
-    {
-        return $this->nickname;
-    }
-
-    public function setNickname(string $nickname): self
-    {
-        $this->nickname = $nickname;
-
-        return $this;
-    }
+  
 }

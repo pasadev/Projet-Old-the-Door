@@ -40,17 +40,17 @@ class Chapter
     /**
      * @ORM\Column(type="text")
      */
-    private $unlock_text;
+    private $unlockText;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $updated_at;
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasChapters")
@@ -117,36 +117,36 @@ class Chapter
 
     public function getUnlockText(): ?string
     {
-        return $this->unlock_text;
+        return $this->unlockText;
     }
 
-    public function setUnlockText(string $unlock_text): self
+    public function setUnlockText(string $unlockText): self
     {
-        $this->unlock_text = $unlock_text;
+        $this->unlockText = $unlockText;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->updated_at = $updated_at;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
@@ -174,4 +174,6 @@ class Chapter
 
         return $this;
     }
+
+    
 }
