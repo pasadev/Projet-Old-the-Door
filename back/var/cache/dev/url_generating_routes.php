@@ -17,4 +17,5 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'api_v0_stories_list' => [[], ['_controller' => 'App\\Controller\\Api\\v0\\StoryController::list'], [], [['text', '/api/v0/stories']], [], []],
     'api_v0_stories_show' => [['id'], ['_controller' => 'App\\Controller\\Api\\v0\\StoryController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/v0/stories']], [], []],
+    'api_v0_stories_delete' => [['id'], ['_controller' => 'App\\Controller\\Api\\v0\\StoryController::delete'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/v0/stories']], [], []],
 ];

@@ -34,9 +34,8 @@ class StoryController extends AbstractController
         {
             $authorId = $request->query->get('author_id');
             //Get the stories for this author
-            $stories = $storyRepository->findBy(['active' => true, 'author' => $authorId]);
+            $stories = $storyRepository->findBy(['author' => $authorId]);
 
-            //TODO: Add Author information in the json Response
         }
         //If we don't have any get parameter
         else
@@ -50,7 +49,7 @@ class StoryController extends AbstractController
         $serializer = new Serializer([new DateTimeNormalizer(),$normalizer]);
         
         //Normalize the stories collection
-        $normalizedStories = $serializer->normalize($stories, null, ['groups' => 'api_list']);
+        $normalizedStories = $serializer->normalize($stories, null, ['groups' => 'api_story_detail']);
 
 
         //Return all stories    
@@ -66,16 +65,33 @@ class StoryController extends AbstractController
      */
     public function show(Story $story, ObjectNormalizer $normalizer)
     {
-        /* dd($story); */
-
+        
         $serializer = new Serializer([new DateTimeNormalizer(),$normalizer]);
 
-        $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_list']);
+        $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
 
         //Return all stories    
         return $this->json([
             $normalizedStory
         ]);
+    }
+
+    /**
+     * Delete one story with the id parameter
+     * 
+     * @Route("/api/v0/stories/{id}", name="api_v0_stories_delete", methods={"DELETE"}, requirements={"id":"\d+"})
+     */
+    public function delete(Story $story)
+    {
+        
+        //Get back the manager
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($story);
+        $em->flush();
+
+        return $this->json(204);
+        //TODO: Voir quoi renvoyer dans la cas d'un delete
+        //TODO: Voir pour l'erreur sur le delete dans le cas d'une histoire qui a des chapitres
     }
 
 }

@@ -32,7 +32,9 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/api/v0/stories/(\\d+)(*:190)'
+                .'|/api/v0/stories/(\\d+)(?'
+                    .'|(*:193)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -43,8 +45,9 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        190 => [
+        193 => [
             [['_route' => 'api_v0_stories_show', '_controller' => 'App\\Controller\\Api\\v0\\StoryController::show'], ['id'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'api_v0_stories_delete', '_controller' => 'App\\Controller\\Api\\v0\\StoryController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
