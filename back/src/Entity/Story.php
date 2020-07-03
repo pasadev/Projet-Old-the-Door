@@ -67,6 +67,7 @@ class Story
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="stories")
      * @Groups("api_list")
+     * 
      */
     private $author;
 
@@ -232,5 +233,4 @@ class Story
         return $this;
     }
 
-    
 }

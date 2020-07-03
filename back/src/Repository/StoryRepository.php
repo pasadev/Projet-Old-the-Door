@@ -48,7 +48,7 @@ class StoryRepository extends ServiceEntityRepository
 
        //Get the query
        $query = $qb->getQuery();
-       
+       //Return the results
        return $query->getResult();       
    }
 }

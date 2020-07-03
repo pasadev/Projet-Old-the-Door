@@ -5139,10 +5139,18 @@
         <argument key="storyRepository" type="service" id="App\Repository\StoryRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.wuy.QQt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.xUEZkWd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="normalizer" type="service" id="serializer.normalizer.object"/>
+        <argument key="story" type="service" id=".errored..service_locator.xUEZkWd.App\Entity\Story"/>
+      </argument>
+    </service>
+    <service id=".service_locator.uMlERMC" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Api\v0\StoryController::list" type="service" id=".service_locator.H83SxXq"/>
+        <argument key="App\Controller\Api\v0\StoryController::show" type="service" id=".service_locator.xUEZkWd"/>
         <argument key="App\Kernel::loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="App\Kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
@@ -5150,6 +5158,7 @@
         <argument key="kernel::registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel::terminate" type="service" id=".service_locator.beq5mCo"/>
         <argument key="App\Controller\Api\v0\StoryController:list" type="service" id=".service_locator.H83SxXq"/>
+        <argument key="App\Controller\Api\v0\StoryController:show" type="service" id=".service_locator.xUEZkWd"/>
         <argument key="kernel:loadRoutes" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:registerContainerConfiguration" type="service" id=".service_locator.C9JCBPC"/>
         <argument key="kernel:terminate" type="service" id=".service_locator.beq5mCo"/>
@@ -5611,12 +5620,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.wuy.QQt"/>
+      <argument type="service" id=".service_locator.uMlERMC"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.wuy.QQt"/>
+      <argument type="service" id=".service_locator.uMlERMC"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5628,6 +5637,7 @@
     </service>
     <service id=".errored..service_locator.beq5mCo.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.C9JCBPC.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
+    <service id=".errored..service_locator.xUEZkWd.App\Entity\Story" class="App\Entity\Story"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <tag name="container.no_preload"/>
       <argument type="service" id=".service_locator.YPyr9Yt"/>
@@ -6011,7 +6021,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.WaGDpDt" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.wuy.QQt"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.uMlERMC"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
