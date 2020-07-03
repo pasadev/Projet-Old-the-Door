@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './nav.scss';
 
 const Nav = () => (
-  <nav className="Nav">
+  <nav className="nav">
     <NavLink
       className="nav-item"
       to="/"

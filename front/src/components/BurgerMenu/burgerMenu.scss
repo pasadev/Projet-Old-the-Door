@@ -1,0 +1,18 @@
+.burgerMenuContainer {
+  .burgerMenu-button {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: xx-large;
+    z-index: 1;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .burgerMenuContainer {
+    .burgerMenu-button {
+      display: none;
+    }
+  }
+}
