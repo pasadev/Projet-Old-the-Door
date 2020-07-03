@@ -72,7 +72,7 @@ const Team = () => (
         Déveleoppeur Front
       </div>
       <p className="member-description">
-        la légende raconte qu'il cherche encore une phrase pour se présenter...
+        la légende raconte qu'il cherche encore une phrase pour se présenter..
       </p>
     </div>
     <div className="member">
