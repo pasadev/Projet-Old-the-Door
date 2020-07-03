@@ -71,6 +71,6 @@ class __TwigTemplate_bc37a20ece0a1902340a4ee397ff2b455a8155f07e4dad2a0459a5d94d6
     public function getSourceContext()
     {
         return new Source("{% extends \"@email/zurb_2/notification/body.txt.twig\" %}
-", "@email/default/notification/body.txt.twig", "/var/www/html/apothéose/O-ld-the-door/back/vendor/symfony/twig-bridge/Resources/views/Email/default/notification/body.txt.twig");
+", "@email/default/notification/body.txt.twig", "/var/www/html/oldTheDoor/O-ld-the-door/back/vendor/symfony/twig-bridge/Resources/views/Email/default/notification/body.txt.twig");
     }
 }

@@ -557,7 +557,16 @@ class ComposerStaticInit9908612dd94691c48388b2c2cfd80ed0
     );
 
     public static $classMap = array (
+        'App\\Controller\\Api\\v0\\ChapterController' => __DIR__ . '/../..' . '/src/Controller/Api/v0/ChapterController.php',
+        'App\\Entity\\Chapter' => __DIR__ . '/../..' . '/src/Entity/Chapter.php',
+        'App\\Entity\\Party' => __DIR__ . '/../..' . '/src/Entity/Party.php',
+        'App\\Entity\\Story' => __DIR__ . '/../..' . '/src/Entity/Story.php',
+        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\ChapterRepository' => __DIR__ . '/../..' . '/src/Repository/ChapterRepository.php',
+        'App\\Repository\\PartyRepository' => __DIR__ . '/../..' . '/src/Repository/PartyRepository.php',
+        'App\\Repository\\StoryRepository' => __DIR__ . '/../..' . '/src/Repository/StoryRepository.php',
+        'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Command\\CreateDatabaseDoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Command/CreateDatabaseDoctrineCommand.php',
         'Doctrine\\Bundle\\DoctrineBundle\\Command\\DoctrineCommand' => __DIR__ . '/..' . '/doctrine/doctrine-bundle/Command/DoctrineCommand.php',

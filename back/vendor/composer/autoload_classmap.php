@@ -6,7 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\Api\\v0\\ChapterController' => $baseDir . '/src/Controller/Api/v0/ChapterController.php',
+    'App\\Entity\\Chapter' => $baseDir . '/src/Entity/Chapter.php',
+    'App\\Entity\\Party' => $baseDir . '/src/Entity/Party.php',
+    'App\\Entity\\Story' => $baseDir . '/src/Entity/Story.php',
+    'App\\Entity\\User' => $baseDir . '/src/Entity/User.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
+    'App\\Repository\\ChapterRepository' => $baseDir . '/src/Repository/ChapterRepository.php',
+    'App\\Repository\\PartyRepository' => $baseDir . '/src/Repository/PartyRepository.php',
+    'App\\Repository\\StoryRepository' => $baseDir . '/src/Repository/StoryRepository.php',
+    'App\\Repository\\UserRepository' => $baseDir . '/src/Repository/UserRepository.php',
     'Collator' => $vendorDir . '/symfony/intl/Resources/stubs/Collator.php',
     'Doctrine\\Bundle\\DoctrineBundle\\Command\\CreateDatabaseDoctrineCommand' => $vendorDir . '/doctrine/doctrine-bundle/Command/CreateDatabaseDoctrineCommand.php',
     'Doctrine\\Bundle\\DoctrineBundle\\Command\\DoctrineCommand' => $vendorDir . '/doctrine/doctrine-bundle/Command/DoctrineCommand.php',

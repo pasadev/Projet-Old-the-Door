@@ -4,6 +4,11 @@ namespace App\Entity;
 
 use App\Repository\ChapterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
+
+
+
 
 /**
  * @ORM\Entity(repositoryClass=ChapterRepository::class)
@@ -14,36 +19,50 @@ class Chapter
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $keyword;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $lockword;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $unlockText;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $createdAt;
 
@@ -54,11 +73,16 @@ class Chapter
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasChapters")
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
      */
     private $forStory;
 
     /**
      * @ORM\OneToOne(targetEntity=Chapter::class, orphanRemoval=true)
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
+     * @MaxDepth(1)
      */
     private $parentChapter;
 
