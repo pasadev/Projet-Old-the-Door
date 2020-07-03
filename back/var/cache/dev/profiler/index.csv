@@ -1,3 +1,10 @@
-21fb6d,127.0.0.1,GET,https://127.0.0.1:8000/,1593680402,,404
-01cdab,127.0.0.1,GET,https://127.0.0.1:8000/favicon.ico,1593680403,d9a024,404
-d9a024,127.0.0.1,GET,https://127.0.0.1:8000/favicon.ico,1593680403,,404
+b771b7,::1,GET,http://localhost:8000/api/v0/stories/7,1593781619,488313,500
+488313,::1,DELETE,http://localhost:8000/api/v0/stories/7,1593781619,,500
+6f8252,::1,GET,http://localhost:8000/api/v0/stories/7,1593781648,c7b219,500
+c7b219,::1,DELETE,http://localhost:8000/api/v0/stories/7,1593781648,,500
+2b865e,::1,GET,http://localhost:8000/api/v0/stories/7,1593781900,09e255,500
+09e255,::1,DELETE,http://localhost:8000/api/v0/stories/7,1593781900,,500
+1d2daf,::1,GET,http://localhost:8000/api/v0/stories/7,1593782268,7f1883,500
+7f1883,::1,DELETE,http://localhost:8000/api/v0/stories/7,1593782268,,500
+4cd9e9,::1,GET,http://localhost:8000/api/v0/stories/7,1593782456,c2de9c,500
+c2de9c,::1,DELETE,http://localhost:8000/api/v0/stories/7,1593782456,,500

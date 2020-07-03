@@ -6,6 +6,7 @@ use App\Repository\StoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=StoryRepository::class)
@@ -16,27 +17,33 @@ class Story
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("api_story_detail")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("api_story_detail")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("api_story_detail")
      */
     private $synopsis;
 
     /**
      * The Default : 0 indicate that all stories will be inactive by default
+     * 1 indicate that the story is active
      * @ORM\Column(type="boolean", options={"default" : 0})
+     * @Groups("api_story_detail")
      */
     private $active;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("api_story_detail")
      */
     private $createdAt;
 
@@ -53,11 +60,14 @@ class Story
 
     /**
      * @ORM\OneToOne(targetEntity=Chapter::class, cascade={"persist", "remove"})
+     * @Groups("api_story_detail")
      */
     private $firstChapter;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="stories")
+     * @Groups("api_story_detail")
+     * 
      */
     private $author;
 
@@ -223,5 +233,4 @@ class Story
         return $this;
     }
 
-    
 }
