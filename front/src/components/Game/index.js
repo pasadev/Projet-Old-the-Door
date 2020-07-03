@@ -16,8 +16,6 @@ const GameScreen = () => (
     <h1>nom de chapitre</h1>
 
     <div className="game-adventureText">This is where text goes.</div>
-
-    <Timer />
     <div>ici un bouton pour remonter en haut de la page</div>
   </main>
 
