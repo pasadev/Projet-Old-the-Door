@@ -26,28 +26,28 @@ const App = () => (
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/connexion">
+      <Route exact path="/connexion">
         <Connexion />
       </Route>
-      <Route path="/inscription">
+      <Route exact path="/inscription">
         <Register />
       </Route>
-      <Route path="/aventures/test/jouer">
+      <Route exact path="/aventures/test/jouer">
         <Game />
       </Route>
-      <Route path="/aventures/test/edition">
+      <Route exact path="/aventures/test/edition">
         <ChapterCreate />
       </Route>
-      <Route path="/aventures/test">
+      <Route exact path="/aventures/test">
         <Adventure />
       </Route>
-      <Route path="/aventures/creation">
+      <Route exact path="/aventures/creation">
         <StoryCreate />
       </Route>
-      <Route path="/aventures">
+      <Route exact path="/aventures">
         <Adventures />
       </Route>
-      <Route path="/equipe">
+      <Route exact path="/equipe">
         <Team />
       </Route>
       <Route>
