@@ -1,6 +1,0 @@
-1764fe,::1,GET,http://localhost:8000/api/v0/chapters/?story_id=2,1593781757,,301
-a9c6f2,::1,GET,http://localhost:8000/api/v0/chapters?story_id=2,1593781757,,200
-7ed9b8,::1,GET,http://localhost:8000/api/v0/chapters/?story_id=3,1593782424,,301
-f679a4,::1,GET,http://localhost:8000/api/v0/chapters?story_id=3,1593782424,,200
-48aede,::1,GET,http://localhost:8000/api/v0/chapters/?story_id=2,1593783394,,301
-bf25ec,::1,GET,http://localhost:8000/api/v0/chapters?story_id=2,1593783394,,200
