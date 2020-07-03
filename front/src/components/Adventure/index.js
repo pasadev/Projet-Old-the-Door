@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Aventure = () => (
+const Adventure = () => (
   <main>
     <header>
       <nav>blabla</nav>
@@ -10,4 +10,4 @@ const Aventure = () => (
     <button type="submit">commencer</button>
   </main>
 );
-export default Aventure;
+export default Adventure;
