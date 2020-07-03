@@ -17,6 +17,7 @@ class Story
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("api_list")
      */
     private $id;
 
@@ -34,6 +35,7 @@ class Story
 
     /**
      * The Default : 0 indicate that all stories will be inactive by default
+     * 1 indicate that the story is active
      * @ORM\Column(type="boolean", options={"default" : 0})
      * @Groups("api_list")
      */
