@@ -89,8 +89,7 @@ class StoryController extends AbstractController
         $em->remove($story);
         $em->flush();
 
-        return $this->json(204);
-        //TODO: Voir quoi renvoyer dans la cas d'un delete
+        return $this->json([],204);
         //TODO: Voir pour l'erreur sur le delete dans le cas d'une histoire qui a des chapitres
     }
 
