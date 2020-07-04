@@ -14,55 +14,56 @@ import Team from 'src/components/Team';
 import Game from 'src/components/Game';
 import StoryCreate from 'src/components/StoryCreate';
 import ChapterCreate from 'src/components/ChapterCreate';
-import BurgerMenu from 'src/containers/BurgerMenu';
+import Header from 'src/components/Header';
+import Nav from 'src/containers/Nav';
 
 // == Import
 import './styles.scss';
 
 // == Components
-const App = ({ burgerMenuOpen }) => {
-  return (
-    <div className="app">
-      <BurgerMenu />
-      {!burgerMenuOpen && (
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/connexion">
-            <Connexion />
-          </Route>
-          <Route exact path="/inscription">
-            <Register />
-          </Route>
-          <Route exact path="/aventures/test/jouer">
-            <Game />
-          </Route>
-          <Route exact path="/aventures/test/edition">
-            <ChapterCreate />
-          </Route>
-          <Route exact path="/aventures/test">
-            <Adventure />
-          </Route>
-          <Route exact path="/aventures/creation">
-            <StoryCreate />
-          </Route>
-          <Route exact path="/aventures">
-            <Adventures />
-          </Route>
-          <Route exact path="/equipe">
-            <Team />
-          </Route>
-          <Route>
-            <div>
-              404
-            </div>
-          </Route>
-        </Switch>
-      )}
-    </div>
-  );
-};
+const App = ({ burgerMenuOpen }) => (
+  <div className="app">
+    <Header />
+    {burgerMenuOpen && <Nav />}
+    {!burgerMenuOpen && (
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/connexion">
+          <Connexion />
+        </Route>
+        <Route exact path="/inscription">
+          <Register />
+        </Route>
+        <Route exact path="/aventures/test/jouer">
+          <Game />
+        </Route>
+        <Route exact path="/aventures/test/edition">
+          <ChapterCreate />
+        </Route>
+        <Route exact path="/aventures/test">
+          <Adventure />
+        </Route>
+        <Route exact path="/aventures/creation">
+          <StoryCreate />
+        </Route>
+        <Route exact path="/aventures">
+          <Adventures />
+        </Route>
+        <Route exact path="/equipe">
+          <Team />
+        </Route>
+        <Route>
+          <div>
+            404
+          </div>
+        </Route>
+      </Switch>
+    )}
+  </div>
+);
+
 // TODO change 'test' with ':slug' in path="adventures/
 App.propTypes = {
   burgerMenuOpen: PropTypes.bool.isRequired,

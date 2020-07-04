@@ -1,27 +1,22 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './nav.scss';
 
-const Nav = () => (
+const Nav = ({ toggleBurgerMenuFromNav }) => (
   <nav className="nav">
-    <NavLink
-      className="nav-item"
-      to="/"
-      activeClassName="nav-item"
-      exact
-    >
-      O'ld the door
-    </NavLink>
     <NavLink
       className="nav-item"
       to="/"
       activeClassName="nav-item-active"
       exact
+      onClick={toggleBurgerMenuFromNav}
     >
       Home
     </NavLink>
     <NavLink
+      onClick={toggleBurgerMenuFromNav}
       className="nav-item"
       to="/aventures"
       activeClassName="nav-item"
@@ -30,6 +25,7 @@ const Nav = () => (
       Aventures
     </NavLink>
     <NavLink
+      onClick={toggleBurgerMenuFromNav}
       className="nav-item"
       to="/profil"
       activeClassName="nav-item"
@@ -39,5 +35,9 @@ const Nav = () => (
     </NavLink>
   </nav>
 );
+
+Nav.propTypes = {
+  toggleBurgerMenuFromNav: PropTypes.func.isRequired,
+};
 
 export default Nav;
