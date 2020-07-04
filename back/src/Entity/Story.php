@@ -19,6 +19,7 @@ class Story
      * @ORM\Column(type="integer")
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Groups("user_show")
      */
     private $id;
 
@@ -26,6 +27,7 @@ class Story
      * @ORM\Column(type="string", length=128)
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Groups("user_show")
      */
     private $title;
 
