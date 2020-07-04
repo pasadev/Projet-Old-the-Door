@@ -17,6 +17,7 @@ class Story
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("api_story_detail")
      * @Groups("chapter_details")
      * @Groups("chapter_list")
      */
@@ -24,6 +25,7 @@ class Story
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("api_story_detail")
      * @Groups("chapter_details")
      * @Groups("chapter_list")
      */
