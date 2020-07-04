@@ -25,7 +25,7 @@ class PartyController extends AbstractController
             $userId = $request->query->get('user_id');
 
             //Get all the parties for this user
-            $parties = $partyRepository->findBy(["player" => $userId]);
+            $parties = $partyRepository->findPartiesForUser($userId);
 
             //If we have parties to send
             if ($parties) {
@@ -44,14 +44,19 @@ class PartyController extends AbstractController
             //If we don't have parties
             else
             {
-                return $this->json([
-                    'message' => 'We have not find any parties',
-                ]);
+                //We send back a message with a 404 error
+                return $this->json(
+                    ['message' => 'We have not found any parties',],
+                    404
+                );
             }
         }
 
-        return $this->json([
-            'message' => 'Please use a user_id GET parameter to choose for which user who want the parties',
-        ]);
+        //If we don't have the parameter user_id in the request
+        //Send back a 400 bad request answer
+        return $this->json(
+            ['message' => 'Bad Request, please use a user_id GET parameter ',],
+            400
+        );
     }
 }
