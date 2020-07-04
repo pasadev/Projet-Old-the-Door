@@ -35,20 +35,45 @@ class StoryRepository extends ServiceEntityRepository
         ;
     }
     */
-                
 
-   public function findNthLast ($number)
-   {
-       //Initialize query Builder
-       $qb = $this->createQueryBuilder('story');
 
-       $qb->orderBy('story.id','DESC');
-       $qb->where('story.active = true');
-       $qb->setMaxResults($number);
+    public function findActiveStories($number = null)
+    {
+        //Initialize query Builder
+        $qb = $this->createQueryBuilder('story');
+        $qb->orderBy('story.id', 'DESC');
+        $qb->where('story.active = true');
 
-       //Get the query
-       $query = $qb->getQuery();
-       //Return the results
-       return $query->getResult();       
-   }
+        //If we have a number limit in parameter
+        if ($number) {
+            $qb->setMaxResults($number);
+        }
+
+        //leftJoin to reduce requests number
+        $qb->leftJoin('story.author', 'user');
+        $qb->addSelect('user');
+
+        //Get the query
+        $query = $qb->getQuery();
+        //Return the results
+        return $query->getResult();
+    }
+
+    public function findForAuthor($authorId)
+    {
+        //Initialize query Builder
+        $qb = $this->createQueryBuilder('story');
+        $qb->orderBy('story.id', 'DESC');
+        $qb->where('story.author = :authorId');
+        $qb->setParameter('authorId', $authorId);
+
+        //leftJoin to reduce requests number
+        $qb->leftJoin('story.author', 'user');
+        $qb->addSelect('user');
+
+        //Get the query
+        $query = $qb->getQuery();
+        //Return the results
+        return $query->getResult();
+    }
 }
