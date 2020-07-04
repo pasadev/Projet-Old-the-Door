@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PartyRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PartyRepository::class)
@@ -14,16 +15,19 @@ class Party
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("api_party_detail")
      */
     private $id;
 
     /**
      * @ORM\Column(type="smallint")
+     * @Groups("api_party_detail")
      */
     private $time;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("api_party_detail")
      */
     private $createdAt;
 
@@ -39,6 +43,7 @@ class Party
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasParties")
+     * @Groups("api_party_detail")
      */
     private $forStory;
 

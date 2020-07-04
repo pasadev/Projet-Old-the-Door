@@ -17,13 +17,13 @@ class Story
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("api_story_detail")
+     * @Groups({"api_story_detail", "api_party_detail"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
-     * @Groups("api_story_detail")
+     * @Groups({"api_story_detail", "api_party_detail"})
      */
     private $title;
 
