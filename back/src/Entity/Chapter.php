@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ChapterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass=ChapterRepository::class)
@@ -54,11 +55,12 @@ class Chapter
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasChapters")
+     * @JoinColumn(name="story_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $forStory;
 
     /**
-     * @ORM\OneToOne(targetEntity=Chapter::class, orphanRemoval=true)
+     * @ORM\OneToOne(targetEntity=Chapter::class)
      */
     private $parentChapter;
 
