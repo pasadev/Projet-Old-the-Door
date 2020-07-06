@@ -18,12 +18,22 @@ class Story
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups("api_story_detail")
+<<<<<<< HEAD
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
+=======
+>>>>>>> 002162c1c1438ad2da5d9e823a254f0b7c3d695a
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
      * @Groups("api_story_detail")
+<<<<<<< HEAD
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
+=======
+>>>>>>> 002162c1c1438ad2da5d9e823a254f0b7c3d695a
      */
     private $title;
 
