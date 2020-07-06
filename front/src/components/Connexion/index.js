@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,9 +11,6 @@ const Connexion = ({
   password,
   // changeField,
   handleLogin,
-  handleLogout,
-  isLogged,
-  loggedMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -21,27 +19,15 @@ const Connexion = ({
 
   return (
     <div className="login-form">
-      {isLogged && (
-        <div className="login-form-logged">
-          <p className="login-form-message">
-            {loggedMessage}
-          </p>
-          <button
-            type="button"
-            className="login-form-button"
-            onClick={handleLogout}
-          >
-            Déconnexion
-          </button>
-        </div>
-      )}
-      {!isLogged && (
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <input type="text" id="connexion-email" name="connexion-email" value={email} />
-          <input type="text" id="connexion-password" name="connexion-password" value={password} />
-          <button type="submit">Sign In</button>
-        </form>
-      )}
+
+      <form autoComplete="off" onSubmit={handleSubmit}>
+
+        <label htmlFor="connexion-email"> Email</label>
+        <input type="text" id="connexion-email" name="connexion-email" value={email} />
+        <label htmlFor="connexion-password"> Mot de passe</label>
+        <input type="text" id="connexion-password" name="connexion-password" value={password} />
+        <button type="submit">Sign In</button>
+      </form>
     </div>
   );
 };
@@ -51,14 +37,9 @@ Connexion.propTypes = {
   password: PropTypes.string.isRequired,
   // changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  handleLogout: PropTypes.func.isRequired,
-  isLogged: PropTypes.bool,
-  loggedMessage: PropTypes.string,
 };
 
 Connexion.defaultProps = {
-  isLogged: false,
-  loggedMessage: 'Connecté',
 };
 
 export default Connexion;
