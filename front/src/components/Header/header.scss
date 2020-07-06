@@ -1,0 +1,18 @@
+.header {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0.5em;
+
+  .nav-container {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .header {  
+    .nav-container {
+      display: flex;
+    }
+  }
+}
