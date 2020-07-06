@@ -61,6 +61,7 @@ class Chapter
 
     /**
      * @ORM\OneToOne(targetEntity=Chapter::class)
+     * @JoinColumn(name="chapter_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $parentChapter;
 
