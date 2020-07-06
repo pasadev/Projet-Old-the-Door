@@ -21,8 +21,12 @@ class Story
 <<<<<<< HEAD
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+<<<<<<< HEAD
+     * @Groups("user_show")
+=======
 =======
 >>>>>>> 002162c1c1438ad2da5d9e823a254f0b7c3d695a
+>>>>>>> 73088b5c093aba50b2bbb81cb2111c53996e3b9b
      */
     private $id;
 
@@ -32,8 +36,12 @@ class Story
 <<<<<<< HEAD
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+<<<<<<< HEAD
+     * @Groups("user_show")
+=======
 =======
 >>>>>>> 002162c1c1438ad2da5d9e823a254f0b7c3d695a
+>>>>>>> 73088b5c093aba50b2bbb81cb2111c53996e3b9b
      */
     private $title;
 
