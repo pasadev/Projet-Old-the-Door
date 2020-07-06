@@ -74,25 +74,19 @@ class Chapter
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasChapters")
-<<<<<<< HEAD
      * @JoinColumn(name="story_id", referencedColumnName="id", onDelete="CASCADE")
-=======
      * @Groups("chapter_details")
      * @Groups("chapter_list")
->>>>>>> 3e2cdd9ebeedd2de0428b8c52b60bbfccd5791b0
      */
     private $forStory;
 
     /**
-<<<<<<< HEAD
      * @ORM\OneToOne(targetEntity=Chapter::class)
      * @JoinColumn(name="chapter_id", referencedColumnName="id", onDelete="SET NULL")
-=======
      * @ORM\OneToOne(targetEntity=Chapter::class, orphanRemoval=true)
      * @Groups("chapter_details")
      * @Groups("chapter_list")
      * @MaxDepth(1)
->>>>>>> 3e2cdd9ebeedd2de0428b8c52b60bbfccd5791b0
      */
     private $parentChapter;
 
