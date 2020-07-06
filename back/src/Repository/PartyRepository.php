@@ -59,6 +59,4 @@ class PartyRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-
-
 }
