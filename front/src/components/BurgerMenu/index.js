@@ -9,7 +9,7 @@ const BurgerMenu = ({ toggleBurgerMenuOpen, burgerMenuOpen }) => (
     className="burgerMenuContainer"
     onClick={toggleBurgerMenuOpen}
   >
-    {burgerMenuOpen ? <FolderMinus className="burgerMenu-button" /> : <FolderPlus className="burgerMenu-button" />}
+    Menu {burgerMenuOpen ? <FolderMinus /> : <FolderPlus />}
   </div>
 );
 
