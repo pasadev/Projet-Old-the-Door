@@ -21,8 +21,8 @@ class PartyController extends AbstractController
     {
 
         //Get the user_id parameter
-        if ($request->query->get('user_id')) 
-        {
+        if ($request->query->get('user_id')) {
+
             $userId = $request->query->get('user_id');
 
             //Get all the parties for this user
@@ -56,7 +56,7 @@ class PartyController extends AbstractController
         //If we don't have the parameter user_id in the request
         //Send back a 400 bad request answer
         return $this->json(
-            ['message' => 'Bad Request, please use a user_id GET parameter',],
+            ['message' => 'Bad Request, please use a user_id GET parameter ',],
             400
         );
     }
