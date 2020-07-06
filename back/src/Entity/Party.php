@@ -5,10 +5,7 @@ namespace App\Entity;
 use App\Repository\PartyRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-<<<<<<< HEAD
-=======
 
->>>>>>> cd29caa459581c4c777dbc64127cde2ddf761dd5
 
 /**
  * @ORM\Entity(repositoryClass=PartyRepository::class)
@@ -19,11 +16,8 @@ class Party
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-<<<<<<< HEAD
      * @Groups("api_party_detail")
-=======
      * @Groups("user_show")
->>>>>>> cd29caa459581c4c777dbc64127cde2ddf761dd5
      */
     private $id;
 
