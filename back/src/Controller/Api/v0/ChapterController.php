@@ -107,4 +107,20 @@ class ChapterController extends AbstractController
             $normalizeChapter
         ]);
     }
+
+    /**
+     * Delete one story with the id parameter
+     * 
+     * @Route("/api/v0/chapters/{id}", name="api_v0_chapters_delete", methods={"DELETE"}, requirements={"id":"\d+"})
+     */
+    public function delete(Chapter $chapter)
+    {
+
+        //Get back the manager
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($chapter);
+        $em->flush();
+
+        return $this->json([], 204);
+    }
 }
