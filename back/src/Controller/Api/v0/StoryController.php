@@ -101,6 +101,7 @@ class StoryController extends AbstractController
         $em->flush();
 
         return $this->json([], 204);
-        //TODO: Voir pour l'erreur sur le delete dans le cas d'une histoire qui a des chapitres
+        //TODO: Voir pour l'erreur sur le delete dans le cas d'une histoire qui a des chapitres, le souci sur chapitre est résolu avec un onDelete=cascade. Mais il y a encore le souci sur firstChapterId
+
     }
 }
