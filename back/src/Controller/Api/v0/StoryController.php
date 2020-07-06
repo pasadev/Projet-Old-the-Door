@@ -3,6 +3,7 @@
 namespace App\Controller\Api\v0;
 
 use App\Entity\Story;
+use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,8 +60,7 @@ class StoryController extends AbstractController
             ]);
         }
         //If we have not found any stories
-        else
-        {
+        else {
             //We send back a message with a 404 error
             return $this->json(
                 ['message' => 'We have not found any stories',],
@@ -101,6 +101,43 @@ class StoryController extends AbstractController
         $em->flush();
 
         return $this->json([], 204);
+    }
 
+    /**
+     * Return time stats for one story
+     * 
+     * @Route("/api/v0/stories/{id}/time", name="api_v0_stories_time", methods={"GET"}, requirements={"id":"\d+"})
+     */
+    public function getTime($id, PartyRepository $partyRepository)
+    {
+        //Get parties for this stories
+        $parties = $partyRepository->findBy(['forStory' => $id]);
+
+        //If we have parties
+        if ($parties) {
+
+            //Initializing a time table
+            $timeTable = [];
+
+            foreach ($parties as $party) {
+                $timeTable[] = $party->getTime();
+            }
+
+            $bestTime = min($timeTable);
+            $averageTime = intval(array_sum($timeTable) / count($timeTable));
+
+            return $this->json([
+                'best' => $bestTime,
+                'average' => $averageTime,
+            ]);
+        }
+        //If we don't have parties
+        else
+        {
+            return $this->json(
+                ['message' => 'We do not have stats for this story',],
+                404
+            );
+        }
     }
 }
