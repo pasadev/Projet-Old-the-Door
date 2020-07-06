@@ -22,7 +22,10 @@ class PartyController extends AbstractController
 
         //Get the user_id parameter
         if ($request->query->get('user_id')) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3e2cdd9ebeedd2de0428b8c52b60bbfccd5791b0
             $userId = $request->query->get('user_id');
 
             //Get all the parties for this user

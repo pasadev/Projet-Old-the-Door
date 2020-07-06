@@ -1,0 +1,26 @@
+.nav {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5em;
+  padding-bottom: 100vh;
+
+  .nav-item {
+    padding: 2em;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .nav { 
+    margin-bottom: auto; 
+    display: flex;
+    flex-direction: row;
+    padding-top: 0;
+    padding-bottom: 0;
+    .nav-item {
+      padding: 0em;
+      padding-left: 1em;
+    }
+  }
+}

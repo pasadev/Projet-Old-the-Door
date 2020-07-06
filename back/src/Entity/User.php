@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
@@ -17,6 +18,7 @@ class User
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("user_show")
      * @Groups("api_story_detail")
      */
     private $id;
@@ -24,31 +26,37 @@ class User
     /**
      * The unique property allow to check that we don't have the same email twice
      * @ORM\Column(type="string", length=128, unique=true)
+     * @Groups("user_show")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups("user_show")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups("user_show")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("user_show")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
+     * @Groups("user_show")
      */
     private $role;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("user_show")
      */
     private $createdAt;
 
@@ -59,16 +67,19 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity=Story::class, mappedBy="author")
+     * @Groups("user_show")
      */
     private $stories;
 
     /**
      * @ORM\OneToMany(targetEntity=Party::class, mappedBy="player")
+     * @Groups("user_show")
      */
     private $playedParties;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups("user_show")
      * @Groups("api_story_detail")
      */
     private $nickname;
