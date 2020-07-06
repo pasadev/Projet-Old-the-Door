@@ -8,7 +8,7 @@ import Nav from 'src/components/Nav';
 import Home from 'src/components/Home';
 import Adventures from 'src/components/Adventures';
 import Adventure from 'src/components/Adventure';
-import Connexion from 'src/components/Connexion';
+import Connexion from 'src/containers/Connexion';
 import Register from 'src/components/Register';
 import Team from 'src/components/Team';
 import Game from 'src/components/Game';

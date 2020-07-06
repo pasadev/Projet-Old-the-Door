@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 
 // import { useField } from './hooks';
 
+import Field from './Field';
+
 import './connexion.scss';
 
 const Connexion = ({
   email,
   password,
-  // changeField,
+  changeField,
   handleLogin,
 }) => {
   const handleSubmit = (evt) => {
@@ -23,9 +25,21 @@ const Connexion = ({
       <form autoComplete="off" onSubmit={handleSubmit}>
 
         <label htmlFor="connexion-email"> Email</label>
-        <input type="text" id="connexion-email" name="connexion-email" value={email} />
+        <Field
+          name="connexion-email"
+          placeholder="Adresse Email"
+          onChange={changeField}
+          value={email}
+        />
+
         <label htmlFor="connexion-password"> Mot de passe</label>
-        <input type="text" id="connexion-password" name="connexion-password" value={password} />
+        <Field
+          name="connexion-password"
+          placeholder="Mot de Passe"
+          onChange={changeField}
+          value={password}
+        />
+
         <button type="submit">Sign In</button>
       </form>
     </div>
@@ -35,7 +49,7 @@ const Connexion = ({
 Connexion.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  // changeField: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
 };
 
