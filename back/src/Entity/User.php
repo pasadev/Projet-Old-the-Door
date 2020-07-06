@@ -6,13 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-
-
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -23,12 +22,21 @@ class User
      */
     private $id;
 
+
     /**
      * The unique property allow to check that we don't have the same email twice
      * @ORM\Column(type="string", length=128, unique=true)
      * @Groups("user_show")
      */
     private $email;
+
+
+    /**
+     * @ORM\Column(type="string", length=64, unique=true)
+     * @Groups("user_show")
+     * @Groups("api_story_detail")
+     */
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=64)
@@ -43,16 +51,17 @@ class User
     private $lastname;
 
     /**
+     * @ORM\Column(type="json")
+     * @Groups("user_show")
+     */
+    private $roles = [];
+
+    /**
+     * @var string The hashed password
      * @ORM\Column(type="string", length=255)
      * @Groups("user_show")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="string", length=64, nullable=true)
-     * @Groups("user_show")
-     */
-    private $role;
 
     /**
      * @ORM\Column(type="datetime")
@@ -77,13 +86,6 @@ class User
      */
     private $playedParties;
 
-    /**
-     * @ORM\Column(type="string", length=64)
-     * @Groups("user_show")
-     * @Groups("api_story_detail")
-     */
-    private $nickname;
-
     public function __construct()
     {
         $this->stories = new ArrayCollection();
@@ -93,6 +95,74 @@ class User
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getEmail(): ?string
@@ -131,30 +201,6 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(?string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -175,18 +221,6 @@ class User
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    public function getNickname(): ?string
-    {
-        return $this->nickname;
-    }
-
-    public function setNickname(string $nickname): self
-    {
-        $this->nickname = $nickname;
 
         return $this;
     }
@@ -252,6 +286,4 @@ class User
 
         return $this;
     }
-
-  
 }
