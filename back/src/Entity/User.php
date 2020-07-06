@@ -19,6 +19,7 @@ class User
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Groups("user_show")
+     * @Groups("api_story_detail")
      */
     private $id;
 
@@ -79,6 +80,7 @@ class User
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups("user_show")
+     * @Groups("api_story_detail")
      */
     private $nickname;
 
