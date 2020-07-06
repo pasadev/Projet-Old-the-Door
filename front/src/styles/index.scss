@@ -3,8 +3,46 @@
 
 body {
   font-family: 'Fixedsys Excelsior 3.01';
-  background-color: green;
+  background-image: radial-gradient(
+    rgba(0, 150, 0, 0.75), black 120%
+  );
+  font-size: $baseFontSize;
+  height: 100vh;
+  color: $lightColor;
+  text-shadow: 0 0 3px $lightCaseColor;
+  // Lines effect
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100vw;
+  //   height: 100vh;
+  //   background: repeating-linear-gradient(
+  //     0deg,
+  //     rgba(black, 0.15),
+  //     rgba(black, 0.15) 1px,
+  //     transparent 1px,
+  //     transparent 2px
+  //   );
+  // }
+  ::selection {
+    text-shadow: none;
+  }
 }
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: $baseFontSize;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: $baseFontSize;
+  }
+}
+
 
 @font-face {
   font-family: 'Fixedsys Excelsior 3.01';
