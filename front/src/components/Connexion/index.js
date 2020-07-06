@@ -18,23 +18,23 @@ const Connexion = ({
     evt.preventDefault();
     handleLogin();
   };
-
+// J'ai utilisé le Field vu en cours pour faire les input vu que ça marchait
   return (
     <div className="login-form">
 
       <form autoComplete="off" onSubmit={handleSubmit}>
 
-        <label htmlFor="connexion-email"> Email</label>
+        <label htmlFor="email"> Email</label>
         <Field
-          name="connexion-email"
+          name="email"
           placeholder="Adresse Email"
           onChange={changeField}
           value={email}
         />
 
-        <label htmlFor="connexion-password"> Mot de passe</label>
+        <label htmlFor="password"> Mot de passe</label>
         <Field
-          name="connexion-password"
+          name="password"
           placeholder="Mot de Passe"
           onChange={changeField}
           value={password}
@@ -46,10 +46,13 @@ const Connexion = ({
   );
 };
 
+// changeField correspond a la fonction dans le container
+// handleLogin aussi
+
 Connexion.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired,
+  changeField: PropTypes.func.isRequired, 
   handleLogin: PropTypes.func.isRequired,
 };
 
