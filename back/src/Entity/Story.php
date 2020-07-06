@@ -6,6 +6,7 @@ use App\Repository\StoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -60,6 +61,7 @@ class Story
 
     /**
      * @ORM\OneToOne(targetEntity=Chapter::class, cascade={"persist", "remove"})
+     * @JoinColumn(name="chapter_id", referencedColumnName="id", onDelete="CASCADE")
      * @Groups("api_story_detail")
      */
     private $firstChapter;

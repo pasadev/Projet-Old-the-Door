@@ -56,7 +56,7 @@ class PartyController extends AbstractController
         //If we don't have the parameter user_id in the request
         //Send back a 400 bad request answer
         return $this->json(
-            ['message' => 'Bad Request, please use a user_id GET parameter ',],
+            ['message' => 'Bad Request, please use a user_id GET parameter',],
             400
         );
     }
