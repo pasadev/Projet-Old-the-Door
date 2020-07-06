@@ -45,11 +45,8 @@ class Party
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasParties")
-<<<<<<< HEAD
      * @Groups("api_party_detail")
-=======
      * @Groups("user_show")
->>>>>>> cd29caa459581c4c777dbc64127cde2ddf761dd5
      */
     private $forStory;
 
