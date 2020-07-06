@@ -1,24 +1,23 @@
-import { DO_SOMETHING } from 'src/actions/user';
+import { UPDATE_REGISTER_FIELD } from 'src/actions/user';
 
 const initialState = {
-
+  email: '',
+  password: '',
+  firstname: '',
+  lastname: '',
+  nickname: '',
 };
 
 const user = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
-      // on retourne un nouveau state
+    case UPDATE_REGISTER_FIELD: {
       return {
-        // en déversant les informations du state actuel
         ...state,
-        // et en appliquant des modifications
-        propriété_à_modifier_1: 'valeur',
-        propriété_à_modifier_2: action.newValue,
+        [action.name]: action.newValue,
       };
+    }
 
     default: return state;
   }
 };
-
 export default user;
-
