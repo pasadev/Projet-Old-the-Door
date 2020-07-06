@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 
-// === on importe le composant de présentation
-import App from 'src/components/App';
+import Nav from 'src/components/Nav';
+
+import { toggleBurgerMenuFromNav } from 'src/actions/burgerMenu';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
-  burgerMenuOpen: state.burgerMenu.burgerMenuOpen,
 });
 
 // === mapDispatchToProps
 // si j'ai besoin de dispatcher une action vers le store
 const mapDispatchToProps = (dispatch) => ({
-  // nom de la prop à remplir: fonction qui dispatch l'action
+  toggleBurgerMenuFromNav: () => {
+    dispatch(toggleBurgerMenuFromNav());
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
