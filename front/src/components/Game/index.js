@@ -43,6 +43,7 @@ const GameScreen = () => (
       </div>
 
     </div>
+    <div>ici un bouton pour remonter en haut de la page</div>
   </main>
 
 );

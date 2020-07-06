@@ -35,16 +35,20 @@ class StoryRepository extends ServiceEntityRepository
         ;
     }
     */
+                
 
-    /*
-    public function findOneBySomeField($value): ?Story
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+   public function findNthLast ($number)
+   {
+       //Initialize query Builder
+       $qb = $this->createQueryBuilder('story');
+
+       $qb->orderBy('story.id','DESC');
+       $qb->where('story.active = true');
+       $qb->setMaxResults($number);
+
+       //Get the query
+       $query = $qb->getQuery();
+       //Return the results
+       return $query->getResult();       
+   }
 }
