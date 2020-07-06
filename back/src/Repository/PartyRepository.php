@@ -36,15 +36,29 @@ class PartyRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Party
+    /**
+     * Return parties found for the user in parameter
+     *
+     * @param int $userId
+     * @return collection
+     */
+    public function findPartiesForUser($userId)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        //Get the queryBuilder
+        $qb = $this->createQueryBuilder('party');
+        $qb->where('party.player = :userId');
+        $qb->setParameter('userId', $userId);
+
+        //leftJoin to reduce requests number
+        $qb->leftJoin('party.forStory','story');
+        $qb->addSelect('story');
+
+        //Get the query
+        $query =$qb->getQuery();
+        //Return the result
+        return $query->getResult();
     }
-    */
+
+
+
 }

@@ -17,6 +17,9 @@ class Story
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+<<<<<<< HEAD
+     * @Groups({"api_story_detail", "api_party_detail"})
+=======
      * @Groups("api_story_detail")
 <<<<<<< HEAD
      * @Groups("chapter_details")
@@ -27,11 +30,15 @@ class Story
 =======
 >>>>>>> 002162c1c1438ad2da5d9e823a254f0b7c3d695a
 >>>>>>> 73088b5c093aba50b2bbb81cb2111c53996e3b9b
+>>>>>>> cd29caa459581c4c777dbc64127cde2ddf761dd5
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
+<<<<<<< HEAD
+     * @Groups({"api_story_detail", "api_party_detail"})
+=======
      * @Groups("api_story_detail")
 <<<<<<< HEAD
      * @Groups("chapter_details")
@@ -42,6 +49,7 @@ class Story
 =======
 >>>>>>> 002162c1c1438ad2da5d9e823a254f0b7c3d695a
 >>>>>>> 73088b5c093aba50b2bbb81cb2111c53996e3b9b
+>>>>>>> cd29caa459581c4c777dbc64127cde2ddf761dd5
      */
     private $title;
 
