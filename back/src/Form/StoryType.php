@@ -30,13 +30,13 @@ class StoryType extends AbstractType
                 'active',
                 IntegerType::class,
             )
-            /* ->add(
+            ->add(
                 'firstChapter',
                 EntityType::class,
                 [
                     'class' => Chapter::class,
                     //On utilise une requête personnalisé, voir si on en a besoin
-                    'choice_label' => 'title'
+                    /* 'choice_label' => 'title' */
                 ]
             )
             ->add(
@@ -45,9 +45,9 @@ class StoryType extends AbstractType
                 [
                     'class' => User::class,
                     //On utilise une requête personnalisé, voir si on en a besoin
-                    'choice_label' => 'username'
+                    /* 'choice_label' => 'username' */
                 ]
-            ) */
+            )
         ;
     }
 

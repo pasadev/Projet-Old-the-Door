@@ -117,7 +117,7 @@ class StoryController extends AbstractController
         //We submit this data array to the form
         $form->submit($jsonArray);
 
-        //dd($story);
+        /* dd($story); */
 
         //Verify if the form is valide
         if ($form->isValid())
