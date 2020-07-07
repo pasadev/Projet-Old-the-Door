@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 // == Import : local
 // Components
-import Home from 'src/components/Home';
+import Home from 'src/containers/Home';
 import Adventures from 'src/components/Adventures';
 import Adventure from 'src/components/Adventure';
 import Connexion from 'src/components/Connexion';
@@ -16,7 +16,7 @@ import StoryCreate from 'src/components/StoryCreate';
 import ChapterCreate from 'src/components/ChapterCreate';
 import Header from 'src/components/Header';
 import Nav from 'src/containers/Nav';
-
+import PageError404 from 'src/components/PageError404';
 
 // == Import
 import './styles.scss';
@@ -56,9 +56,7 @@ const App = ({ burgerMenuOpen }) => (
           <Team />
         </Route>
         <Route>
-          <div>
-            404
-          </div>
+          <PageError404 />
         </Route>
       </Switch>
     )}
