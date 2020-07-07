@@ -1,2 +1,31 @@
 @import 'src/styles/vars';
 
+.home {
+  padding: 0.5em;
+  .spacer {
+    display: flex;
+    justify-content: center;
+  }
+  .presentation {
+    display: flex;
+    flex-direction: column;
+    
+    .presentation-title {
+      font-size: 1.2em;
+    }
+    
+    .presentation-description {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  .latest-adventures {
+
+    .latest-adventures-title {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.2em;
+    }
+  }
+}

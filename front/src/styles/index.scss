@@ -10,22 +10,6 @@ body {
   height: 100vh;
   color: $lightColor;
   text-shadow: 0 0 3px $lightCaseColor;
-  // Lines effect
-  // &::before {
-  //   content: "";
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100vw;
-  //   height: 100vh;
-  //   background: repeating-linear-gradient(
-  //     0deg,
-  //     rgba(black, 0.15),
-  //     rgba(black, 0.15) 1px,
-  //     transparent 1px,
-  //     transparent 2px
-  //   );
-  // }
   ::selection {
     text-shadow: none;
   }
@@ -33,13 +17,13 @@ body {
 
 @media screen and (min-width: 768px) {
   body {
-    font-size: $baseFontSize;
+    font-size: 1.1em;
   }
 }
 
 @media screen and (min-width: 1024px) {
   body {
-    font-size: $baseFontSize;
+    font-size: 1.2em;
   }
 }
 
