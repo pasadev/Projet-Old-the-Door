@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 /**
  * A field to be used inside a form : label and input
  */
-const FieldRegister = ({
+const FieldRegisterPassword = ({
   value,
-  type,
   name,
   placeholder,
   onChange,
@@ -14,6 +13,7 @@ const FieldRegister = ({
   const handleChange = (event) => {
     onChange(event.target.value, name);
   };
+
   return (
     <div className="fieldRegister">
       <input
@@ -21,7 +21,7 @@ const FieldRegister = ({
         id={name}
         placeholder={placeholder}
         name={name}
-        type={type}
+        type="password"
         value={value}
         onChange={handleChange}
       />
@@ -29,14 +29,13 @@ const FieldRegister = ({
   );
 };
 
-FieldRegister.propTypes = {
+FieldRegisterPassword.propTypes = {
   /** identifier for the input : used both for name and id => must be unique */
   name: PropTypes.string.isRequired,
   /** text used as placeholder */
   placeholder: PropTypes.string.isRequired,
   /** text used as label */
   /** type of the input */
-  type: PropTypes.string,
   /** text used as value for the input */
   value: PropTypes.string,
   /** called when onChange event is received by the input, two parameters :
@@ -46,9 +45,8 @@ FieldRegister.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-FieldRegister.defaultProps = {
-  type: 'text',
+FieldRegisterPassword.defaultProps = {
   value: '',
 };
 
-export default FieldRegister;
+export default FieldRegisterPassword;

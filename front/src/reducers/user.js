@@ -3,6 +3,7 @@ import { UPDATE_REGISTER_FIELD } from 'src/actions/user';
 const initialState = {
   email: '',
   password: '',
+  passwordConfirmation: '',
   firstname: '',
   lastname: '',
   nickname: '',

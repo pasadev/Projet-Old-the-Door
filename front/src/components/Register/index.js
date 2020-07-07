@@ -3,6 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './register.scss';
 import FieldRegister from './FieldRegister/FieldRegister';
+import ButtonRegister from './ButtonRegister';
+import FieldRegisterPassword from './FieldRegister/FieldRegisterPassword';
 
 const Register = ({
   email,
@@ -14,14 +16,23 @@ const Register = ({
   // submitRegister,
   // updateField,
   changeField,
+  passwordConfirmation,
+  handleSubmit,
 }) => {
   // const handleSubmit = (event) => {
   //   event.preventDefault();
   //   submitRegister();
   // };
+  const firstPassword = password;
+  const secondPassword = passwordConfirmation;
   return (
     <main className="register">
-      <form className="form">
+      <form
+        className="form"
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
         <label htmlFor="form-nickname">
           Pseudo :
         </label>
@@ -60,7 +71,7 @@ const Register = ({
         </label>
         <label htmlFor="form-password">
           Mot de passe :
-          <FieldRegister
+          <FieldRegisterPassword
             name="password"
             placeholder="password"
             onChange={changeField}
@@ -69,19 +80,15 @@ const Register = ({
         </label>
         <label htmlFor="form-password-confirmation">
           Confirmation du Mot de passe :
-          <FieldRegister
-            name="password"
+          <FieldRegisterPassword
+            name="passwordConfirmation"
             placeholder="confirmation password"
             onChange={changeField}
-            value={password}
-          />  
+            value={passwordConfirmation}
+          />
         </label>
-        <button
-          className="form-firstname"
-          type="submit"
-        >
-          Envoyer
-        </button>
+        {firstPassword === secondPassword && (
+        <ButtonRegister />)}
       </form>
     </main>
   );
@@ -92,6 +99,7 @@ Register.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
+  passwordConfirmation: PropTypes.string.isRequired,
   // submitRegister: PropTypes.func.isRequired,
   // updateField: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
