@@ -28,7 +28,7 @@ const AdventureSmall = ({
       {synopsis}
     </p>
     <div className="adventureSmall-link">
-      Jouer
+      Ouvrir le fichier
     </div>
     <span className="spacer">--------------------------------------</span>
   </div>

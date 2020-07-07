@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 // == Import : local
 // Components
 import Home from 'src/containers/Home';
-import Adventures from 'src/components/Adventures';
+import Adventures from 'src/containers/Adventures';
 import Adventure from 'src/components/Adventure';
 import Connexion from 'src/components/Connexion';
 import Register from 'src/components/Register';

@@ -3,6 +3,8 @@ import axios from 'axios';
 import {
   FETCH_ADVENTURES_HOME,
   saveAdventuresHome,
+  FETCH_ADVENTURES_CATALOG,
+  saveAdventuresCatalog,
 } from 'src/actions/adventures';
 
 const adventuresMiddleware = (store) => (next) => (action) => {
@@ -12,6 +14,19 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories?last=3')
         .then((response) => {
           store.dispatch(saveAdventuresHome(response.data[0]));
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+
+      next(action);
+      break;
+
+    case FETCH_ADVENTURES_CATALOG:
+      // API request for the adventures catalog
+      axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories')
+        .then((response) => {
+          store.dispatch(saveAdventuresCatalog(response.data[0]));
         })
         .catch((error) => {
           console.warn(error);
