@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-
 import userReducer from './user';
 import burgerMenuReducer from './burgerMenu';
 import adventuresReducer from './adventures';
