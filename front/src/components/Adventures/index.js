@@ -8,6 +8,7 @@ import './adventures.scss';
 const Adventures = ({ adventuresCatalog, fetchAdventuresCatalog }) => {
   useEffect(() => {
     fetchAdventuresCatalog();
+    // console.log('Fetch catalog');
   }, []);
   return (
     <main className="adventures">

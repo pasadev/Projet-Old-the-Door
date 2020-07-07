@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 // Components
 import Home from 'src/containers/Home';
 import Adventures from 'src/containers/Adventures';
-import Adventure from 'src/components/Adventure';
+import Adventure from 'src/containers/Adventure';
 import Connexion from 'src/components/Connexion';
 import Register from 'src/components/Register';
 import Team from 'src/components/Team';
@@ -37,13 +37,13 @@ const App = ({ burgerMenuOpen }) => (
         <Route exact path="/inscription">
           <Register />
         </Route>
-        <Route exact path="/aventures/test/jouer">
+        <Route exact path="/aventures/:slug/jouer">
           <Game />
         </Route>
-        <Route exact path="/aventures/test/edition">
+        <Route exact path="/aventures/:slug/edition">
           <ChapterCreate />
         </Route>
-        <Route exact path="/aventures/test">
+        <Route exact path="/aventures/:slug">
           <Adventure />
         </Route>
         <Route exact path="/aventures/creation">
