@@ -3,7 +3,30 @@
 
 body {
   font-family: 'Fixedsys Excelsior 3.01';
+  background-image: radial-gradient(
+    rgba(0, 150, 0, 0.75), black 120%
+  );
+  font-size: $baseFontSize;
+  height: 100vh;
+  color: $lightColor;
+  text-shadow: 0 0 3px $lightCaseColor;
+  ::selection {
+    text-shadow: none;
+  }
 }
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 1.1em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 1.2em;
+  }
+}
+
 
 @font-face {
   font-family: 'Fixedsys Excelsior 3.01';

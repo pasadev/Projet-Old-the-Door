@@ -9,7 +9,7 @@ const initialState = {
   nickname: '',
 };
 
-const user = (state = initialState, action = {}) => {
+const adventures = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_REGISTER_FIELD: {
       return {
@@ -21,4 +21,6 @@ const user = (state = initialState, action = {}) => {
     default: return state;
   }
 };
+
 export default user;
+

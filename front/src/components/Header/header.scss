@@ -1,0 +1,31 @@
+@import 'src/styles/vars';
+
+.header {
+  background-color: $lightCaseColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $darkColor;
+  height: 1.5em;
+  
+  .nav-logo {
+    position: absolute;
+    left: 0;
+    padding-left: 0.5em;
+  }
+
+  .nav-container {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header {  
+    .nav-container {
+      display: flex;
+      position: absolute;
+      right: 0;
+      padding-right: 0.5em;
+    }
+  }
+}
