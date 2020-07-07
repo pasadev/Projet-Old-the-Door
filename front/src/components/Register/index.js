@@ -19,7 +19,6 @@ const Register = ({
   //   event.preventDefault();
   //   submitRegister();
   // };
-  console.log (password);
   return (
     <main className="register">
       <form className="form">
