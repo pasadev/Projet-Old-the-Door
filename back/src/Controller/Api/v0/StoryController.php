@@ -22,6 +22,7 @@ class StoryController extends AbstractController
      */
     public function list(StoryRepository $storyRepository, ObjectNormalizer $normalizer, Request $request)
     {
+        
         //If we have the 'last' parameter
         if ($request->query->get('last')) {
             //intVal the parameter to avoid non numeric values
