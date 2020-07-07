@@ -14,6 +14,7 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/api/v0/users/{id}", name="api_v0_users_show" , methods={"GET"} , requirements={"id":"\d+"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(ObjectNormalizer $normalizer ,User $user)
     {
@@ -22,10 +23,9 @@ class UserController extends AbstractController
 
         $normalizedUser = $serializer->normalize($user, null, ['groups' => 'user_show']);
 
-        
 
         return $this->json([
-            $normalizedUser
+            $normalizedUser,
         ]);
     }
 }
