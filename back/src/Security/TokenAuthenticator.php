@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 use Symfony\Component\Security\Guard\AuthenticatorInterface;
 
-class TokenAuthenticator implements AuthenticatorInterface
+class TokenAuthenticator extends AbstractGuardAuthenticator
 {
     private $em;
 
@@ -23,20 +23,24 @@ class TokenAuthenticator implements AuthenticatorInterface
     }
 
     //Called on every request
+    //Verify that the request has the header x-auth-token
     public function supports(Request $request)
     {
         return $request->headers->has('X-AUTH-TOKEN');
     }
 
 
-    // this method get the credential in headers
+    // this method get the value of the credential in headers
     public function getCredentials(Request $request)
     {
         return $request->headers->get('X-AUTH-TOKEN');
     }
 
+
+    // Get User matching with credentials
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
+        
         if (null === $credentials) {
             // The token header was empty, authentication fails with HTTP Status
             // Code 401 "Unauthorized"
@@ -44,32 +48,32 @@ class TokenAuthenticator implements AuthenticatorInterface
         }
 
         // if a User is returned, checkCredentials() is called
+        //Find the user with the apiToken in BDD and compare it with BDD
         return $this->em->getRepository(User::class)
             ->findOneBy(['apiToken' => $credentials]);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        // TODO: Check credentials - e.g. make sure the password is valid.
         // In case of an API token, no credential check is needed.
 
         // Return `true` to cause authentication success
         return true;
     }
 
-    // this is a mandatory method because we implement AuthenticatorInterface
-    public function createAuthenticatedToken(UserInterface $user, string $providerKey)
-    {
-        
-    }
+    
 
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
+        //Because we are on an API, we don't return a response object
+        //But just skip to the next step
         // on success, let the request continue
         return null;
     }
 
+    //This method should never be called, as the checkCredientials always answers true
+    //Because we are on an API
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         $data = [
@@ -85,6 +89,8 @@ class TokenAuthenticator implements AuthenticatorInterface
 
     /**
      * Called when authentication is needed, but it's not sent
+     * If a call is made on a route which needs authentification, but there's no credentials
+     * It return an error message
      */
     public function start(Request $request, AuthenticationException $authException = null)
     {
@@ -98,6 +104,7 @@ class TokenAuthenticator implements AuthenticatorInterface
 
     public function supportsRememberMe()
     {
+        //We have to set it at false, because we are in an API contex
         return false;
     }
 }

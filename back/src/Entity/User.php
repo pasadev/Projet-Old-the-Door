@@ -87,6 +87,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", unique=true , nullable=true)
+     * 
      */
     private $apiToken;
 
