@@ -36,15 +36,46 @@ class ChapterRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Chapter
+    // Method for get chapters with his story with one request
+    public function findChaptersForStory ($storyId)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        //Initialize query Builder
+        $qb = $this->createQueryBuilder('chapter');
+        $qb->where('chapter.forStory = :storyId');
+
+        // leftJoin for reduce requests number
+        $qb->leftJoin('chapter.forStory', 'story');
+        $qb->addSelect('story');
+
+        //indicated value of storyId token
+        $qb->setParameter('storyId', $storyId);
+
+
+        // get query
+        $query = $qb->getQuery();
+
+        //return result of query
+        return $query->getResult();
     }
-    */
+
+    //Method to get the child chapter of the given chapter
+    public function findChildChapter($chapterId)
+    {
+        //Initialize query Builder
+        $qb = $this->createQueryBuilder('chapter');
+        $qb->where('chapter.parentChapter = :chapterId');
+
+        // leftJoin to reduce requests number
+        $qb->leftJoin('chapter.forStory', 'story');
+        $qb->addSelect('story');
+
+        //Set the chapter id parameter
+        $qb->setParameter('chapterId', $chapterId);
+
+        // get query
+        $query = $qb->getQuery();
+
+        //return result of query
+        return $query->getOneOrNullResult();
+    }
 }

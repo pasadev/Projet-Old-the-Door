@@ -6,6 +6,7 @@ use App\Repository\StoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -17,13 +18,22 @@ class Story
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("api_party_detail")
      * @Groups("api_story_detail")
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
+     * @Groups("user_show")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Groups("api_party_detail")
      * @Groups("api_story_detail")
+     * @Groups("chapter_details")
+     * @Groups("chapter_list")
+     * @Groups("user_show")
+
      */
     private $title;
 
@@ -60,6 +70,7 @@ class Story
 
     /**
      * @ORM\OneToOne(targetEntity=Chapter::class, cascade={"persist", "remove"})
+     * @JoinColumn(name="chapter_id", referencedColumnName="id", onDelete="CASCADE")
      * @Groups("api_story_detail")
      */
     private $firstChapter;

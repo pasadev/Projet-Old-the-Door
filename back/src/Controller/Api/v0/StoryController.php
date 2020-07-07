@@ -3,6 +3,7 @@
 namespace App\Controller\Api\v0;
 
 use App\Entity\Story;
+use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,40 +23,50 @@ class StoryController extends AbstractController
     public function list(StoryRepository $storyRepository, ObjectNormalizer $normalizer, Request $request)
     {
         //If we have the 'last' parameter
-        if ($request->query->get('last'))
-        {
-            $storyNumber = $request->query->get('last');
+        if ($request->query->get('last')) {
+            //intVal the parameter to avoid non numeric values
+            //If the parameter is not an integer, findActiveStories will return all stories 
+            $storyNumber = intval($request->query->get('last'));
 
             //Get the n last stories
-            $stories = $storyRepository->findNthLast($storyNumber);
+            $stories = $storyRepository->findActiveStories($storyNumber);
         }
         //If we have the author_id parameter
-        else if ($request->query->get('author_id'))
-        {
+        //intVal allow us to be sure that the author_id paramater is correct
+        else if ($request->query->get('author_id') && intval($request->query->get('author_id'))) {
             $authorId = $request->query->get('author_id');
             //Get the stories for this author
-            $stories = $storyRepository->findBy(['author' => $authorId]);
-
+            $stories = $storyRepository->findForAuthor($authorId);
         }
         //If we don't have any get parameter
-        else
-        {
+        else {
             //Get the stories
-            $stories = $storyRepository->findBy(['active' => true]);
+            $stories = $storyRepository->findActiveStories();
         }
 
-        //Instanciate the serializer
-        //Instanciate DateTimeNormalizer to convert the DateTime object propery into sring
-        $serializer = new Serializer([new DateTimeNormalizer(),$normalizer]);
-        
-        //Normalize the stories collection
-        $normalizedStories = $serializer->normalize($stories, null, ['groups' => 'api_story_detail']);
+        //If we have stories to send
+        if ($stories) {
+            //Instanciate the serializer
+            //Instanciate DateTimeNormalizer to convert the DateTime object propery into sring
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            //Normalize the stories collection
+            $normalizedStories = $serializer->normalize($stories, null, ['groups' => 'api_story_detail']);
 
 
-        //Return all stories    
-        return $this->json([
-            $normalizedStories
-        ]);
+            //Return all stories    
+            return $this->json([
+                $normalizedStories
+            ]);
+        }
+        //If we have not found any stories
+        else {
+            //We send back a message with a 404 error
+            return $this->json(
+                ['message' => 'We have not found any stories',],
+                404
+            );
+        }
     }
 
     /**
@@ -65,8 +76,8 @@ class StoryController extends AbstractController
      */
     public function show(Story $story, ObjectNormalizer $normalizer)
     {
-        
-        $serializer = new Serializer([new DateTimeNormalizer(),$normalizer]);
+
+        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
 
         $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
 
@@ -83,15 +94,50 @@ class StoryController extends AbstractController
      */
     public function delete(Story $story)
     {
-        
+
         //Get back the manager
         $em = $this->getDoctrine()->getManager();
         $em->remove($story);
         $em->flush();
 
-        return $this->json(204);
-        //TODO: Voir quoi renvoyer dans la cas d'un delete
-        //TODO: Voir pour l'erreur sur le delete dans le cas d'une histoire qui a des chapitres
+        return $this->json([], 204);
     }
 
+    /**
+     * Return time stats for one story
+     * 
+     * @Route("/api/v0/stories/{id}/time", name="api_v0_stories_time", methods={"GET"}, requirements={"id":"\d+"})
+     */
+    public function getTime($id, PartyRepository $partyRepository)
+    {
+        //Get parties for this stories
+        $parties = $partyRepository->findBy(['forStory' => $id]);
+
+        //If we have parties
+        if ($parties) {
+
+            //Initializing a time table
+            $timeTable = [];
+
+            foreach ($parties as $party) {
+                $timeTable[] = $party->getTime();
+            }
+
+            $bestTime = min($timeTable);
+            $averageTime = intval(array_sum($timeTable) / count($timeTable));
+
+            return $this->json([
+                'best' => $bestTime,
+                'average' => $averageTime,
+            ]);
+        }
+        //If we don't have parties
+        else
+        {
+            return $this->json(
+                ['message' => 'We do not have stats for this story',],
+                404
+            );
+        }
+    }
 }

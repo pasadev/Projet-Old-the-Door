@@ -1,11 +1,10 @@
 import { connect } from 'react-redux';
 
-// === on importe le composant de présentation
-import Home from 'src/components/Home';
+import AdventureSmall from 'src/components/AdventureSmall';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  adventures: state.adventures.adventures,
+  // nom de la prop à remplir : élément à récupérer dans le state
 });
 
 // === mapDispatchToProps
@@ -13,4 +12,5 @@ const mapDispatchToProps = (dispatch) => ({
   // nom de la prop à remplir: fonction qui dispatch l'action
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+// === création de l'assistant
+export default connect(mapStateToProps, mapDispatchToProps)(AdventureSmall);

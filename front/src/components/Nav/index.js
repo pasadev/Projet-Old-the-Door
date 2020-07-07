@@ -1,43 +1,43 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './nav.scss';
 
-const Nav = () => (
-  <nav className="Nav">
-    <NavLink
-      className="nav-item"
-      to="/"
-      activeClassName="nav-item"
-      exact
-    >
-      O'ld the door
-    </NavLink>
+const Nav = ({ toggleBurgerMenuFromNav }) => (
+  <nav className="nav">
     <NavLink
       className="nav-item"
       to="/"
       activeClassName="nav-item-active"
       exact
+      onClick={toggleBurgerMenuFromNav}
     >
-      Home
+      <span className="nav-symbol">{'>:/'}</span>Home
     </NavLink>
     <NavLink
+      onClick={toggleBurgerMenuFromNav}
       className="nav-item"
       to="/aventures"
       activeClassName="nav-item"
       exact
     >
-      Aventures
+      <span className="nav-symbol">{'>:/'}</span>Aventures
     </NavLink>
     <NavLink
+      onClick={toggleBurgerMenuFromNav}
       className="nav-item"
       to="/profil"
       activeClassName="nav-item"
       exact
     >
-      Mon Profil
+      <span className="nav-symbol">{'>:/'}</span>Mon Profil
     </NavLink>
   </nav>
 );
+
+Nav.propTypes = {
+  toggleBurgerMenuFromNav: PropTypes.func.isRequired,
+};
 
 export default Nav;

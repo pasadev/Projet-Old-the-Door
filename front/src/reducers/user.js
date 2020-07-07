@@ -11,7 +11,7 @@ const initialState = {
   isLogged: false,
 };
 
-const user = (state = initialState, action = {}) => {
+const adventures = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_USER_FIELD:
       return {
