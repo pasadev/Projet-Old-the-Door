@@ -94,14 +94,14 @@ input:focus {
 @media screen and (max-width: 320px) {
   
   .game-timer {
-    font-size: $biggerFontSize;
+    font-size: 1.2em;
   }
 }
 
 @media screen and (max-width: 768px) {
 
   .game-timer {
-    font-size: $biggerFontSize;
+    font-size: 1.2em;
   
   }
 }

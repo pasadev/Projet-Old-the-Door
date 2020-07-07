@@ -4,7 +4,7 @@ const initialState = {
 
 };
 
-const adventures = (state = initialState, action = {}) => {
+const user = (state = initialState, action = {}) => {
   switch (action.type) {
     case DO_SOMETHING:
       // on retourne un nouveau state
@@ -20,4 +20,4 @@ const adventures = (state = initialState, action = {}) => {
   }
 };
 
-export default adventures;
+export default user;

@@ -21,6 +21,11 @@
     flex-direction: row;
     padding-top: 0;
     padding-bottom: 0;
+
+    .nav-symbol {
+      display: none;
+    }
+
     .nav-item {
       padding: 0em;
       padding-left: $baseSize;

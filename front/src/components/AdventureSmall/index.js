@@ -1,15 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './adventureSmall.scss';
 
-const AdventureSmall = () => (
+const AdventureSmall = ({
+  title,
+  synopsis,
+}) => (
   <div className="adventureSmall">
     <h3 className="adventureSmall-title">
-      La rencontre du Fabigeon
+      {title}
     </h3>
     <p className="adventureSmall-synopsis">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Enim eaque possimus adipisci odit porro, nulla officiis blanditiis perspiciatis inventore
+      {synopsis}
     </p>
     <link // or a button?
       className="adventureSmall-link"
@@ -18,5 +21,10 @@ const AdventureSmall = () => (
     />
   </div>
 );
+
+AdventureSmall.propTypes = {
+  title: PropTypes.string.isRequired,
+  synopsis: PropTypes.string.isRequired,
+};
 
 export default AdventureSmall;

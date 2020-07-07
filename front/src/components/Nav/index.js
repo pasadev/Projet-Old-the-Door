@@ -13,7 +13,7 @@ const Nav = ({ toggleBurgerMenuFromNav }) => (
       exact
       onClick={toggleBurgerMenuFromNav}
     >
-      Home
+      <span className="nav-symbol">{'>:/'}</span>Home
     </NavLink>
     <NavLink
       onClick={toggleBurgerMenuFromNav}
@@ -22,7 +22,7 @@ const Nav = ({ toggleBurgerMenuFromNav }) => (
       activeClassName="nav-item"
       exact
     >
-      Aventures
+      <span className="nav-symbol">{'>:/'}</span>Aventures
     </NavLink>
     <NavLink
       onClick={toggleBurgerMenuFromNav}
@@ -31,7 +31,7 @@ const Nav = ({ toggleBurgerMenuFromNav }) => (
       activeClassName="nav-item"
       exact
     >
-      Mon Profil
+      <span className="nav-symbol">{'>:/'}</span>Mon Profil
     </NavLink>
   </nav>
 );
