@@ -28,7 +28,7 @@ class StoryType extends AbstractType
             )
             ->add(
                 'active',
-                IntegerType::class,
+                TextType::class,
             )
             ->add(
                 'firstChapter',

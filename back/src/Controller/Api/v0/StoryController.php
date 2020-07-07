@@ -117,8 +117,6 @@ class StoryController extends AbstractController
         //We submit this data array to the form
         $form->submit($jsonArray);
 
-        /* dd($story); */
-
         //Verify if the form is valide
         if ($form->isValid())
         {
@@ -147,6 +145,60 @@ class StoryController extends AbstractController
         //We display errors
         //With a 400 Bad request HTTP code
         return $this->json((string) $form->getErrors(true, false, 400));
+    }
+
+    /**
+     * Edit an existing story
+     * @Route("/api/v0/stories/{id}", name="api_v0_stories_edit", methods={"PUT"}, requirements={"id":"\d+"})
+     *
+     * @return Story
+     */
+    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer)
+    {
+
+        //Create the associating form to send request data in the story in parameter
+        //With the csrf option desactivated as we are on an API
+        $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);        
+
+        //Extract the json content of the request
+        $jsonText = $request->getContent();
+
+        //Transform this Json in array
+        $jsonArray = json_decode($jsonText, true);
+
+        //We submit this data array to the form
+        $form->submit($jsonArray);
+
+        //Verify if the form is valide
+        if ($form->isValid())
+        {
+            //Set an updated date
+            $story->setUpdatedAt(new \DateTime());
+
+            //If it is valid, we flush
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            //Then, we return 200 HTTP code with the Story Object updated
+
+            //Serialize the data
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
+
+            //And return it
+            return $this->json($normalizedStory, 200);
+
+        }
+
+        //If it is not valid
+        //We display errors
+        //With a 400 Bad request HTTP code
+        return $this->json((string) $form->getErrors(true, false, 400));
+
+
+        
+
     }
 
     /**
