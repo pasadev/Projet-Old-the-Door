@@ -3,6 +3,7 @@
 namespace App\Controller\Api\v0;
 
 use App\Entity\Story;
+use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,8 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 class StoryController extends AbstractController
 {
@@ -18,9 +21,11 @@ class StoryController extends AbstractController
      * Return all stories
      * 
      * @Route("/api/v0/stories", name="api_v0_stories_list", methods={"GET"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function list(StoryRepository $storyRepository, ObjectNormalizer $normalizer, Request $request)
     {
+        
         //If we have the 'last' parameter
         if ($request->query->get('last')) {
             //intVal the parameter to avoid non numeric values
@@ -55,12 +60,11 @@ class StoryController extends AbstractController
 
             //Return all stories    
             return $this->json([
-                $normalizedStories
+                $normalizedStories,
             ]);
         }
         //If we have not found any stories
-        else
-        {
+        else {
             //We send back a message with a 404 error
             return $this->json(
                 ['message' => 'We have not found any stories',],
@@ -101,6 +105,43 @@ class StoryController extends AbstractController
         $em->flush();
 
         return $this->json([], 204);
+    }
 
+    /**
+     * Return time stats for one story
+     * 
+     * @Route("/api/v0/stories/{id}/time", name="api_v0_stories_time", methods={"GET"}, requirements={"id":"\d+"})
+     */
+    public function getTime($id, PartyRepository $partyRepository)
+    {
+        //Get parties for this stories
+        $parties = $partyRepository->findBy(['forStory' => $id]);
+
+        //If we have parties
+        if ($parties) {
+
+            //Initializing a time table
+            $timeTable = [];
+
+            foreach ($parties as $party) {
+                $timeTable[] = $party->getTime();
+            }
+
+            $bestTime = min($timeTable);
+            $averageTime = intval(array_sum($timeTable) / count($timeTable));
+
+            return $this->json([
+                'best' => $bestTime,
+                'average' => $averageTime,
+            ]);
+        }
+        //If we don't have parties
+        else
+        {
+            return $this->json(
+                ['message' => 'We do not have stats for this story',],
+                404
+            );
+        }
     }
 }

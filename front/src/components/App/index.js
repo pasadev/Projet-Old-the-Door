@@ -7,9 +7,11 @@ import PropTypes from 'prop-types';
 // Components
 import Home from 'src/containers/Home';
 import Adventures from 'src/containers/Adventures';
-import Adventure from 'src/containers/Adventure';
 import Connexion from 'src/components/Connexion';
 import Register from 'src/components/Register';
+import Adventure from 'src/containers/Adventure';
+import Register from 'src/containers/Register';
+import Connexion from 'src/containers/Connexion';
 import Team from 'src/components/Team';
 import Game from 'src/components/Game';
 import StoryCreate from 'src/components/StoryCreate';
