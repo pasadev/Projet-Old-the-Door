@@ -1,6 +1,13 @@
-import { UPDATE_USER_FIELD, SAVE_USER } from 'src/actions/user';
 
+import { UPDATE_REGISTER_FIELD } from 'src/actions/user';
+import { UPDATE_USER_FIELD, SAVE_USER } from 'src/actions/user';
 const initialState = {
+  emailRegister: '',
+  passwordRegister: '',
+  passwordConfirmation: '',
+  firstname: '',
+  lastname: '',
+  nickname: '',
   // contenu de l'input pour l'adresse e-mail
   email: '',
   // contenu de l'input pour le mot de passe
@@ -9,10 +16,17 @@ const initialState = {
   info: {},
   // indique si l'utilisateur est loggué
   isLogged: false,
+
 };
 
-const adventures = (state = initialState, action = {}) => {
+const user = (state = initialState, action = {}) => {
   switch (action.type) {
+
+    case UPDATE_REGISTER_FIELD: {
+      return {
+        ...state,
+        [action.name]: action.newValue,
+
     case UPDATE_USER_FIELD:
       return {
         ...state,
@@ -26,7 +40,9 @@ const adventures = (state = initialState, action = {}) => {
         isLogged: action.isLogged,
         email: '',
         password: '',
+
       };
+    }
 
     default: return state;
   }

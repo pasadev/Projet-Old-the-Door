@@ -8,8 +8,12 @@ import PropTypes from 'prop-types';
 import Home from 'src/components/Home';
 import Adventures from 'src/components/Adventures';
 import Adventure from 'src/components/Adventure';
+
+
+import Register from 'src/containers/Register';
+
 import Connexion from 'src/containers/Connexion';
-import Register from 'src/components/Register';
+
 import Team from 'src/components/Team';
 import Game from 'src/components/Game';
 import StoryCreate from 'src/components/StoryCreate';

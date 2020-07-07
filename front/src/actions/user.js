@@ -1,3 +1,9 @@
+
+// === action types
+export const UPDATE_REGISTER_FIELD = 'UPDATE_REGISTER_FIELD';
+export const CREATE_LOGIN = 'CREATE_LOGIN';
+// === action creators
+
 export const UPDATE_USER_FIELD = 'UPDATE_USER_FIELD';
 export const LOG_IN = 'LOG_IN';
 export const SAVE_USER = 'SAVE_USER';
@@ -26,4 +32,13 @@ export const logOut = () => ({
 
 export const checkLogged = () => ({
   type: CHECK_LOGGED,
+
+});
+export const updateRegistersField = (newValue, name) => ({
+  type: UPDATE_REGISTER_FIELD,
+  newValue,
+  name,
+});
+export const createLogin = () => ({
+
 });
