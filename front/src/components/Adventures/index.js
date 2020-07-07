@@ -5,9 +5,10 @@ import AdventureSmall from 'src/components/AdventureSmall';
 
 import './adventures.scss';
 
-const Adventures = ({ adventuresCatalog, fetchAdventuresCatalog }) => {
+const Adventures = ({ adventuresCatalog, fetchAdventuresCatalog, displayLoader }) => {
   useEffect(() => {
     fetchAdventuresCatalog();
+    displayLoader();
     // console.log('Fetch catalog');
   }, []);
   return (
@@ -34,6 +35,7 @@ Adventures.propTypes = {
     }).isRequired,
   ).isRequired,
   fetchAdventuresCatalog: PropTypes.func.isRequired,
+  displayLoader: PropTypes.func.isRequired,
 };
 
 export default Adventures;

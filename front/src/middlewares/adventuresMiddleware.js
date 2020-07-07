@@ -15,6 +15,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories?last=3')
         .then((response) => {
           store.dispatch(saveAdventuresHome(response.data[0]));
+          console.log('hide');
         })
         .catch((error) => {
           console.warn(error);

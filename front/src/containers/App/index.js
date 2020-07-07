@@ -6,7 +6,8 @@ import App from 'src/components/App';
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
-  burgerMenuOpen: state.burgerMenu.burgerMenuOpen,
+  burgerMenuOpen: state.utils.burgerMenuOpen,
+  loading: state.utils.loading,
 });
 
 // === mapDispatchToProps

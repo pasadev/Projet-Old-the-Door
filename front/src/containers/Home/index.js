@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchAdventuresHome, saveAdventuresHome } from 'src/actions/adventures';
+import { displayLoader } from 'src/actions/utils';
 
 import Home from 'src/components/Home';
 
@@ -16,6 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   saveAdventuresHome: () => {
     dispatch(saveAdventuresHome());
+  },
+  displayLoader: () => {
+    dispatch(displayLoader());
   },
 });
 

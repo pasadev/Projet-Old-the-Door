@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchAdventuresCatalog, saveAdventuresCatalog } from 'src/actions/adventures';
+import { displayLoader } from 'src/actions/utils';
 
 import Adventures from 'src/components/Adventures';
 
@@ -16,6 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   saveAdventuresCatalog: () => {
     dispatch(saveAdventuresCatalog());
+  },
+  displayLoader: () => {
+    dispatch(displayLoader());
   },
 });
 

@@ -1,0 +1,31 @@
+@import 'src/styles/vars';
+
+.loader {
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 150px;
+  height: 80px;
+  margin: auto;
+  border: 1px $lightScreenColor solid;
+  border-top: 5px $lightScreenColor solid;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  animation-name: flicker;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  
+  .text {
+    text-align: center;
+    color: $lightScreenColor;
+  }
+}
+
+@keyframes flicker {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+}

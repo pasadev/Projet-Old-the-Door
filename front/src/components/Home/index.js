@@ -5,9 +5,10 @@ import AdventureSmall from 'src/containers/AdventureSmall';
 
 import './home.scss';
 
-const Home = ({ adventuresHome, fetchAdventuresHome }) => {
+const Home = ({ adventuresHome, fetchAdventuresHome, displayLoader }) => {
   useEffect(() => {
     fetchAdventuresHome();
+    displayLoader();
   }, []);
   return (
     <main className="home">
@@ -46,6 +47,7 @@ Home.propTypes = {
     }).isRequired,
   ).isRequired,
   fetchAdventuresHome: PropTypes.func.isRequired,
+  displayLoader: PropTypes.func.isRequired,
 };
 
 export default Home;
