@@ -1,16 +1,22 @@
 import { connect } from 'react-redux';
 
-// === on importe le composant de présentation
+import { fetchAdventuresHome, saveAdventuresHome } from 'src/actions/adventures';
+
 import Home from 'src/components/Home';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  adventures: state.adventures.adventures,
+  adventuresHome: state.adventures.adventuresHome,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-  // nom de la prop à remplir: fonction qui dispatch l'action
+  fetchAdventuresHome: () => {
+    dispatch(fetchAdventuresHome());
+  },
+  saveAdventuresHome: () => {
+    dispatch(saveAdventuresHome());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

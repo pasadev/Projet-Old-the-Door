@@ -55,16 +55,20 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "add": "^2.0.6",
     "axios": "^0.19.2",
+    "moment": "^2.27.0",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
     "react-feather": "^2.0.8",
     "react-loading": "^2.0.3",
+    "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "yarn": "^1.22.4"
   }
 }
