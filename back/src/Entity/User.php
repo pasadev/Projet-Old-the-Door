@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
@@ -84,6 +85,12 @@ class User implements UserInterface
      * @Groups("user_show")
      */
     private $playedParties;
+
+    /**
+     * @ORM\Column(type="string", unique=true , nullable=true)
+     * 
+     */
+    private $apiToken;
 
     public function __construct()
     {
