@@ -85,6 +85,11 @@ class User implements UserInterface
      */
     private $playedParties;
 
+    /**
+     * @ORM\Column(type="string", unique=true , nullable=true)
+     */
+    private $apiToken;
+
     public function __construct()
     {
         $this->stories = new ArrayCollection();
