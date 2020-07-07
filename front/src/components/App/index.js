@@ -9,7 +9,6 @@ import Home from 'src/components/Home';
 import Adventures from 'src/components/Adventures';
 import Adventure from 'src/components/Adventure';
 
-
 import Register from 'src/containers/Register';
 
 import Connexion from 'src/containers/Connexion';
@@ -20,7 +19,6 @@ import StoryCreate from 'src/components/StoryCreate';
 import ChapterCreate from 'src/components/ChapterCreate';
 import Header from 'src/components/Header';
 import Nav from 'src/containers/Nav';
-
 
 // == Import
 import './styles.scss';

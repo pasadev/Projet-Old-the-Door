@@ -1,6 +1,6 @@
 import React from 'react';
-
-const StoryCreate = () => (
+import Proptypes
+const StoryCreate = ({}) => (
 
   <main>
     <form action="submit" name="storyCreate">
