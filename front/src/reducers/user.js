@@ -1,6 +1,5 @@
+import { UPDATE_REGISTER_FIELD, UPDATE_USER_FIELD, SAVE_USER } from 'src/actions/user';
 
-import { UPDATE_REGISTER_FIELD } from 'src/actions/user';
-import { UPDATE_USER_FIELD, SAVE_USER } from 'src/actions/user';
 const initialState = {
   emailRegister: '',
   passwordRegister: '',
@@ -21,7 +20,7 @@ const initialState = {
 
 const user = (state = initialState, action = {}) => {
   switch (action.type) {
-    case UPDATE_REGISTER_FIELD: 
+    case UPDATE_REGISTER_FIELD:
       return {
         ...state,
         [action.name]: action.newValue,
