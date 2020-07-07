@@ -1,4 +1,4 @@
-import { TOGGLE_BUTTON_VISIBILITY } from 'src/actions/game';
+import { TOGGLE_BUTTON_VISIBILITY } from 'src/actions/gameScreen';
 
 const initialState = {
   buttonIsVisible: false,
@@ -11,7 +11,7 @@ const gameScreen = (state = initialState, action = {}) => {
       return {
         ...state,
 
-        toggleButtonVisibility: !state.buttonIsVisible,
+        buttonIsVisible: !state.buttonIsVisible,
 
       };
 

@@ -3,13 +3,13 @@ import { combineReducers } from 'redux';
 import userReducer from './user';
 import burgerMenuReducer from './burgerMenu';
 import adventuresReducer from './adventures';
-import gameReducer from './game';
+import gameScreenReducer from './gameScreen';
 
 const rootReducer = combineReducers({
   user: userReducer,
   burgerMenu: burgerMenuReducer,
   adventures: adventuresReducer,
-  game: gameReducer,
+  gameScreen: gameScreenReducer,
 });
 
 export default rootReducer;
