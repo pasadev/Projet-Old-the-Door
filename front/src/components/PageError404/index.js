@@ -8,7 +8,7 @@ const PageError404 = () => (
       Erreur 404
     </h1>
     <span className="error404-disclaimer">Ne pas prendre au sérieux le texte suivant</span>
-    <p className="error404-text">
+    <div className="error404-text">
       <div className="error404-texts">Un problème a été détecté et le site ne trouve pas cette page.</div>
 
       <div className="error404-texts">Le problème semble être causé par une mauvaise route.</div>
@@ -33,7 +33,7 @@ const PageError404 = () => (
         *** STOP: XDF1235CDSN DJHMEDK516DAF
         \\ FCLX78MVLx0000000000FABIGEON54547FHSFM
       </div>
-    </p>
+    </div>
   </div>
 );
 
