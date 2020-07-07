@@ -16,7 +16,7 @@ class UserController extends AbstractController
      */
     public function show(ObjectNormalizer $normalizer ,User $user)
     {
-
+        
         $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
 
         $normalizedUser = $serializer->normalize($user, null, ['groups' => 'user_show']);
