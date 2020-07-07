@@ -3,6 +3,7 @@
 namespace App\Controller\Api\v0;
 
 use App\Entity\Chapter;
+use App\Form\ChapterType;
 use App\Repository\ChapterRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -106,6 +107,62 @@ class ChapterController extends AbstractController
         return $this->json([
             $normalizeChapter
         ]);
+    }
+
+    /**
+     * Add a chapter in DB
+     * 
+     * @Route("/api/v0/chapters", name="api_v0_chapters_add", methods={"POST"})
+     *
+     * @return Chapter
+     */
+    public function add(Request $request, ObjectNormalizer $normalizer)
+    {
+        //Create an empty chapter
+        $chapter = new Chapter();
+
+        //Create the associating form to send request data in the chapter
+        //With the csrf option desactivated as we are on an API
+        $form = $this->createForm(ChapterType::class, $chapter, ['csrf_protection' => false]);
+
+        //Extract the json content of the request
+        $jsonText = $request->getContent();
+
+        //Transform this Json in array
+        $jsonArray = json_decode($jsonText, true);
+
+        //We submit this data array to the form
+        $form->submit($jsonArray);
+
+        //Verify if the form is valid
+        if ($form->isValid())
+        {
+            //Set a created date
+            $chapter->setCreatedAt(new \DateTime());
+
+            //If it is valid, we persist and flush
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($chapter);
+            $em->flush();
+
+
+            //Then, we return 201 HTTP code with the Chapter Object created
+
+            //Serialize the data
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedChapter = $serializer->normalize($chapter, null, ['groups' => 'chapter_details']);
+
+            //And return it
+            return $this->json($normalizedChapter, 201);
+
+        }
+
+        //If it is not valid
+        //We display errors
+        //With a 400 Bad request HTTP code
+        return $this->json((string) $form->getErrors(true, false, 400));
+
     }
 
     /**
