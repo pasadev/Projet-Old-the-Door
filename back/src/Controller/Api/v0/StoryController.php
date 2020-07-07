@@ -12,6 +12,8 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 class StoryController extends AbstractController
 {
@@ -19,6 +21,7 @@ class StoryController extends AbstractController
      * Return all stories
      * 
      * @Route("/api/v0/stories", name="api_v0_stories_list", methods={"GET"})
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function list(StoryRepository $storyRepository, ObjectNormalizer $normalizer, Request $request)
     {
@@ -57,7 +60,7 @@ class StoryController extends AbstractController
 
             //Return all stories    
             return $this->json([
-                $normalizedStories
+                $normalizedStories,
             ]);
         }
         //If we have not found any stories
