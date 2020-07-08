@@ -11,12 +11,13 @@ const GameScreen = ({
   // toggleButtonVisibility,
   currentStory,
   fetchCurrentStory,
+  fetchCurrentChapter,
   // currentChapter,
 }) => {
   React.useEffect(() => {
     console.log('componentDidMount');
     fetchCurrentStory();
-    console.log(currentStory);
+    fetchCurrentChapter();
   }, []);
 
   return (
@@ -63,13 +64,13 @@ const GameScreen = ({
 //           <div onClick={toggleButtonVisibility}>click {buttonIsVisible ? <ArrowUpCircle size="99" /> : <ArrowUpCircle size="10" /> }</div>
 
 GameScreen.propTypes = {
-  // J'essaye de faire en sorte qu'un bouton apparait selon un evenement.
-  // Au final ce serais avec un evenement scroll
-  // Mais si j'arrivais a le faire marcher avec un bouton ce serais bien deja.
+  // I had problems which were maybe fixed by importing the container instead of component in App,
+  // haven't tried again
   // buttonIsVisible: PropTypes.bool.isRequired,
   // toggleButtonVisibility: PropTypes.func.isRequired,
 
-  // les infos de l'aventure courant
+  fetchCurrentStory: PropTypes.func.isRequired,
+  // currentStory looks like this
   currentStory: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string,
@@ -78,13 +79,12 @@ GameScreen.propTypes = {
     author: PropTypes.object.isRequired,
   }).isRequired,
 
-  fetchCurrentStory: PropTypes.func.isRequired,
+  fetchCurrentChapter: PropTypes.func.isRequired,
 
-  // Vu que le story est une autre table dans la bdd que le chapitre,
-  // ça voudrait dire que les props soient séparés?
-  // le chapitre courant.
+  // In the database the chapters and stories are separate entities, so 
+  // the props here are separate too
 
-  /* currentChapter: PropTypes.shape({
+  currentChapter: PropTypes.shape({
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     keyword: PropTypes.string.isRequired,
@@ -94,7 +94,6 @@ GameScreen.propTypes = {
     forStory: PropTypes.object.isRequired,
   }).isRequired,
 
-  */
 };
 // parentChapter not always full
 export default GameScreen;

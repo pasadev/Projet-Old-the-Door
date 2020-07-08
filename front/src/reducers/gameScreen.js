@@ -1,8 +1,10 @@
-import { TOGGLE_BUTTON_VISIBILITY, SAVE_CURRENT_STORY } from 'src/actions/gameScreen';
+import { TOGGLE_BUTTON_VISIBILITY, SAVE_CURRENT_STORY, SAVE_CURRENT_CHAPTER } from 'src/actions/gameScreen';
 
 const initialState = {
   buttonIsVisible: false,
   currentStory: [],
+  currentChapter: [],
+  // We have problems showing the information we get.
 };
 
 const gameScreen = (state = initialState, action = {}) => {
@@ -13,9 +15,10 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         buttonIsVisible: !state.buttonIsVisible,
-        // pendant les test ça me dit que buttonIsVisible
-        // et toggleButtonVisibility sont undefined
-        // je sais pas pourquoi
+        // I had problems getting this to work
+        // But later I found I hadn't imported
+        // the gamescreen container in App
+        // Which probably fixed this.
       };
 
     case SAVE_CURRENT_STORY:
@@ -24,6 +27,14 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         currentStory: action.currentStory,
+      };
+
+    case SAVE_CURRENT_CHAPTER:
+
+      return {
+        ...state,
+
+        currentChapter: action.currentStory,
       };
 
     default: return state;

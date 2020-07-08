@@ -4,6 +4,8 @@ export const DO_SOMETHING = 'DO_SOMETHING';
 export const TOGGLE_BUTTON_VISIBILITY = 'TOGGLE_BUTTON_VISIBILITY';
 export const FETCH_CURRENT_STORY = 'FETCH_CURRENT_STORY';
 export const SAVE_CURRENT_STORY = 'SAVE_CURRENT_STORY';
+export const FETCH_CURRENT_CHAPTER = 'FETCH_CURRENT_CHAPTER';
+export const SAVE_CURRENT_CHAPTER = 'SAVE_CURRENT_CHAPTER';
 
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -28,4 +30,13 @@ export const fetchCurrentStory = () => ({
 export const saveCurrentStory = (currentStory) => ({
   type: SAVE_CURRENT_STORY,
   currentStory,
+});
+
+export const fetchCurrentChapter = () => ({
+  type: FETCH_CURRENT_CHAPTER,
+});
+
+export const saveCurrentChapter = (currentChapter) => ({
+  type: SAVE_CURRENT_CHAPTER,
+  currentChapter,
 });
