@@ -28,11 +28,16 @@ const Home = ({
             <span className="spacer">--------------------------------------</span>
             <p className="asciiart" />
             <p className="presentation-description">
-              Un texte de présentation qui claque !! Lorem ipsum dolor sit, amet consectetur
-              adipisicing
-              Quam unde aspernatur distinctio quae voluptatem id ipsa adipisci, provident
-              ipsum officia
-              eius itaque quibusdam architecto nam facilis impedit, perferendis laborum ullam?
+              Ol’d the door est un nouveau concept d’escape game se basant sur de l’ancien.
+              Retrouvez l’ambiance des jeux d’aventures textuels dans des scénarios où
+              il faudra vous servir de votre environnement pour avancer.
+              Trouver votre chemin dans les mots du texte de l’aventure et laissez votre
+              imagination créer l'environnement qui vous entoure.
+              Vous aimez jouer ? De nombreux
+              (On pourrait même afficher le nombre de scénarios dispo ?) scénarios
+              sont disponibles pour vous !
+              Vous aimez écrire ? Découvrez notre éditeur d’aventure
+              pour proposer votre histoire à tous les joueurs.
             </p>
             <span className="spacer">--------------------------------------</span>
           </section>
