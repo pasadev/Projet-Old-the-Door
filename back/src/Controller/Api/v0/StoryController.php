@@ -94,6 +94,23 @@ class StoryController extends AbstractController
     }
 
     /**
+     * Return one story with slug parameter
+     * 
+     * @Route("/api/v0/stories/{slug}" , name="api_v0_stories_slug", methods={"GET"})
+     */
+    public function showBySlug (Story $story , ObjectNormalizer $normalizer)
+    {
+        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+        $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
+
+        //Return all stories    
+        return $this->json([
+            $normalizedStory
+        ]);
+    }
+
+    /**
      * Add a story in DB
      * 
      * @Route("/api/v0/stories", name="api_v0_stories_add", methods={"POST"})
