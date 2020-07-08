@@ -20,6 +20,7 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      * @Groups("user_show")
      * @Groups("api_story_detail")
+     * @Groups("user_login")
      */
     private $id;
 
@@ -28,6 +29,7 @@ class User implements UserInterface
      * The unique property allow to check that we don't have the same email twice
      * @ORM\Column(type="string", length=128, unique=true)
      * @Groups("user_show")
+     * @Groups("user_login")
      */
     private $email;
 
@@ -36,6 +38,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=64, unique=true)
      * @Groups("user_show")
      * @Groups("api_story_detail")
+     * @Groups("user_login")
      */
     private $username;
 
@@ -54,6 +57,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json")
      * @Groups("user_show")
+     * @Groups("user_login")
      */
     private $roles = [];
 
@@ -66,6 +70,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="datetime")
      * @Groups("user_show")
+     * @Groups("user_login")
      */
     private $createdAt;
 
