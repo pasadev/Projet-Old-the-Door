@@ -74,7 +74,7 @@ GameScreen.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string,
     synopsis: PropTypes.string,
-    firstChapter: PropTypes,
+    firstChapter: PropTypes.string,
     author: PropTypes.object.isRequired,
   }).isRequired,
 
