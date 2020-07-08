@@ -43,6 +43,7 @@ class Party
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="playedParties")
      * @Assert\NotBlank(message="Le player est obligatoire")
+     * @Groups("api_party_detail")
      */
     private $player;
 

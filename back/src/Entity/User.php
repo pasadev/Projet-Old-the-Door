@@ -21,6 +21,7 @@ class User implements UserInterface
      * @Groups("user_show")
      * @Groups("api_story_detail")
      * @Groups("user_login")
+     * @Groups("api_party_detail")
      */
     private $id;
 
@@ -39,6 +40,7 @@ class User implements UserInterface
      * @Groups("user_show")
      * @Groups("api_story_detail")
      * @Groups("user_login")
+     * @Groups("api_party_detail")
      */
     private $username;
 
