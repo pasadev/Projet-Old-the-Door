@@ -14,7 +14,7 @@ const gameMiddleware = (store) => (next) => (action) => {
       axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories/1')
       // chemin test
         .then((response) => {
-          store.dispatch(saveCurrentStory(response.data));
+          store.dispatch(saveCurrentStory(response.data[0]));
         })
         .catch((error) => {
           console.warn(error);

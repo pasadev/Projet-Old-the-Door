@@ -70,16 +70,13 @@ GameScreen.propTypes = {
   // toggleButtonVisibility: PropTypes.func.isRequired,
 
   // les infos de l'aventure courant
-  currentStory: PropTypes.arrayOf(PropTypes.shape({
+  currentStory: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    synopsis: PropTypes.string.isRequired,
-    firstChapter: PropTypes.string,
+    title: PropTypes.string,
+    synopsis: PropTypes.string,
+    firstChapter: PropTypes,
     author: PropTypes.object.isRequired,
   }).isRequired,
-  ).isRequired,
-  
-  
 
   fetchCurrentStory: PropTypes.func.isRequired,
 
