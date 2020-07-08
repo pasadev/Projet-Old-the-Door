@@ -10,7 +10,6 @@ const Adventure = ({ adventuresCatalog, fetchAdventuresCatalog }) => {
     fetchAdventuresCatalog();
     console.log('Fetch Adventure');
     console.log(adventure);
-    console.log(adventure);
   }, []);
   const { slug } = useParams();
   const adventure = getAdventureBySlug(adventuresCatalog, slug);

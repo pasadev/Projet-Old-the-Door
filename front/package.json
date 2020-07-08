@@ -61,7 +61,6 @@
     "react": "*",
     "react-dom": "*",
     "react-feather": "^2.0.8",
-    "react-loading": "^2.0.3",
     "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",

@@ -7,6 +7,10 @@ import {
   saveAdventuresCatalog,
 } from 'src/actions/adventures';
 
+import {
+  hideLoader,
+} from 'src/actions/utils';
+
 const adventuresMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_ADVENTURES_HOME:
@@ -14,7 +18,10 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       // http://maxence-royer.vpnuser.lan:8000/api/v0/stories?last=3
       axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories?last=3')
         .then((response) => {
+          // dispatch to save the Adventures used in Home
           store.dispatch(saveAdventuresHome(response.data[0]));
+          // dispatch to hide the loader
+          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);
@@ -28,7 +35,10 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       // http://maxence-royer.vpnuser.lan:8000/api/v0/stories
       axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories')
         .then((response) => {
+          // dispatch to save the Adventures Catalog
           store.dispatch(saveAdventuresCatalog(response.data[0]));
+          // dispatch to hide the loader
+          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);

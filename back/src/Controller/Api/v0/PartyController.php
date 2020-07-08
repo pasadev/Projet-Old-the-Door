@@ -2,6 +2,8 @@
 
 namespace App\Controller\Api\v0;
 
+use App\Entity\Party;
+use App\Form\PartyType;
 use App\Repository\PartyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,5 +61,63 @@ class PartyController extends AbstractController
             ['message' => 'Bad Request, please use a user_id GET parameter ',],
             400
         );
+    }
+
+    /**
+     * Add a party in DB
+     * 
+     * @Route("/api/v0/parties", name="api_v0_parties_add", methods={"POST"})
+     *
+     * @param Request $request
+     * @param ObjectNormalizer $normalizer
+     * @return Party
+     */
+    public function add(Request $request, ObjectNormalizer $normalizer)
+    {
+        //Create an empty party
+        $party = new Party();
+
+        //Create the associating form to send request data in the party
+        //With the csrf option desactivated as we are on an API
+        $form = $this->createForm(PartyType::class, $party, ['csrf_protection' => false]);
+
+        //Extract the json content of the request
+        $jsonText = $request->getContent();
+
+        //Transform this Json in array
+        $jsonArray = json_decode($jsonText, true);
+
+        //Submit this data array to the form
+        $form->submit($jsonArray);
+
+        //Verify if the form is valid
+        if ($form->isValid())
+        {
+            //Set a created date
+            $party->setCreatedAt(new \DateTime());
+
+            //If it is valid, we persists and flush
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($party);
+            $em->flush();
+
+
+            //Then, we return 201 HTTP code with the Party Object created
+
+            //Serialize the data
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedParty = $serializer->normalize($party, null, ['groups' => 'api_party_detail']);
+
+            //And return it
+            return $this->json($normalizedParty, 201);
+
+        }
+
+        //If it is not valid
+        //We display errors
+        //With a 400 Bad request HTTP code
+        return $this->json((string) $form->getErrors(true, false, 400));
+
     }
 }

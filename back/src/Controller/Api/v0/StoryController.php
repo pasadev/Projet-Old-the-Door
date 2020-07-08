@@ -3,6 +3,7 @@
 namespace App\Controller\Api\v0;
 
 use App\Entity\Story;
+use App\Form\StoryType;
 use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ class StoryController extends AbstractController
      * Return all stories
      * 
      * @Route("/api/v0/stories", name="api_v0_stories_list", methods={"GET"})
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * 
      */
     public function list(StoryRepository $storyRepository, ObjectNormalizer $normalizer, Request $request)
     {
@@ -92,6 +93,112 @@ class StoryController extends AbstractController
     }
 
     /**
+     * Add a story in DB
+     * 
+     * @Route("/api/v0/stories", name="api_v0_stories_add", methods={"POST"})
+     *
+     * @return Story
+     */
+    public function add(Request $request, ObjectNormalizer $normalizer)
+    {
+        //Create an empty story
+        $story = new Story();
+
+        //Create the associating form to send request data in the story
+        //With the csrf option desactivated as we are on an API
+        $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);
+
+        //Extract the json content of the request
+        $jsonText = $request->getContent();
+
+        //Transform this Json in array
+        $jsonArray = json_decode($jsonText, true);
+
+        //We submit this data array to the form
+        $form->submit($jsonArray);
+
+        //Verify if the form is valid
+        if ($form->isValid())
+        {
+            //Set a created date
+            $story->setCreatedAt(new \DateTime());
+
+            //If it is valid, we persists and flush
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($story);
+            $em->flush();
+
+
+            //Then, we return 201 HTTP code with the Story Object created
+
+            //Serialize the data
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
+
+            //And return it
+            return $this->json($normalizedStory, 201);
+
+        }
+
+        //If it is not valid
+        //We display errors
+        //With a 400 Bad request HTTP code
+        return $this->json((string) $form->getErrors(true, false, 400));
+    }
+
+    /**
+     * Edit an existing story
+     * @Route("/api/v0/stories/{id}", name="api_v0_stories_edit", methods={"PUT"}, requirements={"id":"\d+"})
+     *
+     * @return Story
+     */
+    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer)
+    {
+
+        //Create the associating form to send request data in the story in parameter
+        //With the csrf option desactivated as we are on an API
+        $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);        
+
+        //Extract the json content of the request
+        $jsonText = $request->getContent();
+
+        //Transform this Json in array
+        $jsonArray = json_decode($jsonText, true);
+
+        //We submit this data array to the form
+        $form->submit($jsonArray);
+
+        //Verify if the form is valide
+        if ($form->isValid())
+        {
+            //Set an updated date
+            $story->setUpdatedAt(new \DateTime());
+
+            //If it is valid, we flush
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            //Then, we return 200 HTTP code with the Story Object updated
+
+            //Serialize the data
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
+
+            //And return it
+            return $this->json($normalizedStory, 200);
+
+        }
+
+        //If it is not valid
+        //We display errors
+        //With a 400 Bad request HTTP code
+        return $this->json((string) $form->getErrors(true, false, 400));
+
+    }
+
+    /**
      * Delete one story with the id parameter
      * 
      * @Route("/api/v0/stories/{id}", name="api_v0_stories_delete", methods={"DELETE"}, requirements={"id":"\d+"})
@@ -143,5 +250,26 @@ class StoryController extends AbstractController
                 404
             );
         }
+    }
+
+    /**
+     * Return the number of active stories
+     * 
+     * @Route("/api/v0/stories/count", name="api_v0_stories_count", methods={"GET"})
+     *
+     * @param StoryRepository $storyRepository
+     * @return json
+     */
+    public function count(StoryRepository $storyRepository)
+    {
+        //Get the active stories
+        $stories = $storyRepository->findActiveStories();
+        $storyNumber = count($stories);
+
+        //Return the number
+        return $this->json([
+            'storyNumber' => $storyNumber,
+        ]);
+
     }
 }

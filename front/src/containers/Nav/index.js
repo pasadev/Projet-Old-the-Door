@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Nav from 'src/components/Nav';
 
-import { toggleBurgerMenuFromNav } from 'src/actions/burgerMenu';
+import { toggleBurgerMenuFromNav } from 'src/actions/utils';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state

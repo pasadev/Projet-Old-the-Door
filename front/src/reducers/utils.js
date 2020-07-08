@@ -1,10 +1,16 @@
-import { TOOGLE_BURGER_MENU, TOOGLE_BURGER_MENU_FROM_NAV } from 'src/actions/burgerMenu';
+import {
+  TOOGLE_BURGER_MENU,
+  TOOGLE_BURGER_MENU_FROM_NAV,
+  DISPLAY_LOADER,
+  HIDE_LOADER,
+} from 'src/actions/utils';
 
 const initialState = {
   burgerMenuOpen: false,
+  loading: true,
 };
 
-const burgerMenu = (state = initialState, action = {}) => {
+const utils = (state = initialState, action = {}) => {
   switch (action.type) {
     case TOOGLE_BURGER_MENU:
       // return a new state
@@ -14,6 +20,7 @@ const burgerMenu = (state = initialState, action = {}) => {
         // reverse the value of burgerMenuOpen
         burgerMenuOpen: !state.burgerMenuOpen,
       };
+
     case TOOGLE_BURGER_MENU_FROM_NAV:
       // return a new state
       return {
@@ -23,8 +30,22 @@ const burgerMenu = (state = initialState, action = {}) => {
         burgerMenuOpen: false,
       };
 
+    case DISPLAY_LOADER:
+      return {
+        ...state,
+        // change loading to false to hide the loader
+        loading: true,
+      };
+
+    case HIDE_LOADER:
+      return {
+        ...state,
+        // change loading to false to hide the loader
+        loading: false,
+      };
+
     default: return state;
   }
 };
 
-export default burgerMenu;
+export default utils;
