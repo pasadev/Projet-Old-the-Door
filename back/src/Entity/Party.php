@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PartyRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -49,6 +50,7 @@ class Party
 
     /**
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasParties")
+     * @JoinColumn(name="story_id", referencedColumnName="id", onDelete="CASCADE")
      * @Groups("api_party_detail")
      * @Groups("user_show")
      * @Assert\NotBlank(message="La story est obligatoire")
