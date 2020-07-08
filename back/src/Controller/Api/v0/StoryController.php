@@ -6,6 +6,7 @@ use App\Entity\Story;
 use App\Form\StoryType;
 use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
+use App\Service\Slugger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -96,10 +97,12 @@ class StoryController extends AbstractController
      * Add a story in DB
      * 
      * @Route("/api/v0/stories", name="api_v0_stories_add", methods={"POST"})
+     * 
+     * Slugger service allows to create the slug
      *
      * @return Story
      */
-    public function add(Request $request, ObjectNormalizer $normalizer)
+    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger)
     {
         //Create an empty story
         $story = new Story();
@@ -122,6 +125,9 @@ class StoryController extends AbstractController
         {
             //Set a created date
             $story->setCreatedAt(new \DateTime());
+
+            //Set the slug
+            $story->setSlug($slugger->slugify($story->getTitle()));
 
             //If it is valid, we persists and flush
             $em = $this->getDoctrine()->getManager();

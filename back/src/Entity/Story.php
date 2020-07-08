@@ -93,6 +93,7 @@ class Story
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("api_story_detail")
      */
     private $slug;
 
