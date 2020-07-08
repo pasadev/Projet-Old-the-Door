@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 // import { useField } from './hooks';
 
 import Field from './Field';
-
 import './connexion.scss';
+import PasswordCo from './Field/passwordco';
 
 const Connexion = ({
   email,
@@ -33,7 +33,7 @@ const Connexion = ({
         />
 
         <label htmlFor="password"> Mot de passe</label>
-        <Field
+        <PasswordCo
           name="password"
           placeholder="Mot de Passe"
           onChange={changeField}
