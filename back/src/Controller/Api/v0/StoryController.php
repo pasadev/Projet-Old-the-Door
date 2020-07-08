@@ -196,9 +196,6 @@ class StoryController extends AbstractController
         //With a 400 Bad request HTTP code
         return $this->json((string) $form->getErrors(true, false, 400));
 
-
-        
-
     }
 
     /**
