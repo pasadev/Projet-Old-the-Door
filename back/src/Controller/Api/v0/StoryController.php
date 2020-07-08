@@ -6,6 +6,7 @@ use App\Entity\Story;
 use App\Form\StoryType;
 use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
+use App\Service\Slugger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +27,7 @@ class StoryController extends AbstractController
      */
     public function list(StoryRepository $storyRepository, ObjectNormalizer $normalizer, Request $request)
     {
-        
+
         //If we have the 'last' parameter
         if ($request->query->get('last')) {
             //intVal the parameter to avoid non numeric values
@@ -96,10 +97,12 @@ class StoryController extends AbstractController
      * Add a story in DB
      * 
      * @Route("/api/v0/stories", name="api_v0_stories_add", methods={"POST"})
+     * 
+     * Slugger service allows to create the slug
      *
      * @return Story
      */
-    public function add(Request $request, ObjectNormalizer $normalizer)
+    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository)
     {
         //Create an empty story
         $story = new Story();
@@ -118,10 +121,17 @@ class StoryController extends AbstractController
         $form->submit($jsonArray);
 
         //Verify if the form is valid
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             //Set a created date
             $story->setCreatedAt(new \DateTime());
+
+            //Set the slug
+            $story->setSlug($slugger->slugify($story->getTitle()));
+
+            //verify if the slug does not exists yet
+            if ($storyRepository->findOneBy(['slug' => $story->getSlug()])) {
+                return $this->json(['message' => 'This story title already exists'], 409);
+            }
 
             //If it is valid, we persists and flush
             $em = $this->getDoctrine()->getManager();
@@ -138,7 +148,6 @@ class StoryController extends AbstractController
 
             //And return it
             return $this->json($normalizedStory, 201);
-
         }
 
         //If it is not valid
@@ -153,12 +162,12 @@ class StoryController extends AbstractController
      *
      * @return Story
      */
-    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer)
+    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository)
     {
 
         //Create the associating form to send request data in the story in parameter
         //With the csrf option desactivated as we are on an API
-        $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);        
+        $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);
 
         //Extract the json content of the request
         $jsonText = $request->getContent();
@@ -170,10 +179,21 @@ class StoryController extends AbstractController
         $form->submit($jsonArray);
 
         //Verify if the form is valide
-        if ($form->isValid())
-        {
+        if ($form->isValid()) {
             //Set an updated date
             $story->setUpdatedAt(new \DateTime());
+
+            //If the title has changed
+            if ($story->getSlug() !== $slugger->slugify($story->getTitle())) {
+                //verify if the slug does not exists yet
+                if ($storyRepository->findOneBy(['slug' => $slugger->slugify($story->getTitle())]))
+                {
+                    return $this->json(['message' => 'This story title already exists'], 409);
+                }
+            }
+
+            //Set the slug
+            $story->setSlug($slugger->slugify($story->getTitle()));
 
             //If it is valid, we flush
             $em = $this->getDoctrine()->getManager();
@@ -188,14 +208,12 @@ class StoryController extends AbstractController
 
             //And return it
             return $this->json($normalizedStory, 200);
-
         }
 
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
         return $this->json((string) $form->getErrors(true, false, 400));
-
     }
 
     /**
@@ -243,8 +261,7 @@ class StoryController extends AbstractController
             ]);
         }
         //If we don't have parties
-        else
-        {
+        else {
             return $this->json(
                 ['message' => 'We do not have stats for this story',],
                 404
@@ -270,6 +287,5 @@ class StoryController extends AbstractController
         return $this->json([
             'storyNumber' => $storyNumber,
         ]);
-
     }
 }

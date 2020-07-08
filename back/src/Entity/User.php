@@ -23,11 +23,8 @@ class User implements UserInterface
      * @Groups("user_show")
      * @Groups("api_story_detail")
      * @Groups("user_login")
-<<<<<<< HEAD
      * @Groups("api_party_detail")
-=======
      * @Groups("user_create")
->>>>>>> d7b5ce7fe70a43e84500856bd90fbf867688e85c
      */
     private $id;
 
@@ -50,12 +47,9 @@ class User implements UserInterface
      * @Groups("user_create")
      * @Groups("api_story_detail")
      * @Groups("user_login")
-<<<<<<< HEAD
      * @Groups("api_party_detail")
-=======
      * @Assert\NotBlank(message="Le surnom est obligatoire")
      * @Assert\Length(min=3)
->>>>>>> d7b5ce7fe70a43e84500856bd90fbf867688e85c
      */
     private $username;
 
