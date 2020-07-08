@@ -1,27 +1,28 @@
-.adventureSmall {
-  padding-top: 0.5em;
+.adventure {
+  padding: 0.5em;
 
-  .adventureSmall-title {
+  .adventure-title {
     font-weight: bold;
   }
 
-  .adventureSmall-authorAndDate {
+  .adventure-authorAndDate {
     padding-top: 0.5em;
     font-style: italic;
     font-size: 0.8em;
-    .adventureSmall-author {
+    .adventure-author {
       padding-right: 0.3em;
     }
-    .adventureSmall-date::before {
+    .adventure-date::before {
       content: 'le';
       padding-right: 0.3em;
     }
   }
-  .adventureSmall-synopsis {
+
+  .adventure-synopsis {
     padding-top: 0.5em;
 
   }
-  .adventureSmall-link {
+  .adventure-link {
     padding-top: 0.5em;
     text-decoration: underline;
   }
