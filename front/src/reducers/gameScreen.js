@@ -1,8 +1,8 @@
-import { TOGGLE_BUTTON_VISIBILITY } from 'src/actions/gameScreen';
-import { SAVE_ADVENTURE } from '../actions/gameScreen';
+import { TOGGLE_BUTTON_VISIBILITY, SAVE_CURRENT_STORY } from 'src/actions/gameScreen';
 
 const initialState = {
   buttonIsVisible: false,
+  currentStory: [],
 };
 
 const gameScreen = (state = initialState, action = {}) => {
@@ -18,7 +18,7 @@ const gameScreen = (state = initialState, action = {}) => {
         // je sais pas pourquoi
       };
 
-    case SAVE_ADVENTURE:
+    case SAVE_CURRENT_STORY:
 
       return {
         ...state,

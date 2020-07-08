@@ -2,8 +2,8 @@
 
 export const DO_SOMETHING = 'DO_SOMETHING';
 export const TOGGLE_BUTTON_VISIBILITY = 'TOGGLE_BUTTON_VISIBILITY';
-export const GET_ADVENTURE = 'GET_ADVENTURE';
-export const SAVE_ADVENTURE = 'SAVE_ADVENTURE';
+export const FETCH_CURRENT_STORY = 'FETCH_CURRENT_STORY';
+export const SAVE_CURRENT_STORY = 'SAVE_CURRENT_STORY';
 
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -15,10 +15,17 @@ export const toggleButtonVisibility = () => ({
   type: TOGGLE_BUTTON_VISIBILITY,
 });
 
-export const getAdventure = () => ({
-  type: GET_ADVENTURE,
+// Fetches the story to be played
+export const fetchCurrentStory = () => ({
+  type: FETCH_CURRENT_STORY,
 });
 
-export const saveAdventure = () => ({
-  type: SAVE_ADVENTURE,
+// Saves currentStory data to be used
+// action is called in component
+// action is dispatched in container
+// action passes through reducer to save it in state
+
+export const saveCurrentStory = (currentStory) => ({
+  type: SAVE_CURRENT_STORY,
+  currentStory,
 });

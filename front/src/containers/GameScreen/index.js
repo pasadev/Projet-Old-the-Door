@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import GameScreen from 'src/components/Game';
+import GameScreen from 'src/components/GameScreen';
 
-import { toggleButtonVisibility } from 'src/actions/gameScreen';
+import { toggleButtonVisibility, fetchCurrentStory, saveCurrentStory } from 'src/actions/gameScreen';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
@@ -17,6 +17,14 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   toggleButtonVisibility: () => {
     dispatch(toggleButtonVisibility());
+  },
+
+  fetchCurrentStory: () => {
+    dispatch(fetchCurrentStory());
+  },
+
+  saveCurrentStory: () => {
+    dispatch(saveCurrentStory());
   },
 });
 

@@ -1,21 +1,21 @@
 import axios from 'axios';
 
 import {
-  GET_ADVENTURE,
+  FETCH_CURRENT_STORY,
 
-  saveAdventure,
+  saveCurrentStory,
 } from 'src/actions/gameScreen';
 
 const gameMiddleware = (store) => (next) => (action) => {
   console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
-    case GET_ADVENTURE:
+    case FETCH_CURRENT_STORY:
 
-      axios.get(
-        // insert route here) TODO
-      ).then((response) => {
-        store.dispatch(saveAdventure(response.data));
-      })
+      axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories/1')
+      // chemin test
+        .then((response) => {
+          store.dispatch(saveCurrentStory(response.data));
+        })
         .catch((error) => {
           console.warn(error);
         });

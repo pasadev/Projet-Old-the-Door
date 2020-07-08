@@ -11,7 +11,7 @@ import Adventure from 'src/components/Adventure';
 import Connexion from 'src/components/Connexion';
 import Register from 'src/components/Register';
 import Team from 'src/components/Team';
-import Game from 'src/components/Game';
+import GameScreen from 'src/containers/GameScreen';
 import StoryCreate from 'src/components/StoryCreate';
 import ChapterCreate from 'src/components/ChapterCreate';
 import Header from 'src/components/Header';
@@ -37,7 +37,7 @@ const App = ({ burgerMenuOpen }) => (
           <Register />
         </Route>
         <Route exact path="/aventures/test/jouer">
-          <Game />
+          <GameScreen />
         </Route>
         <Route exact path="/aventures/test/edition">
           <ChapterCreate />
