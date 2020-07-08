@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PartyRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -24,6 +25,7 @@ class Party
     /**
      * @ORM\Column(type="smallint")
      * @Groups("api_party_detail")
+     * @Assert\NotBlank(message="Le time est obligatoire")
      */
     private $time;
 
@@ -40,6 +42,7 @@ class Party
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="playedParties")
+     * @Assert\NotBlank(message="Le player est obligatoire")
      */
     private $player;
 
@@ -47,6 +50,7 @@ class Party
      * @ORM\ManyToOne(targetEntity=Story::class, inversedBy="hasParties")
      * @Groups("api_party_detail")
      * @Groups("user_show")
+     * @Assert\NotBlank(message="La story est obligatoire")
      */
     private $forStory;
 
