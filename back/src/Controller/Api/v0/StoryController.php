@@ -102,7 +102,7 @@ class StoryController extends AbstractController
      *
      * @return Story
      */
-    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger)
+    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository)
     {
         //Create an empty story
         $story = new Story();
@@ -128,6 +128,12 @@ class StoryController extends AbstractController
 
             //Set the slug
             $story->setSlug($slugger->slugify($story->getTitle()));
+
+            //verify if the slug does not exists yet
+            if ($storyRepository->findOneBy(['slug' => $story->getSlug()]))
+            {
+                return $this->json(['message' => 'This story title already exists'], 409);
+            }
 
             //If it is valid, we persists and flush
             $em = $this->getDoctrine()->getManager();
@@ -159,7 +165,7 @@ class StoryController extends AbstractController
      *
      * @return Story
      */
-    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer)
+    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer, Slugger $slugger)
     {
 
         //Create the associating form to send request data in the story in parameter
@@ -180,6 +186,9 @@ class StoryController extends AbstractController
         {
             //Set an updated date
             $story->setUpdatedAt(new \DateTime());
+
+            //Set the slug
+            $story->setSlug($slugger->slugify($story->getTitle()));
 
             //If it is valid, we flush
             $em = $this->getDoctrine()->getManager();
