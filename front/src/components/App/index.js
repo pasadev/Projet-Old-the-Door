@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import Home from 'src/containers/Home';
 import Adventures from 'src/containers/Adventures';
 import Adventure from 'src/containers/Adventure';
-import Connexion from 'src/components/Connexion';
 import Register from 'src/containers/Register';
 import Connexion from 'src/containers/Connexion';
 import Team from 'src/components/Team';
@@ -18,6 +17,7 @@ import ChapterCreate from 'src/components/ChapterCreate';
 import Header from 'src/components/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
+import Footer from 'src/components/Footer';
 
 // == Import
 import './styles.scss';
@@ -61,6 +61,7 @@ const App = ({ burgerMenuOpen }) => (
         </Route>
       </Switch>
     )}
+    <Footer />
   </div>
 );
 
