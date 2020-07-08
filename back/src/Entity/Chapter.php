@@ -28,6 +28,7 @@ class Chapter
      * @ORM\Column(type="string", length=128)
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Groups("api_story_detail")
      * @Assert\NotBlank(message="Le titre est obligatoire")
      * @Assert\Length(min=3)
      */
