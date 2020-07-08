@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   burgerMenuOpen: false,
-  loading: false,
+  loading: true,
 };
 
 const utils = (state = initialState, action = {}) => {

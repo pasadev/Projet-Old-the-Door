@@ -17,62 +17,54 @@ import ChapterCreate from 'src/components/ChapterCreate';
 import Header from 'src/components/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
-import Loader from 'src/components/Loader';
 
 // == Import
 import './styles.scss';
 
 // == Components
-const App = ({ burgerMenuOpen, loading }) => (
+const App = ({ burgerMenuOpen }) => (
   <div className="app">
     <Header />
-    {loading && <Loader />}
-    {!loading && (
-      <>
-        {burgerMenuOpen && <Nav />}
-        {!burgerMenuOpen && (
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/connexion">
-              <Connexion />
-            </Route>
-            <Route exact path="/inscription">
-              <Register />
-            </Route>
-            <Route exact path="/aventures/:slug/jouer">
-              <Game />
-            </Route>
-            <Route exact path="/aventures/:slug/edition">
-              <ChapterCreate />
-            </Route>
-            <Route exact path="/aventures/:slug">
-              <Adventure />
-            </Route>
-            <Route exact path="/aventures/creation">
-              <StoryCreate />
-            </Route>
-            <Route exact path="/aventures">
-              <Adventures />
-            </Route>
-            <Route exact path="/equipe">
-              <Team />
-            </Route>
-            <Route>
-              <PageError404 />
-            </Route>
-          </Switch>
-        )}
-      </>
+    {burgerMenuOpen && <Nav />}
+    {!burgerMenuOpen && (
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/connexion">
+          <Connexion />
+        </Route>
+        <Route exact path="/inscription">
+          <Register />
+        </Route>
+        <Route exact path="/aventures/:slug/jouer">
+          <Game />
+        </Route>
+        <Route exact path="/aventures/:slug/edition">
+          <ChapterCreate />
+        </Route>
+        <Route exact path="/aventures/:slug">
+          <Adventure />
+        </Route>
+        <Route exact path="/aventures/creation">
+          <StoryCreate />
+        </Route>
+        <Route exact path="/aventures">
+          <Adventures />
+        </Route>
+        <Route exact path="/equipe">
+          <Team />
+        </Route>
+        <Route>
+          <PageError404 />
+        </Route>
+      </Switch>
     )}
   </div>
 );
 
-// TODO change 'test' with ':slug' in path="adventures/
 App.propTypes = {
   burgerMenuOpen: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 // == Export

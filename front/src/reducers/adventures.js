@@ -12,7 +12,6 @@ const adventures = (state = initialState, action = {}) => {
       return {
         ...state,
         adventuresHome: action.adventuresHome,
-        loading: false,
       };
 
     case SAVE_ADVENTURES_CATALOG:
@@ -20,7 +19,6 @@ const adventures = (state = initialState, action = {}) => {
       return {
         ...state,
         adventuresCatalog: action.adventuresCatalog,
-        loading: false,
       };
 
     default: return state;

@@ -8,6 +8,7 @@ import Adventures from 'src/components/Adventures';
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   adventuresCatalog: state.adventures.adventuresCatalog,
+  loading: state.utils.loading,
 });
 
 // === mapDispatchToProps

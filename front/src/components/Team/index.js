@@ -38,8 +38,9 @@ const Team = () => (
         Déveleoppeur Back
       </div>
       <p className="member-description">
-      Oclockien en pleine reconversion, je suis à présent mi-aventurier, mi-développeur et re-mi aventurier derrière.
-      C'est donc avec mes quatres co-chevaliers du code que je me lance dans la quête d'énigmes.
+        Oclockien en pleine reconversion, je suis à présent mi-aventurier, mi-développeur et re-mi
+        aventurier derrière.
+        C'est donc avec mes quatres co-chevaliers du code que je me lance dans la quête d'énigmes.
       </p>
     </div>
     <div className="member">
@@ -88,8 +89,9 @@ const Team = () => (
         Scrum Master
         Déveleoppeur Front
       </div>
-      <p className="member-description">     
-        J'étais en route vers Excalibourg, mais j'ai du me tromper de chemin, du coup je me suis installé et je suis devenu développeur.
+      <p className="member-description">
+        J'étais en route vers Excalibourg, mais j'ai du me tromper de chemin,
+        du coup je me suis installé et je suis devenu développeur.
       </p>
     </div>
   </main>
