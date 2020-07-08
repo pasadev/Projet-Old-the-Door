@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 
 import { fetchAdventuresHome, saveAdventuresHome } from 'src/actions/adventures';
+import { displayLoader } from 'src/actions/utils';
 
 import Home from 'src/components/Home';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
   adventuresHome: state.adventures.adventuresHome,
+  loading: state.utils.loading,
 });
 
 // === mapDispatchToProps
@@ -16,6 +18,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   saveAdventuresHome: () => {
     dispatch(saveAdventuresHome());
+  },
+  displayLoader: () => {
+    dispatch(displayLoader());
   },
 });
 

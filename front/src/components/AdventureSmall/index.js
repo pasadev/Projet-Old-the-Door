@@ -1,6 +1,8 @@
 import React from 'react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
+import { slugifyTitle } from 'src/utils';
+import { Link } from 'react-router-dom';
 
 import './adventureSmall.scss';
 
@@ -28,7 +30,11 @@ const AdventureSmall = ({
       {synopsis}
     </p>
     <div className="adventureSmall-link">
-      Ouvrir le fichier
+      <Link
+        to={`/aventures/${slugifyTitle(title)}`}
+      >
+        Ouvrir le fichier
+      </Link>
     </div>
     <span className="spacer">--------------------------------------</span>
   </div>
