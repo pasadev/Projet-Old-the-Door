@@ -21,7 +21,7 @@ class StoryController extends AbstractController
      * Return all stories
      * 
      * @Route("/api/v0/stories", name="api_v0_stories_list", methods={"GET"})
-     * @IsGranted("IS_AUTHENTICATED_FULLY")
+     * 
      */
     public function list(StoryRepository $storyRepository, ObjectNormalizer $normalizer, Request $request)
     {

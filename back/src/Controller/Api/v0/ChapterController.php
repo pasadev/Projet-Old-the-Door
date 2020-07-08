@@ -166,6 +166,56 @@ class ChapterController extends AbstractController
     }
 
     /**
+     * Edit an existing chapter in DB
+     * 
+     * @Route("/api/v0/chapters/{id}", name="api_v0_chapters_edit", methods={"PUT"}, requirements={"id":"\d+"})
+     *
+     * @return Chapter
+     */
+    public function edit(Chapter $chapter, Request $request, ObjectNormalizer $normalizer)
+    {
+        //Create the associating form to send request data in the chapter in parameter
+        //With the csrf option desactivated as we are on an API
+        $form = $this->createForm(ChapterType::class, $chapter, ['csrf_protection' => false]); 
+
+         //Extract the json content of the request
+         $jsonText = $request->getContent();
+
+         //Transform this Json in array
+         $jsonArray = json_decode($jsonText, true);
+ 
+         //We submit this data array to the form
+         $form->submit($jsonArray);
+
+        //Verify if the form is valide
+        if ($form->isValid())
+        {
+            //Set an updated date
+            $chapter->setUpdatedAt(new \DateTime());
+
+            //If it is valid, we flush
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            //Then, we return 200 HTTP code with the Chapter Object updated
+
+            //Serialize the data
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+            $normalizedChapter = $serializer->normalize($chapter, null, ['groups' => 'chapter_details']);
+
+            //And return it
+            return $this->json($normalizedChapter, 200);
+
+        }
+
+        //If it is not valid
+        //We display errors
+        //With a 400 Bad request HTTP code
+        return $this->json((string) $form->getErrors(true, false, 400));
+    }
+
+    /**
      * Delete one story with the id parameter
      * 
      * @Route("/api/v0/chapters/{id}", name="api_v0_chapters_delete", methods={"DELETE"}, requirements={"id":"\d+"})
