@@ -11,9 +11,12 @@ const Home = ({
   fetchAdventuresHome,
   loading,
   displayLoader,
+  fetchAdventuresActiveNumber,
+  adventuresActiveNumber,
 }) => {
   useEffect(() => {
     fetchAdventuresHome();
+    fetchAdventuresActiveNumber();
     displayLoader();
   }, []);
   return (
@@ -33,8 +36,7 @@ const Home = ({
               il faudra vous servir de votre environnement pour avancer.
               Trouver votre chemin dans les mots du texte de l’aventure et laissez votre
               imagination créer l'environnement qui vous entoure.
-              Vous aimez jouer ? De nombreux
-              (On pourrait même afficher le nombre de scénarios dispo ?) scénarios
+              Vous aimez jouer ? {adventuresActiveNumber} scénarios
               sont disponibles pour vous !
               Vous aimez écrire ? Découvrez notre éditeur d’aventure
               pour proposer votre histoire à tous les joueurs.
@@ -59,6 +61,8 @@ const Home = ({
 };
 
 Home.propTypes = {
+  adventuresActiveNumber: PropTypes.number.isRequired,
+  fetchAdventuresActiveNumber: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   adventuresHome: PropTypes.arrayOf(
     PropTypes.shape({

@@ -7,6 +7,8 @@ import {
   saveAdventuresCatalog,
   FETCH_ADVENTURE_SELECTED,
   saveAdventureSelected,
+  FETCH_ADVENTURES_ACTIVE_NUMBER,
+  saveAdventuresActiveNumber,
 } from 'src/actions/adventures';
 
 import {
@@ -56,6 +58,22 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // dispatch to save the Adventure selected
           store.dispatch(saveAdventureSelected(response.data[0]));
+          // dispatch to hide the loader
+          store.dispatch(hideLoader());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+
+    case FETCH_ADVENTURES_ACTIVE_NUMBER:
+      // API request for the number of active adventures
+      // http://maxence-royer.vpnuser.lan:8000/api/v0/stories
+      axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories/count')
+        .then((response) => {
+          // dispatch to save the Adventure selected
+          store.dispatch(saveAdventuresActiveNumber(response.data.storyNumber));
           // dispatch to hide the loader
           store.dispatch(hideLoader());
         })
