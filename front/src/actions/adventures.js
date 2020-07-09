@@ -5,6 +5,8 @@ export const FETCH_ADVENTURES_CATALOG = 'FETCH_ADVENTURES_CATALOG';
 export const SAVE_ADVENTURES_CATALOG = 'SAVE_ADVENTURES_CATALOG';
 export const FETCH_ADVENTURE_SELECTED = 'FETCH_ADVENTURE_SELECTED';
 export const SAVE_ADVENTURE_SELECTED = 'SAVE_ADVENTURE_SELECTED';
+export const FETCH_ADVENTURES_ACTIVE_NUMBER = 'FETCH_ADVENTURES_ACTIVE_NUMBER';
+export const SAVE_ADVENTURES_ACTIVE_NUMBER = 'SAVE_ADVENTURES_ACTIVE_NUMBER';
 
 // === action creators
 export const fetchAdventuresHome = () => ({
@@ -33,4 +35,13 @@ export const fetchAdventureSelected = (slug) => ({
 export const saveAdventureSelected = (adventureSelected) => ({
   type: SAVE_ADVENTURE_SELECTED,
   adventureSelected,
+});
+
+export const fetchAdventuresActiveNumber = () => ({
+  type: FETCH_ADVENTURES_ACTIVE_NUMBER,
+});
+
+export const saveAdventuresActiveNumber = (adventuresActiveNumber) => ({
+  type: SAVE_ADVENTURES_ACTIVE_NUMBER,
+  adventuresActiveNumber,
 });

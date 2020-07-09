@@ -1,26 +1,41 @@
 import { connect } from 'react-redux';
 
-import { fetchAdventuresHome, saveAdventuresHome } from 'src/actions/adventures';
+import {
+  fetchAdventuresHome,
+  saveAdventuresHome,
+  fetchAdventuresActiveNumber,
+  saveAdventuresActiveNumber,
+} from 'src/actions/adventures';
 import { displayLoader } from 'src/actions/utils';
 
 import Home from 'src/components/Home';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
+  adventuresActiveNumber: state.adventures.adventuresActiveNumber,
   adventuresHome: state.adventures.adventuresHome,
   loading: state.utils.loading,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
+  // Loader
+  displayLoader: () => {
+    dispatch(displayLoader());
+  },
+
+  // Adventures
   fetchAdventuresHome: () => {
     dispatch(fetchAdventuresHome());
   },
   saveAdventuresHome: () => {
     dispatch(saveAdventuresHome());
   },
-  displayLoader: () => {
-    dispatch(displayLoader());
+  fetchAdventuresActiveNumber: () => {
+    dispatch(fetchAdventuresActiveNumber());
+  },
+  saveAdventuresActiveNumber: () => {
+    dispatch(saveAdventuresActiveNumber());
   },
 });
 
