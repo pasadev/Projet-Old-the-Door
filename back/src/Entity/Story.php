@@ -98,7 +98,8 @@ class Story
     private $slug;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="La description est obligatoire")
      * @Assert\Length(min=50)
      * @Groups("api_story_detail")
      */
