@@ -15,7 +15,6 @@ const GameScreen = ({
   currentChapter,
 }) => {
   useEffect(() => {
-    console.log('componentDidMount');
     fetchCurrentStory();
     fetchCurrentChapter();
   }, []);

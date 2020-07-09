@@ -41,7 +41,7 @@ const App = ({ burgerMenuOpen }) => (
           <Register />
         </Route>
         <Route exact path="/aventures/:slug/jouer">
-          <Game />
+          <GameScreen />
         </Route>
         <Route exact path="/aventures/:slug/edition">
           <ChapterCreate />

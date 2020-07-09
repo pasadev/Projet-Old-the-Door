@@ -8,7 +8,6 @@ import {
 } from 'src/actions/gameScreen';
 
 const gameMiddleware = (store) => (next) => (action) => {
-  console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
     case FETCH_CURRENT_STORY:
 

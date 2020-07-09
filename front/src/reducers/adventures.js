@@ -16,7 +16,7 @@ const initialState = {
       username: '',
     },
   },
-  adventuresActiveNumber: '',
+  adventuresActiveNumber: 0,
 };
 
 const adventures = (state = initialState, action = {}) => {
