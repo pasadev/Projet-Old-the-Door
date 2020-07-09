@@ -2,12 +2,18 @@ import { connect } from 'react-redux';
 
 import GameScreen from 'src/components/GameScreen';
 
-import { toggleButtonVisibility, fetchCurrentStory, saveCurrentStory } from 'src/actions/gameScreen';
+import {
+  fetchCurrentStory,
+  saveCurrentStory,
+  fetchCurrentChapter,
+  saveCurrentChapter,
+} from 'src/actions/gameScreen';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  buttonIsVisible: state.gameScreen.buttonIsVisible,
   currentStory: state.gameScreen.currentStory,
+
+  currentChapter: state.gameScreen.currentChapter,
 
   // ici c'est state.gameScreen.buttonIsVisible
   // Mais dans le reducer c'est state.buttonIsVisible
@@ -15,9 +21,7 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-  toggleButtonVisibility: () => {
-    dispatch(toggleButtonVisibility());
-  },
+
 
   fetchCurrentStory: () => {
     dispatch(fetchCurrentStory());
@@ -25,6 +29,14 @@ const mapDispatchToProps = (dispatch) => ({
 
   saveCurrentStory: () => {
     dispatch(saveCurrentStory());
+  },
+
+  fetchCurrentChapter: () => {
+    dispatch(fetchCurrentChapter());
+  },
+
+  saveCurrentChapter: () => {
+    dispatch(saveCurrentChapter());
   },
 });
 

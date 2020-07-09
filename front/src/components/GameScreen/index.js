@@ -12,7 +12,7 @@ const GameScreen = ({
   currentStory,
   fetchCurrentStory,
   fetchCurrentChapter,
-  // currentChapter,
+  currentChapter,
 }) => {
   React.useEffect(() => {
     console.log('componentDidMount');
@@ -32,7 +32,7 @@ const GameScreen = ({
                   █░█░░░█ █▀▀ █░░ █▀▀ █▀▀█ █▀▄▀█ █▀▀ ░█<br />
                   █░█▄█▄█ █▀▀ █░░ █░░ █░░█ █░▀░█ █▀▀ ░█<br />
                   █░░▀░▀░ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀▀ ▀░░░▀ ▀▀▀ ░█<br />
-                  <br />{currentStory.author}&lt;certified cyborg&gt;<br />gone back in time<br />___________________________________________________________
+                  &lt;certified cyborg&gt;<br />gone back in time<br />___________________________________________________________
                 </p>
               </div>
               <div className="game-timer align-right">15:05</div>
@@ -49,7 +49,10 @@ const GameScreen = ({
               </div>
             </form>
             <p className="game-text">
-              placeholder content {currentStory.synopsis}
+              placeholder currentStory synposis {currentStory.synopsis}
+            </p>
+            <p className="game-text">
+              this is where chapter text is {currentChapter.content}
             </p>
 
           </div>
@@ -71,11 +74,11 @@ GameScreen.propTypes = {
 
   fetchCurrentStory: PropTypes.func.isRequired,
   // currentStory looks like this
-  currentStory: PropTypes.shape({
+  currentStory: PropTypes.arrayOf({
     id: PropTypes.number.isRequired,
     title: PropTypes.string,
     synopsis: PropTypes.string,
-    firstChapter: PropTypes.string,
+    firstChapter: PropTypes.object,
     author: PropTypes.object.isRequired,
   }).isRequired,
 
@@ -84,7 +87,8 @@ GameScreen.propTypes = {
   // In the database the chapters and stories are separate entities, so 
   // the props here are separate too
 
-  currentChapter: PropTypes.shape({
+  currentChapter: PropTypes.arrayOf({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     keyword: PropTypes.string.isRequired,
