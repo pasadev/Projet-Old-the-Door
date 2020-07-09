@@ -32,7 +32,7 @@ const GameScreen = ({
                   █░█░░░█ █▀▀ █░░ █▀▀ █▀▀█ █▀▄▀█ █▀▀ ░█<br />
                   █░█▄█▄█ █▀▀ █░░ █░░ █░░█ █░▀░█ █▀▀ ░█<br />
                   █░░▀░▀░ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀▀ ▀░░░▀ ▀▀▀ ░█<br />
-                  &lt;certified cyborg&gt;<br />gone back in time<br />___________________________________________________________
+                  {currentStory.id}&lt;certified cyborg&gt;<br />gone back in time<br />___________________________________________________________
                 </p>
               </div>
               <div className="game-timer align-right">15:05</div>
@@ -48,7 +48,7 @@ const GameScreen = ({
                 <input name="game-lock" id="game-lock" placeholder="lock" className="screentext" />
               </div>
             </form>
-            <p className="game-text">
+            <p className="game-text">{currentChapter.unlock_text}
               placeholder currentStory synposis {currentStory.synopsis}
             </p>
             <p className="game-text">
@@ -73,13 +73,27 @@ GameScreen.propTypes = {
   // toggleButtonVisibility: PropTypes.func.isRequired,
 
   fetchCurrentStory: PropTypes.func.isRequired,
-  // currentStory looks like this
-  currentStory: PropTypes.arrayOf({
-    id: PropTypes.number.isRequired,
+  // we use one of type to stop console throwing errors
+  // since we define each data in the initialstate to stop errors
+  // and it is a '' in the initialstate.
+  currentStory: PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]).isRequired,
     title: PropTypes.string,
     synopsis: PropTypes.string,
-    firstChapter: PropTypes.object,
-    author: PropTypes.object.isRequired,
+    firstChapter: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+    ]),
+    author: PropTypes.shape({
+      id: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+      ]).isRequired,
+      username: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
 
   fetchCurrentChapter: PropTypes.func.isRequired,
@@ -87,15 +101,24 @@ GameScreen.propTypes = {
   // In the database the chapters and stories are separate entities, so
   // the props here are separate too
 
-  currentChapter: PropTypes.arrayOf({
-    id: PropTypes.number.isRequired,
+  currentChapter: PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]).isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     keyword: PropTypes.string.isRequired,
     lockword: PropTypes.string.isRequired,
-    unlock_text: PropTypes.string.isRequired,
-    parentChapter: PropTypes.object,
-    forStory: PropTypes.object.isRequired,
+    unlockText: PropTypes.string.isRequired,
+    parentChapter: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+    ]),
+    forStory: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+    ]).isRequired,
   }).isRequired,
 
 };

@@ -1,8 +1,26 @@
 import { SAVE_CURRENT_STORY, SAVE_CURRENT_CHAPTER } from 'src/actions/gameScreen';
 
 const initialState = {
-  currentStory: [],
-  currentChapter: [],
+  currentStory: {
+    id: '',
+    title: '',
+    synopsis: '',
+    firstChapter: '',
+    author: {
+      id: '',
+      username: '',
+    },
+  },
+  currentChapter: {
+    id: '',
+    title: '',
+    content: '',
+    keyword: '',
+    lockword: '',
+    unlockText: '',
+    parentChapter: '',
+    forStory: '',
+  },
   // We have problems showing the information we get.
 };
 
