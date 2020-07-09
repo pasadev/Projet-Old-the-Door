@@ -1,0 +1,21 @@
+@import 'src/styles/vars';
+
+.team {
+  padding: 0.5em;
+  .team-title {
+    font-weight: bold;
+    font-size: $titleSize;
+  }
+  .member {
+    .member-role {
+      padding-top: 0.5em;
+      font-style: italic;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .member-description {
+      padding-top: 0.5em;
+    }
+  }
+}

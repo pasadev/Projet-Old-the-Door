@@ -1,10 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import './footer.scss';
 
 const Footer = () => (
   <footer className="footer">
-    <h1 className="title">O'ld The Door</h1>
-    <p>notre équipe</p>
-    <p>&copy; 2020 lateamdefou.com</p>
+    <Link className="footer-team" to="/equipe">
+      Notre équipe
+    </Link>
+    <span className="footer-copyright">&copy; 2020 - O'ld the door</span>
   </footer>
 );
 export default Footer;

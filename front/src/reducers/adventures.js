@@ -1,23 +1,28 @@
-import { DO_SOMETHING } from 'src/actions/user';
+import { SAVE_ADVENTURES_HOME, SAVE_ADVENTURES_CATALOG } from 'src/actions/adventures';
 
 const initialState = {
-
+  adventuresHome: [],
+  adventuresCatalog: [],
 };
 
-const user = (state = initialState, action = {}) => {
+const adventures = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
-      // on retourne un nouveau state
+    case SAVE_ADVENTURES_HOME:
+
       return {
-        // en déversant les informations du state actuel
         ...state,
-        // et en appliquant des modifications
-        propriété_à_modifier_1: 'valeur',
-        propriété_à_modifier_2: action.newValue,
+        adventuresHome: action.adventuresHome,
+      };
+
+    case SAVE_ADVENTURES_CATALOG:
+
+      return {
+        ...state,
+        adventuresCatalog: action.adventuresCatalog,
       };
 
     default: return state;
   }
 };
 
-export default user;
+export default adventures;

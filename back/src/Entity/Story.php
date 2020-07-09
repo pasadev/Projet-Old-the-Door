@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=StoryRepository::class)
@@ -33,13 +34,16 @@ class Story
      * @Groups("chapter_details")
      * @Groups("chapter_list")
      * @Groups("user_show")
-
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\Length(min=3)
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Groups("api_story_detail")
+     * @Assert\NotBlank(message="Le synopsis est obligatoire")
+     * @Assert\Length(min=50)
      */
     private $synopsis;
 
@@ -86,6 +90,12 @@ class Story
      * @ORM\OneToMany(targetEntity=Party::class, mappedBy="forStory")
      */
     private $hasParties;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true, unique=true)
+     * @Groups("api_story_detail")
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -240,6 +250,18 @@ class Story
                 $hasParty->setForStory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

@@ -5784,6 +5784,11 @@ mocha@*:
     yargs-parser "13.1.2"
     yargs-unparser "1.6.0"
 
+moment@^2.27.0:
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
+  integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
+
 moo@^0.5.0:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/moo/-/moo-0.5.1.tgz#7aae7f384b9b09f620b6abf6f74ebbcd1b65dbc4"
@@ -7390,10 +7395,10 @@ react-is@^16.12.0, react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-loading@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-2.0.3.tgz#e8138fb0c3e4674e481b320802ac7048ae14ffb9"
-  integrity sha512-Vdqy79zq+bpeWJqC+xjltUjuGApyoItPgL0vgVfcJHhqwU7bAMKzysfGW/ADu6i0z0JiOCRJjo+IkFNkRNbA3A==
+react-moment@^0.9.7:
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.9.7.tgz#ca570466595b1aa4f7619e62da18b3bb2de8b6f3"
+  integrity sha512-ifzUrUGF6KRsUN2pRG5k56kO0mJBr8kRkWb0wNvtFIsBIxOuPxhUpL1YlXwpbQCbHq23hUu6A0VEk64HsFxk9g==
 
 react-redux@^7.2.0:
   version "7.2.0"
@@ -8114,6 +8119,11 @@ slice-ansi@^2.1.0:
     ansi-styles "^3.2.0"
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
+
+slugify@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.4.4.tgz#2f032ffa52b1e1ca2a27737c1ce47baae3d0883a"
+  integrity sha512-N2+9NJ8JzfRMh6PQLrBeDEnVDQZSytE/W4BTC4fNNPmO90Uu58uNwSlIJSs+lmPgWsaAF79WLhVPe5tuy7spjw==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

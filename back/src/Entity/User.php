@@ -8,6 +8,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
@@ -19,6 +22,9 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      * @Groups("user_show")
      * @Groups("api_story_detail")
+     * @Groups("user_login")
+     * @Groups("api_party_detail")
+     * @Groups("user_create")
      */
     private $id;
 
@@ -27,6 +33,10 @@ class User implements UserInterface
      * The unique property allow to check that we don't have the same email twice
      * @ORM\Column(type="string", length=128, unique=true)
      * @Groups("user_show")
+     * @Groups("user_login")
+     * @Groups("user_create")
+     * @Assert\NotBlank(message="L'email est obligatoire")
+     * @Assert\Email(message="Le format de cet email n'est pas valide")
      */
     private $email;
 
@@ -34,37 +44,59 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=64, unique=true)
      * @Groups("user_show")
+     * @Groups("user_create")
      * @Groups("api_story_detail")
+     * @Groups("user_login")
+     * @Groups("api_party_detail")
+     * @Assert\NotBlank(message="Le surnom est obligatoire")
+     * @Assert\Length(min=3)
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups("user_show")
+     * @Groups("user_create")
+     * @Assert\NotBlank(message="Le prenom est obligatoire")
+     * @Assert\Length(min=2)
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups("user_show")
+     * @Groups("user_create")
+     * @Assert\NotBlank(message="Le nom est obligatoire")
+     * @Assert\Length(min=2)
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="json")
      * @Groups("user_show")
+     * @Groups("user_create")
+     * @Groups("user_login")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le mot de passe est obligatoire")
+     * @Assert\Regex("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/")
+     * the regex assert matches only when all the following are true:
+     * password must contain 1 number (0-9)
+     * password must contain 1 uppercase letters
+     * password must contain 1 lowercase letters
+     * password must contain 1 non-alpha numeric number
+     * password is 8-16 characters with no space
      */
     private $password;
 
     /**
      * @ORM\Column(type="datetime")
      * @Groups("user_show")
+     * @Groups("user_login")
      */
     private $createdAt;
 
@@ -84,6 +116,12 @@ class User implements UserInterface
      * @Groups("user_show")
      */
     private $playedParties;
+
+    /**
+     * @ORM\Column(type="string", unique=true , nullable=true)
+     * 
+     */
+    private $apiToken;
 
     public function __construct()
     {
@@ -225,6 +263,26 @@ class User implements UserInterface
     }
 
     /**
+     * Get the value of apiToken
+     */
+    public function getApiToken()
+    {
+        return $this->apiToken;
+    }
+
+    /**
+     * Set the value of apiToken
+     *
+     * @return  self
+     */
+    public function setApiToken($apiToken)
+    {
+        $this->apiToken = $apiToken;
+
+        return $this;
+    }
+
+    /**
      * @return Collection|Story[]
      */
     public function getStories(): Collection
@@ -285,4 +343,6 @@ class User implements UserInterface
 
         return $this;
     }
+
+    
 }
