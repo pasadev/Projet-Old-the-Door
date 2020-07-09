@@ -7,7 +7,14 @@ import {
 const initialState = {
   adventuresHome: [],
   adventuresCatalog: [],
-  adventureSelected: [],
+  adventureSelected: {
+    title: '',
+    description: '',
+    createdAt: '',
+    author: {
+      username: '',
+    },
+  },
 };
 
 const adventures = (state = initialState, action = {}) => {
