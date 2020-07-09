@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowUpCircle } from 'react-feather';
+import Typist from 'react-typist';
 
 import './gamescreen.scss';
 
@@ -52,9 +53,11 @@ const GameScreen = ({
               {currentChapter.unlockText}<br />
               placeholder currentStory synposis {currentStory.synopsis}
             </p>
-            <p className="game-text">
-              this is where chapter text is {currentChapter.content}
-            </p>
+            <div className="game-text">
+              <Typist>
+                this is where chapter text isthis is where chapter text isthis is where chapter text isthis is where chapter text isthis is where chapter text isthis is where chapter text is : {currentChapter.content}
+              </Typist>
+            </div>
 
           </div>
 
