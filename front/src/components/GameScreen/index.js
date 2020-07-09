@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowUpCircle } from 'react-feather';
 
-import './game.scss';
+import './gamescreen.scss';
 
 const GameScreen = ({
   // buttonIsVisible,
