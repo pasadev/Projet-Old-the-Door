@@ -1,4 +1,3 @@
-
 // === action types
 export const UPDATE_REGISTER_FIELD = 'UPDATE_REGISTER_FIELD';
 export const CREATE_LOGIN = 'CREATE_LOGIN';

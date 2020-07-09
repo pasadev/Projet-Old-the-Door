@@ -5,19 +5,23 @@ import PropTypes from 'prop-types';
 
 // == Import : local
 // Components
+
 import Home from 'src/containers/Home';
 import Adventures from 'src/containers/Adventures';
 import Adventure from 'src/containers/Adventure';
+
 import Register from 'src/containers/Register';
 import Connexion from 'src/containers/Connexion';
 import Team from 'src/components/Team';
 import Game from 'src/components/Game';
-import StoryCreate from 'src/components/StoryCreate';
+import StoryCreate from 'src/containers/StoryCreate';
 import ChapterCreate from 'src/components/ChapterCreate';
 import Header from 'src/components/Header';
 import Nav from 'src/containers/Nav';
+
 import PageError404 from 'src/components/PageError404';
 import Footer from 'src/components/Footer';
+
 
 // == Import
 import './styles.scss';

@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 // import { useField } from './hooks';
 
 import Field from './Field';
-
 import './connexion.scss';
+import PasswordCo from './Field/passwordco';
 
 const Connexion = ({
   email,
@@ -18,7 +18,7 @@ const Connexion = ({
     evt.preventDefault();
     handleLogin();
   };
-// J'ai utilisé le Field vu en cours pour faire les input vu que ça marchait
+
   return (
     <div className="login-form">
 
@@ -33,7 +33,7 @@ const Connexion = ({
         />
 
         <label htmlFor="password"> Mot de passe</label>
-        <Field
+        <PasswordCo
           name="password"
           placeholder="Mot de Passe"
           onChange={changeField}
@@ -52,7 +52,7 @@ const Connexion = ({
 Connexion.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  changeField: PropTypes.func.isRequired, 
+  changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
 };
 

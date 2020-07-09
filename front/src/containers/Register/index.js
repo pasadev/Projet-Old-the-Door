@@ -4,8 +4,8 @@ import { updateRegistersField } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
 
-  email: state.user.email,
-  password: state.user.password,
+  emailRegister: state.user.emailRegister,
+  passwordRegister: state.user.passwordRegister,
   firstname: state.user.firstname,
   lastname: state.user.lastname,
   nickname: state.user.nickname,

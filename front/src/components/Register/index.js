@@ -7,8 +7,8 @@ import ButtonRegister from './ButtonRegister';
 import FieldRegisterPassword from './FieldRegister/FieldRegisterPassword';
 
 const Register = ({
-  email,
-  password,
+  emailRegister,
+  passwordRegister,
   // confirmedPassword,
   firstname,
   lastname,
@@ -17,13 +17,12 @@ const Register = ({
   // updateField,
   changeField,
   passwordConfirmation,
-  handleSubmit,
 }) => {
   // const handleSubmit = (event) => {
   //   event.preventDefault();
   //   submitRegister();
   // };
-  const firstPassword = password;
+  const firstPassword = passwordRegister;
   const secondPassword = passwordConfirmation;
   return (
     <main className="register">
@@ -63,19 +62,19 @@ const Register = ({
         <label htmlFor="form-email">
           Email :
           <FieldRegister
-            name="email"
-            placeholder="adresse-email"
+            name="emailRegister"
+            placeholder="email"
             onChange={changeField}
-            value={email}
+            value={emailRegister}
           />
         </label>
         <label htmlFor="form-password">
           Mot de passe :
           <FieldRegisterPassword
-            name="password"
+            name="passwordRegister"
             placeholder="password"
             onChange={changeField}
-            value={password}
+            value={passwordRegister}
           />
         </label>
         <label htmlFor="form-password-confirmation">
@@ -94,8 +93,8 @@ const Register = ({
   );
 };
 Register.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+  emailRegister: PropTypes.string.isRequired,
+  passwordRegister: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
