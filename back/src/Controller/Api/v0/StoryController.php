@@ -76,6 +76,26 @@ class StoryController extends AbstractController
     }
 
     /**
+     * Return the number of active stories
+     * 
+     * @Route("/api/v0/stories/count", name="api_v0_stories_count", methods={"GET"})
+     *
+     * @param StoryRepository $storyRepository
+     * @return json
+     */
+    public function count(StoryRepository $storyRepository)
+    {
+        //Get the active stories
+        $stories = $storyRepository->findActiveStories();
+        $storyNumber = count($stories);
+
+        //Return the number
+        return $this->json([
+            'storyNumber' => $storyNumber,
+        ]);
+    }
+
+    /**
      * Return one story with the id parameter
      * 
      * @Route("/api/v0/stories/{id}", name="api_v0_stories_show", methods={"GET"}, requirements={"id":"\d+"})
@@ -286,23 +306,4 @@ class StoryController extends AbstractController
         }
     }
 
-    /**
-     * Return the number of active stories
-     * 
-     * @Route("/api/v0/stories/count", name="api_v0_stories_count", methods={"GET"})
-     *
-     * @param StoryRepository $storyRepository
-     * @return json
-     */
-    public function count(StoryRepository $storyRepository)
-    {
-        //Get the active stories
-        $stories = $storyRepository->findActiveStories();
-        $storyNumber = count($stories);
-
-        //Return the number
-        return $this->json([
-            'storyNumber' => $storyNumber,
-        ]);
-    }
 }
