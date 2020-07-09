@@ -1,0 +1,28 @@
+.adventureSmall {
+  padding-top: 0.5em;
+
+  .adventureSmall-title {
+    font-weight: bold;
+  }
+
+  .adventureSmall-authorAndDate {
+    padding-top: 0.5em;
+    font-style: italic;
+    font-size: 0.8em;
+    .adventureSmall-author {
+      padding-right: 0.3em;
+    }
+    .adventureSmall-date::before {
+      content: 'le';
+      padding-right: 0.3em;
+    }
+  }
+  .adventureSmall-synopsis {
+    padding-top: 0.5em;
+
+  }
+  .adventureSmall-link {
+    padding-top: 0.5em;
+    text-decoration: underline;
+  }
+}

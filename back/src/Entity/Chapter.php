@@ -7,8 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
-
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -22,6 +21,7 @@ class Chapter
      * @ORM\Column(type="integer")
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Groups("api_story_detail")
      */
     private $id;
 
@@ -29,6 +29,9 @@ class Chapter
      * @ORM\Column(type="string", length=128)
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Groups("api_story_detail")
+     * @Assert\NotBlank(message="Le titre est obligatoire")
+     * @Assert\Length(min=3)
      */
     private $title;
 
@@ -36,6 +39,8 @@ class Chapter
      * @ORM\Column(type="text")
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Assert\NotBlank(message="Le contenu est obligatoire")
+     * @Assert\Length(min=50)
      */
     private $content;
 
@@ -43,6 +48,7 @@ class Chapter
      * @ORM\Column(type="string", length=128)
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Assert\NotBlank(message="Le keyword est obligatoire")
      */
     private $keyword;
 
@@ -50,6 +56,7 @@ class Chapter
      * @ORM\Column(type="string", length=128)
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Assert\NotBlank(message="Le lockword est obligatoire")
      */
     private $lockword;
 
@@ -57,6 +64,7 @@ class Chapter
      * @ORM\Column(type="text")
      * @Groups("chapter_details")
      * @Groups("chapter_list")
+     * @Assert\NotBlank(message="Le unlockText est obligatoire")
      */
     private $unlockText;
 

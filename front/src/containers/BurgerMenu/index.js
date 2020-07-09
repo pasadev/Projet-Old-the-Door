@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 
 import BurgerMenu from 'src/components/BurgerMenu';
 
-import { toggleBurgerMenuOpen } from 'src/actions/burgerMenu';
+import { toggleBurgerMenuOpen } from 'src/actions/utils';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  burgerMenuOpen: state.burgerMenu.burgerMenuOpen,
+  burgerMenuOpen: state.utils.burgerMenuOpen,
 });
 
 // === mapDispatchToProps
