@@ -9,8 +9,12 @@ import {
   saveCurrentChapter,
 } from 'src/actions/gameScreen';
 
+import { displayLoader } from 'src/actions/utils';
+
 // === mapStateToProps
 const mapStateToProps = (state) => ({
+  loading: state.utils.loading,
+
   currentStory: state.gameScreen.currentStory,
 
   currentChapter: state.gameScreen.currentChapter,
@@ -34,6 +38,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   saveCurrentChapter: () => {
     dispatch(saveCurrentChapter());
+  },
+
+  displayLoader: () => {
+    dispatch(displayLoader());
   },
 });
 

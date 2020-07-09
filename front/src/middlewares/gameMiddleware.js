@@ -7,6 +7,10 @@ import {
   saveCurrentChapter,
 } from 'src/actions/gameScreen';
 
+import {
+  hideLoader,
+} from 'src/actions/utils';
+
 const gameMiddleware = (store) => (next) => (action) => {
   console.log('on a intercepté une action dans le middleware: ', action);
   switch (action.type) {
@@ -29,6 +33,7 @@ const gameMiddleware = (store) => (next) => (action) => {
       axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/12')
         .then((response) => {
           store.dispatch(saveCurrentChapter(response.data[0]));
+          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);

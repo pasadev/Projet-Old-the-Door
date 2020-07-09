@@ -21,7 +21,6 @@ const initialState = {
     parentChapter: '',
     forStory: '',
   },
-  // We have problems showing the information we get.
 };
 
 const gameScreen = (state = initialState, action = {}) => {
