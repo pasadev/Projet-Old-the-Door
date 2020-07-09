@@ -39,7 +39,7 @@ class UserController extends AbstractController
      * 
      * @Route("api/v0/users" , name="api_v0_users_add" , methods={"POST"})
      */
-    public function add (Request $request, ObjectNormalizer$normalizer, UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepository)
+    public function add (Request $request, ObjectNormalizer $normalizer, UserPasswordEncoderInterface $passwordEncoder, UserRepository $userRepository)
     {
         //Create a new user without informations
         $user = new User();
