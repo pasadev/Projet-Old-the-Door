@@ -100,6 +100,7 @@ class Story
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(min=50)
+     * @Groups("api_story_detail")
      */
     private $description;
 
