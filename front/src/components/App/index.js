@@ -13,15 +13,13 @@ import Adventure from 'src/containers/Adventure';
 import Register from 'src/containers/Register';
 import Connexion from 'src/containers/Connexion';
 import Team from 'src/components/Team';
-import Game from 'src/components/Game';
+import GameScreen from 'src/containers/GameScreen';
 import StoryCreate from 'src/containers/StoryCreate';
 import ChapterCreate from 'src/components/ChapterCreate';
 import Header from 'src/components/Header';
 import Nav from 'src/containers/Nav';
-
 import PageError404 from 'src/components/PageError404';
 import Footer from 'src/components/Footer';
-
 
 // == Import
 import './styles.scss';

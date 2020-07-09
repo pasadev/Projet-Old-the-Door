@@ -1,3 +1,15 @@
+/* eslint-disable import/prefer-default-export */
+
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
+export const doSomething = () => {
+
+};
 import slugify from 'slugify';
 
 // eslint-disable-next-line import/prefer-default-export
