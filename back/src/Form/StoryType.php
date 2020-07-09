@@ -48,6 +48,10 @@ class StoryType extends AbstractType
                     /* 'choice_label' => 'username' */
                 ]
             )
+            ->add(
+                'description',
+                TextAreaType::class,
+            )
         ;
     }
 
