@@ -22,7 +22,6 @@ const mapStateToProps = (state) => ({
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
 
-
   fetchCurrentStory: () => {
     dispatch(fetchCurrentStory());
   },

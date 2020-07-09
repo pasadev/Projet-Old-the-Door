@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowUpCircle } from 'react-feather';
 
@@ -14,7 +14,7 @@ const GameScreen = ({
   fetchCurrentChapter,
   currentChapter,
 }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('componentDidMount');
     fetchCurrentStory();
     fetchCurrentChapter();
@@ -84,7 +84,7 @@ GameScreen.propTypes = {
 
   fetchCurrentChapter: PropTypes.func.isRequired,
 
-  // In the database the chapters and stories are separate entities, so 
+  // In the database the chapters and stories are separate entities, so
   // the props here are separate too
 
   currentChapter: PropTypes.arrayOf({
