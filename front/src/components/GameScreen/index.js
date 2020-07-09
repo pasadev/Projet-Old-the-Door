@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowUpCircle } from 'react-feather';
+import { useParams } from 'react-router-dom';
 
 import './gamescreen.scss';
 
@@ -14,9 +15,10 @@ const GameScreen = ({
   fetchCurrentChapter,
   currentChapter,
 }) => {
+  const { slug } = useParams();
   useEffect(() => {
     console.log('componentDidMount');
-    fetchCurrentStory();
+    fetchCurrentStory(slug);
     fetchCurrentChapter();
   }, []);
 

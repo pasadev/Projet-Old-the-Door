@@ -12,7 +12,7 @@ const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CURRENT_STORY:
 
-      axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/stories/12')
+      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
       // chemin test
         .then((response) => {
           store.dispatch(saveCurrentStory(response.data[0]));

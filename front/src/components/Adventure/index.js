@@ -55,7 +55,6 @@ Adventure.propTypes = {
   fetchAdventureSelected: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   // Adventure
-  // Here you get one singular adventure?
   adventureSelected: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

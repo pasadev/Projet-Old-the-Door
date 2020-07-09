@@ -15,15 +15,13 @@ const mapStateToProps = (state) => ({
 
   currentChapter: state.gameScreen.currentChapter,
 
-  // ici c'est state.gameScreen.buttonIsVisible
-  // Mais dans le reducer c'est state.buttonIsVisible
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
 
-  fetchCurrentStory: () => {
-    dispatch(fetchCurrentStory());
+  fetchCurrentStory: (slug) => {
+    dispatch(fetchCurrentStory(slug));
   },
 
   saveCurrentStory: () => {

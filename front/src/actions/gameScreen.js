@@ -18,8 +18,9 @@ export const toggleButtonVisibility = () => ({
 });
 
 // Fetches the story to be played
-export const fetchCurrentStory = () => ({
+export const fetchCurrentStory = (slug) => ({
   type: FETCH_CURRENT_STORY,
+  slug,
 });
 
 // Saves currentStory data to be used
