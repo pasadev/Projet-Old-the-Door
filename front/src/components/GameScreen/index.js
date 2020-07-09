@@ -55,7 +55,7 @@ const GameScreen = ({
             </p>
             <div className="game-text">
               <Typist>
-                this is where chapter text isthis is where chapter text isthis is where chapter text isthis is where chapter text isthis is where chapter text isthis is where chapter text is : {currentChapter.content}
+                this is where chapter text is : {currentChapter.content}
               </Typist>
             </div>
 
