@@ -3,9 +3,9 @@ import StoryCreate from 'src/components/StoryCreate';
 import { updateCreationField } from 'src/actions/storyCreation';
 
 const mapStateToProps = (state) => ({
-  title: state.title,
-  synopsis: state.title,
-  description: state.description,
+  title: state.storyCreation.title,
+  synopsis: state.storyCreation.synopsis,
+  description: state.storyCreation.description,
 });
 
 const mapDispatchToProps = (dispatch) => ({
