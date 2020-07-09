@@ -48,7 +48,9 @@ const GameScreen = ({
                 <input name="game-lock" id="game-lock" placeholder="lock" className="screentext" />
               </div>
             </form>
-            <p className="game-text">{currentChapter.unlock_text}
+            <p className="game-text">
+              {currentStory.author.username}<br />
+              {currentChapter.unlockText}<br />
               placeholder currentStory synposis {currentStory.synopsis}
             </p>
             <p className="game-text">
