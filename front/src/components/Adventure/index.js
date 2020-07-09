@@ -1,55 +1,59 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import Moment from 'react-moment';
 import { Link, useParams } from 'react-router-dom';
 
-import { getAdventureBySlug } from 'src/utils';
+import Loader from 'src/components/Loader';
+import Moment from 'react-moment';
+import './adventure.scss';
 
-const Adventure = ({ adventuresCatalog, fetchAdventuresCatalog }) => {
-  useEffect(() => {
-    fetchAdventuresCatalog();
-    console.log('Fetch Adventure');
-    console.log(adventure);
-  }, []);
+const Adventure = ({
+  adventureSelected,
+  fetchAdventureSelected,
+  displayLoader,
+  loading,
+}) => {
   const { slug } = useParams();
-  const adventure = getAdventureBySlug(adventuresCatalog, slug);
-  console.log(adventuresCatalog);
-  // console.log(slug);
-  // console.log(adventure.author);
-  console.log(adventure);
-
+  useEffect(() => {
+    fetchAdventureSelected(slug);
+    displayLoader();
+  }, []);
   return (
-    <main className="adventure-container">
-      <h1 className="adventure-title">rer</h1>
-      <div className="adventure-authorAndDate">
-        <span>
-          Author
-        </span>
-        {/* <time className="adventure-date" dateTime={}>
-          <Moment format="DD/MM/YYYY">
-            {}
-          </Moment>
-        </time> */}
-      </div>
-      <p className="adventure-description">
-        lorem ipsum
-      </p>
-      {/* <Link
-        to={`/aventures/:slug/jouer`}
-      >
-        Ouvrir le fichier
-      </Link> */}
-    </main>
+    <>
+      {loading && <Loader />}
+      {!loading && (
+        <main className="adventure">
+          <h1 className="adventure-title">{adventureSelected.title}</h1>
+          <div className="adventure-authorAndDate">
+            <span className="adventure-author">
+              {adventureSelected.author.username}
+            </span>
+            <time className="adventure-date" dateTime={adventureSelected.createdAt}>
+              <Moment format="DD/MM/YYYY">
+                {adventureSelected.createdAt}
+              </Moment>
+            </time>
+          </div>
+          <p className="adventure-synopsis">
+            {adventureSelected.synopsis}
+          </p>
+          <div className="adventure-link">
+            <Link
+              to={`/aventures/${adventureSelected.slug}/jouer`}
+            >
+              Ouvrir le fichier
+            </Link>
+          </div>
+        </main>
+      )}
+    </>
   );
 };
 
 Adventure.propTypes = {
-  adventuresCatalog: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
-  fetchAdventuresCatalog: PropTypes.func.isRequired,
+  displayLoader: PropTypes.func.isRequired,
+  fetchAdventureSelected: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  // TODO Adventure props
 };
 
 export default Adventure;

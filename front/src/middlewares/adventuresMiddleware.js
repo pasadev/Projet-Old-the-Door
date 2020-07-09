@@ -5,6 +5,8 @@ import {
   saveAdventuresHome,
   FETCH_ADVENTURES_CATALOG,
   saveAdventuresCatalog,
+  FETCH_ADVENTURE_SELECTED,
+  saveAdventureSelected,
 } from 'src/actions/adventures';
 
 import {
@@ -44,6 +46,22 @@ const adventuresMiddleware = (store) => (next) => (action) => {
           console.warn(error);
         });
 
+      next(action);
+      break;
+
+    case FETCH_ADVENTURE_SELECTED:
+      // API request for the adventures catalog
+      // http://maxence-royer.vpnuser.lan:8000/api/v0/stories
+      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
+        .then((response) => {
+          // dispatch to save the Adventure selected
+          store.dispatch(saveAdventureSelected(response.data[0]));
+          // dispatch to hide the loader
+          store.dispatch(hideLoader());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
       next(action);
       break;
 

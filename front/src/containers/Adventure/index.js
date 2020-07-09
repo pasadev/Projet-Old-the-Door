@@ -1,21 +1,26 @@
 import { connect } from 'react-redux';
 
-import { fetchAdventuresCatalog, saveAdventuresCatalog } from 'src/actions/adventures';
+import { fetchAdventureSelected, saveAdventureSelected } from 'src/actions/adventures';
+import { displayLoader } from 'src/actions/utils';
 
 import Adventure from 'src/components/Adventure';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  adventuresCatalog: state.adventures.adventuresCatalog,
+  adventureSelected: state.adventures.adventureSelected,
+  loading: state.utils.loading,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-  fetchAdventuresCatalog: () => {
-    dispatch(fetchAdventuresCatalog());
+  fetchAdventureSelected: (slug) => {
+    dispatch(fetchAdventureSelected(slug));
   },
-  saveAdventuresCatalog: () => {
-    dispatch(saveAdventuresCatalog());
+  saveAdventureSelected: () => {
+    dispatch(saveAdventureSelected());
+  },
+  displayLoader: () => {
+    dispatch(displayLoader());
   },
 });
 

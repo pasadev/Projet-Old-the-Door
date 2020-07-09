@@ -1,8 +1,13 @@
-import { SAVE_ADVENTURES_HOME, SAVE_ADVENTURES_CATALOG } from 'src/actions/adventures';
+import {
+  SAVE_ADVENTURES_HOME,
+  SAVE_ADVENTURES_CATALOG,
+  SAVE_ADVENTURE_SELECTED,
+} from 'src/actions/adventures';
 
 const initialState = {
   adventuresHome: [],
   adventuresCatalog: [],
+  adventureSelected: [],
 };
 
 const adventures = (state = initialState, action = {}) => {
@@ -19,6 +24,12 @@ const adventures = (state = initialState, action = {}) => {
       return {
         ...state,
         adventuresCatalog: action.adventuresCatalog,
+      };
+
+    case SAVE_ADVENTURE_SELECTED:
+      return {
+        ...state,
+        adventureSelected: action.adventureSelected,
       };
 
     default: return state;
