@@ -13,6 +13,7 @@ body {
   text-shadow: 0 0 2px $lightCaseColor;
   ::selection {
     text-shadow: none;
+    background-color: $darkColor;
   }
 }
 

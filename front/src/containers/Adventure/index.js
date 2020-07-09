@@ -7,8 +7,8 @@ import Adventure from 'src/components/Adventure';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  adventureSelected: state.adventures.adventureSelected,
   loading: state.utils.loading,
+  adventureSelected: state.adventures.adventureSelected,
 });
 
 // === mapDispatchToProps

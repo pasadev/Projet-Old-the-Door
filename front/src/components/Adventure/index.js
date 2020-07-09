@@ -17,6 +17,7 @@ const Adventure = ({
     fetchAdventureSelected(slug);
     displayLoader();
   }, []);
+
   return (
     <>
       {loading && <Loader />}
@@ -33,12 +34,12 @@ const Adventure = ({
               </Moment>
             </time>
           </div>
-          <p className="adventure-synopsis">
-            {adventureSelected.synopsis}
+          <p className="adventure-description">
+            {adventureSelected.description}
           </p>
           <div className="adventure-link">
             <Link
-              to={`/aventures/${adventureSelected.slug}/jouer`}
+              to={`/aventures/${slug}/jouer`}
             >
               Ouvrir le fichier
             </Link>
@@ -53,7 +54,16 @@ Adventure.propTypes = {
   displayLoader: PropTypes.func.isRequired,
   fetchAdventureSelected: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  // TODO Adventure props
+  // Adventure
+  // Here you get one singular adventure?
+  adventureSelected: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    author: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+    }).isRequired,
+    createdAt: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Adventure;
