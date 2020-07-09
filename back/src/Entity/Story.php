@@ -99,6 +99,7 @@ class Story
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(min=50)
      */
     private $description;
 
