@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-import baseURL from 'src/utils';
-
 import {
   FETCH_CURRENT_STORY,
   saveCurrentStory,
@@ -14,6 +12,7 @@ import {
 } from 'src/actions/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
+  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/O-ld-the-door/back';
   switch (action.type) {
     case FETCH_CURRENT_STORY:
 
