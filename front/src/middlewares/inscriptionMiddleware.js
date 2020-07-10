@@ -24,6 +24,7 @@ const InscriptionMiddleware = (store) => (next) => (action) => {
         passwordConfirmation,
       }, {
         withCredentials: true,
+        headers: true,
       })
         .then((response) => {
           store.dispatch(saveUser(response.data.info, response.data.logged));
