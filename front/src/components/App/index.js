@@ -40,6 +40,9 @@ const App = ({ burgerMenuOpen }) => (
         <Route exact path="/inscription">
           <Register />
         </Route>
+        <Route exact path="/aventures/creation">
+          <StoryCreate />
+        </Route>
         <Route exact path="/aventures/:slug/jouer">
           <GameScreen />
         </Route>
@@ -48,9 +51,6 @@ const App = ({ burgerMenuOpen }) => (
         </Route>
         <Route exact path="/aventures/:slug">
           <Adventure />
-        </Route>
-        <Route exact path="/aventures/creation">
-          <StoryCreate />
         </Route>
         <Route exact path="/aventures">
           <Adventures />
