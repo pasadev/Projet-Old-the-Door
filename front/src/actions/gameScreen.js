@@ -33,8 +33,9 @@ export const saveCurrentStory = (currentStory) => ({
   currentStory,
 });
 
-export const fetchCurrentChapter = () => ({
+export const fetchCurrentChapter = (firstChapterId) => ({
   type: FETCH_CURRENT_CHAPTER,
+  firstChapterId,
 });
 
 export const saveCurrentChapter = (currentChapter) => ({

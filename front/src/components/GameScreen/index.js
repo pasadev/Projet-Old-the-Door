@@ -22,12 +22,11 @@ const GameScreen = ({
 }) => {
   const { slug } = useParams();
   useEffect(() => {
-    console.log('componentDidMount');
+    console.log(slug);
     fetchCurrentStory(slug);
-    fetchCurrentChapter();
+    // problem in asynchronous data loading
     displayLoader();
   }, []);
-
   return (
     <>
       {loading && <Loader />}
@@ -59,8 +58,6 @@ const GameScreen = ({
               <Typist>
                 <Typist.Delay ms={6000} />
                 <span>{currentStory.author.username}</span>
-                <span>{currentChapter.unlockText}</span>
-                <span>placeholder currentStory synposis {currentStory.synopsis}</span>
               </Typist>
             </div>
             <div className="gameScreen-content-text">
