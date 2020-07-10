@@ -12,7 +12,7 @@ import {
 } from 'src/actions/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
-  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com';
+  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/back';
   switch (action.type) {
     case FETCH_CURRENT_STORY:
 
