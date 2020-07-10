@@ -19,6 +19,7 @@ import Header from 'src/components/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
 import Footer from 'src/components/Footer';
+import Profil from 'src/components/Profil';
 
 // == Import
 import './styles.scss';
@@ -56,6 +57,9 @@ const App = ({ burgerMenuOpen }) => (
         </Route>
         <Route exact path="/equipe">
           <Team />
+        </Route>
+        <Route exact path="/profil">
+          <Profil />
         </Route>
         <Route>
           <PageError404 />
