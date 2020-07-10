@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import Field from 'src/components/Field';
+import './storyCreate.scss';
 
 const StoryCreate = ({
   title,
@@ -25,21 +26,24 @@ const StoryCreate = ({
           placeholder="titre"
           value={title}
           changeField={updateField}
-          label="title"
+          label="titre :"
+          maxLength="128"
         />
         <Field
           identifier="synopsis"
           placeholder="synopsis"
           value={synopsis}
           changeField={updateField}
-          label="synopsis"
+          label="synopsis :"
+          maxLength="524288"
         />
         <Field
           identifier="description"
           placeholder="description"
           value={description}
           changeField={updateField}
-          label="description"
+          label="description :"
+          maxLength="524288"
         />
         <button
           className="storyCreate-form-button"

@@ -1,0 +1,16 @@
+@import 'src/styles/vars';
+
+.storyCreate {
+  padding: 0.5em;
+  
+  .storyCreate-form {
+    display: flex;
+    flex-direction: column;
+
+    .storyCreate-form-button {
+      border: none;
+      font-family: $family;
+      margin-top: 0.5em;
+    }
+  }
+}
