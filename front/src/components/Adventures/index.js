@@ -23,14 +23,17 @@ const Adventures = ({
       {!loading && (
         <main className="adventures">
           <div className="adventures-create">
-            <h1>
-              Pour écrire une aventures c'est par ici.
+            <h1 className="adventures-title">
+              Pour créer une aventure c'est par ici.
             </h1>
-            <Link
-              to="/aventures/creation"
-            >
-              Créer une Aventure
-            </Link>
+            <div className="adventures-create-link">
+              <Link
+                to="/aventures/creation"
+              >
+                Créer une Aventure
+              </Link>
+            </div>
+            <span className="spacer">--------------------------------------</span>
           </div>
           <div className="adventures-catalog">
             <h1 className="adventures-title">

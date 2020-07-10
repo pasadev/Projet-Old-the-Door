@@ -2,6 +2,10 @@
 
 .adventures {
   padding: 0.5em;
+  .adventures-create-link {
+    padding-top: 0.5em;
+    text-decoration: underline;
+  }
   .adventures-title {
     font-weight: bold;
     font-size: $titleSize;
