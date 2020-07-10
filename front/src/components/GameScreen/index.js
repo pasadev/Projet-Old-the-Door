@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import { ArrowUpCircle } from 'react-feather';
 import { useParams } from 'react-router-dom';
 import Loader from 'src/components/Loader';
+import Typist from 'react-typist';
 
-import './gamescreen.scss';
+import './gameScreen.scss';
 
 const GameScreen = ({
   // buttonIsVisible,
@@ -28,52 +29,46 @@ const GameScreen = ({
   }, []);
 
   return (
-    <>
-      {loading && <Loader />}
-      {!loading && (
-        <main>
-          <div className="pccase">
-            <div className="screen oldscreeneffect">
-              <div className="screentext">
-                <div className="align-content">
-                  <div className="align-left"><p>Initializing 'OLD THE DOOOR' v0.01 ...........................................................</p>
-                    <p className="optional-welcome">
-                      █░█░░░█ █▀▀ █░░ █▀▀ █▀▀█ █▀▄▀█ █▀▀ ░█<br />
-                      █░█▄█▄█ █▀▀ █░░ █░░ █░░█ █░▀░█ █▀▀ ░█<br />
-                      █░░▀░▀░ ▀▀▀ ▀▀▀ ▀▀▀ ▀▀▀▀ ▀░░░▀ ▀▀▀ ░█<br />
-                      {currentStory.id}&lt;certified cyborg&gt;<br />gone back in time<br />___________________________________________________________
-                    </p>
-                  </div>
-                  <div className="game-timer align-right">15:05</div>
-                </div>
-
-                <form>
-                  <div>
-                    <label htmlFor="game-key"> Déclencheur</label> <br />
-                    <input name="game-key" id="game-key" placeholder="key" className="screentext" />
-                  </div>
-                  <div>
-                    <label htmlFor="game-lock"> Support</label> <br />
-                    <input name="game-lock" id="game-lock" placeholder="lock" className="screentext" />
-                  </div>
-                </form>
-                <p className="game-text">
-                  {currentStory.author.username}<br />
-                  {currentChapter.unlockText}<br />
-                  placeholder currentStory synposis {currentStory.synopsis}
-                </p>
-                <p className="game-text">
-                  this is where chapter text is {currentChapter.content}
-                </p>
-
-              </div>
-
-            </div>
-
+    <main className="screenCase">
+      <div className="gameScreen">
+        <div className="gameScreen-header">
+          <div className="gameScreen-header-timer">
+            15:05
           </div>
-        </main>
-      )}
-    </>
+          <div className="gameScreen-header-text">
+            <Typist>
+              Initialisation 'OLD THE DOOOR' v0.01 ..................................
+            </Typist>
+          </div>
+        </div>
+        <form className="gameScreen-form">
+          <div className="gameScreen-form-field">
+            <label htmlFor="game-key">Clé :</label>
+            <input name="game-key" id="game-key" placeholder="Clé" className="gameScreen-form-input" />
+          </div>
+          <div className="gameScreen-form-field">
+            <label htmlFor="game-lock">Serrure :</label>
+            <input name="game-lock" id="game-lock" placeholder="Serrure" className="gameScreen-form-input" />
+          </div>
+        </form>
+        <div className="gameScreen-content">
+          <div className="gameScreen-content-infos">
+            <Typist>
+              <Typist.Delay ms={6000} />
+              <span>{currentStory.author.username}</span>
+              <span>{currentChapter.unlockText}</span>
+              <span>placeholder currentStory synposis {currentStory.synopsis}</span>
+            </Typist>
+          </div>
+          <div className="gameScreen-content-text">
+            <Typist>
+              <Typist.Delay ms={9000} />
+              this is where chapter text is : {currentChapter.content}
+            </Typist>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 };
 

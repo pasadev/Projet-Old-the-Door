@@ -1,0 +1,75 @@
+@import 'src/styles/vars';
+
+.screenCase {
+  .gameScreen {
+    padding: 0.5em;
+    position:relative;
+    min-height: 100vh;
+    left: 0;
+    right: 0;
+    overflow:hidden;
+    background: radial-gradient(ellipse at center, $darkColor 50%,$darkScreenColor 100%);
+    background-size: 100% 4px;
+    background-repeat: repeat-y;
+    opacity : 0.9;
+    color: $lightScreenColor;
+    text-shadow: 0px 0px 10px $lightColor;
+    opacity: 0.6;
+    border: 3px solid $darkBorderColor;
+
+    .gameScreen-header {
+      padding-top: 0.5em;
+
+      .gameScreen-header-timer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.5em;
+      }
+
+      .gameScreen-header-text {
+        padding-top: 0.5em;
+      }
+    }
+    .gameScreen-form {
+      padding-top: 1em;
+      .gameScreen-form-field {
+        display: flex;
+        .gameScreen-form-input {
+          padding-left: 0.5em;
+          position: relative;
+          bottom: 2px;
+          background-color: transparent;
+          width: 30%;
+          border-style: none;
+          border-image: none;
+          color: $lightScreenColor;
+        }
+      }
+    }
+
+    .gameScreen-content {
+      padding-top: 1em;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .screenCase {
+    background: $lightCaseColor;
+    top: $screenCaseTopPosition;	
+    bottom: 0;
+    width: $screenCaseWidth;
+    height: $screenCaseHeight;
+    margin: auto;
+    border: 5px solid $darkCaseColor;
+    border-radius: 5px;
+    
+    .gameScreen {  
+      margin: 35px 35px 35px 35px;
+      border: 3px solid $darkBorderColor;
+      border-radius: 20px;
+      opacity : 0.9;
+    }
+  }
+}
