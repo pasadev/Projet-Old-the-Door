@@ -7,7 +7,7 @@ import {
   saveCurrentStory,
   fetchCurrentChapter,
   saveCurrentChapter,
-  verifyAnswer,
+  toggleAnswerValue,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -42,8 +42,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(saveCurrentChapter());
   },
 
-  handleCheckAnswer: (keywordGuess, lockwordGuess) => {
-    dispatch(verifyAnswer(keywordGuess, lockwordGuess));
+  handleCheckAnswer: (thisIsABool) => {
+    if (thisIsABool === true) {
+      dispatch(toggleAnswerValue());
+      console.log('answer is true');
+    }
+    else (console.log('handleCheckAnswer determined the answer is false'));
   },
 
   displayLoader: () => {

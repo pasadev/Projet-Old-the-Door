@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
+import { checkAnswer } from 'src/utils';
 
 import './gameScreen.scss';
 
@@ -23,10 +24,14 @@ const GameScreen = ({
   displayLoader,
   loading,
 }) => {
+  const keyField = document.querySelector("[name='game-key']");
+  const lockField = document.querySelector("[name='game-lock']");
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleCheckAnswer();
-    // `${currentChapter.keyword}`, `${currentChapter.lockword}`
+    handleCheckAnswer(checkAnswer(keyField.value, lockField.value, `${currentChapter.keyword}`, `${currentChapter.lockword}`));
+    // checkAnswer takes fours values, keywordGuess, lockwordGuess, keyAnswer, lockAnswer
+    // it gives out true if both answers are right
   };
   const { slug } = useParams();
   useEffect(() => {

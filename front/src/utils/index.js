@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import slugify from 'slugify';
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -7,10 +8,17 @@ export const scrollToTop = () => {
   });
 };
 
+// I guess I gotta put my function in here?
+
+export const checkAnswer = (keyGuess, lockGuess, keyAnswer, lockAnswer) => {
+  if (keyGuess === keyAnswer && lockGuess === lockAnswer) {
+    return true;
+  }
+  return false;
+};
 export const doSomething = () => {
 
 };
-import slugify from 'slugify';
 
 // eslint-disable-next-line import/prefer-default-export
 export const slugifyTitle = (title) => (

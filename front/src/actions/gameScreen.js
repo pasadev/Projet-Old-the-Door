@@ -7,7 +7,6 @@ export const SAVE_CURRENT_STORY = 'SAVE_CURRENT_STORY';
 export const FETCH_CURRENT_CHAPTER = 'FETCH_CURRENT_CHAPTER';
 export const FETCH_NEXT_CHAPTER = 'FETCH_NEXT_CHAPTER';
 export const SAVE_CURRENT_CHAPTER = 'SAVE_CURRENT_CHAPTER';
-export const VERIFY_ANSWER = 'VERIFY_ANSWER';
 export const TOGGLE_ANSWER_VALUE = 'TOGGLE_ANSWER_VALUE';
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -50,10 +49,6 @@ export const fetchNextChapter = (nextChapterId) => ({
 export const saveCurrentChapter = (currentChapter) => ({
   type: SAVE_CURRENT_CHAPTER,
   currentChapter,
-});
-
-export const verifyAnswer = () => ({
-  type: VERIFY_ANSWER,
 });
 
 export const toggleAnswerValue = () => ({
