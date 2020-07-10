@@ -29,46 +29,51 @@ const GameScreen = ({
   }, []);
 
   return (
-    <main className="screenCase">
-      <div className="gameScreen">
-        <div className="gameScreen-header">
-          <div className="gameScreen-header-timer">
-            15:05
+    <>
+      {loading && <Loader />}
+      {!loading && (
+      <main className="screenCase">
+        <div className="gameScreen">
+          <div className="gameScreen-header">
+            <div className="gameScreen-header-timer">
+              15:05
+            </div>
+            <div className="gameScreen-header-text">
+              <Typist>
+                Initialisation 'OLD THE DOOOR' v0.01 ..................................
+              </Typist>
+            </div>
           </div>
-          <div className="gameScreen-header-text">
-            <Typist>
-              Initialisation 'OLD THE DOOOR' v0.01 ..................................
-            </Typist>
+          <form className="gameScreen-form">
+            <div className="gameScreen-form-field">
+              <label htmlFor="game-key">Clé :</label>
+              <input name="game-key" id="game-key" placeholder="Clé" className="gameScreen-form-input" />
+            </div>
+            <div className="gameScreen-form-field">
+              <label htmlFor="game-lock">Serrure :</label>
+              <input name="game-lock" id="game-lock" placeholder="Serrure" className="gameScreen-form-input" />
+            </div>
+          </form>
+          <div className="gameScreen-content">
+            <div className="gameScreen-content-infos">
+              <Typist>
+                <Typist.Delay ms={6000} />
+                <span>{currentStory.author.username}</span>
+                <span>{currentChapter.unlockText}</span>
+                <span>placeholder currentStory synposis {currentStory.synopsis}</span>
+              </Typist>
+            </div>
+            <div className="gameScreen-content-text">
+              <Typist>
+                <Typist.Delay ms={9000} />
+                this is where chapter text is : {currentChapter.content}
+              </Typist>
+            </div>
           </div>
         </div>
-        <form className="gameScreen-form">
-          <div className="gameScreen-form-field">
-            <label htmlFor="game-key">Clé :</label>
-            <input name="game-key" id="game-key" placeholder="Clé" className="gameScreen-form-input" />
-          </div>
-          <div className="gameScreen-form-field">
-            <label htmlFor="game-lock">Serrure :</label>
-            <input name="game-lock" id="game-lock" placeholder="Serrure" className="gameScreen-form-input" />
-          </div>
-        </form>
-        <div className="gameScreen-content">
-          <div className="gameScreen-content-infos">
-            <Typist>
-              <Typist.Delay ms={6000} />
-              <span>{currentStory.author.username}</span>
-              <span>{currentChapter.unlockText}</span>
-              <span>placeholder currentStory synposis {currentStory.synopsis}</span>
-            </Typist>
-          </div>
-          <div className="gameScreen-content-text">
-            <Typist>
-              <Typist.Delay ms={9000} />
-              this is where chapter text is : {currentChapter.content}
-            </Typist>
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
+      )}
+    </>
   );
 };
 
