@@ -1,10 +1,7 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowUpCircle } from 'react-feather';
 import { useParams } from 'react-router-dom';
-import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
 
 import './gameScreen.scss';
@@ -16,9 +13,7 @@ const GameScreen = ({
   fetchCurrentStory,
   fetchCurrentChapter,
   currentChapter,
-
   displayLoader,
-  loading,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -74,7 +69,6 @@ const GameScreen = ({
 
 GameScreen.propTypes = {
   displayLoader: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
 
   fetchCurrentStory: PropTypes.func.isRequired,
   // we use one of type to stop console throwing errors
