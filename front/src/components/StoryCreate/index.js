@@ -7,11 +7,11 @@ const StoryCreate = ({
   synopsis,
   description,
   updateField,
-  // sumbitStoryCreate,
+  sumbitStoryCreate,
 }) => {
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
-    // sumbitStoryCreate();
+    sumbitStoryCreate('sumbitStoryCreate');
   };
 
   return (
@@ -56,7 +56,7 @@ StoryCreate.propTypes = {
   title: Proptypes.string.isRequired,
   synopsis: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
-  // sumbitStoryCreate: Proptypes.func.isRequired,
+  sumbitStoryCreate: Proptypes.func.isRequired,
   updateField: Proptypes.func.isRequired,
 };
 export default StoryCreate;
