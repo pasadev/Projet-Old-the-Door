@@ -1,0 +1,35 @@
+@import 'src/styles/vars';
+
+.home {
+  padding: 0.5em;
+  min-height: 100vh;
+  position: relative;
+  .spacer {
+    display: flex;
+    justify-content: center;
+  }
+  .presentation {
+    display: flex;
+    flex-direction: column;
+    
+    .presentation-title {
+      font-weight: bold;
+      font-size: $titleSize;
+    }
+    
+    .presentation-description {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  .latest-adventures {
+
+    .latest-adventures-title {
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      font-size: $titleSize;
+    }
+  }
+}
