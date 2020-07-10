@@ -1,4 +1,6 @@
-/* eslint-disable import/prefer-default-export */
+import slugify from 'slugify';
+
+export const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/O-ld-the-door/back';
 
 export const scrollToTop = () => {
   window.scrollTo({
@@ -10,9 +12,7 @@ export const scrollToTop = () => {
 export const doSomething = () => {
 
 };
-import slugify from 'slugify';
 
-// eslint-disable-next-line import/prefer-default-export
 export const slugifyTitle = (title) => (
   slugify(title, { lower: true })
 );

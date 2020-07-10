@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import baseURL from 'src/utils';
+
 import {
   LOG_IN,
   LOG_OUT,
@@ -13,7 +15,7 @@ const userMiddleware = (store) => (next) => (action) => {
       const { email, password } = store.getState().user;
 
       // withCredentials : autorisation d'accéder au cookie
-      axios.post('http://localhost:3001/login', {
+      axios.post(`${baseURL}/api/v0/login`, {
         email,
         password,
       }, {
@@ -31,7 +33,7 @@ const userMiddleware = (store) => (next) => (action) => {
     }
 
     case LOG_OUT:
-      axios.post('http://localhost:3001/logout', {
+      axios.post(`${baseURL}/api/v0/logout`, {
       }, {
         withCredentials: true,
       })
@@ -46,7 +48,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case CHECK_LOGGED:
-      axios.post('http://localhost:3001/isLogged', {
+      axios.post(`${baseURL}/api/v0/isLogged`, {
       }, {
         withCredentials: true,
       })
