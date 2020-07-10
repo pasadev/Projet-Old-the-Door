@@ -1,4 +1,9 @@
-import { SAVE_CURRENT_STORY, SAVE_CURRENT_CHAPTER } from 'src/actions/gameScreen';
+import {
+  SAVE_CURRENT_STORY,
+  SAVE_CURRENT_CHAPTER,
+  TOGGLE_ANSWER_VALUE,
+
+} from 'src/actions/gameScreen';
 
 const initialState = {
   currentStory: {
@@ -21,6 +26,8 @@ const initialState = {
     parentChapter: '',
     forStory: '',
   },
+
+  trueAnswer: false,
 };
 
 const gameScreen = (state = initialState, action = {}) => {
@@ -42,6 +49,15 @@ const gameScreen = (state = initialState, action = {}) => {
       };
 
     default: return state;
+
+    case TOGGLE_ANSWER_VALUE:
+      // return a new state
+      return {
+        // spread the current state
+        ...state,
+        // reverse the value of trueAnswer
+        trueAnswer: !state.trueAnswer,
+      };
   }
 };
 

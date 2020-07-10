@@ -11,6 +11,7 @@ const Adventure = ({
   fetchAdventureSelected,
   displayLoader,
   loading,
+
 }) => {
   const { slug } = useParams();
   useEffect(() => {

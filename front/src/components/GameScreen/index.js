@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { ArrowUpCircle } from 'react-feather';
+// import { ArrowUpCircle } from 'react-feather';
 import { useParams } from 'react-router-dom';
 import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
@@ -14,17 +14,25 @@ const GameScreen = ({
   // toggleButtonVisibility,
   currentStory,
   fetchCurrentStory,
-  fetchCurrentChapter,
   currentChapter,
+
+  handleCheckAnswer,
+  // initialState trueAnswer is false, if after check submit === answer then switch to true,
+  trueAnswer,
 
   displayLoader,
   loading,
 }) => {
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleCheckAnswer();
+    // `${currentChapter.keyword}`, `${currentChapter.lockword}`
+  };
   const { slug } = useParams();
   useEffect(() => {
     console.log(slug);
     fetchCurrentStory(slug);
-    // problem in asynchronous data loading
+    // no problemo, all is fixed
     displayLoader();
   }, []);
   return (
@@ -43,15 +51,16 @@ const GameScreen = ({
               </Typist>
             </div>
           </div>
-          <form className="gameScreen-form">
+          <form className="gameScreen-form" onSubmit={handleSubmit}>
             <div className="gameScreen-form-field">
               <label htmlFor="game-key">Clé :</label>
-              <input name="game-key" id="game-key" placeholder="Clé" className="gameScreen-form-input" />
+              <input name="game-key" id="game-key" placeholder="Clé" className="gameScreen-form-input" value="" />
             </div>
             <div className="gameScreen-form-field">
               <label htmlFor="game-lock">Serrure :</label>
-              <input name="game-lock" id="game-lock" placeholder="Serrure" className="gameScreen-form-input" />
+              <input name="game-lock" id="game-lock" placeholder="Serrure" className="gameScreen-form-input" value="" />
             </div>
+            <button type="submit">Essayez votre réponse</button>
           </form>
           <div className="gameScreen-content">
             <div className="gameScreen-content-infos">
@@ -66,6 +75,20 @@ const GameScreen = ({
                 this is where chapter text is : {currentChapter.content}
               </Typist>
             </div>
+            <div className="gameScreen-content-text">
+              {!trueAnswer && (
+              <Typist>
+                <Typist.Delay ms={9000} />
+                You must find the way, there is no time to explain: (lockword here)
+              </Typist>
+              )}
+              {trueAnswer && (
+              <Typist>
+                <Typist.Delay ms={1000} />
+                {currentChapter.lockword}
+              </Typist>
+              )}
+            </div>
           </div>
         </div>
       </main>
@@ -77,6 +100,7 @@ const GameScreen = ({
 GameScreen.propTypes = {
   displayLoader: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  trueAnswer: PropTypes.bool.isRequired,
 
   fetchCurrentStory: PropTypes.func.isRequired,
   // we use one of type to stop console throwing errors
@@ -102,8 +126,7 @@ GameScreen.propTypes = {
     }).isRequired,
   }).isRequired,
 
-  fetchCurrentChapter: PropTypes.func.isRequired,
-
+  handleCheckAnswer: PropTypes.func.isRequired,
   // In the database the chapters and stories are separate entities, so
   // the props here are separate too
 

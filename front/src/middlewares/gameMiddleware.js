@@ -6,6 +6,9 @@ import {
   fetchCurrentChapter,
   FETCH_CURRENT_CHAPTER,
   saveCurrentChapter,
+
+  VERIFY_ANSWER,
+  toggleAnswerValue,
 } from 'src/actions/gameScreen';
 
 import {
@@ -44,6 +47,12 @@ const gameMiddleware = (store) => (next) => (action) => {
 
       next(action);
       break;
+
+    case VERIFY_ANSWER:
+
+      console.log(action);
+      axios.get
+
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
       next(action);
