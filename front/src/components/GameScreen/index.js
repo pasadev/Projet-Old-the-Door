@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ArrowUpCircle } from 'react-feather';
+import { useParams } from 'react-router-dom';
+import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
 
 import './gameScreen.scss';
@@ -14,10 +16,16 @@ const GameScreen = ({
   fetchCurrentStory,
   fetchCurrentChapter,
   currentChapter,
+
+  displayLoader,
+  loading,
 }) => {
+  const { slug } = useParams();
   useEffect(() => {
-    fetchCurrentStory();
+    console.log('componentDidMount');
+    fetchCurrentStory(slug);
     fetchCurrentChapter();
+    displayLoader();
   }, []);
 
   return (
@@ -63,13 +71,10 @@ const GameScreen = ({
     </main>
   );
 };
-//           <div onClick={toggleButtonVisibility}>click {buttonIsVisible ? <ArrowUpCircle size="99" /> : <ArrowUpCircle size="10" /> }</div>
 
 GameScreen.propTypes = {
-  // I had problems which were maybe fixed by importing the container instead of component in App,
-  // haven't tried again
-  // buttonIsVisible: PropTypes.bool.isRequired,
-  // toggleButtonVisibility: PropTypes.func.isRequired,
+  displayLoader: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 
   fetchCurrentStory: PropTypes.func.isRequired,
   // we use one of type to stop console throwing errors

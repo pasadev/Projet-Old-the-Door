@@ -9,21 +9,23 @@ import {
   saveCurrentChapter,
 } from 'src/actions/gameScreen';
 
+import { displayLoader } from 'src/actions/utils';
+
 // === mapStateToProps
 const mapStateToProps = (state) => ({
+  loading: state.utils.loading,
+
   currentStory: state.gameScreen.currentStory,
 
   currentChapter: state.gameScreen.currentChapter,
 
-  // ici c'est state.gameScreen.buttonIsVisible
-  // Mais dans le reducer c'est state.buttonIsVisible
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
 
-  fetchCurrentStory: () => {
-    dispatch(fetchCurrentStory());
+  fetchCurrentStory: (slug) => {
+    dispatch(fetchCurrentStory(slug));
   },
 
   saveCurrentStory: () => {
@@ -36,6 +38,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   saveCurrentChapter: () => {
     dispatch(saveCurrentChapter());
+  },
+
+  displayLoader: () => {
+    dispatch(displayLoader());
   },
 });
 
