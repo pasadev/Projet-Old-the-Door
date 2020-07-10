@@ -9,10 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateField: (identifier, name) => {
-    dispatch(updateCreationField(identifier, name));
-    console.log(identifier);
-    console.log(name);
+  updateField: (identifier, newValue) => {
+    dispatch(updateCreationField(identifier, newValue));
   },
 
 });

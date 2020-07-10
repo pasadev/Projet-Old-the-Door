@@ -7,11 +7,11 @@ const StoryCreate = ({
   synopsis,
   description,
   updateField,
-  sumbitStoryCreate,
+  // sumbitStoryCreate,
 }) => {
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
-    sumbitStoryCreate();
+    // sumbitStoryCreate();
   };
 
   return (
@@ -21,21 +21,21 @@ const StoryCreate = ({
         onSubmit={handleStoryCreateSubmit}
       >
         <Field
-          name="title"
+          identifier="title"
           placeholder="titre"
           value={title}
           changeField={updateField}
           label="title"
         />
         <Field
-          name="synopsis"
+          identifier="synopsis"
           placeholder="synopsis"
           value={synopsis}
           changeField={updateField}
           label="synopsis"
         />
         <Field
-          name="description"
+          identifier="description"
           placeholder="description"
           value={description}
           changeField={updateField}
@@ -56,7 +56,7 @@ StoryCreate.propTypes = {
   title: Proptypes.string.isRequired,
   synopsis: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
-  sumbitStoryCreate: Proptypes.func.isRequired,
+  // sumbitStoryCreate: Proptypes.func.isRequired,
   updateField: Proptypes.func.isRequired,
 };
 export default StoryCreate;
