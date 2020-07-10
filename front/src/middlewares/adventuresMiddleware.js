@@ -16,7 +16,7 @@ import {
 } from 'src/actions/utils';
 
 const adventuresMiddleware = (store) => (next) => (action) => {
-  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/O-ld-the-door/back';
+  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com';
   switch (action.type) {
     case FETCH_ADVENTURES_HOME:
       console.log(`${baseURL}/api/v0/stories?last=3`);
