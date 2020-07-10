@@ -1,43 +1,62 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import StoryCreationInput from './storyCreateInput';
+import Field from 'src/components/Field';
 
 const StoryCreate = ({
   title,
   synopsis,
   description,
-  changeField,
-}) => (
+  updateField,
+  sumbitStoryCreate,
+}) => {
+  const handleStoryCreateSubmit = (event) => {
+    event.preventDefault();
+    sumbitStoryCreate();
+  };
 
-  <main>
-    <form action="submit" name="storyCreate">
-      <StoryCreationInput
-        name="title"
-        placeholder="titre"
-        onChange={changeField}
-        value={title}
-      />
-      <StoryCreationInput
-        name="synopsis"
-        placeholder="synopsis"
-        onChange={changeField}
-        value={synopsis}
-      />
-      <StoryCreationInput
-        name="description"
-        placeholder="description"
-        onChange={changeField}
-        value={description}
-      />
-    </form>
-  </main>
-
-);
+  return (
+    <main className="storyCreate">
+      <form
+        className="storyCreate-form"
+        onSubmit={handleStoryCreateSubmit}
+      >
+        <Field
+          name="title"
+          placeholder="titre"
+          value={title}
+          changeField={updateField}
+          label="title"
+        />
+        <Field
+          name="synopsis"
+          placeholder="synopsis"
+          value={synopsis}
+          changeField={updateField}
+          label="synopsis"
+        />
+        <Field
+          name="description"
+          placeholder="description"
+          value={description}
+          changeField={updateField}
+          label="description"
+        />
+        <button
+          className="storyCreate-form-button"
+          type="submit"
+        >
+          C'est parti !
+        </button>
+      </form>
+    </main>
+  );
+};
 
 StoryCreate.propTypes = {
   title: Proptypes.string.isRequired,
   synopsis: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired,
-  changeField: Proptypes.func.isRequired,
+  sumbitStoryCreate: Proptypes.func.isRequired,
+  updateField: Proptypes.func.isRequired,
 };
 export default StoryCreate;

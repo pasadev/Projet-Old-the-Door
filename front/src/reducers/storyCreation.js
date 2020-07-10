@@ -9,10 +9,9 @@ const initialState = {
 const storyCreation = (state = initialState, action = {}) => {
   switch (action.type) {
     case UPDATE_CREATION_FIELD:
-      // on retourne un nouveau state
       return {
         ...state,
-        [action.name]: action.newValue,
+        [action.identifier]: action.newValue,
       };
 
     default: return state;
