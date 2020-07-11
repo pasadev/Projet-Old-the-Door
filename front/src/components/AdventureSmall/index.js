@@ -36,7 +36,6 @@ const AdventureSmall = ({
         Ouvrir le fichier
       </Link>
     </div>
-    <span className="spacer">--------------------------------------</span>
   </div>
 );
 

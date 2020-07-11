@@ -40,13 +40,11 @@ const Home = ({
               Vous aimez écrire ? Découvrez notre éditeur d’aventure
               pour proposer votre histoire à tous les joueurs.
             </p>
-            <span className="spacer">--------------------------------------</span>
           </section>
           <section className="latest-adventures">
             <h2 className="latest-adventures-title">
-              Découvrez les dernières aventures crées par les joueurs !
+              Découvrez les dernières aventures !
             </h2>
-            <span className="spacer">--------------------------------------</span>
             <div className="adventureSmall-container">
               {adventuresHome.map((adventure) => (
                 <AdventureSmall {...adventure} key={adventure.id} />

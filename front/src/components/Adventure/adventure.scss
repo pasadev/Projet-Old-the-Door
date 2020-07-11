@@ -1,5 +1,5 @@
 .adventure {
-  padding: 0.5em;
+  padding: 1em;
 
   .adventure-title {
     font-weight: bold;
@@ -18,12 +18,16 @@
     }
   }
 
-  .adventure-synopsis {
+  .adventure-description {
     padding-top: 0.5em;
 
   }
   .adventure-link {
     padding-top: 0.5em;
+    color: #0e9ab6;
+    font-size: 1.2em;
+  }
+  .adventure-link:hover {
     text-decoration: underline;
   }
 }

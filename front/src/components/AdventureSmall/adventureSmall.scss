@@ -1,5 +1,7 @@
 .adventureSmall {
-  padding-top: 0.5em;
+  border: 2px dotted #fff;
+  padding: 0.5em;
+  margin-bottom: 1em;
 
   .adventureSmall-title {
     font-weight: bold;
@@ -23,6 +25,10 @@
   }
   .adventureSmall-link {
     padding-top: 0.5em;
+    /* text-decoration: underline; */
+    color: #0e9ab6;
+  }
+  .adventureSmall-link:hover {
     text-decoration: underline;
   }
 }

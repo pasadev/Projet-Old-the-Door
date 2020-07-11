@@ -23,7 +23,7 @@ const Adventure = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
-          <h1 className="adventure-title">{adventureSelected.title}</h1>
+          <h1 className="adventure-title main-title">{adventureSelected.title}</h1>
           <div className="adventure-authorAndDate">
             <span className="adventure-author">
               {adventureSelected.author.username}
@@ -41,7 +41,7 @@ const Adventure = ({
             <Link
               to={`/aventures/${slug}/jouer`}
             >
-              Ouvrir le fichier
+              Jouer
             </Link>
           </div>
         </main>
