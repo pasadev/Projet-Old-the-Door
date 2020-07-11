@@ -3,8 +3,13 @@
 .team {
   padding: 0.5em;
   .team-title {
-    font-weight: bold;
+    /* font-weight: bold;
     font-size: $titleSize;
+    margin: auto;
+    margin-top: 1em;
+    border-bottom: 3px dashed $lightColor;
+    width: fit-content;
+    padding-bottom: 0.3em; */
   }
   .member {
     .member-role {

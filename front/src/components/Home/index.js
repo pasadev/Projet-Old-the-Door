@@ -25,10 +25,9 @@ const Home = ({
       {!loading && (
         <main className="home">
           <section className="presentation">
-            <h1 className="presentation-title">
-              Bienvenue sur le site d'aventures O'ld the door
+            <h1 className="presentation-title main-title">
+              Bienvenue à O'ld the door
             </h1>
-            <span className="spacer">--------------------------------------</span>
             <p className="asciiart" />
             <p className="presentation-description">
               Ol’d the door est un nouveau concept d’escape game se basant sur de l’ancien.

@@ -13,8 +13,10 @@
     flex-direction: column;
     
     .presentation-title {
-      font-weight: bold;
+      /* font-weight: bold;
       font-size: $titleSize;
+      align-self: center;
+      margin-top: 1em; */
     }
     
     .presentation-description {

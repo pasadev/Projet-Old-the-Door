@@ -21,10 +21,9 @@ const Adventures = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventures">
-          <h1 className="adventures-title">
-            Voici toutes les aventures de notre catalogue
+          <h1 className="adventures-title main-title">
+            Les aventures
           </h1>
-          <span className="spacer">--------------------------------------</span>
           <div className="adventures-container">
             <div className="adventureSmall-container">
               {adventuresCatalog.map((adventure) => (

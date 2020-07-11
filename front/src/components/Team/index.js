@@ -4,10 +4,9 @@ import './team.scss';
 
 const Team = () => (
   <main className="team">
-    <h1 className="team-title">
+    <h1 className="team-title main-title">
       Découvrez notre merveilleuse équipe
     </h1>
-    <span className="spacer">--------------------------------------</span>
     <div className="member">
       <img
         className="member-picture"
