@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Fabigeon from '../../assets/images/fabigeon1080p.gif';
 import './pageError404.scss';
 
 const PageError404 = () => (
@@ -29,9 +30,18 @@ const PageError404 = () => (
       </div>
 
       <div className="error404-texts">
-        <span className="error404-span">Information techniques (totalement fausses):</span>
+        <span className="error404-span">Information techniques (totalement fausses):</span> <br />
         *** STOP: XDF1235CDSN DJHMEDK516DAF
-        \\ FCLX78MVLx0000000000FABIGEON54547FHSFM
+        \\ FCLX78MVLx0000000000
+        <div className="fabigeon">
+          FABIGEON
+          <img
+            src={Fabigeon}
+            alt="Un magnifique gif du Fabigeon à l'état sauvage"
+            className="tooltip"
+          />
+        </div>
+        54547FHSFM
       </div>
     </div>
   </div>

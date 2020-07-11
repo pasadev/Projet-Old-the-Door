@@ -2,7 +2,7 @@
 @import 'vars';
 
 body {
-  font-family: 'Fixedsys Excelsior 3.01';
+  font-family: $family;
   background-image: radial-gradient(
     rgba(0, 150, 0, 0.75), black 120%
   );
@@ -31,6 +31,6 @@ body {
 
 
 @font-face {
-  font-family: 'Fixedsys Excelsior 3.01';
+  font-family: $family;
   src: url('../assets/fonts/FSEX300.woff');
 }
