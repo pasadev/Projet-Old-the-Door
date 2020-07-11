@@ -48,10 +48,12 @@ const Home = ({
               Découvrez les dernières aventures crées par les joueurs !
             </h2>
             <span className="spacer">--------------------------------------</span>
-            <div className="adventureSmall-container">
-              {adventuresHome.map((adventure) => (
-                <AdventureSmall {...adventure} key={adventure.id} />
-              ))}
+            <div className="adventures-container">
+              <div className="adventureSmall-container">
+                {adventuresHome.map((adventure) => (
+                  <AdventureSmall {...adventure} key={adventure.id} />
+                ))}
+              </div>
             </div>
           </section>
         </main>

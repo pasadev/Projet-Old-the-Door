@@ -1,5 +1,11 @@
+@import 'src/styles/vars';
+
 .adventureSmall {
-  padding-top: 0.5em;
+  padding: 0.5em;
+  border: 1px $lightCaseColor solid;
+  border-top: 5px $lightCaseColor solid;
+  width: 280px;
+  margin: 0.5em;
 
   .adventureSmall-title {
     font-weight: bold;
