@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import AdventureSmall from 'src/containers/AdventureSmall';
 import Loader from 'src/components/Loader';
+import Typist from 'react-typist';
 
 import './home.scss';
 
@@ -26,7 +27,9 @@ const Home = ({
         <main className="home">
           <section className="presentation">
             <h1 className="presentation-title main-title">
+            <Typist>
               Bienvenue à O'ld the door
+              </Typist>
             </h1>
             <p className="asciiart" />
             <p className="presentation-description">

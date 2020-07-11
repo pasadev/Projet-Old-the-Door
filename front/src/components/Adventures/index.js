@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import AdventureSmall from 'src/components/AdventureSmall';
 import Loader from 'src/components/Loader';
+import Typist from 'react-typist';
 
 import './adventures.scss';
 
@@ -22,7 +23,9 @@ const Adventures = ({
       {!loading && (
         <main className="adventures">
           <h1 className="adventures-title main-title">
+          <Typist>
             Les aventures
+          </Typist>
           </h1>
           <div className="adventures-container">
             <div className="adventureSmall-container">

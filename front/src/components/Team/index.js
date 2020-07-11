@@ -1,11 +1,14 @@
 import React from 'react';
+import Typist from 'react-typist';
 
 import './team.scss';
 
 const Team = () => (
   <main className="team">
     <h1 className="team-title main-title">
+    <Typist>
       Découvrez notre merveilleuse équipe
+    </Typist>
     </h1>
     <div className="member">
       <img
@@ -26,7 +29,6 @@ const Team = () => (
         C'est donc avec mes quatres co-chevaliers du code que je me lance dans la quête d'énigmes.
       </p>
     </div>
-    <span className="spacer">--------------------------------------</span>
     <div className="member">
       <img
         className="member-picture"
@@ -43,7 +45,6 @@ const Team = () => (
         hum.... Je dirais le développeur , dans la salle infos , avec le clavier!
       </p>
     </div>
-    <span className="spacer">--------------------------------------</span>
     <div className="member">
       <img
         className="member-picture"
@@ -61,7 +62,6 @@ const Team = () => (
         Du coup j'ai décidé de devenir Développeur.
       </p>
     </div>
-    <span className="spacer">--------------------------------------</span>
     <div className="member">
       <img
         className="member-picture"
@@ -79,7 +79,6 @@ const Team = () => (
         la légende raconte qu'il cherche encore une phrase pour se présenter..
       </p>
     </div>
-    <span className="spacer">--------------------------------------</span>
     <div className="member">
       <img
         className="member-picture"

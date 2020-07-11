@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import Loader from 'src/components/Loader';
 import Moment from 'react-moment';
+import Typist from 'react-typist';
 import './adventure.scss';
 
 const Adventure = ({
@@ -23,7 +24,11 @@ const Adventure = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
-          <h1 className="adventure-title main-title">{adventureSelected.title}</h1>
+          <h1 className="adventure-title main-title">
+          <Typist>
+            {adventureSelected.title}
+          </Typist>
+            </h1>
           <div className="adventure-authorAndDate">
             <span className="adventure-author">
               {adventureSelected.author.username}
