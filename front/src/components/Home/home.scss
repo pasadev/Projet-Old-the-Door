@@ -2,6 +2,8 @@
 
 .home {
   padding: 0.5em;
+  min-height: 100vh;
+  position: relative;
   .spacer {
     display: flex;
     justify-content: center;

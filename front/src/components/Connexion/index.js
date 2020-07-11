@@ -46,9 +46,6 @@ const Connexion = ({
   );
 };
 
-// changeField correspond a la fonction dans le container
-// handleLogin aussi
-
 Connexion.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,

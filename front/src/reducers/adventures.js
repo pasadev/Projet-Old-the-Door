@@ -2,12 +2,21 @@ import {
   SAVE_ADVENTURES_HOME,
   SAVE_ADVENTURES_CATALOG,
   SAVE_ADVENTURE_SELECTED,
+  SAVE_ADVENTURES_ACTIVE_NUMBER,
 } from 'src/actions/adventures';
 
 const initialState = {
   adventuresHome: [],
   adventuresCatalog: [],
-  adventureSelected: [],
+  adventureSelected: {
+    title: '',
+    description: '',
+    createdAt: '',
+    author: {
+      username: '',
+    },
+  },
+  adventuresActiveNumber: 0,
 };
 
 const adventures = (state = initialState, action = {}) => {
@@ -30,6 +39,12 @@ const adventures = (state = initialState, action = {}) => {
       return {
         ...state,
         adventureSelected: action.adventureSelected,
+      };
+
+    case SAVE_ADVENTURES_ACTIVE_NUMBER:
+      return {
+        ...state,
+        adventuresActiveNumber: action.adventuresActiveNumber,
       };
 
     default: return state;
