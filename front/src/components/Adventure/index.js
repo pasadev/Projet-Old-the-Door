@@ -29,7 +29,7 @@ const Adventure = ({
               {adventureSelected.author.username}
             </span>
             <time className="adventure-date" dateTime={adventureSelected.createdAt}>
-              <Moment format="DD/MM/YYYY">
+              <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
                 {adventureSelected.createdAt}
               </Moment>
             </time>
