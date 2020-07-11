@@ -15,10 +15,10 @@ import Team from 'src/components/Team';
 import GameScreen from 'src/containers/GameScreen';
 import StoryCreate from 'src/containers/StoryCreate';
 import ChapterCreate from 'src/components/ChapterCreate';
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
-import Footer from 'src/components/Footer';
+import Footer from 'src/containers/Footer';
 import Profil from 'src/components/Profil';
 
 // == Import
