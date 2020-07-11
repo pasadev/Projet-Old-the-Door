@@ -10,4 +10,20 @@
     font-weight: bold;
     font-size: $titleSize;
   }
+
+  .adventureSmall-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .adventureSmall-container {
+    align-items: flex-start !important;
+    flex-direction: row !important;
+    justify-content: center;
+  }
 }
