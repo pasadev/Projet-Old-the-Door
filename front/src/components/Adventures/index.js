@@ -26,11 +26,11 @@ const Adventures = ({
           <h1 className="adventures-title main-title">
             <Typist>
               Les aventures
-          </Typist>
+            </Typist>
           </h1>
           <div className="adventures-container">
             <div className="adventureSmall-container">
-              <div className="adventureSmall">
+              <div className="adventureSmall creationAdventure">
                 <h3 className="adventureSmall-title">
                   Pour créer une aventure c'est par ici.
                 </h3>
@@ -42,6 +42,7 @@ const Adventures = ({
                   </Link>
                 </div>
               </div>
+              <h2 className="main-title">Catalogue</h2>
               {adventuresCatalog.map((adventure) => (
                 <AdventureSmall {...adventure} key={adventure.id} />
               ))}

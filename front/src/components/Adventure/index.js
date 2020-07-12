@@ -25,10 +25,10 @@ const Adventure = ({
       {!loading && (
         <main className="adventure">
           <h1 className="adventure-title main-title">
-          <Typist>
-            {adventureSelected.title}
-          </Typist>
-            </h1>
+            <Typist>
+              {adventureSelected.title}
+            </Typist>
+          </h1>
           <div className="adventure-authorAndDate">
             <span className="adventure-author">
               {adventureSelected.author.username}

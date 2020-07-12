@@ -27,8 +27,8 @@ const Home = ({
         <main className="home">
           <section className="presentation">
             <h1 className="presentation-title main-title">
-            <Typist>
-              Bienvenue à O'ld the door
+              <Typist>
+                Bienvenue sur O'ld the door
               </Typist>
             </h1>
             <p className="asciiart" />

@@ -32,7 +32,7 @@ const App = ({ burgerMenuOpen }) => (
     {!burgerMenuOpen && (
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home />v
         </Route>
         <Route exact path="/connexion">
           <Connexion />

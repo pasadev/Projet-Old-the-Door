@@ -6,9 +6,9 @@ import './team.scss';
 const Team = () => (
   <main className="team">
     <h1 className="team-title main-title">
-    <Typist>
-      Découvrez notre merveilleuse équipe
-    </Typist>
+      <Typist>
+        Découvrez notre merveilleuse équipe
+      </Typist>
     </h1>
     <div className="member">
       <img
