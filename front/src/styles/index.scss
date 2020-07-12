@@ -3,18 +3,33 @@
 
 body {
   font-family: $family;
-  background-image: radial-gradient(
-    rgba(0, 150, 0, 0.75), black 120%
-  );
+  background-color: #1d1e22;
   font-size: $baseFontSize;
   min-height: 100vh;
   position: relative;
   color: $lightColor;
-  text-shadow: 0 0 2px $lightCaseColor;
+  /* text-shadow: 0 0 2px $lightCaseColor; */
   ::selection {
     text-shadow: none;
     background-color: $darkColor;
   }
+}
+
+main
+{
+  padding: 1em;
+}
+
+.main-title
+{
+  font-weight: bold;
+    font-size: $titleSize;
+    margin: auto;
+    margin-top: 0.5em;
+    border-bottom: 3px dashed #fff;
+    width: fit-content;
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
 }
 
 @media screen and (min-width: 768px) {

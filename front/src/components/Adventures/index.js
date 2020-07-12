@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import AdventureSmall from 'src/components/AdventureSmall';
 import Loader from 'src/components/Loader';
+import Typist from 'react-typist';
 
 import './adventures.scss';
 
@@ -22,30 +23,29 @@ const Adventures = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventures">
-          <div className="adventures-create">
-            <h1 className="adventures-title">
-              Pour créer une aventure c'est par ici.
-            </h1>
-            <div className="adventures-create-link">
-              <Link
-                to="/aventures/creation"
-              >
-                Créer une Aventure
-              </Link>
-            </div>
-            <span className="spacer">--------------------------------------</span>
-          </div>
-          <div className="adventures-catalog">
-            <h1 className="adventures-title">
-              Voici toutes les aventures de notre catalogue
-            </h1>
-            <span className="spacer">--------------------------------------</span>
-            <div className="adventures-container">
-              <div className="adventureSmall-container">
-                {adventuresCatalog.map((adventure) => (
-                  <AdventureSmall {...adventure} key={adventure.id} />
-                ))}
+          <h1 className="adventures-title main-title">
+            <Typist>
+              Les aventures
+            </Typist>
+          </h1>
+          <div className="adventures-container">
+            <div className="adventureSmall-container">
+              <div className="adventureSmall creationAdventure">
+                <h3 className="adventureSmall-title">
+                  Pour créer une aventure c'est par ici.
+                </h3>
+                <div className="adventureSmall-link">
+                  <Link
+                    to="/aventures/creation"
+                  >
+                    Créer une Aventure
+                  </Link>
+                </div>
               </div>
+              <h2 className="main-title">Catalogue</h2>
+              {adventuresCatalog.map((adventure) => (
+                <AdventureSmall {...adventure} key={adventure.id} />
+              ))}
             </div>
           </div>
         </main>

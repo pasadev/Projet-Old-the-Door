@@ -1,14 +1,10 @@
 @import 'src/styles/vars';
 
 .adventures {
-  padding: 0.5em;
   .adventures-create-link {
     padding-top: 0.5em;
     text-decoration: underline;
-  }
-  .adventures-title {
-    font-weight: bold;
-    font-size: $titleSize;
+    color: $linkColor;
   }
 
   .adventureSmall-container {
@@ -16,7 +12,12 @@
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    
+    .main-title {
+      font-size: 1.5em;
+    }
   }
+
 }
 
 
