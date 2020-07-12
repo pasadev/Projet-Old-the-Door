@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import Field from 'src/components/Field';
+import Typist from 'react-typist';
 import './storyCreate.scss';
 
 const StoryCreate = ({
@@ -17,6 +18,11 @@ const StoryCreate = ({
 
   return (
     <main className="storyCreate">
+      <h1 className="adventures-title main-title">
+        <Typist>
+          Créer une aventure
+        </Typist>
+      </h1>
       <form
         className="storyCreate-form"
         onSubmit={handleStoryCreateSubmit}

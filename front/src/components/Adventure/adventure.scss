@@ -11,9 +11,11 @@
     padding-top: 0.5em;
     font-style: italic;
     font-size: 0.8em;
+    
     .adventure-author {
       padding-right: 0.3em;
     }
+    
     .adventure-date::before {
       content: 'le';
       padding-right: 0.3em;
@@ -24,11 +26,13 @@
     padding-top: 0.5em;
 
   }
+  
   .adventure-link {
     padding-top: 0.5em;
     color: $linkColor;
     font-size: 1.2em;
   }
+  
   .adventure-link:hover {
     text-decoration: underline;
   }

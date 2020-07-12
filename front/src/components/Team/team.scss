@@ -2,19 +2,12 @@
 
 .team {
   padding: 1em;
-  .team-title {
-    /* font-weight: bold;
-    font-size: $titleSize;
-    margin: auto;
-    margin-top: 1em;
-    border-bottom: 3px dashed $lightColor;
-    width: fit-content;
-    padding-bottom: 0.3em; */
-  }
+
   .member {
     border: 2px dotted #fff;
     padding: 0.5em;
     margin-bottom: 1em;
+
     .member-role {
       padding-top: 0.5em;
       font-style: italic;
