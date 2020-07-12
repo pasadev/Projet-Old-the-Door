@@ -10,11 +10,17 @@ const StoryCreate = ({
   description,
   updateField,
   sumbitStoryCreate,
+  // changeField,
 }) => {
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
     sumbitStoryCreate('sumbitStoryCreate');
   };
+
+  // const handleChange = (event) => {
+  //   const { value: inputValue, name } = event.target;
+  //   changeField(name, inputValue);
+  // };
 
   return (
     <main className="storyCreate">
@@ -51,6 +57,21 @@ const StoryCreate = ({
           label="description :"
           maxLength="524288"
         />
+
+        {/* <label htmlFor="description">
+          Description
+          <textarea
+            identifier="description"
+            value={description}
+            onChange={handleChange}
+            placeholder="description"
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+            type="text"
+          />
+        </label> */}
         <button
           className="storyCreate-form-button"
           type="submit"
@@ -68,5 +89,6 @@ StoryCreate.propTypes = {
   description: Proptypes.string.isRequired,
   sumbitStoryCreate: Proptypes.func.isRequired,
   updateField: Proptypes.func.isRequired,
+  // changeField: Proptypes.func.isRequired,
 };
 export default StoryCreate;
