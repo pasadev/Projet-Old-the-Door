@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 .adventure {
   padding: 1em;
 
@@ -24,7 +26,7 @@
   }
   .adventure-link {
     padding-top: 0.5em;
-    color: #0e9ab6;
+    color: $linkColor;
     font-size: 1.2em;
   }
   .adventure-link:hover {

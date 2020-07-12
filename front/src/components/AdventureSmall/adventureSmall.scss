@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 .adventureSmall {
   border: 2px dotted #fff;
   padding: 0.5em;
@@ -26,7 +28,7 @@
   .adventureSmall-link {
     padding-top: 0.5em;
     /* text-decoration: underline; */
-    color: #0e9ab6;
+    color: $linkColor;
   }
   .adventureSmall-link:hover {
     text-decoration: underline;
