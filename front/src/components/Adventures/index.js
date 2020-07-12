@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import AdventureSmall from 'src/components/AdventureSmall';
 import Loader from 'src/components/Loader';
@@ -27,6 +28,18 @@ const Adventures = ({
             Les aventures
           </Typist>
           </h1>
+          <div className="adventures-create">
+            <h2 className="adventures-title">
+              Pour créer une aventure c'est par ici.
+            </h2>
+            <div className="adventures-create-link">
+              <Link
+                to="/aventures/creation"
+              >
+                Créer une Aventure
+              </Link>
+            </div>
+          </div>
           <div className="adventures-container">
             <div className="adventureSmall-container">
               {adventuresCatalog.map((adventure) => (

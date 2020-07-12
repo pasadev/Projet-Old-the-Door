@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Register from 'src/components/Register';
-import { updateRegistersField } from 'src/actions/user';
+import { updateRegistersField, createLogin } from 'src/actions/user';
 
 const mapStateToProps = (state) => ({
 
@@ -15,6 +15,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeField: (newValue, name) => {
     dispatch(updateRegistersField(newValue, name));
+  },
+  handleRegister: () => {
+    dispatch(createLogin());
   },
 
 });

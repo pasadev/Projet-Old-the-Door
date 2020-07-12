@@ -3,11 +3,9 @@
 .error404-container {
   background-color: $altScreenColor;
   color:  #fff;
-  position: absolute;
-  bottom: 0;
-  top: 0;
+  position: relative;
+  min-height: 100vh;
   width: 100%;
-  z-index: -1;
   display: flex;
   flex-direction: column;
   padding: 1em;
@@ -15,7 +13,7 @@
   .error404-title {
     font-size: 3em;
     align-self: center;
-    margin-top: 1em;
+    margin-top: 0.5em;
   }
 
   .error404-disclaimer {
@@ -27,15 +25,35 @@
   .error404-text {
     margin-top: 1.5em;
     
+    
     .error404-texts {
-      display: flex;
       flex-direction: column;
-      margin-bottom: 0.8em;
+      padding-bottom: 0.8em;
       
       .error404-span {
         font-size: 0.9em;
         font-style: italic;
       }
+      
+      .fabigeon {
+        display: inline;
+          .tooltip {
+            display: none;
+          }
+        }
+        .fabigeon:hover {
+          color: #f0f;
+          text-shadow: none;
+          
+          .tooltip {
+          display: block;
+          max-width: 90vw;
+          max-height: 50vh;
+          margin: auto;
+        }  
+      }
+
     }
   }
 }
+
