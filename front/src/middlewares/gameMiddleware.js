@@ -12,10 +12,11 @@ import {
 } from 'src/actions/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
+  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/back';
   switch (action.type) {
     case FETCH_CURRENT_STORY:
 
-      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
+      axios.get(`${baseURL}/api/v0/stories/${action.slug}`)
       // chemin test
         .then((response) => {
           store.dispatch(saveCurrentStory(response.data[0]));
@@ -29,7 +30,7 @@ const gameMiddleware = (store) => (next) => (action) => {
 
     case FETCH_CURRENT_CHAPTER:
 
-      axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/12')
+      axios.get(`${baseURL}/api/v0/chapters/12`)
         .then((response) => {
           store.dispatch(saveCurrentChapter(response.data[0]));
           store.dispatch(hideLoader());
