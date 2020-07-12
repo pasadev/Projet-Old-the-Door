@@ -24,24 +24,24 @@ const Adventures = ({
       {!loading && (
         <main className="adventures">
           <h1 className="adventures-title main-title">
-          <Typist>
-            Les aventures
+            <Typist>
+              Les aventures
           </Typist>
           </h1>
-          <div className="adventures-create">
-            <h2 className="adventures-title">
-              Pour créer une aventure c'est par ici.
-            </h2>
-            <div className="adventures-create-link">
-              <Link
-                to="/aventures/creation"
-              >
-                Créer une Aventure
-              </Link>
-            </div>
-          </div>
           <div className="adventures-container">
             <div className="adventureSmall-container">
+              <div className="adventureSmall">
+                <h3 className="adventureSmall-title">
+                  Pour créer une aventure c'est par ici.
+                </h3>
+                <div className="adventureSmall-link">
+                  <Link
+                    to="/aventures/creation"
+                  >
+                    Créer une Aventure
+                  </Link>
+                </div>
+              </div>
               {adventuresCatalog.map((adventure) => (
                 <AdventureSmall {...adventure} key={adventure.id} />
               ))}
