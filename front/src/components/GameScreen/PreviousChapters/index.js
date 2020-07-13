@@ -6,19 +6,11 @@ import PreviousChapter from './PreviousChapter';
 const PreviousChapters = ({
   previousChapters,
 }) => {
-  console.log('tet');
+  console.log(previousChapters);
   return (
     <div className="gameScreen-content-previousChapters">
-      {previousChapters.forEach((previousChapter) => (
-        <>
-          {console.log('test')}
-          <PreviousChapter
-            title={previousChapter.title}
-            content={previousChapter.content}
-            unlockText={previousChapter.unlockText}
-          />
-          <p>hello</p>
-        </>
+      {previousChapters.map((previousChapter) => (
+        <PreviousChapter {... previousChapter} key={previousChapter.id} />
       ))}
     </div>
   );

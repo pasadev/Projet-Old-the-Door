@@ -60,7 +60,7 @@ const GameScreen = ({
             </div>
             <div className="gameScreen-header-text">
               <Typist>
-                !!!Initialisation '{currentStory.title}' v0.01 ..................................
+                Initialisation '{currentStory.title}' v0.01 ..................................
               </Typist>
               <div className="gameScreen-content-infos">
                 <Typist>
