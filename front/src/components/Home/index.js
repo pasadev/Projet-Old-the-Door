@@ -38,7 +38,7 @@ const Home = ({
               il faudra vous servir de votre environnement pour avancer.
               Trouver votre chemin dans les mots du texte de l’aventure et laissez votre
               imagination créer l'environnement qui vous entoure.
-              Vous aimez jouer ? {adventuresActiveNumber} scénarios
+              Vous aimez jouer ? <span className="adventuresNumber">{adventuresActiveNumber}</span> scénarios
               sont disponibles pour vous !
               Vous aimez écrire ? Découvrez notre éditeur d’aventure
               pour proposer votre histoire à tous les joueurs.

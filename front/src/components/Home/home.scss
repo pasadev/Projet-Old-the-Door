@@ -11,6 +11,9 @@
     .presentation-description {
       display: flex;
       flex-direction: column;
+      .adventuresNumber{
+        color: $linkColor;
+      }
     }
   }
   
