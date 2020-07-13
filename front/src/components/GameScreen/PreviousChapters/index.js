@@ -5,21 +5,24 @@ import PreviousChapter from './PreviousChapter';
 
 const PreviousChapters = ({
   previousChapters,
-}) => (
-  <div className="gameScreen-content-text">
-    {previousChapters.forEach((previousChapter) => (
-      <>
-        <PreviousChapter
-          title={previousChapter.title}
-          content={previousChapter.content}
-          unlockText={previousChapter.unlockText}
-        />
-        <p>hello</p>
-      </>
-    ))}
-
-  </div>
-);
+}) => {
+  console.log('tet');
+  return (
+    <div className="gameScreen-content-previousChapters">
+      {previousChapters.forEach((previousChapter) => (
+        <>
+          {console.log('test')}
+          <PreviousChapter
+            title={previousChapter.title}
+            content={previousChapter.content}
+            unlockText={previousChapter.unlockText}
+          />
+          <p>hello</p>
+        </>
+      ))}
+    </div>
+  );
+};
   // todo
   // shows a new div but there is no data inside
 

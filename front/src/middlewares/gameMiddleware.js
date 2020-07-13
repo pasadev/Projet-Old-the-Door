@@ -48,12 +48,9 @@ const gameMiddleware = (store) => (next) => (action) => {
     case FETCH_NEXT_CHAPTER:
       // eslint-disable-next-line no-case-declarations
       const currentChapterForSave = store.getState().gameScreen.currentChapter;
-      console.log(currentChapterForSave);
 
       axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${currentChapterForSave.id}/child`)
         .then((response) => {
-          console.log(currentChapterForSave);
-
           store.dispatch(savePreviousChapters(currentChapterForSave));
           store.dispatch(saveCurrentChapter(response.data[0]));
         })
