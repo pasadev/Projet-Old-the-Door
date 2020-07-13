@@ -44,12 +44,23 @@ const Adventure = ({
           <p className="adventure-description">
             {adventureSelected.description}
           </p>
-          <div className="adventure-link">
+          <div className="adventure-links">
             <Link
               to={`/aventures/${slug}/jouer`}
             >
               Jouer
             </Link>
+            <Link
+              to={`/aventures/${slug}/edition`}
+            >
+              Edition
+            </Link>
+            <button type="button">
+              Publier
+            </button>
+            <button type="button">
+              Supprimer
+            </button>
           </div>
         </main>
       )}
