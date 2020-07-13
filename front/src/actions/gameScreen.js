@@ -8,6 +8,7 @@ export const FETCH_CURRENT_CHAPTER = 'FETCH_CURRENT_CHAPTER';
 export const FETCH_NEXT_CHAPTER = 'FETCH_NEXT_CHAPTER';
 export const SAVE_CURRENT_CHAPTER = 'SAVE_CURRENT_CHAPTER';
 export const TOGGLE_ANSWER_VALUE = 'TOGGLE_ANSWER_VALUE';
+export const UPDATE_ANSWER_FIELD = 'UPDATE_ANSWER_FIELD';
 // === action creators
 export const doSomething = (/* newValue */) => ({
   type: DO_SOMETHING,
@@ -53,4 +54,10 @@ export const saveCurrentChapter = (currentChapter) => ({
 
 export const toggleAnswerValue = () => ({
   type: TOGGLE_ANSWER_VALUE,
+});
+
+export const updateAnswerField = (newValue, name) => ({
+  type: UPDATE_ANSWER_FIELD,
+  newValue,
+  name,
 });

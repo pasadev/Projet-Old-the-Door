@@ -8,6 +8,7 @@ import {
   fetchCurrentChapter,
   saveCurrentChapter,
   toggleAnswerValue,
+  updateAnswerField,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -21,10 +22,18 @@ const mapStateToProps = (state) => ({
 
   currentChapter: state.gameScreen.currentChapter,
 
+  gameKey: state.gameScreen.gameKey,
+
+  gameLock: state.gameScreen.gameLock,
+
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
+
+  changeField: (newValue, name) => {
+    dispatch(updateAnswerField(newValue, name));
+  },
 
   fetchCurrentStory: (slug) => {
     dispatch(fetchCurrentStory(slug));

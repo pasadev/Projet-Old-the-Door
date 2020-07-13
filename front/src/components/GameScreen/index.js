@@ -8,11 +8,17 @@ import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
 import { checkAnswer } from 'src/utils';
 
+import GameScreenField from './GameScreenField';
+
 import './gameScreen.scss';
 
 const GameScreen = ({
   // buttonIsVisible,
   // toggleButtonVisibility,
+  changeField,
+  gameKey,
+  gameLock,
+
   currentStory,
   fetchCurrentStory,
   currentChapter,
@@ -24,14 +30,13 @@ const GameScreen = ({
   displayLoader,
   loading,
 }) => {
-  const keyField = document.querySelector("[name='game-key']");
-  const lockField = document.querySelector("[name='game-lock']");
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleCheckAnswer(checkAnswer(keyField.value, lockField.value, `${currentChapter.keyword}`, `${currentChapter.lockword}`));
+    handleCheckAnswer(checkAnswer({ gameKey }.gameKey, { gameLock }.gameLock, `${currentChapter.keyword}`, `${currentChapter.lockword}`));
     // checkAnswer takes fours values, keywordGuess, lockwordGuess, keyAnswer, lockAnswer
     // it gives out true if both answers are right
+
+    // {gameKey}.gameKey looks dirty, but it works
   };
   const { slug } = useParams();
   useEffect(() => {
@@ -57,14 +62,22 @@ const GameScreen = ({
             </div>
           </div>
           <form className="gameScreen-form" onSubmit={handleSubmit}>
-            <div className="gameScreen-form-field">
-              <label htmlFor="game-key">Clé :</label>
-              <input name="game-key" id="game-key" placeholder="Clé" className="gameScreen-form-input" value="" />
-            </div>
-            <div className="gameScreen-form-field">
-              <label htmlFor="game-lock">Serrure :</label>
-              <input name="game-lock" id="game-lock" placeholder="Serrure" className="gameScreen-form-input" value="" />
-            </div>
+
+            <label htmlFor="gameKey">Clé :</label>
+            <GameScreenField
+              name="gameKey"
+              placeholder="Clé"
+              onChange={changeField}
+              value={gameKey}
+            />
+
+            <label htmlFor="gameLock">Serrure :</label>
+            <GameScreenField
+              name="gameLock"
+              placeholder="Serrure"
+              onChange={changeField}
+              value={gameLock}
+            />
             <button type="submit">Essayez votre réponse</button>
           </form>
           <div className="gameScreen-content">
@@ -81,16 +94,16 @@ const GameScreen = ({
               </Typist>
             </div>
             <div className="gameScreen-content-text">
-              {!trueAnswer && (
+              {/* {!trueAnswer && (
               <Typist>
                 <Typist.Delay ms={9000} />
                 You must find the way, there is no time to explain: (lockword here)
               </Typist>
-              )}
+              )} */}
               {trueAnswer && (
               <Typist>
                 <Typist.Delay ms={1000} />
-                {currentChapter.lockword}
+                {currentChapter.unlockText}
               </Typist>
               )}
             </div>
@@ -103,6 +116,11 @@ const GameScreen = ({
 };
 
 GameScreen.propTypes = {
+
+  changeField: PropTypes.func.isRequired,
+  gameKey: PropTypes.string.isRequired,
+  gameLock: PropTypes.string.isRequired,
+
   displayLoader: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   trueAnswer: PropTypes.bool.isRequired,

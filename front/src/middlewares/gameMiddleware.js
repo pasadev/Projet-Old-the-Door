@@ -16,7 +16,7 @@ const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CURRENT_STORY:
 
-      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
+      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
       // chemin test
         .then((response) => {
           store.dispatch(saveCurrentStory(response.data[0]));
@@ -32,7 +32,7 @@ const gameMiddleware = (store) => (next) => (action) => {
     case FETCH_CURRENT_CHAPTER:
 
       console.log(action);
-      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/chapters/${action.firstChapterId}`)
+      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${action.firstChapterId}`)
         .then((response) => {
           store.dispatch(saveCurrentChapter(response.data[0]));
           store.dispatch(hideLoader());

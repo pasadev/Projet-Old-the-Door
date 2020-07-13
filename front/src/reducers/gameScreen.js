@@ -2,6 +2,7 @@ import {
   SAVE_CURRENT_STORY,
   SAVE_CURRENT_CHAPTER,
   TOGGLE_ANSWER_VALUE,
+  UPDATE_ANSWER_FIELD,
 
 } from 'src/actions/gameScreen';
 
@@ -27,6 +28,9 @@ const initialState = {
     forStory: '',
   },
 
+  gameKey: '',
+  gameLock: '',
+
   trueAnswer: false,
 };
 
@@ -46,6 +50,13 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         currentChapter: action.currentChapter,
+      };
+
+    case UPDATE_ANSWER_FIELD:
+      return {
+        ...state,
+
+        [action.name]: action.newValue,
       };
 
     default: return state;
