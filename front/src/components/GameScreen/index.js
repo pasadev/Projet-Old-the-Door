@@ -59,11 +59,15 @@ const GameScreen = ({
               15:05
             </div>
             <div className="gameScreen-header-text">
-              <Typist>
+              <Typist
+                cursor={{ show: false }}
+              >
                 Initialisation '{currentStory.title}' v0.01 ..................................
               </Typist>
               <div className="gameScreen-content-infos">
-                <Typist>
+                <Typist
+                  cursor={{ show: false }}
+                >
                   <Typist.Delay ms={5000} />
                   <span>{currentStory.author.username}</span>
                 </Typist>
@@ -78,31 +82,31 @@ const GameScreen = ({
             && <PreviousChapters previousChapters={previousChapters} />}
 
             <div className="gameScreen-content-text">
-              <Typist>
+              <Typist
+                cursor={{ show: false }}
+              >
                 <Typist.Delay ms={5000} />
                 {currentChapter.title}
               </Typist>
-              <Typist>
+              <Typist
+                cursor={{ show: false }}
+              >
                 <Typist.Delay ms={9000} />
-                this is where chapter text is : {currentChapter.content}
+                {currentChapter.content}
               </Typist>
             </div>
             <div className="gameScreen-content-text">
-              {/* {!trueAnswer && (
-              <Typist>
-                <Typist.Delay ms={9000} />
-                You must find the way, there is no time to explain: (lockword here)
-              </Typist>
-              )} */}
               {trueAnswer && (
               <>
-                <Typist>
+                <Typist
+                  cursor={{ show: false }}
+                >
                   <br />
                   <Typist.Delay ms={1000} />
                   {currentChapter.unlockText}
                   <br />
 
-                  <button type="button" onClick={fetchNextChapter}>hello this is button</button>
+                  <button type="button" onClick={fetchNextChapter}>Chapitre suivant</button>
                 </Typist>
               </>
               )}
@@ -125,7 +129,7 @@ const GameScreen = ({
                 onChange={changeField}
                 value={gameLock}
               />
-              <button type="submit">Essayez votre réponse</button>
+              <button type="submit">Tester la combinaison</button>
             </form>
           </div>
         </div>

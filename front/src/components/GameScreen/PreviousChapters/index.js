@@ -15,8 +15,6 @@ const PreviousChapters = ({
     </div>
   );
 };
-  // todo
-  // shows a new div but there is no data inside
 
 PreviousChapters.propTypes = {
   previousChapters: PropTypes.array.isRequired,
