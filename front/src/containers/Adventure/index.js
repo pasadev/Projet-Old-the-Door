@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchAdventureSelected, saveAdventureSelected } from 'src/actions/adventures';
+import { redirectOff } from 'src/actions/storyCreation';
 import { displayLoader } from 'src/actions/utils';
 
 import Adventure from 'src/components/Adventure';
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   displayLoader: () => {
     dispatch(displayLoader());
+  },
+  redirectOff: () => {
+    dispatch(redirectOff());
   },
 });
 

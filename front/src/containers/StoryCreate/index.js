@@ -3,8 +3,6 @@ import StoryCreate from 'src/components/StoryCreate';
 import {
   updateCreationField,
   sumbitStoryCreate,
-  redirectOn,
-  redirectOff,
 } from 'src/actions/storyCreation';
 
 const mapStateToProps = (state) => ({
@@ -20,12 +18,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sumbitStoryCreate: (title, synopsis, description) => {
     dispatch(sumbitStoryCreate(title, synopsis, description));
-  },
-  redirectOn: () => {
-    redirectOn();
-  },
-  redirectOff: () => {
-    redirectOff();
   },
 });
 
