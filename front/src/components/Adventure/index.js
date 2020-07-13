@@ -12,9 +12,11 @@ const Adventure = ({
   fetchAdventureSelected,
   displayLoader,
   loading,
+  redirectOff,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
+    redirectOff();
     fetchAdventureSelected(slug);
     displayLoader();
   }, []);
@@ -56,6 +58,7 @@ const Adventure = ({
 };
 
 Adventure.propTypes = {
+  redirectOff: PropTypes.func.isRequired,
   displayLoader: PropTypes.func.isRequired,
   fetchAdventureSelected: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
