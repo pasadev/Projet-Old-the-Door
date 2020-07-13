@@ -5,8 +5,9 @@ import GameScreen from 'src/components/GameScreen';
 import {
   fetchCurrentStory,
   saveCurrentStory,
-  fetchCurrentChapter,
+  fetchFirstChapter,
   saveCurrentChapter,
+  fetchNextChapter,
   toggleAnswerValue,
   updateAnswerField,
 } from 'src/actions/gameScreen';
@@ -26,6 +27,8 @@ const mapStateToProps = (state) => ({
 
   gameLock: state.gameScreen.gameLock,
 
+  previousChapters: state.gameScreen.previousChapters,
+
 });
 
 // === mapDispatchToProps
@@ -43,8 +46,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(saveCurrentStory());
   },
   // could be fetch first chapter to be honest
-  fetchCurrentChapter: () => {
-    dispatch(fetchCurrentChapter());
+  fetchFirstChapter: () => {
+    dispatch(fetchFirstChapter());
   },
   // saveCurrentChapter can stay as it is
   saveCurrentChapter: () => {
@@ -57,6 +60,12 @@ const mapDispatchToProps = (dispatch) => ({
       console.log('answer is true');
     }
     else (console.log('handleCheckAnswer determined the answer is false'));
+  },
+
+  // when the user clicks on next chapter button, fetchNextChapter
+
+  fetchNextChapter: () => {
+    dispatch(fetchNextChapter());
   },
 
   displayLoader: () => {

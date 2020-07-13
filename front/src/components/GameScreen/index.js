@@ -22,6 +22,7 @@ const GameScreen = ({
   currentStory,
   fetchCurrentStory,
   currentChapter,
+  fetchNextChapter,
 
   handleCheckAnswer,
   // initialState trueAnswer is false, if after check submit === answer then switch to true,
@@ -57,37 +58,22 @@ const GameScreen = ({
             </div>
             <div className="gameScreen-header-text">
               <Typist>
-                Initialisation 'OLD THE DOOOR' v0.01 ..................................
+                Initialisation '{currentStory.title}' v0.01 ..................................
               </Typist>
+              <div className="gameScreen-content-infos">
+                <Typist>
+                  <Typist.Delay ms={5000} />
+                  <span>{currentStory.author.username}</span>
+                </Typist>
+              </div>
             </div>
           </div>
-          <form className="gameScreen-form" onSubmit={handleSubmit}>
-
-            <label htmlFor="gameKey">Clé :</label>
-            <GameScreenField
-              name="gameKey"
-              placeholder="Clé"
-              onChange={changeField}
-              value={gameKey}
-            />
-
-            <label htmlFor="gameLock">Serrure :</label>
-            <GameScreenField
-              name="gameLock"
-              placeholder="Serrure"
-              onChange={changeField}
-              value={gameLock}
-            />
-            <button type="submit">Essayez votre réponse</button>
-          </form>
           <div className="gameScreen-content">
-            <div className="gameScreen-content-infos">
-              <Typist>
-                <Typist.Delay ms={6000} />
-                <span>{currentStory.author.username}</span>
-              </Typist>
-            </div>
             <div className="gameScreen-content-text">
+              <Typist>
+                <Typist.Delay ms={5000} />
+                {currentChapter.title}
+              </Typist>
               <Typist>
                 <Typist.Delay ms={9000} />
                 this is where chapter text is : {currentChapter.content}
@@ -101,12 +87,38 @@ const GameScreen = ({
               </Typist>
               )} */}
               {trueAnswer && (
-              <Typist>
-                <Typist.Delay ms={1000} />
-                {currentChapter.unlockText}
-              </Typist>
+              <>
+                <Typist>
+                  <br />
+                  <Typist.Delay ms={1000} />
+                  {currentChapter.unlockText}
+                  <br />
+
+                  <button type="button" onClick={fetchNextChapter}>hello this is button</button>
+                </Typist>
+              </>
               )}
             </div>
+
+            <form className="gameScreen-form" onSubmit={handleSubmit}>
+
+              <label htmlFor="gameKey">Clé :</label>
+              <GameScreenField
+                name="gameKey"
+                placeholder="Clé"
+                onChange={changeField}
+                value={gameKey}
+              />
+
+              <label htmlFor="gameLock">Serrure :</label>
+              <GameScreenField
+                name="gameLock"
+                placeholder="Serrure"
+                onChange={changeField}
+                value={gameLock}
+              />
+              <button type="submit">Essayez votre réponse</button>
+            </form>
           </div>
         </div>
       </main>
@@ -126,6 +138,7 @@ GameScreen.propTypes = {
   trueAnswer: PropTypes.bool.isRequired,
 
   fetchCurrentStory: PropTypes.func.isRequired,
+  fetchNextChapter: PropTypes.func.isRequired,
   // we use one of type to stop console throwing errors
   // since we define each data in the initialstate to stop errors
   // and it is a '' in the initialstate.

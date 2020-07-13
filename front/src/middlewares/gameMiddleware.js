@@ -3,9 +3,11 @@ import axios from 'axios';
 import {
   FETCH_CURRENT_STORY,
   saveCurrentStory,
-  fetchCurrentChapter,
-  FETCH_CURRENT_CHAPTER,
+  fetchFirstChapter,
+  FETCH_FIRST_CHAPTER,
   saveCurrentChapter,
+  FETCH_NEXT_CHAPTER,
+  savePreviousChapters,
 } from 'src/actions/gameScreen';
 
 import {
@@ -20,7 +22,7 @@ const gameMiddleware = (store) => (next) => (action) => {
       // chemin test
         .then((response) => {
           store.dispatch(saveCurrentStory(response.data[0]));
-          store.dispatch(fetchCurrentChapter(response.data[0].firstChapter.id));
+          store.dispatch(fetchFirstChapter(response.data[0].firstChapter.id));
         })
         .catch((error) => {
           console.warn(error);
@@ -29,13 +31,31 @@ const gameMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
-    case FETCH_CURRENT_CHAPTER:
+    case FETCH_FIRST_CHAPTER:
 
-      console.log(action);
       axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${action.firstChapterId}`)
         .then((response) => {
           store.dispatch(saveCurrentChapter(response.data[0]));
           store.dispatch(hideLoader());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+
+      next(action);
+      break;
+
+    case FETCH_NEXT_CHAPTER:
+      // eslint-disable-next-line no-case-declarations
+      const currentChapterForSave = store.getState().gameScreen.currentChapter;
+      console.log(currentChapterForSave);
+
+      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${currentChapterForSave.id}/child`)
+        .then((response) => {
+          console.log(currentChapterForSave);
+
+          store.dispatch(savePreviousChapters(currentChapterForSave));
+          store.dispatch(saveCurrentChapter(response.data[0]));
         })
         .catch((error) => {
           console.warn(error);

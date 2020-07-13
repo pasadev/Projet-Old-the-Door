@@ -4,9 +4,10 @@ export const DO_SOMETHING = 'DO_SOMETHING';
 export const TOGGLE_BUTTON_VISIBILITY = 'TOGGLE_BUTTON_VISIBILITY';
 export const FETCH_CURRENT_STORY = 'FETCH_CURRENT_STORY';
 export const SAVE_CURRENT_STORY = 'SAVE_CURRENT_STORY';
-export const FETCH_CURRENT_CHAPTER = 'FETCH_CURRENT_CHAPTER';
+export const FETCH_FIRST_CHAPTER = 'FETCH_FIRST_CHAPTER';
 export const FETCH_NEXT_CHAPTER = 'FETCH_NEXT_CHAPTER';
 export const SAVE_CURRENT_CHAPTER = 'SAVE_CURRENT_CHAPTER';
+export const SAVE_PREVIOUS_CHAPTERS = 'SAVE_PREVIOUS_CHAPTERS';
 export const TOGGLE_ANSWER_VALUE = 'TOGGLE_ANSWER_VALUE';
 export const UPDATE_ANSWER_FIELD = 'UPDATE_ANSWER_FIELD';
 // === action creators
@@ -37,18 +38,23 @@ export const saveCurrentStory = (currentStory) => ({
 
 // calls firstChapter
 // Could be renamed to fetchFirstChapter
-export const fetchCurrentChapter = (firstChapterId) => ({
-  type: FETCH_CURRENT_CHAPTER,
+export const fetchFirstChapter = (firstChapterId) => ({
+  type: FETCH_FIRST_CHAPTER,
   firstChapterId,
 });
 
-export const fetchNextChapter = (nextChapterId) => ({
+export const fetchNextChapter = (currentChapterChild) => ({
   type: FETCH_NEXT_CHAPTER,
-  nextChapterId,
+  currentChapterChild,
 });
 
 export const saveCurrentChapter = (currentChapter) => ({
   type: SAVE_CURRENT_CHAPTER,
+  currentChapter,
+});
+
+export const savePreviousChapters = (currentChapter) => ({
+  type: SAVE_PREVIOUS_CHAPTERS,
   currentChapter,
 });
 
