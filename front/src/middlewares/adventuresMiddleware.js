@@ -54,7 +54,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
     case FETCH_ADVENTURE_SELECTED:
       // API request for the adventures catalog
       // http://maxence-royer.vpnuser.lan:8000/api/v0/stories
-      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
+      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
         .then((response) => {
           // dispatch to save the Adventure selected
           store.dispatch(saveAdventureSelected(response.data[0]));

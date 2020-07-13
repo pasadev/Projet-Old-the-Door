@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import slugify from 'slugify';
 
 export const scrollToTop = () => {
@@ -24,5 +23,5 @@ export const doSomething = () => {
 
 // eslint-disable-next-line import/prefer-default-export
 export const slugifyTitle = (title) => (
-  slugify(title, { lower: true })
+  slugify(title.replace('\'', '-'), { lower: true })
 );

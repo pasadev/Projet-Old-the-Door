@@ -8,7 +8,7 @@ export const LOG_IN = 'LOG_IN';
 export const SAVE_USER = 'SAVE_USER';
 export const LOG_OUT = 'LOG_OUT';
 export const CHECK_LOGGED = 'CHECK_LOGGED';
-
+export const REGISTER_USER = 'REGISTER_USER';
 export const updateUserField = (newValue, name) => ({
   type: UPDATE_USER_FIELD,
   newValue,
@@ -39,5 +39,5 @@ export const updateRegistersField = (newValue, name) => ({
   name,
 });
 export const createLogin = () => ({
-
+  type: REGISTER_USER,
 });

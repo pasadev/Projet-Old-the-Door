@@ -1,17 +1,23 @@
 @import 'src/styles/vars';
 
 .team {
-  padding: 0.5em;
-  .team-title {
-    font-weight: bold;
-    font-size: $titleSize;
-  }
+  padding: 1em;
+
   .member {
+    border: 2px dotted #fff;
+    padding: 0.5em;
+    margin-bottom: 1em;
+
     .member-role {
       padding-top: 0.5em;
       font-style: italic;
       display: flex;
       flex-direction: column;
+      color: $linkColor;
+    }
+
+    .member-name {
+      text-transform: uppercase;
     }
 
     .member-description {
