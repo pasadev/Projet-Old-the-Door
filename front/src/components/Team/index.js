@@ -13,7 +13,13 @@ const Team = () => (
     </h1>
     <div className="member">
       <div className="member-name">
-        Damien
+        &nbsp;________&nbsp;&nbsp;________&nbsp;&nbsp;_____&nbsp;______&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        |\&nbsp;&nbsp;&nbsp;___&nbsp;\|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;_&nbsp;\&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;___&nbsp;\&nbsp;|\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;
+        \&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\__\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__/|\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;
+        &nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\\&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\|__|&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|/_\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;
+        &nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_\\&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;
+        &nbsp;&nbsp;&nbsp;\&nbsp;\_______\&nbsp;\__\&nbsp;\__\&nbsp;\__\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\__\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\
+      &nbsp;&nbsp;&nbsp;&nbsp;\|_______|\|__|\|__|\|__|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|\|__|\|_______|\|__| \|__|
       </div>
       <div className="member-role">
         <span>Product Owner</span>
@@ -44,7 +50,14 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        Tony
+        &nbsp;_________&nbsp;&nbsp;________&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;
+        |\___&nbsp;&nbsp;&nbsp;___\\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;|\&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;/|
+        \|___&nbsp;\&nbsp;&nbsp;\_\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/&nbsp;/
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;/&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;/&nbsp;&nbsp;/&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\__/&nbsp;&nbsp;/&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|&nbsp;&nbsp;\|_______|\|__|&nbsp;\|__|\___/&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|___|
       </div>
       <div className="member-role">
         <span>Lead Développeur Front</span>
@@ -56,7 +69,13 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        Hugo
+        &nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;________&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        |\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;____\|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;
+        \&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\___|\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;
+        &nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;__\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;&nbsp;
+        &nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;
+        &nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\__\&nbsp;\_______\&nbsp;\_______\&nbsp;\_______\
+        &nbsp;&nbsp;&nbsp;&nbsp;\|__|\|__|\|_______|\|_______|\|_______|
       </div>
       <div className="member-role">
         <span>Git Master</span>
@@ -68,7 +87,13 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        Jukka
+        &nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;__&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;__&nbsp;&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/|\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/|\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;
+        &nbsp;__&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;
+        |\&nbsp;&nbsp;\\_\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;
+        \&nbsp;\________\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\&nbsp;\__\\&nbsp;\__\&nbsp;\__\&nbsp;\__\
+        &nbsp;\|________|\|_______|\|__|&nbsp;\|__|\|__|&nbsp;\|__|\|__|\|___|
       </div>
       <div className="member-role">
         <span>Scrum Master</span>
