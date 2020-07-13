@@ -19,7 +19,7 @@ const StoryCreate = ({
     event.preventDefault();
     sumbitStoryCreate(title, synopsis, description);
   };
-  // TODO put redirect to false after redirect is complet in useEffect adv/:slug
+
   return (
     <>
       {redirect && <Redirect to={`/aventures/${slugifyTitle(title)}`} />}
