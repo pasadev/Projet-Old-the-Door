@@ -96,6 +96,7 @@ const GameScreen = ({
               </Typist>
             </div>
             <div className="gameScreen-content-text">
+              {console.log(trueAnswer)}
               {trueAnswer && (
               <>
                 <Typist

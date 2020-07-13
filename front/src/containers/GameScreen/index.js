@@ -65,6 +65,7 @@ const mapDispatchToProps = (dispatch) => ({
   // when the user clicks on next chapter button, fetchNextChapter
 
   fetchNextChapter: () => {
+    dispatch(toggleAnswerValue());
     dispatch(fetchNextChapter());
   },
 
