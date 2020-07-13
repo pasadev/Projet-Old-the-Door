@@ -2,13 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './register.scss';
-import FieldRegister from './FieldRegister/FieldRegister';
+// import FieldRegister from './FieldRegister/FieldRegister';
 import ButtonRegister from './ButtonRegister';
-import FieldRegisterPassword from './FieldRegister/FieldRegisterPassword';
+// import FieldRegisterPassword from './FieldRegister/FieldRegisterPassword';
+import Field from 'src/components/Field'
 
 const Register = ({
   emailRegister,
-  passwordRegister,
   // confirmedPassword,
   firstname,
   lastname,
@@ -16,11 +16,12 @@ const Register = ({
   // submitRegister,
   // updateField,
   changeField,
-  passwordConfirmation,
+  first,
+  second,
   handleRegister,
 }) => {
-  const firstPassword = passwordRegister;
-  const secondPassword = passwordConfirmation;
+  const firstPassword = first;
+  const secondPassword = second;
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleRegister();
@@ -31,58 +32,60 @@ const Register = ({
         className="form"
         onSubmit={handleSubmit}
       >
-        <label htmlFor="form-nickname">
+        <label htmlFor="nickname">
           Pseudo :
         </label>
-        <FieldRegister
+        <Field
           name="nickname"
           placeholder="Pseudo"
           onChange={changeField}
           value={nickname}
         />
-        <label htmlFor="form-firstname">
+        <label htmlFor="firstname">
           Prénom :
         </label>
-        <FieldRegister
+        <Field
           name="firstname"
           placeholder="Prénom"
           onChange={changeField}
           value={firstname}
         />
-        <label htmlFor="form-lastname">
+        <label htmlFor="lastname">
           Nom :
-          <FieldRegister
+          <Field
             name="lastname"
             placeholder="Nom"
             onChange={changeField}
             value={lastname}
           />
         </label>
-        <label htmlFor="form-email">
+        <label htmlFor="email">
           Email :
-          <FieldRegister
+          <Field
             name="emailRegister"
             placeholder="email"
             onChange={changeField}
             value={emailRegister}
           />
         </label>
-        <label htmlFor="form-password">
+        <label htmlFor="password-first">
           Mot de passe :
-          <FieldRegisterPassword
-            name="passwordRegister"
+          <Field
+            name="first"
             placeholder="password"
             onChange={changeField}
-            value={passwordRegister}
+            value={first}
+            type= "password"
           />
         </label>
-        <label htmlFor="form-password-confirmation">
+        <label htmlFor="password-second">
           Confirmation du Mot de passe :
-          <FieldRegisterPassword
-            name="passwordConfirmation"
+          <Field
+            name="second"
             placeholder="confirmation password"
             onChange={changeField}
-            value={passwordConfirmation}
+            value={second}
+            type= "password"
           />
         </label>
         {firstPassword === secondPassword && (
@@ -93,11 +96,11 @@ const Register = ({
 };
 Register.propTypes = {
   emailRegister: PropTypes.string.isRequired,
-  passwordRegister: PropTypes.string.isRequired,
+  first: PropTypes.string.isRequired,
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   nickname: PropTypes.string.isRequired,
-  passwordConfirmation: PropTypes.string.isRequired,
+  second: PropTypes.string.isRequired,
   // submitRegister: PropTypes.func.isRequired,
   // updateField: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,

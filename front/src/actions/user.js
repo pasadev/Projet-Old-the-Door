@@ -38,6 +38,19 @@ export const updateRegistersField = (newValue, name) => ({
   newValue,
   name,
 });
-export const createLogin = () => ({
+export const createLogin = (
+  // emailRegister,
+  // nickname,
+  // firstname,
+  // lastname,
+  // passwordRegister,
+  // passwordConfirmation,
+) => ({
   type: REGISTER_USER,
+  // emailRegister,
+  // nickname,
+  // firstname,
+  // lastname,
+  // passwordRegister,
+  // passwordConfirmation,
 });

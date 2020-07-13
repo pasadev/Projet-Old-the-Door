@@ -4,6 +4,7 @@ import {
   LOG_IN,
   LOG_OUT,
   CHECK_LOGGED,
+  REGISTER_USER,
   saveUser,
 } from 'src/actions/user';
 
@@ -11,13 +12,14 @@ const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
       const { email, password } = store.getState().user;
-
+      console.log(email);
+      console.log(password);
       // withCredentials : autorisation d'accéder au cookie
-      axios.post('http://localhost:3001/login', {
+      axios.post('http://localhost:8000/api/v0/login', {
         email,
         password,
       }, {
-        withCredentials: true,
+        credentials: 'include',
       })
         .then((response) => {
           store.dispatch(saveUser(response.data.info, response.data.logged));
@@ -59,6 +61,41 @@ const userMiddleware = (store) => (next) => (action) => {
 
       next(action);
       break;
+
+    case REGISTER_USER: {
+      const {
+        emailRegister: email,
+        nickname: username,
+        firstname,
+        lastname,
+        password: {
+          first: passwordRegister,
+          second: passwordConfirmation,
+        },
+      } = store.getState().user;
+      // withCredentials : autorisation d'accéder au cookie
+      axios.post('http://localhost:8000/api/v0/users', {
+        email,
+        username,
+        firstname,
+        lastname,
+        password: {
+          first: passwordRegister,
+          second: passwordConfirmation,
+        },
+      }, {
+        credentials: 'include',
+      })
+        .then((response) => {
+          store.dispatch(saveUser(response.data.info, response.data.logged));
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+
+      next(action);
+      break;
+    }
 
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)

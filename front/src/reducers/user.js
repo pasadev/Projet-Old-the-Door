@@ -1,12 +1,16 @@
 import { UPDATE_REGISTER_FIELD, UPDATE_USER_FIELD, SAVE_USER } from 'src/actions/user';
 
 const initialState = {
-  emailRegister: '',
-  passwordRegister: '',
-  passwordConfirmation: '',
-  firstname: '',
-  lastname: '',
-  nickname: '',
+  register: {
+    emailRegister: '',
+    firstname: '',
+    lastname: '',
+    nickname: '',
+    password: {
+      first: '',
+      second: '',
+    },
+  },
   // contenu de l'input pour l'adresse e-mail
   email: '',
   // contenu de l'input pour le mot de passe
