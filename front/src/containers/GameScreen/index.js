@@ -10,6 +10,7 @@ import {
   fetchNextChapter,
   toggleAnswerValue,
   updateAnswerField,
+  clearGameScreenInput,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -67,6 +68,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchNextChapter: () => {
     dispatch(toggleAnswerValue());
     dispatch(fetchNextChapter());
+    dispatch(clearGameScreenInput());
   },
 
   displayLoader: () => {

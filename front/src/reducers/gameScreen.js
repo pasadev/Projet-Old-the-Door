@@ -4,7 +4,7 @@ import {
   TOGGLE_ANSWER_VALUE,
   UPDATE_ANSWER_FIELD,
   SAVE_PREVIOUS_CHAPTERS,
-
+  CLEAR_GAMESCREEN_INPUT,
 } from 'src/actions/gameScreen';
 
 const initialState = {
@@ -71,8 +71,6 @@ const gameScreen = (state = initialState, action = {}) => {
         [action.name]: action.newValue,
       };
 
-    default: return state;
-
     case TOGGLE_ANSWER_VALUE:
       // return a new state
       return {
@@ -81,6 +79,18 @@ const gameScreen = (state = initialState, action = {}) => {
         // reverse the value of trueAnswer
         trueAnswer: !state.trueAnswer,
       };
+
+    case CLEAR_GAMESCREEN_INPUT:
+      // return a new state
+      return {
+        // spread the current state
+        ...state,
+        // Clear gameKey and gameLock values
+        gameKey: '',
+        gameLock: '',
+      };
+
+    default: return state;
   }
 };
 

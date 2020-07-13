@@ -10,6 +10,7 @@ export const SAVE_CURRENT_CHAPTER = 'SAVE_CURRENT_CHAPTER';
 export const SAVE_PREVIOUS_CHAPTERS = 'SAVE_PREVIOUS_CHAPTERS';
 export const TOGGLE_ANSWER_VALUE = 'TOGGLE_ANSWER_VALUE';
 export const UPDATE_ANSWER_FIELD = 'UPDATE_ANSWER_FIELD';
+export const CLEAR_GAMESCREEN_INPUT = 'CLEAR_GAMESCREEN_INPUT';
 // === action creators
 export const doSomething = (/* newValue */) => ({
   type: DO_SOMETHING,
@@ -66,4 +67,8 @@ export const updateAnswerField = (newValue, name) => ({
   type: UPDATE_ANSWER_FIELD,
   newValue,
   name,
+});
+
+export const clearGameScreenInput = () => ({
+  type: CLEAR_GAMESCREEN_INPUT,
 });

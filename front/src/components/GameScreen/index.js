@@ -25,7 +25,6 @@ const GameScreen = ({
   currentChapter,
   fetchNextChapter,
   previousChapters,
-
   handleCheckAnswer,
   // initialState trueAnswer is false, if after check submit === answer then switch to true,
   trueAnswer,
@@ -80,7 +79,7 @@ const GameScreen = ({
             {/* Call previousChapters components here to display them */}
             {previousChapters.length !== 0
             && <PreviousChapters previousChapters={previousChapters} />}
-
+            {console.log(currentChapter)}
             <div className="gameScreen-content-text">
               <Typist
                 cursor={{ show: false }}
@@ -95,8 +94,7 @@ const GameScreen = ({
                 {currentChapter.content}
               </Typist>
             </div>
-            <div className="gameScreen-content-text">
-              {console.log(trueAnswer)}
+            <div className="gameScreen-content-unlockText">
               {trueAnswer && (
               <>
                 <Typist
