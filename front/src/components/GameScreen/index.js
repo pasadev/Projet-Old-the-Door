@@ -9,6 +9,7 @@ import Typist from 'react-typist';
 import { checkAnswer } from 'src/utils';
 
 import GameScreenField from './GameScreenField';
+import PreviousChapters from './PreviousChapters';
 
 import './gameScreen.scss';
 
@@ -23,6 +24,7 @@ const GameScreen = ({
   fetchCurrentStory,
   currentChapter,
   fetchNextChapter,
+  previousChapters,
 
   handleCheckAnswer,
   // initialState trueAnswer is false, if after check submit === answer then switch to true,
@@ -68,7 +70,13 @@ const GameScreen = ({
               </div>
             </div>
           </div>
+
           <div className="gameScreen-content">
+
+            {/* Call previousChapters components here to display them */}
+            {previousChapters.length !== 0
+            && <PreviousChapters previousChapters={previousChapters} />}
+
             <div className="gameScreen-content-text">
               <Typist>
                 <Typist.Delay ms={5000} />
@@ -185,6 +193,8 @@ GameScreen.propTypes = {
       PropTypes.string,
     ]).isRequired,
   }).isRequired,
+
+  previousChapters: PropTypes.array.isRequired,
 
 };
 // parentChapter not always full
