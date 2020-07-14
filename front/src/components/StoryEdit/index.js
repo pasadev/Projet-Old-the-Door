@@ -24,7 +24,7 @@ const StoryEdit = ({
 
   const handleStoryEditSubmit = (event) => {
     event.preventDefault();
-    submitAdvEditForm(storyEdit.title, storyEdit.synopsis, storyEdit.description);
+    submitAdvEditForm(storyEdit.title, storyEdit.synopsis, storyEdit.description, storyEdit.id);
   };
 
   return (
@@ -81,6 +81,10 @@ StoryEdit.propTypes = {
   loading: PropTypes.bool.isRequired,
   // Adventure
   storyEdit: PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]).isRequired,
     title: PropTypes.string.isRequired,
     synopsis: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

@@ -21,9 +21,10 @@ export const updateAdventureEditField = (identifier, newValue) => ({
   newValue,
 });
 
-export const submitAdvEditForm = (title, synopsis, description) => ({
+export const submitAdvEditForm = (title, synopsis, description, id) => ({
   type: SUBMIT_ADV_EDIT_FORM,
   title,
   synopsis,
   description,
+  id,
 });

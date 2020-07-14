@@ -27,7 +27,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_ADV_EDIT_FORM:
-      axios.post('http://damien-toscano.vpnuser.lan:8000/api/v0/stories', {
+      axios.put(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.id}`, {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,

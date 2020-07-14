@@ -15,7 +15,6 @@ const initialState = {
   author: {
     id: '',
     username: '',
-
   },
   slug: '',
   description: '',
