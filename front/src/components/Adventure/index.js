@@ -12,9 +12,11 @@ const Adventure = ({
   fetchAdventureSelected,
   displayLoader,
   loading,
+  redirectOff,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
+    redirectOff();
     fetchAdventureSelected(slug);
     displayLoader();
   }, []);
@@ -42,12 +44,23 @@ const Adventure = ({
           <p className="adventure-description">
             {adventureSelected.description}
           </p>
-          <div className="adventure-link">
+          <div className="adventure-links">
             <Link
               to={`/aventures/${slug}/jouer`}
             >
               Jouer
             </Link>
+            <Link
+              to={`/aventures/${slug}/edition`}
+            >
+              Edition
+            </Link>
+            <button type="button">
+              Publier
+            </button>
+            <button type="button">
+              Supprimer
+            </button>
           </div>
         </main>
       )}
@@ -56,6 +69,7 @@ const Adventure = ({
 };
 
 Adventure.propTypes = {
+  redirectOff: PropTypes.func.isRequired,
   displayLoader: PropTypes.func.isRequired,
   fetchAdventureSelected: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,

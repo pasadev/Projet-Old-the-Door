@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import Typist from 'react-typist';
 
@@ -11,11 +12,6 @@ const Team = () => (
       </Typist>
     </h1>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
         Damien
       </div>
@@ -30,13 +26,14 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
-        Maxence
+        &nbsp;_____&nbsp;______&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;_______&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        |\&nbsp;&nbsp;&nbsp;_&nbsp;\&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;|\&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;/|\&nbsp;&nbsp;___&nbsp;\&nbsp;|\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;____\|\&nbsp;&nbsp;___&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        \&nbsp;\&nbsp;&nbsp;\\\__\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/&nbsp;|&nbsp;\&nbsp;&nbsp;&nbsp;__/|\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\___|\&nbsp;\&nbsp;&nbsp;&nbsp;__/|&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;\&nbsp;\&nbsp;&nbsp;\\|__|&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;/&nbsp;\&nbsp;\&nbsp;&nbsp;\_|/_\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|/__&nbsp;&nbsp;
+        &nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\____\&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;
+        &nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\__\&nbsp;\__\/&nbsp;&nbsp;/\&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\&nbsp;\_______\&nbsp;\_______\
+        &nbsp;&nbsp;&nbsp;&nbsp;\|__|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|\|__|\|__/__/&nbsp;/\&nbsp;__\&nbsp;&nbsp;&nbsp;&nbsp;\|_______|\|__|&nbsp;\|__|\|_______|\|_______|
       </div>
       <div className="member-role">
         <span>Lead Développeur Back</span>
@@ -46,11 +43,6 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
         Tony
       </div>
@@ -63,11 +55,6 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
         Hugo
       </div>
@@ -80,11 +67,6 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
         Jukka
       </div>

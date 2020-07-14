@@ -14,7 +14,7 @@ import Connexion from 'src/containers/Connexion';
 import Team from 'src/components/Team';
 import GameScreen from 'src/containers/GameScreen';
 import StoryCreate from 'src/containers/StoryCreate';
-import ChapterCreate from 'src/components/ChapterCreate';
+import StoryEdit from 'src/containers/StoryEdit';
 import Header from 'src/containers/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
@@ -47,7 +47,7 @@ const App = ({ burgerMenuOpen }) => (
           <GameScreen />
         </Route>
         <Route exact path="/aventures/:slug/edition">
-          <ChapterCreate />
+          <StoryEdit />
         </Route>
         <Route exact path="/aventures/:slug">
           <Adventure />
