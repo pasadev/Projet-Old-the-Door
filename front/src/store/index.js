@@ -5,6 +5,7 @@ import adventuresMiddleware from 'src/middlewares/adventuresMiddleware';
 import inscriptionMiddleware from 'src/middlewares/inscriptionMiddleware';
 import storyCreationMiddleware from 'src/middlewares/storyCreationMiddleware';
 import gameMiddleware from 'src/middlewares/gameMiddleware';
+import storyEditMiddleware from 'src/middlewares/storyEditMiddleware';
 
 import reducer from 'src/reducers';
 
@@ -15,6 +16,7 @@ const enhancers = composeWithDevTools(
     adventuresMiddleware,
     inscriptionMiddleware,
     storyCreationMiddleware,
+    storyEditMiddleware,
   ),
 );
 
