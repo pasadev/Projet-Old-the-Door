@@ -7,10 +7,6 @@ export const scrollToTop = () => {
   });
 };
 
-export const doSomething = () => {
-
-};
-
 export const slugifyTitle = (title) => (
-  slugify(title, { lower: true })
+  slugify(title.replace('\'', '-'), { lower: true })
 );

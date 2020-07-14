@@ -17,20 +17,19 @@ const Register = ({
   // updateField,
   changeField,
   passwordConfirmation,
+  handleRegister,
 }) => {
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   submitRegister();
-  // };
   const firstPassword = passwordRegister;
   const secondPassword = passwordConfirmation;
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleRegister();
+  };
   return (
     <main className="register">
       <form
         className="form"
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
+        onSubmit={handleSubmit}
       >
         <label htmlFor="form-nickname">
           Pseudo :
@@ -103,6 +102,7 @@ Register.propTypes = {
   // updateField: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   // confirmedPassword: PropTypes.string.isRequired,
+  handleRegister: PropTypes.func.isRequired,
 };
 
 export default Register;

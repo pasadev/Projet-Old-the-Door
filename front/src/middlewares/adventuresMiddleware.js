@@ -21,6 +21,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
     case FETCH_ADVENTURES_HOME:
       console.log(`${baseURL}/api/v0/stories?last=3`);
       // API request for the last three adventures
+      // http://maxence-royer.vpnuser.lan:8000/api/v0/stories?last=3
       axios.get(`${baseURL}/api/v0/stories?last=3`)
         .then((response) => {
           // dispatch to save the Adventures used in Home

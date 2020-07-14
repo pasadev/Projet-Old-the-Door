@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import Loader from 'src/components/Loader';
 import Moment from 'react-moment';
+import Typist from 'react-typist';
 import './adventure.scss';
 
 const Adventure = ({
@@ -23,13 +24,17 @@ const Adventure = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
-          <h1 className="adventure-title">{adventureSelected.title}</h1>
+          <h1 className="adventure-title main-title">
+            <Typist>
+              {adventureSelected.title}
+            </Typist>
+          </h1>
           <div className="adventure-authorAndDate">
             <span className="adventure-author">
               {adventureSelected.author.username}
             </span>
             <time className="adventure-date" dateTime={adventureSelected.createdAt}>
-              <Moment format="DD/MM/YYYY">
+              <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
                 {adventureSelected.createdAt}
               </Moment>
             </time>
@@ -41,7 +46,7 @@ const Adventure = ({
             <Link
               to={`/aventures/${slug}/jouer`}
             >
-              Ouvrir le fichier
+              Jouer
             </Link>
           </div>
         </main>

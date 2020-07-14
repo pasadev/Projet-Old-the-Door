@@ -21,7 +21,7 @@ const AdventureSmall = ({
         {author.username}
       </span>
       <time className="adventureSmall-date" dateTime={createdAt}>
-        <Moment format="DD/MM/YYYY">
+        <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
           {createdAt}
         </Moment>
       </time>
@@ -36,7 +36,6 @@ const AdventureSmall = ({
         Ouvrir le fichier
       </Link>
     </div>
-    <span className="spacer">--------------------------------------</span>
   </div>
 );
 
