@@ -1,28 +1,53 @@
+@import 'src/styles/vars';
+
 .adventureSmall {
-  padding-top: 0.5em;
+  border: 2px dotted #fff;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  width: 100%;
 
   .adventureSmall-title {
     font-weight: bold;
+    text-transform: uppercase;
   }
 
   .adventureSmall-authorAndDate {
     padding-top: 0.5em;
     font-style: italic;
     font-size: 0.8em;
+    
     .adventureSmall-author {
       padding-right: 0.3em;
     }
+
     .adventureSmall-date::before {
       content: 'le';
       padding-right: 0.3em;
     }
   }
+
   .adventureSmall-synopsis {
     padding-top: 0.5em;
 
   }
+
   .adventureSmall-link {
     padding-top: 0.5em;
+    color: $linkColor;
+  }
+
+  .adventureSmall-link:hover {
     text-decoration: underline;
+  }
+  
+}
+
+.creationAdventure {
+  border: 3px solid $noticeColor;
+
+  .adventureSmall-title
+  {
+    color: $noticeColor;
+    text-transform: uppercase;
   }
 }

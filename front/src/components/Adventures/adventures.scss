@@ -1,9 +1,30 @@
 @import 'src/styles/vars';
 
 .adventures {
-  padding: 0.5em;
-  .adventures-title {
-    font-weight: bold;
-    font-size: $titleSize;
+  .adventures-create-link {
+    padding-top: 0.5em;
+    text-decoration: underline;
+    color: $linkColor;
+  }
+
+  .adventureSmall-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+    .main-title {
+      font-size: 1.5em;
+    }
+  }
+
+}
+
+
+@media screen and (min-width: 768px) {
+  .adventureSmall-container {
+    align-items: flex-start !important;
+    flex-direction: row !important;
+    justify-content: center;
   }
 }

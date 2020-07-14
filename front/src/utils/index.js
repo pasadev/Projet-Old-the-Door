@@ -7,10 +7,13 @@ export const scrollToTop = () => {
   });
 };
 
+<<<<<<< HEAD
 export const doSomething = () => {
 
 };
 
+=======
+>>>>>>> 6650c0bad401ced2a7c8bd4116ca59a07cccad42
 export const slugifyTitle = (title) => (
-  slugify(title, { lower: true })
+  slugify(title.replace('\'', '-'), { lower: true })
 );

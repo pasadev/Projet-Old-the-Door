@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typist from 'react-typist';
 
 // import { useField } from './hooks';
 
@@ -21,6 +22,12 @@ const Connexion = ({
 
   return (
     <div className="login-form">
+
+      <h1 className="adventures-title main-title">
+        <Typist>
+          Connexion
+        </Typist>
+      </h1>
 
       <form autoComplete="off" onSubmit={handleSubmit}>
 
@@ -45,9 +52,6 @@ const Connexion = ({
     </div>
   );
 };
-
-// changeField correspond a la fonction dans le container
-// handleLogin aussi
 
 Connexion.propTypes = {
   email: PropTypes.string.isRequired,
