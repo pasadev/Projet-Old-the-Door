@@ -60,22 +60,15 @@ const GameScreen = ({
             </div>
             <div className="gameScreen-header-text">
               <Typist
-                cursor={{ show: false }}
+                cursor={{ blink: true, hideWhenDone: true }}
+                avgTypingDelay={30}
               >
                 <span>.....Initialisation de l'histoire v0.01.....</span>
-                <Typist.Backspace count={39} delay={200} />
+                <Typist.Backspace count={39} delay={600} />
                 <span>Chargement des chapitres.....</span>
-                <Typist.Backspace count={29} delay={200} />
-                <span>{currentStory.title.toUpperCase()}.....</span>
+                <Typist.Backspace count={29} delay={600} />
+                <span>{currentStory.title.toUpperCase()}.....by {currentStory.author.username}</span>
               </Typist>
-              <div className="gameScreen-content-infos">
-                <Typist
-                  cursor={{ show: false }}
-                >
-                  <Typist.Delay ms={5000} />
-                  <span>{currentStory.author.username}</span>
-                </Typist>
-              </div>
             </div>
           </div>
 

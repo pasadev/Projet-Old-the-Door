@@ -14,12 +14,14 @@ const Chapter = ({
     <div className="gameScreen-content-text">
       <Typist
         cursor={{ show: false }}
+        avgTypingDelay={50}
       >
-        <Typist.Delay ms={5000} />
+        <Typist.Delay ms={8000} />
         {title}
       </Typist>
       <Typist
         cursor={{ show: false }}
+        avgTypingDelay={15}
       >
         <Typist.Delay ms={9000} />
         {content}
@@ -30,11 +32,11 @@ const Chapter = ({
       <>
         <Typist
           cursor={{ show: false }}
+          avgTypingDelay={30}
         >
           <br />
           <Typist.Delay ms={1000} />
           {unlockText}
-          <br />
 
           <button type="button" onClick={fetchNextChapter}>Chapitre suivant</button>
         </Typist>
