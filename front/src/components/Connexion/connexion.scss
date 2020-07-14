@@ -66,3 +66,22 @@ button:hover{
  background-color:#6BE145;
  color: #1D1E22;
 }
+
+@media only screen and (max-width: 1024px){
+  .form{
+    width: 80%;
+  }
+
+  .infos{
+    margin-bottom: 1em;
+  }
+  
+
+}
+
+@media only screen and (max-width: 550px){
+  .login-input{
+    display:flex;
+    flex-direction: column;
+  }
+}
