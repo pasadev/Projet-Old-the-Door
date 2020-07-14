@@ -62,7 +62,11 @@ const GameScreen = ({
               <Typist
                 cursor={{ show: false }}
               >
-                Initialisation '{currentStory.title}' v0.01 ..................................
+                <span>.....Initialisation de l'histoire v0.01.....</span>
+                <Typist.Backspace count={39} delay={200} />
+                <span>Chargement des chapitres.....</span>
+                <Typist.Backspace count={29} delay={200} />
+                <span>{currentStory.title.toUpperCase()}.....</span>
               </Typist>
               <div className="gameScreen-content-infos">
                 <Typist
@@ -83,7 +87,10 @@ const GameScreen = ({
             {console.log(currentChapter)}
 
             {/* Display the current chapter here */}
+
             <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} />
+
+            {/* Todo: Try without deversing the state currentChapter but just passing an argument like previousChapters */}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
 
