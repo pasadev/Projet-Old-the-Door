@@ -77,8 +77,9 @@ const Connexion = ({
               value={password}
             />
           </div>
-          {emailField && passwordField && (
 
+          {emailField && passwordField && (
+          // if email field and password field are not empty, we will display the submit button.
           <div className="button-submit">
             <button type="submit">Sign In</button>
           </div>
