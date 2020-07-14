@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { displayLoader } from 'src/actions/utils';
 import {
   fetchAdvEditSelected,
-  // sumbitStoryCreate,
+  submitAdvEditForm,
 } from 'src/actions/adventureEdit';
 
 import StoryEdit from 'src/components/StoryEdit';
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   displayLoader: () => {
     dispatch(displayLoader());
+  },
+  submitAdvEditForm: (title, synopsis, description) => {
+    dispatch(submitAdvEditForm(title, synopsis, description));
   },
 });
 

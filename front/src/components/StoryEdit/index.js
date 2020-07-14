@@ -12,12 +12,18 @@ const StoryEdit = ({
   fetchAdvEditSelected,
   displayLoader,
   loading,
+  submitAdvEditForm,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
     fetchAdvEditSelected(slug);
     displayLoader();
   }, []);
+
+  const handleStoryEditSubmit = (event) => {
+    event.preventDefault();
+    submitAdvEditForm(storyEdit.title, storyEdit.synopsis, storyEdit.description);
+  };
 
   return (
     <>
@@ -27,7 +33,10 @@ const StoryEdit = ({
           <h1>
             La page d'édition pour : {storyEdit.title}
           </h1>
-          <form action="submit" className="storyEdit-form">
+          <form
+            className="storyEdit-form"
+            onSubmit={handleStoryEditSubmit}
+          >
             <select className="storyEdit-form-editChoice" id="">
               {/* TODO map */}
               <option value="">
@@ -53,12 +62,15 @@ const StoryEdit = ({
 };
 
 StoryEdit.propTypes = {
+  submitAdvEditForm: PropTypes.func.isRequired,
   displayLoader: PropTypes.func.isRequired,
   fetchAdvEditSelected: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   // Adventure
   storyEdit: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    synopsis: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
   }).isRequired,
 };
 
