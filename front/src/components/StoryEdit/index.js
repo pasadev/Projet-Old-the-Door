@@ -42,18 +42,23 @@ const StoryEdit = ({
                 className="storyEdit-form"
                 onSubmit={handleStoryEditSubmit}
               >
-                <select className="storyEdit-form-editChoice" id="">
-                  {/* TODO map */}
-                  <option value="">
-                    Aventure
-                  </option>
-                  <option value="">
-                    Chap 1 : Bla
-                  </option>
-                  <option value="">
-                    Chap 2 : BlaBla
-                  </option>
-                </select>
+                <label htmlFor="storyEdit-form-editChoice">
+                  Editer :
+                  <select className="storyEdit-form-editChoice" id="storyEdit-form-editChoice">
+                    {/* TODO map */}
+                    <option value="">
+                      {storyEdit.title}
+                    </option>
+                    { storyEdit.firstChapter !== null && (
+                      <option value="">
+                        {storyEdit.firstChapter.title}
+                      </option>
+                    )}
+                    <option value="">
+                      Chap 2 : BlaBla
+                    </option>
+                  </select>
+                </label>
 
                 {/* Display condition edit chap or adv */}
                 <AdventureEdit />
@@ -79,6 +84,9 @@ StoryEdit.propTypes = {
     title: PropTypes.string.isRequired,
     synopsis: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    firstChapter: PropTypes.shape({
+      title: PropTypes.string,
+    }),
   }).isRequired,
 };
 
