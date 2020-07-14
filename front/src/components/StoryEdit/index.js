@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
+import { slugifyTitle } from 'src/utils';
 import PropTypes from 'prop-types';
 
 import Loader from 'src/components/Loader';
@@ -13,6 +14,7 @@ const StoryEdit = ({
   displayLoader,
   loading,
   submitAdvEditForm,
+  redirect,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -27,41 +29,47 @@ const StoryEdit = ({
 
   return (
     <>
-      {loading && <Loader />}
-      {!loading && (
-        <main className="storyEdit">
-          <h1>
-            La page d'édition pour : {storyEdit.title}
-          </h1>
-          <form
-            className="storyEdit-form"
-            onSubmit={handleStoryEditSubmit}
-          >
-            <select className="storyEdit-form-editChoice" id="">
-              {/* TODO map */}
-              <option value="">
-                Aventure
-              </option>
-              <option value="">
-                Chap 1 : Bla
-              </option>
-              <option value="">
-                Chap 2 : BlaBla
-              </option>
-            </select>
+      {redirect && <Redirect to={`/aventures/${slugifyTitle(storyEdit.title)}`} />}
+      {!redirect && (
+        <>
+          {loading && <Loader />}
+          {!loading && (
+            <main className="storyEdit">
+              <h1>
+                La page d'édition pour : {storyEdit.title}
+              </h1>
+              <form
+                className="storyEdit-form"
+                onSubmit={handleStoryEditSubmit}
+              >
+                <select className="storyEdit-form-editChoice" id="">
+                  {/* TODO map */}
+                  <option value="">
+                    Aventure
+                  </option>
+                  <option value="">
+                    Chap 1 : Bla
+                  </option>
+                  <option value="">
+                    Chap 2 : BlaBla
+                  </option>
+                </select>
 
-            {/* Display condition edit chap or adv */}
-            <AdventureEdit />
-            {/* <ChapterEdit /> */}
-            <button type="submit">Enregistrer ces modifications</button>
-          </form>
-        </main>
+                {/* Display condition edit chap or adv */}
+                <AdventureEdit />
+                {/* <ChapterEdit /> */}
+                <button type="submit">Enregistrer ces modifications</button>
+              </form>
+            </main>
+          )}
+        </>
       )}
     </>
   );
 };
 
 StoryEdit.propTypes = {
+  redirect: PropTypes.bool.isRequired,
   submitAdvEditForm: PropTypes.func.isRequired,
   displayLoader: PropTypes.func.isRequired,
   fetchAdvEditSelected: PropTypes.func.isRequired,

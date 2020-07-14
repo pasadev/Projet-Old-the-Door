@@ -12,6 +12,7 @@ import StoryEdit from 'src/components/StoryEdit';
 const mapStateToProps = (state) => ({
   loading: state.utils.loading,
   storyEdit: state.storyEdit,
+  redirect: state.utils.redirect,
 });
 
 // === mapDispatchToProps
