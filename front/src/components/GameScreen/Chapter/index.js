@@ -11,9 +11,6 @@ const Chapter = ({
 
 }) => (
   <>
-    {title}<br />
-    {content}<br />
-    {unlockText}<br />
     <div className="gameScreen-content-text">
       <Typist
         cursor={{ show: false }}

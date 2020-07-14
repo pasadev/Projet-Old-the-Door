@@ -26,7 +26,6 @@ const GameScreen = ({
   currentChapter,
   fetchNextChapter,
   previousChapters,
-  chapter,
   handleCheckAnswer,
   // initialState trueAnswer is false, if after check submit === answer then switch to true,
   trueAnswer,
@@ -82,36 +81,9 @@ const GameScreen = ({
             {previousChapters.length !== 0
             && <PreviousChapters previousChapters={previousChapters} />}
             {console.log(currentChapter)}
-            <div className="gameScreen-content-text">
-              <Typist
-                cursor={{ show: false }}
-              >
-                <Typist.Delay ms={5000} />
-                {currentChapter.title}
-              </Typist>
-              <Typist
-                cursor={{ show: false }}
-              >
-                <Typist.Delay ms={9000} />
-                {currentChapter.content}
-              </Typist>
-            </div>
-            <div className="gameScreen-content-unlockText">
-              {trueAnswer && (
-              <>
-                <Typist
-                  cursor={{ show: false }}
-                >
-                  <br />
-                  <Typist.Delay ms={1000} />
-                  {currentChapter.unlockText}
-                  <br />
 
-                  <button type="button" onClick={fetchNextChapter}>Chapitre suivant</button>
-                </Typist>
-              </>
-              )}
-            </div>
+            {/* Display the current chapter here */}
+            <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} />
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
 
@@ -200,7 +172,6 @@ GameScreen.propTypes = {
   }).isRequired,
 
   previousChapters: PropTypes.array.isRequired,
-  //TODO : Add Chapter component props
 
 };
 // parentChapter not always full
