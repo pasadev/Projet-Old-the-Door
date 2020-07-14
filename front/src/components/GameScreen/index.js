@@ -10,6 +10,7 @@ import { checkAnswer } from 'src/utils';
 
 import GameScreenField from './GameScreenField';
 import PreviousChapters from './PreviousChapters';
+import Chapter from './Chapter';
 
 import './gameScreen.scss';
 
@@ -25,6 +26,7 @@ const GameScreen = ({
   currentChapter,
   fetchNextChapter,
   previousChapters,
+  chapter,
   handleCheckAnswer,
   // initialState trueAnswer is false, if after check submit === answer then switch to true,
   trueAnswer,
@@ -198,6 +200,7 @@ GameScreen.propTypes = {
   }).isRequired,
 
   previousChapters: PropTypes.array.isRequired,
+  //TODO : Add Chapter component props
 
 };
 // parentChapter not always full
