@@ -9,6 +9,7 @@ const Chapter = ({
   trueAnswer,
   fetchNextChapter,
 
+
 }) => (
   <>
     <div className="gameScreen-content-text">
@@ -17,7 +18,7 @@ const Chapter = ({
         avgTypingDelay={50}
       >
         <Typist.Delay ms={8000} />
-        {title}
+        <h3 className="gameScreen-chapterTitle">{title}</h3>
       </Typist>
       <Typist
         cursor={{ show: false }}
@@ -27,18 +28,17 @@ const Chapter = ({
         {content}
       </Typist>
     </div>
-    <div className="gameScreen-content-unlockText">
+    <div className="gameScreen-unlockText">
       {trueAnswer && (
       <>
         <Typist
           cursor={{ show: false }}
           avgTypingDelay={30}
         >
-          <br />
           <Typist.Delay ms={1000} />
           {unlockText}
 
-          <button type="button" onClick={fetchNextChapter}>Chapitre suivant</button>
+          <span className="gameScreen-actionButton" onClick={fetchNextChapter}> => Chapitre suivant</span>
         </Typist>
       </>
       )}

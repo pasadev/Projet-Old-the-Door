@@ -102,7 +102,7 @@ const GameScreen = ({
                 onChange={changeField}
                 value={gameLock}
               />
-              <button type="submit">Tester la combinaison</button>
+              <button className="gameScreen-formButton" type="submit">=> Tester la combinaison</button>
             </form>
           </div>
         </div>

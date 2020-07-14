@@ -8,9 +8,9 @@ const PreviousChapter = ({
 
 }) => (
   <>
-    {title}<br />
-    {content}<br />
-    {unlockText}<br />
+    <h3 className="gameScreen-chapterTitle">{title}</h3>
+    {content}
+    <div className="gameScreen-unlockText">{unlockText}</div>
   </>
 );
 
