@@ -7,11 +7,8 @@ import {
 } from 'src/actions/adventureEdit';
 
 import {
-  redirectOn,
-} from 'src/actions/storyCreation';
-
-import {
   hideLoader,
+  redirectOn,
 } from 'src/actions/utils';
 
 const storyEditMiddleware = (store) => (next) => (action) => {

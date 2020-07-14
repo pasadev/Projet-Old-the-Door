@@ -2,8 +2,11 @@ import axios from 'axios';
 
 import {
   SUBMIT_STORY_CREATE_FORM,
-  redirectOn,
 } from 'src/actions/storyCreation';
+
+import {
+  redirectOn,
+} from 'src/actions/utils';
 
 const storyCreationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
