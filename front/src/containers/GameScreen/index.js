@@ -11,6 +11,7 @@ import {
   toggleAnswerValue,
   updateAnswerField,
   clearGameScreenInput,
+  hideChapter,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -19,6 +20,7 @@ import { displayLoader } from 'src/actions/utils';
 const mapStateToProps = (state) => ({
   trueAnswer: state.gameScreen.trueAnswer,
   loading: state.utils.loading,
+  loadingChapter: state.gameScreen.loadingChapter,
 
   currentStory: state.gameScreen.currentStory,
 
@@ -48,6 +50,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   // could be fetch first chapter to be honest
   fetchFirstChapter: () => {
+    dispatch(hideChapter);
     dispatch(fetchFirstChapter());
   },
   // saveCurrentChapter can stay as it is
@@ -66,9 +69,14 @@ const mapDispatchToProps = (dispatch) => ({
   // when the user clicks on next chapter button, fetchNextChapter
 
   fetchNextChapter: () => {
-    dispatch(toggleAnswerValue());
-    dispatch(fetchNextChapter());
+    dispatch(hideChapter());
+    // stop rendering of chapter during load
     dispatch(clearGameScreenInput());
+    // remove value of gameKey and gameLock
+    dispatch(toggleAnswerValue());
+    // trueAnswer goes to false
+    dispatch(fetchNextChapter());
+    // api request
   },
 
   displayLoader: () => {

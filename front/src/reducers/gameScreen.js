@@ -5,6 +5,8 @@ import {
   UPDATE_ANSWER_FIELD,
   SAVE_PREVIOUS_CHAPTERS,
   CLEAR_GAMESCREEN_INPUT,
+  DISPLAY_CHAPTER_AFTER_LOAD,
+  HIDE_CHAPTER,
 } from 'src/actions/gameScreen';
 
 const initialState = {
@@ -35,6 +37,7 @@ const initialState = {
   gameLock: '',
 
   trueAnswer: false,
+  loadingChapter: true,
 };
 
 const gameScreen = (state = initialState, action = {}) => {
@@ -88,6 +91,22 @@ const gameScreen = (state = initialState, action = {}) => {
         // Clear gameKey and gameLock values
         gameKey: '',
         gameLock: '',
+      };
+
+    case DISPLAY_CHAPTER_AFTER_LOAD:
+
+      return {
+        ...state,
+
+        loadingChapter: false,
+      };
+
+    case HIDE_CHAPTER:
+
+      return {
+        ...state,
+
+        loadingChapter: true,
       };
 
     default: return state;

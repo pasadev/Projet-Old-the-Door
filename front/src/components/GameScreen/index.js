@@ -32,6 +32,7 @@ const GameScreen = ({
 
   displayLoader,
   loading,
+  loadingChapter,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -43,11 +44,12 @@ const GameScreen = ({
   };
   const { slug } = useParams();
   useEffect(() => {
+    // component did mount
     console.log(slug);
     fetchCurrentStory(slug);
-    // no problemo, all is fixed
     displayLoader();
   }, []);
+
   return (
     <>
       {loading && <Loader />}
@@ -83,7 +85,8 @@ const GameScreen = ({
             {console.log(currentChapter)}
 
             {/* Display the current chapter here */}
-            <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} />
+            {loadingChapter && <div>Loading Chapter</div>}
+            {!loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} />}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
 
@@ -121,6 +124,7 @@ GameScreen.propTypes = {
   displayLoader: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   trueAnswer: PropTypes.bool.isRequired,
+  loadingChapter: PropTypes.bool.isRequired,
 
   fetchCurrentStory: PropTypes.func.isRequired,
   fetchNextChapter: PropTypes.func.isRequired,

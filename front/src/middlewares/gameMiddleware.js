@@ -8,6 +8,8 @@ import {
   saveCurrentChapter,
   FETCH_NEXT_CHAPTER,
   savePreviousChapters,
+
+  displayChapterAfterLoad,
 } from 'src/actions/gameScreen';
 
 import {
@@ -37,6 +39,7 @@ const gameMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveCurrentChapter(response.data[0]));
           store.dispatch(hideLoader());
+          store.dispatch(displayChapterAfterLoad());
         })
         .catch((error) => {
           console.warn(error);
@@ -48,11 +51,13 @@ const gameMiddleware = (store) => (next) => (action) => {
     case FETCH_NEXT_CHAPTER:
       // eslint-disable-next-line no-case-declarations
       const currentChapterForSave = store.getState().gameScreen.currentChapter;
-
+      console.log(action);
       axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${currentChapterForSave.id}/child`)
         .then((response) => {
+          console.log(response);
           store.dispatch(savePreviousChapters(currentChapterForSave));
           store.dispatch(saveCurrentChapter(response.data[0]));
+          store.dispatch(displayChapterAfterLoad());
         })
         .catch((error) => {
           console.warn(error);

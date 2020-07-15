@@ -9,8 +9,11 @@ export const FETCH_NEXT_CHAPTER = 'FETCH_NEXT_CHAPTER';
 export const SAVE_CURRENT_CHAPTER = 'SAVE_CURRENT_CHAPTER';
 export const SAVE_PREVIOUS_CHAPTERS = 'SAVE_PREVIOUS_CHAPTERS';
 export const TOGGLE_ANSWER_VALUE = 'TOGGLE_ANSWER_VALUE';
+export const DISPLAY_CHAPTER_AFTER_LOAD = 'DISPLAY_CHAPTER_AFTER_LOAD';
+export const HIDE_CHAPTER = 'HIDE_CHAPTER';
 export const UPDATE_ANSWER_FIELD = 'UPDATE_ANSWER_FIELD';
 export const CLEAR_GAMESCREEN_INPUT = 'CLEAR_GAMESCREEN_INPUT';
+
 // === action creators
 export const doSomething = (/* newValue */) => ({
   type: DO_SOMETHING,
@@ -71,4 +74,12 @@ export const updateAnswerField = (newValue, name) => ({
 
 export const clearGameScreenInput = () => ({
   type: CLEAR_GAMESCREEN_INPUT,
+});
+
+export const displayChapterAfterLoad = () => ({
+  type: DISPLAY_CHAPTER_AFTER_LOAD,
+});
+
+export const hideChapter = () => ({
+  type: HIDE_CHAPTER,
 });
