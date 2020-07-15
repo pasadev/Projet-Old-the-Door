@@ -75,6 +75,10 @@ const StoryEdit = ({
 
                 {editOption === storyEdit.title && <AdventureEdit />}
 
+                {chapters.map((chapter) => (
+                  <ChapterEdit {...chapter} key={chapter.id} />
+                ))}
+
                 {editOption !== '' && (<button type="submit">Enregistrer ces modifications</button>)}
               </form>
             </main>
