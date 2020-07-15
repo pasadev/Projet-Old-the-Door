@@ -55,12 +55,15 @@ const GameScreen = ({
   }, []);
 
   useEffect(() => {
+  // put converter of seconds to mins here for now
+
     const timer = /* condition here */timerIsRunning && setInterval(() => setCounter(timerCounter + 1), 1000);
     return () => clearInterval(timer);
   }, [timerIsRunning, timerCounter]);
   // when timerIsRunning was the only dependency it only counted to 1 and got stuck
   // timerCounter needs to be a dependency too because it wouldn't calculate the rest otherwise
-
+  const minutes = Math.floor(timerCounter / 60);
+  const seconds = timerCounter - (minutes * 60);
   return (
     <>
       {loading && <Loader />}
@@ -69,7 +72,7 @@ const GameScreen = ({
         <div className="gameScreen">
           <div className="gameScreen-header">
             <div className="gameScreen-header-timer">
-              { timerCounter }
+              { minutes }: { seconds }
             </div>
             <div className="gameScreen-header-text">
               <Typist

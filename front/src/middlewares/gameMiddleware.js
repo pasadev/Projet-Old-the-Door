@@ -12,12 +12,12 @@ import {
   displayChapterAfterLoad,
   displaySuccessMessage,
   savePartyTime,
+  SAVE_PARTY_TIME,
 } from 'src/actions/gameScreen';
 
 import {
   hideLoader,
 } from 'src/actions/utils';
-import { SAVE_PARTY_TIME } from '../actions/gameScreen';
 
 const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
