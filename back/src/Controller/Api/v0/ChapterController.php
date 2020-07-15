@@ -82,7 +82,7 @@ class ChapterController extends AbstractController
         if (!$childChapter) {
             // return chapter data in json
             return $this->json(
-                "End of chapters", 404
+                [], 204
             );
         }
 
