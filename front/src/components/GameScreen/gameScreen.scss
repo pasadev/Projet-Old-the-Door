@@ -105,6 +105,13 @@
 
   .gameScreen-storySuccess {
     color: $noticeColor;
+    .gameScreen-moreAdventureButton {
+      color: #fff;
+    }
+    .gameScreen-moreAdventureButton:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 }
 

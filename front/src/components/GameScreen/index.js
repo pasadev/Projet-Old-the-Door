@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
 import { checkAnswer } from 'src/utils';
+import { Link } from 'react-router-dom';
 
 import GameScreenField from './GameScreenField';
 import PreviousChapters from './PreviousChapters';
@@ -98,7 +99,7 @@ const GameScreen = ({
             {loadingChapter && <div>Loading Chapter</div>}
             {!showSuccessMessage && !loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
 
-            {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-storySuccess">Bravo, vous avez terminé le scénario "{currentStory.title}"</div></Typist>}
+            {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-storySuccess">Bravo, vous avez terminé le scénario "{currentStory.title}" <Link to="/aventures/"> <span className="gameScreen-moreAdventureButton">> Voir les autres aventures</span></Link></div></Typist>}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
               <div className="gameScreen-form-row">
