@@ -7,15 +7,14 @@ import {
   saveCurrentChapter,
 } from 'src/actions/gameScreen';
 
-import {
-  hideLoader,
-} from 'src/actions/utils';
+import { hideLoader } from 'src/actions/utils';
+
+import { baseURL } from 'src/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CURRENT_STORY:
-
-      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
+      axios.get(`${baseURL}/api/v0/stories/${action.slug}`)
       // chemin test
         .then((response) => {
           store.dispatch(saveCurrentStory(response.data[0]));
@@ -28,8 +27,7 @@ const gameMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_CURRENT_CHAPTER:
-
-      axios.get('http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/12')
+      axios.get(`${baseURL}/api/v0/chapters/12`)
         .then((response) => {
           store.dispatch(saveCurrentChapter(response.data[0]));
           store.dispatch(hideLoader());

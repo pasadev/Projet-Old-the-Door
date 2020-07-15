@@ -18,13 +18,7 @@ const ChapterEdit = ({
         <select className="chapterEdit-parentChapter" id="">
           {/* TODO map */}
           <option value="">
-            {title}
-          </option>
-          <option value="">
-            Chap 1 : Bla
-          </option>
-          <option value="">
-            Chap 2 : BlaBla
+            Chapitre parent à choisir
           </option>
         </select>
         <Field
