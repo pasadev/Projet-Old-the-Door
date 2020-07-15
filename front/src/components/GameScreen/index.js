@@ -72,7 +72,7 @@ const GameScreen = ({
         <div className="gameScreen">
           <div className="gameScreen-header">
             <div className="gameScreen-header-timer">
-              { minutes }: { seconds }
+              { minutes < 10 && 0 }{ minutes }:{ seconds < 10 && 0 }{ seconds }
             </div>
             <div className="gameScreen-header-text">
               <Typist
