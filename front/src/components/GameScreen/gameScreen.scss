@@ -46,12 +46,45 @@
           border-style: none;
           border-image: none;
           color: $lightScreenColor;
+          border: 1px solid $lightScreenColor;
+          margin-top: 0.5em;
         }
+      }
+      .gameScreen-formButton {
+        border: none;
+        padding: 0.25em 0.5em;
+        margin-top: 0.5em;
+        font-weight: bold;
+        font-size: 0.8em;
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        color: $linkColor;
+        text-shadow: 0 0 10px $linkColor;
+      }
+      .gameScreen-formButton:hover {
+        text-decoration: underline;
       }
     }
 
     .gameScreen-content {
       padding-top: 1em;
+    }
+
+    .gameScreen-chapterTitle {
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.5em;
+    }
+
+    .gameScreen-unlockText {
+      color: $noticeColor;
+      margin: 0.5em 0;
+      .gameScreen-actionButton {
+        color: $linkColor;
+      }
+      .gameScreen-actionButton:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

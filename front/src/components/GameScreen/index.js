@@ -62,18 +62,15 @@ const GameScreen = ({
             </div>
             <div className="gameScreen-header-text">
               <Typist
-                cursor={{ show: false }}
+                cursor={{ blink: true, hideWhenDone: true }}
+                avgTypingDelay={30}
               >
-                Initialisation '{currentStory.title}' v0.01 ..................................
+                <span>.....Initialisation de l'histoire v0.01.....</span>
+                <Typist.Backspace count={39} delay={600} />
+                <span>Chargement des chapitres.....</span>
+                <Typist.Backspace count={29} delay={600} />
+                <span>{currentStory.title.toUpperCase()}.....by {currentStory.author.username}</span>
               </Typist>
-              <div className="gameScreen-content-infos">
-                <Typist
-                  cursor={{ show: false }}
-                >
-                  <Typist.Delay ms={5000} />
-                  <span>{currentStory.author.username}</span>
-                </Typist>
-              </div>
             </div>
           </div>
 
@@ -86,7 +83,9 @@ const GameScreen = ({
 
             {/* Display the current chapter here */}
             {loadingChapter && <div>Loading Chapter</div>}
-            {!loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} />}
+            {!loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
+
+            {/* Todo: Try without deversing the state currentChapter but just passing an argument like previousChapters */}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
 
@@ -105,7 +104,7 @@ const GameScreen = ({
                 onChange={changeField}
                 value={gameLock}
               />
-              <button type="submit">Tester la combinaison</button>
+              <button className="gameScreen-formButton" type="submit">=> Tester la combinaison</button>
             </form>
           </div>
         </div>

@@ -9,49 +9,49 @@ const Chapter = ({
   unlockText,
   trueAnswer,
   fetchNextChapter,
+  previousChapters,
 
-}) => {
-  // console.log();
-  return (
+}) => (
+  <>
+    <div className="gameScreen-content-text">
+      <Typist
+        cursor={{ show: false }}
+        avgTypingDelay={50}
+      >
 
-    <>
-      <div className="gameScreen-content-text">
+        <Typist.Delay ms={previousChapters.length === 0 ? 8000 : 1000} />
+        <h3 className="gameScreen-chapterTitle">{title}</h3>
+      </Typist>
+      <Typist
+        cursor={{ show: false }}
+        avgTypingDelay={15}
+      >
+        <Typist.Delay ms={previousChapters.length === 0 ? 8500 : 1500} />
+        {content}
+      </Typist>
+    </div>
+    <div className="gameScreen-unlockText">
+      {trueAnswer && (
+      <>
         <Typist
           cursor={{ show: false }}
+          avgTypingDelay={30}
         >
-          <Typist.Delay ms={500} />
-          {title}
-        </Typist>
-        <Typist
-          cursor={{ show: false }}
-        >
-          <Typist.Delay ms={500} />
-          {content}
-        </Typist>
-      </div>
-      <div className="gameScreen-content-unlockText">
-        {trueAnswer && (
-        <>
-          <Typist
-            cursor={{ show: false }}
-          >
-            <br />
-            <Typist.Delay ms={500} />
-            {unlockText}
-            <br />
+          <Typist.Delay ms={1000} />
+          {unlockText}
 
-            <button type="button" onClick={fetchNextChapter}>Chapitre suivant</button>
-          </Typist>
-        </>
-        )}
-      </div>
-    </>
-  );
-};
+          <span className="gameScreen-actionButton" onClick={fetchNextChapter}> => Chapitre suivant</span>
+        </Typist>
+      </>
+      )}
+    </div>
+  </>
+);
 
 Chapter.propTypes = {
   fetchNextChapter: PropTypes.func.isRequired,
   trueAnswer: PropTypes.bool.isRequired,
+  previousChapters: PropTypes.array.isRequired,
 
   title: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
