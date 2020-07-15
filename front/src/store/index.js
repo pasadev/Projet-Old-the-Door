@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
+import { sessionService } from 'redux-react-session';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import userMiddleware from 'src/middlewares/userMiddleware';
 import adventuresMiddleware from 'src/middlewares/adventuresMiddleware';
@@ -24,5 +25,5 @@ const store = createStore(
   // enhancer
   enhancers,
 );
-
+sessionService.initSessionService(store);
 export default store;
