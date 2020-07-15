@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit/index.js';
-import ChapterEdit from 'src/components/ChapterEdit';
+import ChapterEdit from 'src/containers/ChapterEdit';
 import './storyEdit.scss';
 
 const StoryEdit = ({
