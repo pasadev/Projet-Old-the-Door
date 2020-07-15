@@ -1,6 +1,8 @@
 @import 'src/styles/vars';
 
 .screenCase {
+  padding: 0;
+  background: $lightCaseColor;
   .gameScreen {
     padding: 0.5em;
     position:relative;
@@ -14,7 +16,7 @@
     opacity : 0.9;
     color: $lightScreenColor;
     text-shadow: 0px 0px 10px $lightColor;
-    opacity: 0.6;
+    opacity : 0.9;
     border: 3px solid $darkBorderColor;
 
     .gameScreen-header {
@@ -22,43 +24,54 @@
 
       .gameScreen-header-timer {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 1em;
+        right: 1em;
         font-size: 1.5em;
       }
 
       .gameScreen-header-text {
-        padding-top: 0.5em;
+        padding-top: 1em;
+        width: 80%;
       }
     }
     .gameScreen-form {
       padding-top: 1em;
+      width: 300px;
+
+      .gameScreen-form-row{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 0.5em;
+        width: 100%;
+      }
+
+      label {
+        width: 30%;
+      }
 
       .gameScreen-form-field {
         display: flex;
+        width: 70%;
 
         .gameScreen-form-input {
-          padding-left: 0.5em;
-          position: relative;
-          bottom: 2px;
+          padding: 0.2em 0.5em;
+          margin-left: 1em;
           background-color: transparent;
-          width: 30%;
-          border-style: none;
-          border-image: none;
           color: $lightScreenColor;
           border: 1px solid $lightScreenColor;
-          margin-top: 0.5em;
         }
       }
       .gameScreen-formButton {
         border: none;
-        padding: 0.25em 0.5em;
-        margin-top: 0.5em;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        text-align: left;
         font-weight: bold;
         font-size: 0.8em;
         background-color: Transparent;
         background-repeat:no-repeat;
-        color: $linkColor;
+        color: $noticeColor;
         text-shadow: 0 0 10px $linkColor;
       }
       .gameScreen-formButton:hover {
@@ -72,39 +85,45 @@
 
     .gameScreen-chapterTitle {
       text-transform: uppercase;
-      color: #fff;
+      color: $noticeColor;
       margin-bottom: 0.5em;
     }
 
     .gameScreen-unlockText {
-      color: $noticeColor;
+      color: #fff;
+      font-style: italic;
       margin: 0.5em 0;
       .gameScreen-actionButton {
-        color: $linkColor;
+        color: $noticeColor;
       }
       .gameScreen-actionButton:hover {
         text-decoration: underline;
+        cursor: pointer;
       }
     }
+  }
+
+  .gameScreen-storySuccess {
+    color: $noticeColor;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .screenCase {
-    background: $lightCaseColor;
-    top: $screenCaseTopPosition;	
+    /* background: $lightCaseColor; */
+    /* top: $screenCaseTopPosition;	
     bottom: 0;
     width: $screenCaseWidth;
-    height: $screenCaseHeight;
-    margin: auto;
-    border: 5px solid $darkCaseColor;
-    border-radius: 5px;
+    height: $screenCaseHeight; */
+    /* margin: auto; */
+    /* border: 5px solid $darkCaseColor; */
+    /* border-radius: 5px; */
     
     .gameScreen {  
-      margin: 35px 35px 35px 35px;
-      border: 3px solid $darkBorderColor;
-      border-radius: 20px;
-      opacity : 0.9;
+      /* margin: 35px 35px 35px 35px; */
+      /* border: 3px solid $darkBorderColor; */
+      /* border-radius: 20px; */
+      /* opacity : 0.9; */
     }
   }
 }
