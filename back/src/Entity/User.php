@@ -56,6 +56,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups("user_show")
+     * @Groups("user_login")
      * @Groups("user_create")
      * @Assert\NotBlank(message="Le prenom est obligatoire")
      * @Assert\Length(min=2)
@@ -65,6 +66,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups("user_show")
+     * @Groups("user_login")
      * @Groups("user_create")
      * @Assert\NotBlank(message="Le nom est obligatoire")
      * @Assert\Length(min=2)

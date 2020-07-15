@@ -17,11 +17,13 @@ const userMiddleware = (store) => (next) => (action) => {
       axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/login', {
         email,
         password,
-      }, {
-        credentials: 'include',
+      },
+      {
+        withCredentials: true,
       })
         .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
+          console.log(response.data[0]);
+          store.dispatch(saveUser(response.data[0]));
         })
         .catch((error) => {
           console.warn(error);
