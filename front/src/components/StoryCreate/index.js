@@ -40,7 +40,6 @@ const StoryCreate = ({
               value={title}
               changeField={updateField}
               label="titre :"
-              maxLength="128"
             />
             <FieldArea
               identifier="synopsis"

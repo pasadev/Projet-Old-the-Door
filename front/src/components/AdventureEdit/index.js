@@ -17,7 +17,6 @@ const AdventureEdit = ({
       value={title}
       changeField={updateField}
       label="titre :"
-      maxLength="128"
     />
     <FieldArea
       className="adventureEdit-synopsis"

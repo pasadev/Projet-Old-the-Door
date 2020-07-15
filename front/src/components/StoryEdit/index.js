@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit/index.js';
-// import ChapterEdit from './ChapterEdit';
+import ChapterEdit from 'src/components/ChapterEdit';
 import './storyEdit.scss';
 
 const StoryEdit = ({
@@ -16,6 +16,8 @@ const StoryEdit = ({
   submitAdvEditForm,
   redirect,
   chapters,
+  editOption,
+  setEditOption,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -26,6 +28,10 @@ const StoryEdit = ({
   const handleStoryEditSubmit = (event) => {
     event.preventDefault();
     submitAdvEditForm(storyEdit.title, storyEdit.synopsis, storyEdit.description, storyEdit.id);
+  };
+
+  const handleEditOption = (event) => {
+    setEditOption(event.target.value);
   };
 
   return (
@@ -48,7 +54,11 @@ const StoryEdit = ({
                   <select
                     className="storyEdit-form-editChoice"
                     id="storyEdit-form-editChoice"
+                    onChange={handleEditOption}
                   >
+                    <option value="">
+                      Ce que vous voulez editer
+                    </option>
                     <option value={storyEdit.title}>
                       {storyEdit.title}
                     </option>
@@ -63,10 +73,9 @@ const StoryEdit = ({
                   </select>
                 </label>
 
-                {/* Display condition edit chap or adv */}
-                <AdventureEdit />
-                {/* <ChapterEdit /> */}
-                <button type="submit">Enregistrer ces modifications</button>
+                {editOption === storyEdit.title && <AdventureEdit />}
+
+                {editOption !== '' && (<button type="submit">Enregistrer ces modifications</button>)}
               </form>
             </main>
           )}
@@ -77,6 +86,8 @@ const StoryEdit = ({
 };
 
 StoryEdit.propTypes = {
+  setEditOption: PropTypes.func.isRequired,
+  editOption: PropTypes.string.isRequired,
   redirect: PropTypes.bool.isRequired,
   submitAdvEditForm: PropTypes.func.isRequired,
   displayLoader: PropTypes.func.isRequired,

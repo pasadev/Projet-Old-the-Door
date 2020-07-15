@@ -3,6 +3,7 @@ import {
   UPDATE_ADVENTURE_EDIT_FIELD,
   SAVE_ADV_EDIT_CHAPTERS,
   CLEAR_ADV_EDIT_CHAPTERS,
+  SET_EDIT_OPTION,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   slug: '',
   description: '',
   chapters: [],
+  editOption: '',
 };
 
 const storyEdit = (state = initialState, action = {}) => {
@@ -52,6 +54,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         chapters: [],
+      };
+
+    case SET_EDIT_OPTION:
+      return {
+        ...state,
+        editOption: action.newValue,
       };
 
     default: return state;

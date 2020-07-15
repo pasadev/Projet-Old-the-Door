@@ -6,6 +6,7 @@ export const SUBMIT_ADV_EDIT_FORM = 'SUBMIT_ADV_EDIT_FORM';
 export const FETCH_ADV_EDIT_CHAPTERS = 'FETCH_ADV_EDIT_CHAPTERS';
 export const SAVE_ADV_EDIT_CHAPTERS = 'SAVE_ADV_EDIT_CHAPTERS';
 export const CLEAR_ADV_EDIT_CHAPTERS = 'CLEAR_ADV_EDIT_CHAPTERS';
+export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -43,4 +44,9 @@ export const saveAdvEditChapters = (chapters) => ({
 
 export const clearAdvEditChapters = () => ({
   type: CLEAR_ADV_EDIT_CHAPTERS,
+});
+
+export const setEditOption = (newValue) => ({
+  type: SET_EDIT_OPTION,
+  newValue,
 });
