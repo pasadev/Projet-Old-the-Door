@@ -18,6 +18,7 @@ const StoryEdit = ({
   chapters,
   editOption,
   setEditOption,
+  tempTitle,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -43,7 +44,7 @@ const StoryEdit = ({
           {!loading && (
             <main className="storyEdit">
               <h1>
-                La page d'édition pour : {storyEdit.title}
+                La page d'édition pour : {tempTitle}
               </h1>
               <form
                 className="storyEdit-form"
@@ -56,11 +57,11 @@ const StoryEdit = ({
                     id="storyEdit-form-editChoice"
                     onChange={handleEditOption}
                   >
-                    <option value="">
+                    <option value="" defaultValue>
                       Ce que vous voulez editer
                     </option>
-                    <option value={storyEdit.title}>
-                      {storyEdit.title}
+                    <option value={tempTitle}>
+                      {tempTitle}
                     </option>
                     {chapters.map((chapter) => (
                       <option
@@ -73,7 +74,7 @@ const StoryEdit = ({
                   </select>
                 </label>
 
-                {editOption === storyEdit.title && <AdventureEdit />}
+                {editOption === tempTitle && <AdventureEdit />}
 
                 {chapters.map((chapter) => (
                   <ChapterEdit {...chapter} key={chapter.id} />
@@ -90,6 +91,7 @@ const StoryEdit = ({
 };
 
 StoryEdit.propTypes = {
+  tempTitle: PropTypes.string.isRequired,
   setEditOption: PropTypes.func.isRequired,
   editOption: PropTypes.string.isRequired,
   redirect: PropTypes.bool.isRequired,

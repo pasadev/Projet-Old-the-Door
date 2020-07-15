@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   redirect: state.utils.redirect,
   chapters: state.storyEdit.chapters,
   editOption: state.storyEdit.editOption,
+  tempTitle: state.storyEdit.tempTitle,
 });
 
 // === mapDispatchToProps
