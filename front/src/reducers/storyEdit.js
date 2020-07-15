@@ -2,6 +2,7 @@ import {
   SAVE_ADV_EDIT_SELECTED,
   UPDATE_ADVENTURE_EDIT_FIELD,
   SAVE_ADV_EDIT_CHAPTERS,
+  CLEAR_ADV_EDIT_CHAPTERS,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -46,6 +47,11 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         chapters: action.chapters,
+      };
+    case CLEAR_ADV_EDIT_CHAPTERS:
+      return {
+        ...state,
+        chapters: [],
       };
 
     default: return state;

@@ -7,6 +7,7 @@ import {
   fetchAdvEditChapters,
   FETCH_ADV_EDIT_CHAPTERS,
   saveAdvEditChapters,
+  clearAdvEditChapters,
 } from 'src/actions/storyEdit';
 
 import {
@@ -52,11 +53,10 @@ const storyEditMiddleware = (store) => (next) => (action) => {
     case FETCH_ADV_EDIT_CHAPTERS: {
       axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters?story_id=${store.getState().storyEdit.id}`)
         .then((response) => {
-          console.log(response.data[0]);
           store.dispatch(saveAdvEditChapters(response.data[0]));
         })
         .catch((error) => {
-          console.warn(error);
+          store.dispatch(clearAdvEditChapters());
         })
         .finally(() => {
           store.dispatch(hideLoader());
