@@ -15,6 +15,7 @@ const StoryEdit = ({
   loading,
   submitAdvEditForm,
   redirect,
+  chapters,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -44,19 +45,21 @@ const StoryEdit = ({
               >
                 <label htmlFor="storyEdit-form-editChoice">
                   Editer :
-                  <select className="storyEdit-form-editChoice" id="storyEdit-form-editChoice">
-                    {/* TODO map */}
-                    <option value="">
+                  <select
+                    className="storyEdit-form-editChoice"
+                    id="storyEdit-form-editChoice"
+                  >
+                    <option value={storyEdit.title}>
                       {storyEdit.title}
                     </option>
-                    { storyEdit.firstChapter !== null && (
-                      <option value="">
-                        {storyEdit.firstChapter.title}
+                    {chapters.map((chapter) => (
+                      <option
+                        key={chapter.id}
+                        value={chapter.title}
+                      >
+                        {chapter.title}
                       </option>
-                    )}
-                    <option value="">
-                      Chap 2 : BlaBla
-                    </option>
+                    ))}
                   </select>
                 </label>
 
@@ -92,6 +95,7 @@ StoryEdit.propTypes = {
       title: PropTypes.string,
     }),
   }).isRequired,
+  chapters: PropTypes.array.isRequired,
 };
 
 export default StoryEdit;

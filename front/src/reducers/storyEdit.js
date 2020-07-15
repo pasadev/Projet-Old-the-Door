@@ -1,7 +1,8 @@
 import {
   SAVE_ADV_EDIT_SELECTED,
   UPDATE_ADVENTURE_EDIT_FIELD,
-} from 'src/actions/adventureEdit';
+  SAVE_ADV_EDIT_CHAPTERS,
+} from 'src/actions/storyEdit';
 
 const initialState = {
   id: '',
@@ -18,6 +19,7 @@ const initialState = {
   },
   slug: '',
   description: '',
+  chapters: [],
 };
 
 const storyEdit = (state = initialState, action = {}) => {
@@ -38,6 +40,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.identifier]: action.newValue,
+      };
+
+    case SAVE_ADV_EDIT_CHAPTERS:
+      return {
+        ...state,
+        chapters: action.chapters,
       };
 
     default: return state;

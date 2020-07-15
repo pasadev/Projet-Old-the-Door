@@ -4,7 +4,7 @@ import { displayLoader } from 'src/actions/utils';
 import {
   fetchAdvEditSelected,
   submitAdvEditForm,
-} from 'src/actions/adventureEdit';
+} from 'src/actions/storyEdit';
 
 import StoryEdit from 'src/components/StoryEdit';
 
@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
   loading: state.utils.loading,
   storyEdit: state.storyEdit,
   redirect: state.utils.redirect,
+  chapters: state.storyEdit.chapters,
 });
 
 // === mapDispatchToProps

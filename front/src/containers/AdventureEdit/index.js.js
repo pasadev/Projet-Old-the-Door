@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import {
   updateAdventureEditField,
-} from 'src/actions/adventureEdit';
+} from 'src/actions/storyEdit';
 
 import AdventureEdit from 'src/components/AdventureEdit';
 
