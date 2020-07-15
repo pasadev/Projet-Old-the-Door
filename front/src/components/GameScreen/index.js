@@ -34,6 +34,9 @@ const GameScreen = ({
   loading,
   loadingChapter,
   showSuccessMessage,
+  timerCounter,
+  setCounter,
+  timerIsRunning,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -51,6 +54,13 @@ const GameScreen = ({
     displayLoader();
   }, []);
 
+  useEffect(() => {
+    const timer = /* condition here */timerIsRunning && setInterval(() => setCounter(timerCounter + 1), 1000);
+    return () => clearInterval(timer);
+  }, [timerIsRunning, timerCounter]);
+  // when timerIsRunning was the only dependency it only counted to 1 and got stuck
+  // timerCounter needs to be a dependency too because it wouldn't calculate the rest otherwise
+
   return (
     <>
       {loading && <Loader />}
@@ -59,7 +69,7 @@ const GameScreen = ({
         <div className="gameScreen">
           <div className="gameScreen-header">
             <div className="gameScreen-header-timer">
-              15:05
+              { timerCounter }
             </div>
             <div className="gameScreen-header-text">
               <Typist
@@ -115,6 +125,9 @@ const GameScreen = ({
 };
 
 GameScreen.propTypes = {
+  setCounter: PropTypes.func.isRequired,
+  timerCounter: PropTypes.number.isRequired,
+  timerIsRunning: PropTypes.bool.isRequired,
 
   changeField: PropTypes.func.isRequired,
   gameKey: PropTypes.string.isRequired,

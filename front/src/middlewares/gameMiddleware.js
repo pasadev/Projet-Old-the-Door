@@ -8,14 +8,16 @@ import {
   saveCurrentChapter,
   FETCH_NEXT_CHAPTER,
   savePreviousChapters,
-
+  toggleTheCounter,
   displayChapterAfterLoad,
   displaySuccessMessage,
+  savePartyTime,
 } from 'src/actions/gameScreen';
 
 import {
   hideLoader,
 } from 'src/actions/utils';
+import { SAVE_PARTY_TIME } from '../actions/gameScreen';
 
 const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -44,6 +46,9 @@ const gameMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+        })
+        .finally(() => {
+          store.dispatch(toggleTheCounter());
         });
 
       next(action);
@@ -61,16 +66,44 @@ const gameMiddleware = (store) => (next) => (action) => {
           if (response.status === 200) {
             store.dispatch(savePreviousChapters(currentChapterForSave));
             store.dispatch(saveCurrentChapter(response.data[0]));
-            store.dispatch(displayChapterAfterLoad());
           }
           if (response.status === 204) {
             console.log('message test');
+            store.dispatch(toggleTheCounter());
             store.dispatch(savePreviousChapters(currentChapterForSave));
 
-            store.dispatch(displayChapterAfterLoad());
-
             store.dispatch(displaySuccessMessage());
+            store.dispatch(savePartyTime(
+              store.getState().gameScreen.timerCounter, // end time
+              2, // player ID
+              store.getState().gameScreen.currentStory.id, // story ID
+            ));
           }
+        })
+        .catch((error) => {
+          console.warn(error);
+        })
+        .finally(() => {
+          store.dispatch(displayChapterAfterLoad());
+        });
+
+      next(action);
+      break;
+
+    case SAVE_PARTY_TIME:
+      axios.post('http://damien-toscano.vpnuser.lan:8000/api/v0/parties', {
+        time: action.endTime,
+        player: action.player,
+        forStory: action.forStory,
+      })
+        .then((response) => {
+          console.log(response);
+          // congratulations, you just played yourself,
+          /* {
+              "time": 1665,
+              "player": 2,
+              "forStory": 12
+            } */
         })
         .catch((error) => {
           console.warn(error);

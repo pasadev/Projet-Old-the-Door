@@ -8,6 +8,8 @@ import {
   DISPLAY_CHAPTER_AFTER_LOAD,
   HIDE_CHAPTER,
   DISPLAY_SUCCESS_MESSAGE,
+  SET_COUNTER,
+  TOGGLE_THE_COUNTER,
 } from 'src/actions/gameScreen';
 
 const initialState = {
@@ -41,6 +43,9 @@ const initialState = {
   loadingChapter: true,
 
   showSuccessMessage: false,
+
+  timerCounter: 0,
+  timerIsRunning: false,
 };
 
 const gameScreen = (state = initialState, action = {}) => {
@@ -118,6 +123,22 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         showSuccessMessage: true,
+      };
+
+    case SET_COUNTER:
+
+      return {
+        ...state,
+
+        timerCounter: action.currentTime,
+      };
+
+    case TOGGLE_THE_COUNTER:
+
+      return {
+        ...state,
+
+        timerIsRunning: !state.timerIsRunning,
       };
 
     default: return state;

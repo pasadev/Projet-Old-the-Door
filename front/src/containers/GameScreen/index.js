@@ -12,6 +12,7 @@ import {
   updateAnswerField,
   clearGameScreenInput,
   hideChapter,
+  setCounter,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -33,6 +34,10 @@ const mapStateToProps = (state) => ({
   previousChapters: state.gameScreen.previousChapters,
 
   showSuccessMessage: state.gameScreen.showSuccessMessage,
+
+  timerCounter: state.gameScreen.timerCounter,
+
+  timerIsRunning: state.gameScreen.timerIsRunning,
 
 });
 
@@ -83,6 +88,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   displayLoader: () => {
     dispatch(displayLoader());
+  },
+
+  setCounter: (currentTime) => {
+    dispatch(setCounter(currentTime));
   },
 });
 

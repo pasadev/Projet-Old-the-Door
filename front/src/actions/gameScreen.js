@@ -14,6 +14,9 @@ export const HIDE_CHAPTER = 'HIDE_CHAPTER';
 export const UPDATE_ANSWER_FIELD = 'UPDATE_ANSWER_FIELD';
 export const CLEAR_GAMESCREEN_INPUT = 'CLEAR_GAMESCREEN_INPUT';
 export const DISPLAY_SUCCESS_MESSAGE = 'DISPLAY_SUCCESS_MESSAGE';
+export const SET_COUNTER = 'SET_COUNTER';
+export const TOGGLE_THE_COUNTER = 'TOGGLE_THE_COUNTER';
+export const SAVE_PARTY_TIME = 'SAVE_PARTY_TIME';
 
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -87,4 +90,20 @@ export const hideChapter = () => ({
 
 export const displaySuccessMessage = () => ({
   type: DISPLAY_SUCCESS_MESSAGE,
+});
+
+export const setCounter = (currentTime) => ({
+  type: SET_COUNTER,
+  currentTime,
+});
+
+export const toggleTheCounter = () => ({
+  type: TOGGLE_THE_COUNTER,
+});
+
+export const savePartyTime = (endTime, player, forStory) => ({
+  type: SAVE_PARTY_TIME,
+  endTime,
+  player,
+  forStory,
 });
