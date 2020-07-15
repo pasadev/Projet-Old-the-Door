@@ -7,6 +7,7 @@ import {
   CLEAR_GAMESCREEN_INPUT,
   DISPLAY_CHAPTER_AFTER_LOAD,
   HIDE_CHAPTER,
+  DISPLAY_SUCCESS_MESSAGE,
 } from 'src/actions/gameScreen';
 
 const initialState = {
@@ -38,6 +39,8 @@ const initialState = {
 
   trueAnswer: false,
   loadingChapter: true,
+
+  showSuccessMessage: false,
 };
 
 const gameScreen = (state = initialState, action = {}) => {
@@ -107,6 +110,14 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         loadingChapter: true,
+      };
+
+    case DISPLAY_SUCCESS_MESSAGE:
+
+      return {
+        ...state,
+
+        showSuccessMessage: true,
       };
 
     default: return state;

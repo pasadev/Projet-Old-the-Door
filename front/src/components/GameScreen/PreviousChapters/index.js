@@ -6,7 +6,6 @@ import PreviousChapter from './PreviousChapter';
 const PreviousChapters = ({
   previousChapters,
 }) => {
-  console.log(previousChapters);
   return (
     <div className="gameScreen-content-previousChapters">
       {previousChapters.map((previousChapter) => (

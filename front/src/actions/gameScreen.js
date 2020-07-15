@@ -13,6 +13,7 @@ export const DISPLAY_CHAPTER_AFTER_LOAD = 'DISPLAY_CHAPTER_AFTER_LOAD';
 export const HIDE_CHAPTER = 'HIDE_CHAPTER';
 export const UPDATE_ANSWER_FIELD = 'UPDATE_ANSWER_FIELD';
 export const CLEAR_GAMESCREEN_INPUT = 'CLEAR_GAMESCREEN_INPUT';
+export const DISPLAY_SUCCESS_MESSAGE = 'DISPLAY_SUCCESS_MESSAGE';
 
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -82,4 +83,8 @@ export const displayChapterAfterLoad = () => ({
 
 export const hideChapter = () => ({
   type: HIDE_CHAPTER,
+});
+
+export const displaySuccessMessage = () => ({
+  type: DISPLAY_SUCCESS_MESSAGE,
 });

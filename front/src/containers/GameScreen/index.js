@@ -32,6 +32,8 @@ const mapStateToProps = (state) => ({
 
   previousChapters: state.gameScreen.previousChapters,
 
+  showSuccessMessage: state.gameScreen.showSuccessMessage,
+
 });
 
 // === mapDispatchToProps

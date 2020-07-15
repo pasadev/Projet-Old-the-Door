@@ -10,6 +10,7 @@ import {
   savePreviousChapters,
 
   displayChapterAfterLoad,
+  displaySuccessMessage,
 } from 'src/actions/gameScreen';
 
 import {
@@ -55,9 +56,21 @@ const gameMiddleware = (store) => (next) => (action) => {
       axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${currentChapterForSave.id}/child`)
         .then((response) => {
           console.log(response);
-          store.dispatch(savePreviousChapters(currentChapterForSave));
-          store.dispatch(saveCurrentChapter(response.data[0]));
-          store.dispatch(displayChapterAfterLoad());
+          // Check if it's a 404 or a 200 http code
+
+          if (response.status === 200) {
+            store.dispatch(savePreviousChapters(currentChapterForSave));
+            store.dispatch(saveCurrentChapter(response.data[0]));
+            store.dispatch(displayChapterAfterLoad());
+          }
+          if (response.status === 204) {
+            console.log('message test');
+            store.dispatch(savePreviousChapters(currentChapterForSave));
+
+            store.dispatch(displayChapterAfterLoad());
+
+            store.dispatch(displaySuccessMessage());
+          }
         })
         .catch((error) => {
           console.warn(error);

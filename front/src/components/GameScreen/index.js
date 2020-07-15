@@ -33,6 +33,7 @@ const GameScreen = ({
   displayLoader,
   loading,
   loadingChapter,
+  showSuccessMessage,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -79,13 +80,12 @@ const GameScreen = ({
             {/* Call previousChapters components here to display them */}
             {previousChapters.length !== 0
             && <PreviousChapters previousChapters={previousChapters} />}
-            {console.log(currentChapter)}
 
             {/* Display the current chapter here */}
             {loadingChapter && <div>Loading Chapter</div>}
-            {!loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
+            {!showSuccessMessage && !loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
 
-            {/* Todo: Try without deversing the state currentChapter but just passing an argument like previousChapters */}
+            {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div>Success, you win </div></Typist>}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
 
@@ -124,6 +124,7 @@ GameScreen.propTypes = {
   loading: PropTypes.bool.isRequired,
   trueAnswer: PropTypes.bool.isRequired,
   loadingChapter: PropTypes.bool.isRequired,
+  showSuccessMessage: PropTypes.bool.isRequired,
 
   fetchCurrentStory: PropTypes.func.isRequired,
   fetchNextChapter: PropTypes.func.isRequired,
