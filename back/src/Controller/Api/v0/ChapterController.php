@@ -79,6 +79,13 @@ class ChapterController extends AbstractController
         //Get the child chapter for the chapter id given
         $childChapter = $chapterRepository->findChildChapter($id);
 
+        if (!$childChapter) {
+            // return chapter data in json
+            return $this->json(
+                "End of chapters", 404
+            );
+        }
+
         // Tools for serializing chapter
         $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
 
