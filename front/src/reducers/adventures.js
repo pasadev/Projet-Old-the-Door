@@ -10,6 +10,7 @@ const initialState = {
   adventuresHome: [],
   adventuresCatalog: [],
   adventureSelected: {
+    id: '34',
     title: '',
     description: '',
     createdAt: '',
@@ -23,6 +24,7 @@ const initialState = {
     average: '',
     best: '',
   },
+
 };
 
 const adventures = (state = initialState, action = {}) => {
@@ -56,6 +58,7 @@ const adventures = (state = initialState, action = {}) => {
       return {
         ...state,
         adventureTimer: action.adventureTimer,
+        id: action.adventureId,
 
       };
 

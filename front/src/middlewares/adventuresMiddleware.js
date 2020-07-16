@@ -86,7 +86,9 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       break;
 
     case FETCH_ADVENTURE_TIMER:
-      axios.get('http://maxence-royer.vpnuser.lan:8000/api/v0/stories/34/time')
+      // eslint-disable-next-line no-case-declarations
+      const currentTimer = store.getState().adventures.adventureSelected;
+      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${currentTimer.id}/time`)
         .then((response) => {
         // dispatch to save the Adventure selected
           store.dispatch(saveAdventureTimer(response.data));
