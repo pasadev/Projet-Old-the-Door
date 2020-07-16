@@ -8,6 +8,7 @@ import {
 const initialState = {
   burgerMenuOpen: false,
   loading: true,
+  user: localStorage.getItem('currentuser'),
 };
 
 const utils = (state = initialState, action = {}) => {

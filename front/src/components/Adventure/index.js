@@ -13,12 +13,15 @@ const Adventure = ({
   displayLoader,
   loading,
   redirectOff,
+  fetchAdventureTimer,
+  adventureTimer,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
     redirectOff();
     fetchAdventureSelected(slug);
     displayLoader();
+    fetchAdventureTimer();
   }, []);
 
   return (
@@ -26,6 +29,8 @@ const Adventure = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
+          <p>Best Time {adventureTimer.best} second?</p>
+          <p>average Time {adventureTimer.average} second?</p>
           <h1 className="adventure-title main-title">
             <Typist>
               {adventureSelected.title}
@@ -81,6 +86,12 @@ Adventure.propTypes = {
       username: PropTypes.string.isRequired,
     }).isRequired,
     createdAt: PropTypes.string.isRequired,
+  }).isRequired,
+  fetchAdventureTimer: PropTypes.func.isRequired,
+  // Adventure Timer
+  adventureTimer: PropTypes.shape({
+    best: PropTypes.number.isRequired,
+    average: PropTypes.number.isRequired,
   }).isRequired,
 };
 

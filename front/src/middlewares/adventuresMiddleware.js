@@ -9,6 +9,8 @@ import {
   saveAdventureSelected,
   FETCH_ADVENTURES_ACTIVE_NUMBER,
   saveAdventuresActiveNumber,
+  FETCH_ADVENTURE_TIMER,
+  saveAdventureTimer,
 } from 'src/actions/adventures';
 
 import {
@@ -83,6 +85,19 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
+    case FETCH_ADVENTURE_TIMER:
+      axios.get('http://maxence-royer.vpnuser.lan:8000/api/v0/stories/34/time')
+        .then((response) => {
+        // dispatch to save the Adventure selected
+          store.dispatch(saveAdventureTimer(response.data));
+          // dispatch to hide the loader
+          store.dispatch(hideLoader());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
     default:
       next(action);
   }
