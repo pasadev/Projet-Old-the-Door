@@ -34,7 +34,7 @@ const StoryEdit = ({
 
   const handleEditOption = (event) => {
     setEditOption(event.target.value);
-    console.log(event.target.value);
+    fetchChapterEditSelected(event.target.value);
   };
 
   return (

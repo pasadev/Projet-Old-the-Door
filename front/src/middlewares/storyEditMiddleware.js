@@ -8,6 +8,8 @@ import {
   FETCH_ADV_EDIT_CHAPTERS,
   saveAdvEditChapters,
   clearAdvEditChapters,
+  FETCH_CHAPTER_EDIT_SELECTED,
+  saveChapterEditSelected,
 } from 'src/actions/storyEdit';
 
 import {
@@ -62,6 +64,21 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         })
         .finally(() => {
           store.dispatch(hideLoader());
+        });
+      next(action);
+      break;
+    }
+
+    case FETCH_CHAPTER_EDIT_SELECTED: {
+      axios.get(`${baseURL}/api/v0/chapters/${action.id}`)
+        .then((response) => {
+          store.dispatch(saveChapterEditSelected(response.data[0]));
+        })
+        .catch((error) => {
+
+        })
+        .finally(() => {
+
         });
       next(action);
       break;

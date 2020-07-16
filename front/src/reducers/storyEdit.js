@@ -4,6 +4,7 @@ import {
   SAVE_ADV_EDIT_CHAPTERS,
   CLEAR_ADV_EDIT_CHAPTERS,
   SET_EDIT_OPTION,
+  SAVE_CHAPTER_EDIT_SELECTED,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -63,6 +64,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         editOption: action.newValue,
+      };
+
+    case SAVE_CHAPTER_EDIT_SELECTED:
+      return {
+        ...state,
+        chapterEdit: action.chapterEdit,
       };
 
     default: return state;
