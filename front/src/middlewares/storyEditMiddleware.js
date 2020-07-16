@@ -17,7 +17,7 @@ import {
 const storyEditMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_ADV_EDIT_SELECTED:
-      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
+      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
         .then((response) => {
           // dispatch to save the Adventure to edit selected
           store.dispatch(saveAdventureEditSelected(response.data[0]));
@@ -30,7 +30,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_ADV_EDIT_FORM:
-      axios.post('http://damien-toscano.vpnuser.lan:8000/api/v0/stories', {
+      axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/stories', {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,

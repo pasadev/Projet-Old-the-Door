@@ -21,7 +21,6 @@ const Connexion = ({
     evt.preventDefault();
     handleLogin();
   };
-
   return (
     <div className="login-form">
 

@@ -23,7 +23,7 @@ const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_CURRENT_STORY:
 
-      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
+      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${action.slug}`)
       // chemin test
         .then((response) => {
           store.dispatch(saveCurrentStory(response.data[0]));
@@ -38,7 +38,7 @@ const gameMiddleware = (store) => (next) => (action) => {
 
     case FETCH_FIRST_CHAPTER:
 
-      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${action.firstChapterId}`)
+      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/chapters/${action.firstChapterId}`)
         .then((response) => {
           store.dispatch(saveCurrentChapter(response.data[0]));
           store.dispatch(hideLoader());
@@ -58,7 +58,7 @@ const gameMiddleware = (store) => (next) => (action) => {
       // eslint-disable-next-line no-case-declarations
       const currentChapterForSave = store.getState().gameScreen.currentChapter;
       console.log(action);
-      axios.get(`http://damien-toscano.vpnuser.lan:8000/api/v0/chapters/${currentChapterForSave.id}/child`)
+      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/chapters/${currentChapterForSave.id}/child`)
         .then((response) => {
           console.log(response);
           // Check if it's a 404 or a 200 http code
@@ -91,7 +91,7 @@ const gameMiddleware = (store) => (next) => (action) => {
       break;
 
     case SAVE_PARTY_TIME:
-      axios.post('http://damien-toscano.vpnuser.lan:8000/api/v0/parties', {
+      axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/parties', {
         time: action.endTime,
         player: action.player,
         forStory: action.forStory,

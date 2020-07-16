@@ -121,6 +121,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", unique=true , nullable=true)
+     * @Groups("user_login")
      * 
      */
     private $apiToken;
