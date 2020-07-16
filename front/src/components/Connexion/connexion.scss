@@ -1,3 +1,87 @@
 .login-form {
   padding: 1em;
 }
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px dashed #6BE145;
+  padding: 1em;
+}
+
+.login-header{
+  width: 100%;
+  background:#6BE145;
+  color:#1D1E22;
+  padding: 1em;
+}
+
+.blink{
+  animation-name:  blinker;
+  animation-iteration-count: 3;
+  animation-duration: 1s;
+}
+ /*Definition of what blink animation does */
+@keyframes blinker {
+   
+  50%{
+    opacity: 0;
+  }
+ 
+}
+
+.login-input{
+  display:flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  overflow: hidden;
+  
+}
+
+.infos{
+  margin-top: 0.5em;
+}
+
+
+.input{
+ background: #1D1E22;
+ margin-left: 5px;
+ color:#6BE145;
+ font-size: 1em;
+}
+
+
+button{
+  border: 1px dashed #6BE145;
+  color: #6BE145;
+  padding: 1em 2em;
+  background-color:#1D1E22;
+  margin-top: 2em;
+  font-weight: bold;
+  border-radius: 2px;
+  animation-name: hiddenDuring;
+}
+
+button:hover{
+ background-color:#6BE145;
+ color: #1D1E22;
+}
+
+@media only screen and (max-width: 1024px){
+  .form{
+    width: 80%;
+  }
+
+  .infos{
+    margin-bottom: 1em;
+  }
+  
+
+}
+
+@media only screen and (max-width: 550px){
+  .login-input{
+    display:flex;
+    flex-direction: column;
+  }
+}
