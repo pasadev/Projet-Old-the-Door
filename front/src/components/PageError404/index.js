@@ -1,12 +1,16 @@
 import React from 'react';
-
+import Typist from 'react-typist';
 import Fabigeon from '../../assets/images/fabigeon1080p.gif';
 import './pageError404.scss';
 
 const PageError404 = () => (
   <div className="error404-container">
     <h1 className="error404-title">
-      Erreur 404
+      <Typist
+        cursor={{ hideWhenDone: true }}
+      >
+        Erreur 404
+      </Typist>
     </h1>
     <span className="error404-disclaimer">Ne pas prendre au sérieux le texte suivant</span>
     <div className="error404-text">

@@ -27,7 +27,9 @@ const Adventure = ({
       {!loading && (
         <main className="adventure">
           <h1 className="adventure-title main-title">
-            <Typist>
+            <Typist
+              cursor={{ hideWhenDone: true }}
+            >
               {adventureSelected.title}
             </Typist>
           </h1>
