@@ -33,7 +33,24 @@ const Home = ({
                 Bienvenue sur O'ld the door
               </Typist>
             </h1>
-            <p className="asciiart" />
+            <Typist
+              cursor={{ show: false }}
+              avgTypingDelay={20}
+            >
+              <pre className="asciiart">
+                ___________<br />
+                |  __  __  |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |  __  __()|<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |__________|<br />
+              </pre>
+            </Typist>
             <p className="presentation-description">
               O'ld the door est un nouveau concept d’escape game se basant sur de l’ancien.
               Retrouvez l’ambiance des jeux d’aventures textuels dans des scénarios où
