@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 
 import { fetchAdventureSelected, saveAdventureSelected } from 'src/actions/adventures';
-import { redirectOff } from 'src/actions/storyCreation';
-import { displayLoader } from 'src/actions/utils';
+import { displayLoader, redirectOff } from 'src/actions/utils';
 
 import Adventure from 'src/components/Adventure';
 
