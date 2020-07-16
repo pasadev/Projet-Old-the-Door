@@ -26,7 +26,7 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
 
     )}
     { (isLogged !== null) && (
-      <button type="button" onClick={logOut}>
+      <button className="logout" type="button" onClick={logOut}>
         logout
       </button>
     )}
@@ -43,8 +43,12 @@ Header.propTypes = {
   isLogged: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-  ]).isRequired,
+  ]),
   logOut: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  isLogged: null,
 };
 
 export default Header;
