@@ -3,11 +3,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import { ArrowUpCircle } from 'react-feather';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
 import { checkAnswer } from 'src/utils';
-import { Link } from 'react-router-dom';
 
 import GameScreenField from './GameScreenField';
 import PreviousChapters from './PreviousChapters';
@@ -38,6 +37,9 @@ const GameScreen = ({
   timerCounter,
   setCounter,
   timerIsRunning,
+  showWrongAnswerMessage,
+  giveHint,
+  showHint,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -100,6 +102,7 @@ const GameScreen = ({
             {!showSuccessMessage && !loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
 
             {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-storySuccess">Bravo, vous avez terminé le scénario "{currentStory.title}" <Link to="/aventures/"> <span className="gameScreen-moreAdventureButton">> Voir les autres aventures</span></Link></div></Typist>}
+            {showWrongAnswerMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-answerError">This is not the end, try again</div> <Typist.Backspace count={39} delay={600} /></Typist>}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
               <div className="gameScreen-form-row">
@@ -122,6 +125,11 @@ const GameScreen = ({
               </div>
               <button className="gameScreen-formButton" type="submit">> Tester la combinaison</button>
             </form>
+            {!showSuccessMessage
+            && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>Indice</button>))}
+            {showHint === 1 && <> <div className="gameScreen-content"> Votre indice est:</div><div className="gameScreen-storySuccess">{currentChapter.keyword}</div> </>}
+            {showHint === 2 && <> <div className="gameScreen-content"> Votre indice est:</div><div className="gameScreen-storySuccess">{currentChapter.lockword}</div> </>}
+
           </div>
         </div>
       </main>
@@ -134,6 +142,10 @@ GameScreen.propTypes = {
   setCounter: PropTypes.func.isRequired,
   timerCounter: PropTypes.number.isRequired,
   timerIsRunning: PropTypes.bool.isRequired,
+  showWrongAnswerMessage: PropTypes.bool.isRequired,
+
+  giveHint: PropTypes.func.isRequired,
+  showHint: PropTypes.number.isRequired,
 
   changeField: PropTypes.func.isRequired,
   gameKey: PropTypes.string.isRequired,

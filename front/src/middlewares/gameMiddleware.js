@@ -75,7 +75,7 @@ const gameMiddleware = (store) => (next) => (action) => {
             store.dispatch(displaySuccessMessage());
             store.dispatch(savePartyTime(
               store.getState().gameScreen.timerCounter, // end time
-              2, // player ID
+              store.getState().user.user.id, // player ID
               store.getState().gameScreen.currentStory.id, // story ID
             ));
           }
