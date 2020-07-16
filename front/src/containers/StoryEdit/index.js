@@ -6,6 +6,7 @@ import {
   submitAdvEditForm,
   setEditOption,
   fetchChapterEditSelected,
+  clearChapterEditField,
 } from 'src/actions/storyEdit';
 
 import StoryEdit from 'src/components/StoryEdit';
@@ -37,6 +38,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchChapterEditSelected: (id) => {
     dispatch(fetchChapterEditSelected(id));
+  },
+  clearChapterEditField: () => {
+    dispatch(clearChapterEditField());
   },
 });
 

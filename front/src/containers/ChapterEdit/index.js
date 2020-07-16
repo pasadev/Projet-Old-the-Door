@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
-  updateAdventureEditField,
+  updateChapterEditField,
 } from 'src/actions/storyEdit';
 
 import ChapterEdit from 'src/components/ChapterEdit';
@@ -10,12 +10,17 @@ import ChapterEdit from 'src/components/ChapterEdit';
 const mapStateToProps = (state) => ({
   editOption: state.storyEdit.editOption,
   chapters: state.storyEdit.chapters,
+  title: state.storyEdit.chapterEdit.title,
+  content: state.storyEdit.chapterEdit.content,
+  keyword: state.storyEdit.chapterEdit.keyword,
+  lockword: state.storyEdit.chapterEdit.lockword,
+  unlockText: state.storyEdit.chapterEdit.unlockText,
 });
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
   updateField: (identifier, newValue) => {
-    dispatch(updateAdventureEditField(identifier, newValue));
+    dispatch(updateChapterEditField(identifier, newValue));
   },
 });
 

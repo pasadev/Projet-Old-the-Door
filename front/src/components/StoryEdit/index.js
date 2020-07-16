@@ -20,6 +20,8 @@ const StoryEdit = ({
   setEditOption,
   initialTitle,
   fetchChapterEditSelected,
+  chapterEdit,
+  clearChapterEditField,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -34,7 +36,14 @@ const StoryEdit = ({
 
   const handleEditOption = (event) => {
     setEditOption(event.target.value);
-    fetchChapterEditSelected(event.target.value);
+    // Condition to not do the get request if it's a new chapter or the adventure.
+    if (event.target.value === 'Nouveau Chapitre' || event.target.value === initialTitle || event.target.value === '') {
+      clearChapterEditField();
+      console.log('new + adv + choix');
+    }
+    else {
+      fetchChapterEditSelected(event.target.value);
+    }
   };
 
   return (
@@ -81,11 +90,9 @@ const StoryEdit = ({
 
                 {editOption === initialTitle && <AdventureEdit />}
 
-                {editOption === 'Nouveau Chapitre' && <ChapterEdit title="Nouveau Chapitre" />}
+                {editOption === 'Nouveau Chapitre' && <ChapterEdit id="Nouveau Chapitre" />}
 
-                {chapters.map((chapter) => (
-                  <ChapterEdit {...chapter} key={chapter.id} id={`${chapter.id}`} />
-                ))}
+                {<ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} /> }
 
                 {editOption !== '' && (<button type="submit">Enregistrer ces modifications</button>)}
               </form>
@@ -96,9 +103,10 @@ const StoryEdit = ({
     </>
   );
 };
-// TODO split form by 3, one for AdventureEdit, one for NewChapter and one for ChapterEdit
+// TODO split form by 3, one for AdventureEdit, one for Nouveau Chapitre and one for ChapterEdit
 
 StoryEdit.propTypes = {
+  clearChapterEditField: PropTypes.func.isRequired,
   fetchChapterEditSelected: PropTypes.func.isRequired,
   initialTitle: PropTypes.string.isRequired,
   setEditOption: PropTypes.func.isRequired,
@@ -122,6 +130,9 @@ StoryEdit.propTypes = {
     }),
   }).isRequired,
   chapters: PropTypes.array.isRequired,
+  chapterEdit: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
 };
 
 export default StoryEdit;

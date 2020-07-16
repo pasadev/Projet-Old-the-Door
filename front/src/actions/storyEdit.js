@@ -9,6 +9,8 @@ export const CLEAR_ADV_EDIT_CHAPTERS = 'CLEAR_ADV_EDIT_CHAPTERS';
 export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
 export const FETCH_CHAPTER_EDIT_SELECTED = 'FETCH_CHAPTER_EDIT_SELECTED';
 export const SAVE_CHAPTER_EDIT_SELECTED = 'SAVE_CHAPTER_EDIT_SELECTED';
+export const UPDATE_CHAPTER_EDIT_FIELD = 'UPDATE_CHAPTER_EDIT_FIELD';
+export const CLEAR_CHAPTER_EDIT_FIELD = 'CLEAR_CHAPTER_EDIT_FIELD';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -23,6 +25,12 @@ export const saveAdventureEditSelected = (adventureEdit) => ({
 
 export const updateAdventureEditField = (identifier, newValue) => ({
   type: UPDATE_ADVENTURE_EDIT_FIELD,
+  identifier,
+  newValue,
+});
+
+export const updateChapterEditField = (identifier, newValue) => ({
+  type: UPDATE_CHAPTER_EDIT_FIELD,
   identifier,
   newValue,
 });
@@ -61,4 +69,8 @@ export const fetchChapterEditSelected = (id) => ({
 export const saveChapterEditSelected = (chapterEdit) => ({
   type: SAVE_CHAPTER_EDIT_SELECTED,
   chapterEdit,
+});
+
+export const clearChapterEditField = () => ({
+  type: CLEAR_CHAPTER_EDIT_FIELD,
 });

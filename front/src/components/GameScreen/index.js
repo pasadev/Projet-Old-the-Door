@@ -3,11 +3,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import { ArrowUpCircle } from 'react-feather';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
 import { checkAnswer } from 'src/utils';
-import { Link } from 'react-router-dom';
 
 import GameScreenField from './GameScreenField';
 import PreviousChapters from './PreviousChapters';
@@ -50,7 +49,7 @@ const GameScreen = ({
   const { slug } = useParams();
   useEffect(() => {
     // component did mount
-    console.log(slug);
+    // console.log(slug);
     fetchCurrentStory(slug);
     displayLoader();
   }, []);
