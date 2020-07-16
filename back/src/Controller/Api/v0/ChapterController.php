@@ -32,8 +32,30 @@ class ChapterController extends AbstractController
             if ($request->query->get('non_parent') === 'true')
             {
                 //send non parents chapters for this story
-                $chapters = $chapterRepository->findChaptersForStory($storyId);
-                dd('non parent');
+                $AllChapters = $chapterRepository->findChaptersForStory($storyId);
+                $chapterList = [];
+                $parentChapterList = [];
+
+                foreach ($AllChapters as $chapter) {
+
+                    $chapterList[] = $chapter->getId() ;
+
+                    if($chapter->getParentChapter())
+                    {
+                        $parentChapterList[] = $chapter->getParentChapter()->getId();
+                    }
+                }
+                $nonParentChapterList = array_diff($chapterList, $parentChapterList);
+                
+                //Initialize chapters list
+                $chapters = [];
+
+                // Rebuild $chapters
+                foreach ($nonParentChapterList as $nonParentChapterId) {
+                    $nonParentChapter = $chapterRepository->find($nonParentChapterId);
+                    $chapters[] = $nonParentChapter;
+                }
+               
             }
             //If not, we send all chapters for this story
             else
