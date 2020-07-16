@@ -8,7 +8,7 @@ import {
 const storyCreationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_STORY_CREATE_FORM:
-      axios.post('http://damien-toscano.vpnuser.lan:8000/api/v0/stories', {
+      axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/stories', {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,
