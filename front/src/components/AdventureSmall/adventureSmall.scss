@@ -7,6 +7,9 @@
   width: 100%;
   &:hover {
     color: $noticeColor;
+    .adventureSmall-link {
+      margin-left: 0.5em;
+    }
   }
 
   .adventureSmall-title {
