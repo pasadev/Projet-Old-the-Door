@@ -5,6 +5,7 @@ import Typist from 'react-typist';
 
 // import { useField } from './hooks';
 
+import { Redirect } from 'react-router-dom';
 import Field from './Field';
 import './connexion.scss';
 import PasswordCo from './Field/passwordco';
@@ -14,6 +15,7 @@ const Connexion = ({
   password,
   changeField,
   handleLogin,
+  redirect,
 }) => {
   const emailField = email;
   const passwordField = password;
@@ -22,68 +24,74 @@ const Connexion = ({
     handleLogin();
   };
   return (
-    <div className="login-form">
+    <>
+      {redirect && <Redirect to={`/profil`} />}
+      {!redirect && (
+        <>
+          <div className="login-form">
+            <h1 className="adventures-title main-title">
+              <Typist
+                cursor={{ show: false }}
+              >
+                Connexion
+              </Typist>
+            </h1>
+            <div className="form">
+              <div className="login-header">
+                <h2 className="blink">Connexion à O'ld the door</h2>
+              </div>
 
-      <h1 className="adventures-title main-title">
-        <Typist
-          cursor={{ show: false }}
-        >
-          Connexion
-        </Typist>
-      </h1>
-      <div className="form">
-        <div className="login-header">
-          <h2 className="blink">Connexion à O'ld the door</h2>
-        </div>
+              <Typist
+                cursor={{ show: false }}
+              >
+                <Typist.Delay ms={4000} />
+                <div className="infos">
+                  <p className="infos-text">Accès refusé : identification requise</p>
+                </div>
 
-        <Typist
-          cursor={{ show: false }}
-        >
-          <Typist.Delay ms={4000} />
-          <div className="infos">
-            <p className="infos-text">Accès refusé : identification requise</p>
+              </Typist>
+              <form autoComplete="off" onSubmit={handleSubmit}>
+
+                <div className="login-input">
+                  <Typist
+                    cursor={{ show: false }}
+                  >
+                    <Typist.Delay ms={7000} />
+                    <label htmlFor="email"> Email : </label>
+                  </Typist>
+                  <Field
+                    name="email"
+                    placeholder=""
+                    onChange={changeField}
+                    value={email}
+                  />
+                </div>
+                <div className="login-input">
+                  <Typist
+                    cursor={{ show: false }}
+                  >
+                    <Typist.Delay ms={8000} />
+                    <label htmlFor="password"> Mot de passe : </label>
+
+                  </Typist>
+                  <PasswordCo
+                    name="password"
+                    placeholder=""
+                    onChange={changeField}
+                    value={password}
+                  />
+                </div>
+
+                {emailField && passwordField && (
+                // if email field and password field are not empty, we will display the submit button.
+                  <button className="button-submit" type="submit">Sign In</button>
+                )}
+              </form>
+            </div>
           </div>
-
-        </Typist>
-        <form autoComplete="off" onSubmit={handleSubmit}>
-
-          <div className="login-input">
-            <Typist
-              cursor={{ show: false }}
-            >
-              <Typist.Delay ms={7000} />
-              <label htmlFor="email"> Email : </label>
-            </Typist>
-            <Field
-              name="email"
-              placeholder=""
-              onChange={changeField}
-              value={email}
-            />
-          </div>
-          <div className="login-input">
-            <Typist
-              cursor={{ show: false }}
-            >
-              <Typist.Delay ms={8000} />
-              <label htmlFor="password"> Mot de passe : </label>
-
-            </Typist>
-            <PasswordCo
-              name="password"
-              placeholder=""
-              onChange={changeField}
-              value={password}
-            />
-          </div>
-
-          {emailField && passwordField && (
-          // if email field and password field are not empty, we will display the submit button.
-            <button className="button-submit" type="submit">Sign In</button>
-          )}
-        </form>
-      </div>
-    </div>
+        </>
+      )}
+    </>
   );
 };
 
@@ -92,6 +100,7 @@ Connexion.propTypes = {
   password: PropTypes.string.isRequired,
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
+  redirect: PropTypes.bool.isRequired,
 };
 
 Connexion.defaultProps = {

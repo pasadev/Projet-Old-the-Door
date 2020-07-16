@@ -7,6 +7,10 @@ import {
   REGISTER_USER,
 } from 'src/actions/user';
 
+import {
+  redirectOn,
+} from 'src/actions/utils';
+
 import { baseURL } from 'src/utils';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -25,6 +29,7 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveUser(response.data[0]));
           localStorage.setItem('currentuser', JSON.stringify(response.data[0]));
           localStorage.setItem('isLogged', `${true}`);
+          store.dispatch(redirectOn());
         })
         .catch((error) => {
           console.warn(error);
