@@ -11,6 +11,7 @@ import {
   saveAdventuresActiveNumber,
   FETCH_ADVENTURE_TIMER,
   saveAdventureTimer,
+  fetchAdventureTimer,
 } from 'src/actions/adventures';
 
 import {
@@ -60,6 +61,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // dispatch to save the Adventure selected
           store.dispatch(saveAdventureSelected(response.data[0]));
+          store.dispatch(fetchAdventureTimer(response.data[0].id));
           // dispatch to hide the loader
           store.dispatch(hideLoader());
         })
@@ -87,8 +89,8 @@ const adventuresMiddleware = (store) => (next) => (action) => {
 
     case FETCH_ADVENTURE_TIMER:
       // eslint-disable-next-line no-case-declarations
-      const currentTimer = store.getState().adventures.adventureSelected;
-      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${currentTimer.id}/time`)
+      // const adventureId = store.getState().adventures.adventureSelected;
+      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${action.adventureId}/time`)
         .then((response) => {
         // dispatch to save the Adventure selected
           store.dispatch(saveAdventureTimer(response.data));
@@ -100,6 +102,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+
     default:
       next(action);
   }

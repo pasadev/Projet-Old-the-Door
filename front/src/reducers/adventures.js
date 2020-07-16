@@ -4,13 +4,14 @@ import {
   SAVE_ADVENTURE_SELECTED,
   SAVE_ADVENTURES_ACTIVE_NUMBER,
   SAVE_ADVENTURE_TIMER,
+  CLEAR_ADVENTURE_TIMER,
 } from 'src/actions/adventures';
 
 const initialState = {
   adventuresHome: [],
   adventuresCatalog: [],
   adventureSelected: {
-    id: '34',
+    id: '',
     title: '',
     description: '',
     createdAt: '',
@@ -58,10 +59,16 @@ const adventures = (state = initialState, action = {}) => {
       return {
         ...state,
         adventureTimer: action.adventureTimer,
-        id: action.adventureId,
+      };
+    case CLEAR_ADVENTURE_TIMER:
+      return {
+        ...state,
+        adventureTimer: {
+          average: '',
+          best: '',
+        },
 
       };
-
     default: return state;
   }
 };

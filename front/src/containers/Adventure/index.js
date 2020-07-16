@@ -5,6 +5,7 @@ import {
   saveAdventureSelected,
   fetchAdventureTimer,
   saveAdventureTimer,
+  clearAdventureTimer,
 } from 'src/actions/adventures';
 import { redirectOff } from 'src/actions/storyCreation';
 import { displayLoader } from 'src/actions/utils';
@@ -38,6 +39,8 @@ const mapDispatchToProps = (dispatch) => ({
   saveAdventureTimer: () => {
     dispatch(saveAdventureTimer());
   },
+  clearAdventureTimer: () => {
+    dispatch(clearAdventureTimer());
+  },
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(Adventure);
