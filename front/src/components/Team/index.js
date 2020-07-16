@@ -1,6 +1,11 @@
 /* eslint-disable max-len */
 import React from 'react';
 import Typist from 'react-typist';
+import Damien from '../../assets/images/damien.png';
+import Tony from '../../assets/images/tony.png';
+import Jukka from '../../assets/images/jukka.png';
+import Hugo from '../../assets/images/hugo.png';
+import Maxence from '../../assets/images/maxence.png';
 
 import './team.scss';
 
@@ -13,13 +18,12 @@ const Team = () => (
     </h1>
     <div className="member">
       <div className="member-name">
-        &nbsp;________&nbsp;&nbsp;________&nbsp;&nbsp;_____&nbsp;______&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        |\&nbsp;&nbsp;&nbsp;___&nbsp;\|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;_&nbsp;\&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;___&nbsp;\&nbsp;|\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;
-        \&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\__\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__/|\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;
-        &nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\\&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\|__|&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|/_\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;
-        &nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_\\&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;
-        &nbsp;&nbsp;&nbsp;\&nbsp;\_______\&nbsp;\__\&nbsp;\__\&nbsp;\__\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\__\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\
-      &nbsp;&nbsp;&nbsp;&nbsp;\|_______|\|__|\|__|\|__|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|\|__|\|_______|\|__| \|__|
+        <img
+          src={Damien}
+          alt="damien ascii art"
+          className="ascii"
+        />
+
       </div>
       <div className="member-role">
         <span>Product Owner</span>
@@ -33,13 +37,11 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        &nbsp;_____&nbsp;______&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;_______&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;_______&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        |\&nbsp;&nbsp;&nbsp;_&nbsp;\&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;|\&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;/|\&nbsp;&nbsp;___&nbsp;\&nbsp;|\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;____\|\&nbsp;&nbsp;___&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        \&nbsp;\&nbsp;&nbsp;\\\__\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/&nbsp;|&nbsp;\&nbsp;&nbsp;&nbsp;__/|\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\___|\&nbsp;\&nbsp;&nbsp;&nbsp;__/|&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;\&nbsp;\&nbsp;&nbsp;\\|__|&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;/&nbsp;\&nbsp;\&nbsp;&nbsp;\_|/_\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|/__&nbsp;&nbsp;
-        &nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\____\&nbsp;\&nbsp;&nbsp;\_|\&nbsp;\&nbsp;
-        &nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\__\&nbsp;\__\/&nbsp;&nbsp;/\&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\&nbsp;\_______\&nbsp;\_______\
-        &nbsp;&nbsp;&nbsp;&nbsp;\|__|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|\|__|\|__/__/&nbsp;/\&nbsp;__\&nbsp;&nbsp;&nbsp;&nbsp;\|_______|\|__|&nbsp;\|__|\|_______|\|_______|
+        <img
+          src={Maxence}
+          alt="maxence ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Lead Développeur Back</span>
@@ -50,14 +52,11 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        &nbsp;_________&nbsp;&nbsp;________&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;
-        |\___&nbsp;&nbsp;&nbsp;___\\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;|\&nbsp;&nbsp;\&nbsp;&nbsp;/&nbsp;&nbsp;/|
-        \|___&nbsp;\&nbsp;&nbsp;\_\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/&nbsp;/
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;/&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;\/&nbsp;&nbsp;/&nbsp;&nbsp;/&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\__/&nbsp;&nbsp;/&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|&nbsp;&nbsp;\|_______|\|__|&nbsp;\|__|\___/&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|___|
+        <img
+          src={Tony}
+          alt="tony ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Lead Développeur Front</span>
@@ -69,13 +68,11 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        &nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;________&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        |\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;&nbsp;____\|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;
-        \&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\___|\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;
-        &nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;&nbsp;__\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;&nbsp;
-        &nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;
-        &nbsp;&nbsp;&nbsp;\&nbsp;\__\&nbsp;\__\&nbsp;\_______\&nbsp;\_______\&nbsp;\_______\
-        &nbsp;&nbsp;&nbsp;&nbsp;\|__|\|__|\|_______|\|_______|\|_______|
+        <img
+          src={Hugo}
+          alt="hugo ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Git Master</span>
@@ -87,13 +84,11 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        &nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;___&nbsp;&nbsp;__&nbsp;&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;__&nbsp;&nbsp;&nbsp;&nbsp;________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;|\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;|\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/|\&nbsp;\&nbsp;&nbsp;\/&nbsp;&nbsp;/|\&nbsp;\&nbsp;&nbsp;\|\&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;
-        &nbsp;__&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;&nbsp;__&nbsp;&nbsp;\&nbsp;&nbsp;
-        |\&nbsp;&nbsp;\\_\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;\&nbsp;&nbsp;\&nbsp;
-        \&nbsp;\________\&nbsp;\_______\&nbsp;\__\\&nbsp;\__\&nbsp;\__\\&nbsp;\__\&nbsp;\__\&nbsp;\__\
-        &nbsp;\|________|\|_______|\|__|&nbsp;\|__|\|__|&nbsp;\|__|\|__|\|___|
+        <img
+          src={Jukka}
+          alt="jukka ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Scrum Master</span>

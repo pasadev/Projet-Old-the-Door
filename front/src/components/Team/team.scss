@@ -16,12 +16,24 @@
       color: $linkColor;
     }
 
-    .member-name {
-      text-transform: uppercase;
+    .member-name{
+      display: flex;
     }
 
     .member-description {
       padding-top: 0.5em;
     }
+  }
+}
+
+@media only screen and (max-width: 730px){
+  .ascii{
+   
+    transform: scale(0.40) translate(-77%) ;
+   
+  }
+
+  @keyframes downSising{
+
   }
 }
