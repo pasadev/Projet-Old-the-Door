@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import Loader from 'src/components/Loader';
 import Typist from 'react-typist';
 import { checkAnswer } from 'src/utils';
+import { Link } from 'react-router-dom';
 
 import GameScreenField from './GameScreenField';
 import PreviousChapters from './PreviousChapters';
@@ -72,7 +73,7 @@ const GameScreen = ({
         <div className="gameScreen">
           <div className="gameScreen-header">
             <div className="gameScreen-header-timer">
-              { minutes }: { seconds }
+              { minutes < 10 && 0 }{ minutes }:{ seconds < 10 && 0 }{ seconds }
             </div>
             <div className="gameScreen-header-text">
               <Typist
@@ -98,26 +99,28 @@ const GameScreen = ({
             {loadingChapter && <div>Loading Chapter</div>}
             {!showSuccessMessage && !loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
 
-            {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div>Success, you win </div></Typist>}
+            {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-storySuccess">Bravo, vous avez terminé le scénario "{currentStory.title}" <Link to="/aventures/"> <span className="gameScreen-moreAdventureButton">> Voir les autres aventures</span></Link></div></Typist>}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
-
-              <label htmlFor="gameKey">Clé :</label>
-              <GameScreenField
-                name="gameKey"
-                placeholder="Clé"
-                onChange={changeField}
-                value={gameKey}
-              />
-
-              <label htmlFor="gameLock">Serrure :</label>
-              <GameScreenField
-                name="gameLock"
-                placeholder="Serrure"
-                onChange={changeField}
-                value={gameLock}
-              />
-              <button className="gameScreen-formButton" type="submit">=> Tester la combinaison</button>
+              <div className="gameScreen-form-row">
+                <label htmlFor="gameKey">Clé :</label>
+                <GameScreenField
+                  name="gameKey"
+                  placeholder="Clé"
+                  onChange={changeField}
+                  value={gameKey}
+                />
+              </div>
+              <div className="gameScreen-form-row">
+                <label htmlFor="gameLock">Serrure :</label>
+                <GameScreenField
+                  name="gameLock"
+                  placeholder="Serrure"
+                  onChange={changeField}
+                  value={gameLock}
+                />
+              </div>
+              <button className="gameScreen-formButton" type="submit">> Tester la combinaison</button>
             </form>
           </div>
         </div>
