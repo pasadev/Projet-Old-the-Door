@@ -16,6 +16,7 @@ const Connexion = ({
   changeField,
   handleLogin,
   redirect,
+  loginError,
 }) => {
   const emailField = email;
   const passwordField = password;
@@ -46,10 +47,15 @@ const Connexion = ({
               >
                 <Typist.Delay ms={4000} />
                 <div className="infos">
-                  <p className="infos-text">Accès refusé : identification requise</p>
+                  <p className="infos-text ">Accès refusé : identification requise</p>
                 </div>
 
               </Typist>
+              {loginError && (
+                <div className="infos-warning">
+                  <p className="infos-warnig blink">Accès refusé : Identifiant de connexion erronée</p>
+                </div>
+              )}
               <form autoComplete="off" onSubmit={handleSubmit}>
 
                 <div className="login-input">
@@ -101,6 +107,7 @@ Connexion.propTypes = {
   changeField: PropTypes.func.isRequired,
   handleLogin: PropTypes.func.isRequired,
   redirect: PropTypes.bool.isRequired,
+  loginError: PropTypes.bool.isRequired,
 };
 
 Connexion.defaultProps = {

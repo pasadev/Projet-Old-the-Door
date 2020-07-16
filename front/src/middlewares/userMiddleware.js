@@ -5,6 +5,7 @@ import {
   LOG_OUT,
   saveUser,
   REGISTER_USER,
+  logError,
 } from 'src/actions/user';
 
 import {
@@ -32,6 +33,7 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(redirectOn());
         })
         .catch((error) => {
+          store.dispatch(logError());
           console.warn(error);
         });
 
