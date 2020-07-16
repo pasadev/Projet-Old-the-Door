@@ -18,7 +18,8 @@ const StoryEdit = ({
   chapters,
   editOption,
   setEditOption,
-  tempTitle,
+  initialTitle,
+  fetchChapterEditSelected,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -33,6 +34,7 @@ const StoryEdit = ({
 
   const handleEditOption = (event) => {
     setEditOption(event.target.value);
+    console.log(event.target.value);
   };
 
   return (
@@ -44,7 +46,7 @@ const StoryEdit = ({
           {!loading && (
             <main className="storyEdit">
               <h1>
-                La page d'édition pour : {tempTitle}
+                La page d'édition pour : {initialTitle}
               </h1>
               <form
                 className="storyEdit-form"
@@ -60,29 +62,29 @@ const StoryEdit = ({
                     <option value="newChapter" defaultValue>
                       Choix
                     </option>
-                    <option value={tempTitle}>
-                      {tempTitle}
-                    </option>
                     <option value="Nouveau Chapitre">
                       Nouveau Chapitre
+                    </option>
+                    <option value={initialTitle}>
+                      Aventure: {initialTitle}
                     </option>
                     {chapters.map((chapter) => (
                       <option
                         key={chapter.id}
-                        value={chapter.title}
+                        value={chapter.id}
                       >
-                        {chapter.title}
+                        Chapitre: {chapter.title}
                       </option>
                     ))}
                   </select>
                 </label>
 
-                {editOption === tempTitle && <AdventureEdit />}
+                {editOption === initialTitle && <AdventureEdit />}
 
                 {editOption === 'Nouveau Chapitre' && <ChapterEdit title="Nouveau Chapitre" />}
 
                 {chapters.map((chapter) => (
-                  <ChapterEdit {...chapter} key={chapter.id} />
+                  <ChapterEdit {...chapter} key={chapter.id} id={`${chapter.id}`} />
                 ))}
 
                 {editOption !== '' && (<button type="submit">Enregistrer ces modifications</button>)}
@@ -94,9 +96,11 @@ const StoryEdit = ({
     </>
   );
 };
+// TODO split form by 3, one for AdventureEdit, one for NewChapter and one for ChapterEdit
 
 StoryEdit.propTypes = {
-  tempTitle: PropTypes.string.isRequired,
+  fetchChapterEditSelected: PropTypes.func.isRequired,
+  initialTitle: PropTypes.string.isRequired,
   setEditOption: PropTypes.func.isRequired,
   editOption: PropTypes.string.isRequired,
   redirect: PropTypes.bool.isRequired,

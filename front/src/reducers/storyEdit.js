@@ -9,7 +9,7 @@ import {
 const initialState = {
   id: '',
   title: '',
-  tempTitle: '',
+  initialTitle: '',
   synopsis: '',
   active: '',
   firstChapter: {
@@ -24,6 +24,7 @@ const initialState = {
   description: '',
   chapters: [],
   editOption: '',
+  chapterEdit: {},
 };
 
 const storyEdit = (state = initialState, action = {}) => {
@@ -39,7 +40,7 @@ const storyEdit = (state = initialState, action = {}) => {
         active: action.adventureEdit.active,
         firstChapter: action.adventureEdit.firstChapter,
         author: action.adventureEdit.author,
-        tempTitle: action.adventureEdit.title,
+        initialTitle: action.adventureEdit.title,
       };
     case UPDATE_ADVENTURE_EDIT_FIELD:
       return {

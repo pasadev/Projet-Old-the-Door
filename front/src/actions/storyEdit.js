@@ -7,6 +7,7 @@ export const FETCH_ADV_EDIT_CHAPTERS = 'FETCH_ADV_EDIT_CHAPTERS';
 export const SAVE_ADV_EDIT_CHAPTERS = 'SAVE_ADV_EDIT_CHAPTERS';
 export const CLEAR_ADV_EDIT_CHAPTERS = 'CLEAR_ADV_EDIT_CHAPTERS';
 export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
+export const FETCH_CHAPTER_EDIT_SELECTED = 'FETCH_CHAPTER_EDIT_SELECTED';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -49,4 +50,9 @@ export const clearAdvEditChapters = () => ({
 export const setEditOption = (newValue) => ({
   type: SET_EDIT_OPTION,
   newValue,
+});
+
+export const fetchChapterEditSelected = (id) => ({
+  type: FETCH_CHAPTER_EDIT_SELECTED,
+  id,
 });

@@ -5,6 +5,7 @@ import {
   fetchAdvEditSelected,
   submitAdvEditForm,
   setEditOption,
+  fetchChapterEditSelected,
 } from 'src/actions/storyEdit';
 
 import StoryEdit from 'src/components/StoryEdit';
@@ -16,7 +17,8 @@ const mapStateToProps = (state) => ({
   redirect: state.utils.redirect,
   chapters: state.storyEdit.chapters,
   editOption: state.storyEdit.editOption,
-  tempTitle: state.storyEdit.tempTitle,
+  initialTitle: state.storyEdit.initialTitle,
+  chapterEdit: state.storyEdit.chapterEdit,
 });
 
 // === mapDispatchToProps
@@ -32,6 +34,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setEditOption: (newValue) => {
     dispatch(setEditOption(newValue));
+  },
+  fetchChapterEditSelected: (id) => {
+    dispatch(fetchChapterEditSelected(id));
   },
 });
 
