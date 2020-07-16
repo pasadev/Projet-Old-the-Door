@@ -1,4 +1,9 @@
-import { UPDATE_REGISTER_FIELD, UPDATE_USER_FIELD, SAVE_USER } from 'src/actions/user';
+import {
+  UPDATE_REGISTER_FIELD,
+  UPDATE_USER_FIELD,
+  SAVE_USER,
+  LOG_OUT,
+} from 'src/actions/user';
 
 const initialState = {
   emailRegister: '',
@@ -11,10 +16,9 @@ const initialState = {
   email: '',
   // contenu de l'input pour le mot de passe
   password: '',
-  // informations sur l'utilisateur
-  info: {},
   // indique si l'utilisateur est loggué
-  isLogged: false,
+  isLogged: JSON.parse(localStorage.getItem('isLogged')),
+  user: JSON.parse(localStorage.getItem('currentuser')),
 
 };
 
@@ -34,10 +38,17 @@ const user = (state = initialState, action = {}) => {
     case SAVE_USER:
       return {
         ...state,
-        info: action.data,
         isLogged: true,
+        user: action.data,
         email: '',
         password: '',
+      };
+
+    case LOG_OUT:
+      return {
+        ...state,
+        isLogged: null,
+        user: {},
       };
 
     default: return state;

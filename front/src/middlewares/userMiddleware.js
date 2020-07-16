@@ -3,7 +3,6 @@ import axios from 'axios';
 import {
   LOG_IN,
   LOG_OUT,
-  CHECK_LOGGED,
   saveUser,
   REGISTER_USER,
 } from 'src/actions/user';
@@ -23,6 +22,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveUser(response.data[0]));
           localStorage.setItem('currentuser', JSON.stringify(response.data[0]));
+          localStorage.setItem('isLogged', `${true}`);
         })
         .catch((error) => {
           console.warn(error);
@@ -32,33 +32,13 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
 
-    case LOG_OUT:
-      axios.get('http://maxence-royer.vpnuser.lan:8000/api/v0/logout')
-        .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
-          localStorage.removeItem('currentuser');
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
+    case LOG_OUT: {
+      localStorage.removeItem('isLogged');
+      localStorage.removeItem('currentuser');
 
       next(action);
       break;
-
-    case CHECK_LOGGED:
-      axios.post('http://localhost:3001/isLogged', {
-      }, {
-        withCredentials: true,
-      })
-        .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
-
-      next(action);
-      break;
+    }
 
     case REGISTER_USER: {
       const {

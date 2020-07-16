@@ -2,11 +2,14 @@ import { connect } from 'react-redux';
 
 import Header from 'src/components/Header';
 
+import { logOut } from 'src/actions/user';
+
 import { toggleBurgerMenuFromNav } from 'src/actions/utils';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
+  isLogged: state.user.isLogged,
 });
 
 // === mapDispatchToProps
@@ -14,6 +17,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   toggleBurgerMenuFromNav: () => {
     dispatch(toggleBurgerMenuFromNav());
+  },
+  logOut: () => {
+    dispatch(logOut());
   },
 });
 
