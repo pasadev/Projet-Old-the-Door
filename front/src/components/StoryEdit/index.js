@@ -59,7 +59,7 @@ const StoryEdit = ({
                     id="storyEdit-form-editChoice"
                     onChange={handleEditOption}
                   >
-                    <option value="newChapter" defaultValue>
+                    <option value="" defaultValue>
                       Choix
                     </option>
                     <option value="Nouveau Chapitre">

@@ -7,12 +7,14 @@ import {
   REGISTER_USER,
 } from 'src/actions/user';
 
+import { baseURL } from 'src/utils';
+
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
       const { email, password } = store.getState().user;
       // withCredentials : autorisation d'accéder au cookie
-      axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/login', {
+      axios.post(`${baseURL}/api/v0/login`, {
         email,
         password,
       },
@@ -51,7 +53,7 @@ const userMiddleware = (store) => (next) => (action) => {
       } = store.getState().user;
 
       // withCredentials : autorisation d'accéder au cookie
-      axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/users', {
+      axios.post(`${baseURL}/api/v0/users`, {
         email,
         password,
         username,

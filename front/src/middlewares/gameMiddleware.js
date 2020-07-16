@@ -54,7 +54,7 @@ const gameMiddleware = (store) => (next) => (action) => {
     case FETCH_NEXT_CHAPTER:
       // eslint-disable-next-line no-case-declarations
       const currentChapterForSave = store.getState().gameScreen.currentChapter;
-      axios.get(``${baseURL}/api/v0/chapters/${currentChapterForSave.id}/child`)
+      axios.get(`${baseURL}/api/v0/chapters/${currentChapterForSave.id}/child`)
         .then((response) => {
           console.log(response);
           // Check if it's a 404 or a 200 http code
