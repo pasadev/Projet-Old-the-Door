@@ -57,11 +57,14 @@ const StoryEdit = ({
                     id="storyEdit-form-editChoice"
                     onChange={handleEditOption}
                   >
-                    <option value="" defaultValue>
-                      Ce que vous voulez editer
+                    <option value="newChapter" defaultValue>
+                      Choix
                     </option>
                     <option value={tempTitle}>
                       {tempTitle}
+                    </option>
+                    <option value="Nouveau Chapitre">
+                      Nouveau Chapitre
                     </option>
                     {chapters.map((chapter) => (
                       <option
@@ -75,6 +78,8 @@ const StoryEdit = ({
                 </label>
 
                 {editOption === tempTitle && <AdventureEdit />}
+
+                {editOption === 'Nouveau Chapitre' && <ChapterEdit title="Nouveau Chapitre" />}
 
                 {chapters.map((chapter) => (
                   <ChapterEdit {...chapter} key={chapter.id} />

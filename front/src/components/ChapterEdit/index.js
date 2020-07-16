@@ -69,11 +69,19 @@ const ChapterEdit = ({
 ChapterEdit.propTypes = {
   editOption: PropTypes.string.isRequired,
   updateField: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  keyword: PropTypes.string.isRequired,
-  lockword: PropTypes.string.isRequired,
-  unlockText: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  keyword: PropTypes.string,
+  lockword: PropTypes.string,
+  unlockText: PropTypes.string,
+};
+
+ChapterEdit.defaultProps = {
+  title: '',
+  content: '',
+  keyword: '',
+  lockword: '',
+  unlockText: '',
 };
 
 export default ChapterEdit;
