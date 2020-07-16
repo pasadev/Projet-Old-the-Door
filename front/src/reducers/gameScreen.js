@@ -13,6 +13,7 @@ import {
   TOGGLE_WRONG_ANSWER_MESSAGE,
   APPLY_PENALTY,
   GIVE_HINT,
+  BLOCK_FIELD,
 } from 'src/actions/gameScreen';
 
 const initialState = {
@@ -86,6 +87,11 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         [action.name]: action.newValue,
+      };
+
+    case BLOCK_FIELD:
+      return {
+        ...state,
       };
 
     case TOGGLE_ANSWER_VALUE:

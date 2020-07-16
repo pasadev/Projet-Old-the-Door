@@ -16,6 +16,7 @@ import {
   toggleWrongAnswerMessage,
   applyPenalty,
   giveHint,
+  blockField,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -52,6 +53,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   changeField: (newValue, name) => {
     dispatch(updateAnswerField(newValue, name));
+  },
+
+  blockField: () => {
+    dispatch(blockField());
   },
 
   fetchCurrentStory: (slug) => {

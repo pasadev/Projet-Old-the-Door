@@ -41,7 +41,10 @@ GameScreenField.propTypes = {
   /** type of the input */
   type: PropTypes.string,
   /** text used as value for the input */
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+  ]),
   /** called when onChange event is received by the input, two parameters :
    * - identifier
    * - new value
