@@ -3,25 +3,28 @@ import axios from 'axios';
 import {
   LOG_IN,
   LOG_OUT,
-  CHECK_LOGGED,
   saveUser,
   REGISTER_USER,
 } from 'src/actions/user';
+
+import { baseURL } from 'src/utils';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case LOG_IN: {
       const { email, password } = store.getState().user;
-
       // withCredentials : autorisation d'accéder au cookie
-      axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/login', {
+      axios.post(`${baseURL}/api/v0/login`, {
         email,
         password,
-      }, {
-        credentials: 'include',
+      },
+      {
+        withCredentials: true,
       })
         .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
+          store.dispatch(saveUser(response.data[0]));
+          localStorage.setItem('currentuser', JSON.stringify(response.data[0]));
+          localStorage.setItem('isLogged', `${true}`);
         })
         .catch((error) => {
           console.warn(error);
@@ -31,35 +34,13 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
     }
 
-    case LOG_OUT:
-      axios.post('http://localhost:3001/logout', {
-      }, {
-        withCredentials: true,
-      })
-        .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
+    case LOG_OUT: {
+      localStorage.removeItem('isLogged');
+      localStorage.removeItem('currentuser');
 
       next(action);
       break;
-
-    case CHECK_LOGGED:
-      axios.post('http://localhost:3001/isLogged', {
-      }, {
-        withCredentials: true,
-      })
-        .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
-
-      next(action);
-      break;
+    }
 
     case REGISTER_USER: {
       const {
@@ -72,7 +53,7 @@ const userMiddleware = (store) => (next) => (action) => {
       } = store.getState().user;
 
       // withCredentials : autorisation d'accéder au cookie
-      axios.post('http://maxence-royer.vpnuser.lan:8000/api/v0/users', {
+      axios.post(`${baseURL}/api/v0/users`, {
         email,
         password,
         username,

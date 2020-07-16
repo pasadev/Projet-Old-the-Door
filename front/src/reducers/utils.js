@@ -3,11 +3,14 @@ import {
   TOOGLE_BURGER_MENU_FROM_NAV,
   DISPLAY_LOADER,
   HIDE_LOADER,
+  REDIRECT_ON,
+  REDIRECT_OFF,
 } from 'src/actions/utils';
 
 const initialState = {
   burgerMenuOpen: false,
   loading: true,
+  redirect: false,
 };
 
 const utils = (state = initialState, action = {}) => {
@@ -42,6 +45,18 @@ const utils = (state = initialState, action = {}) => {
         ...state,
         // change loading to false to hide the loader
         loading: false,
+      };
+
+    case REDIRECT_ON:
+      return {
+        ...state,
+        redirect: true,
+      };
+
+    case REDIRECT_OFF:
+      return {
+        ...state,
+        redirect: false,
       };
 
     default: return state;

@@ -4,13 +4,12 @@ import {
   updateAdventureEditField,
 } from 'src/actions/storyEdit';
 
-import AdventureEdit from 'src/components/AdventureEdit';
+import ChapterEdit from 'src/components/ChapterEdit';
 
 // === mapStateToProps
 const mapStateToProps = (state) => ({
-  title: state.storyEdit.title,
-  synopsis: state.storyEdit.synopsis,
-  description: state.storyEdit.description,
+  editOption: state.storyEdit.editOption,
+  chapters: state.storyEdit.chapters,
 });
 
 // === mapDispatchToProps
@@ -20,4 +19,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdventureEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(ChapterEdit);

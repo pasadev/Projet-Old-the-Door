@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
   title: state.storyCreation.title,
   synopsis: state.storyCreation.synopsis,
   description: state.storyCreation.description,
-  redirect: state.storyCreation.redirect,
+  redirect: state.utils.redirect,
 });
 
 const mapDispatchToProps = (dispatch) => ({
