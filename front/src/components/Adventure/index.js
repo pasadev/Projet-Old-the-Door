@@ -50,19 +50,15 @@ const Adventure = ({
             <Link
               to={`/aventures/${slug}/jouer`}
             >
-              Jouer
+              <span className="adventure-link">Jouer</span>
             </Link>
             <Link
               to={`/aventures/${slug}/edition`}
             >
-              Edition
+              <span className="adventure-link">Edition</span>
             </Link>
-            <button type="button">
-              Publier
-            </button>
-            <button type="button">
-              Supprimer
-            </button>
+            <span className="adventure-link publish-link">Publier</span>
+            <span className="adventure-link delete-link">Supprimer</span>
           </div>
         </main>
       )}
