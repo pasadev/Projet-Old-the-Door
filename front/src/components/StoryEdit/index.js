@@ -36,10 +36,10 @@ const StoryEdit = ({
 
   const handleEditOption = (event) => {
     setEditOption(event.target.value);
-    // Condition to not do the get request if it's a new chapter or the adventure.
+    // Condition to not do the get request if it's a new chapter or the adventure
+    // And clear the state of chapterEdit
     if (event.target.value === 'Nouveau Chapitre' || event.target.value === initialTitle || event.target.value === '') {
       clearChapterEditField();
-      console.log('new + adv + choix');
     }
     else {
       fetchChapterEditSelected(event.target.value);

@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
   chapters: state.storyEdit.chapters,
   editOption: state.storyEdit.editOption,
   initialTitle: state.storyEdit.initialTitle,
-  chapterEdit: state.storyEdit.chapterEdit,
+  chapterEdit: state.chapterEdit,
 });
 
 // === mapDispatchToProps
