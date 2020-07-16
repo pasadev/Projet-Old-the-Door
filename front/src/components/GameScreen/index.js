@@ -121,7 +121,7 @@ const GameScreen = ({
                 <GameScreenField
                   name="gameLock"
                   placeholder="Serrure"
-                  onChange={changeField}
+                  onChange={showHint === 2 ? blockField : changeField}
                   value={showHint === 2 ? (gameLock = `${currentChapter.lockword}`) : `${gameLock}`}
 
                 />
@@ -131,10 +131,6 @@ const GameScreen = ({
             {!showSuccessMessage
             && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>Indice</button>))}
             {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
-
-            {showHint === 1 && <> <div className="gameScreen-content"> Votre indice est:</div><div className="gameScreen-storySuccess">{currentChapter.keyword}</div> </>}
-            {showHint === 2 && <> <div className="gameScreen-content"> Votre indice est:</div><div className="gameScreen-storySuccess">{currentChapter.lockword}</div> </>}
-
           </div>
         </div>
       </main>
