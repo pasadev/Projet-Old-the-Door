@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Redirect from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Typist from 'react-typist';
 import './register.scss';
 import FieldRegister from './FieldRegister/FieldRegister';
