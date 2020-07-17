@@ -13,10 +13,13 @@ const Adventure = ({
   displayLoader,
   loading,
   redirectOff,
+  adventureTimer,
+  clearAdventureTimer,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
     redirectOff();
+    clearAdventureTimer();
     fetchAdventureSelected(slug);
     displayLoader();
   }, []);
@@ -26,6 +29,8 @@ const Adventure = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
+          <p>Best Time: {adventureTimer.best}sec</p>
+          <p>average Time: {adventureTimer.average}sec</p>
           <h1 className="adventure-title main-title">
             <Typist>
               {adventureSelected.title}
@@ -82,6 +87,18 @@ Adventure.propTypes = {
     }).isRequired,
     createdAt: PropTypes.string.isRequired,
   }).isRequired,
+  // Adventure Timer
+  adventureTimer: PropTypes.shape({
+    best: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    average: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+  }).isRequired,
+  clearAdventureTimer: PropTypes.func.isRequired,
 };
 
 export default Adventure;
