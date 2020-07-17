@@ -44,6 +44,7 @@ const user = (state = initialState, action = {}) => {
         user: action.data,
         email: '',
         password: '',
+        loginError: false,
       };
 
     case LOG_ERROR:
