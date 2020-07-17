@@ -76,15 +76,12 @@ const Home = ({
               il faudra vous servir de votre environnement pour avancer.
               Trouver votre chemin dans les mots du texte de l’aventure et laissez votre
               imagination créer l'environnement qui vous entoure.
-              Vous aimez jouer ? {adventuresActiveNumber} scénarios
-              sont disponibles pour vous !
-              Vous aimez écrire ? Découvrez notre éditeur d’aventure
-              pour proposer votre histoire à tous les joueurs.
+              Vous aimez jouer ? <span className="home-scenario">{adventuresActiveNumber} scénarios sont disponibles pour vous !</span> Vous aimez écrire ? Découvrez notre éditeur d’aventure pour proposer votre histoire à tous les joueurs.
             </p>
           </section>
           <section className="home-inscription">
             <p className="home-inscription-text">
-              Inscrivez-vous pour profiter des aventures créé par notre communauté.
+              Inscrivez-vous pour profiter des aventures créées par notre communauté.
             </p>
             <div className="home-links">
               <Link
