@@ -7,6 +7,7 @@ export const SAVE_USER = 'SAVE_USER';
 export const LOG_OUT = 'LOG_OUT';
 export const CHECK_LOGGED = 'CHECK_LOGGED';
 export const REGISTER_USER = 'REGISTER_USER';
+export const REGISTER_ERROR = 'REGISTER_ERROR'
 
 // === action creators
 export const updateUserField = (newValue, name) => ({
@@ -34,6 +35,11 @@ export const updateRegistersField = (newValue, name) => ({
   newValue,
   name,
 });
+
+export const registerError = () => ({
+  type: REGISTER_ERROR,
+});
+
 export const createLogin = () => ({
   type: REGISTER_USER,
 });
