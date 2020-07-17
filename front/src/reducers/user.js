@@ -4,6 +4,7 @@ import {
   SAVE_USER,
   LOG_OUT,
   REGISTER_ERROR,
+  LOG_ERROR,
 } from 'src/actions/user';
 
 const initialState = {
@@ -21,7 +22,7 @@ const initialState = {
   isLogged: JSON.parse(localStorage.getItem('isLogged')),
   user: JSON.parse(localStorage.getItem('currentuser')),
   registerError: false,
-
+  loginError: false,
 };
 
 const user = (state = initialState, action = {}) => {
@@ -54,6 +55,14 @@ const user = (state = initialState, action = {}) => {
         email: '',
         password: '',
         registerError: false,
+        loginError: false,
+      };
+
+    case LOG_ERROR:
+      return {
+        ...state,
+        loginError: true,
+        password: '',
       };
 
     case LOG_OUT:

@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Redirect from 'react-router-dom';
+import Typist from 'react-typist';
 import './register.scss';
 import FieldRegister from './FieldRegister/FieldRegister';
 import ButtonRegister from './ButtonRegister';
@@ -34,6 +35,13 @@ const Register = ({
       {!redirect && (
       <>
         <main className="register">
+            <h1 className="adventure-title main-title">
+            <Typist
+              cursor={{ hideWhenDone: true }}
+            >
+              Insciption
+            </Typist>
+          </h1>
           <form
             className="form"
             onSubmit={handleSubmit}

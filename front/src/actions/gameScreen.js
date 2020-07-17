@@ -17,6 +17,9 @@ export const DISPLAY_SUCCESS_MESSAGE = 'DISPLAY_SUCCESS_MESSAGE';
 export const SET_COUNTER = 'SET_COUNTER';
 export const TOGGLE_THE_COUNTER = 'TOGGLE_THE_COUNTER';
 export const SAVE_PARTY_TIME = 'SAVE_PARTY_TIME';
+export const TOGGLE_WRONG_ANSWER_MESSAGE = 'TOGGLE_WRONG_ANSWER_MESSAGE';
+export const APPLY_PENALTY = 'APPLY_PENALTY';
+export const GIVE_HINT = 'GIVE_HINT';
 
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -106,4 +109,18 @@ export const savePartyTime = (endTime, player, forStory) => ({
   endTime,
   player,
   forStory,
+});
+
+export const toggleWrongAnswerMessage = () => ({
+  type: TOGGLE_WRONG_ANSWER_MESSAGE,
+});
+
+export const applyPenalty = (penaltyTime) => ({
+  type: APPLY_PENALTY,
+  penaltyTime,
+});
+
+export const giveHint = (randomHint) => ({
+  type: GIVE_HINT,
+  randomHint,
 });

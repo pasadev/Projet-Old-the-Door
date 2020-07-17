@@ -19,7 +19,7 @@ import Header from 'src/containers/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
 import Footer from 'src/containers/Footer';
-import Profil from 'src/components/Profil';
+import Profil from 'src/containers/Profil';
 
 // == Import
 import './styles.scss';

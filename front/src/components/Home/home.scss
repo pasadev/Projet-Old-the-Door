@@ -12,6 +12,11 @@
       display: flex;
       flex-direction: column;
     }
+    .asciiart {
+      white-space: pre;
+      width: fit-content;
+      margin: 0 auto 1em;
+    }
   }
   
   .latest-adventures {
@@ -33,6 +38,47 @@
       flex-direction: column;
     }
   }
+
+  .home-inscription {
+    border: 2px solid $noticeColor;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    width: 100%;
+    overflow-wrap: break-word;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+    
+    
+    .home-inscription-text {
+      font-style: italic;
+    }
+    .home-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 0.5em;
+      align-items: center;
+      
+      .link-inscription {
+        padding-bottom: 0.5em;
+        color: $linkColor;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+  
+      .link-adventures {
+        color: $linkColor;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -40,5 +86,17 @@
     align-items: flex-start !important;
     flex-direction: row !important;
     justify-content: center;
+  }
+
+  .home-links {
+    flex-direction: row !important;
+
+    .link-inscription {
+      padding-bottom: 0 !important;
+    }
+
+    .link-adventures {
+      padding-left: 0.5em;
+    }
   }
 }

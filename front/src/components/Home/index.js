@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import AdventureSmall from 'src/containers/AdventureSmall';
 import Loader from 'src/components/Loader';
@@ -27,11 +28,48 @@ const Home = ({
         <main className="home">
           <section className="presentation">
             <h1 className="presentation-title main-title">
-              <Typist>
+              <Typist
+                cursor={{ hideWhenDone: true }}
+              >
                 Bienvenue sur O'ld the door
               </Typist>
             </h1>
-            <p className="asciiart" />
+            {localStorage.getItem('isLogged') !== 'true' && (
+            <Typist
+              cursor={{ show: false }}
+              avgTypingDelay={5}
+            >
+              <pre className="asciiart">
+                ___________<br />
+                |  __  __  |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |  __  __()|<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |__________|<br />
+              </pre>
+            </Typist>
+            )}
+            {localStorage.getItem('isLogged') === 'true' && (
+              <pre className="asciiart">
+                ___________<br />
+                |  __  __  |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |  __  __()|<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |__________|<br />
+              </pre>
+            )}
+
             <p className="presentation-description">
               O'ld the door est un nouveau concept d’escape game se basant sur de l’ancien.
               Retrouvez l’ambiance des jeux d’aventures textuels dans des scénarios où
@@ -43,6 +81,25 @@ const Home = ({
               Vous aimez écrire ? Découvrez notre éditeur d’aventure
               pour proposer votre histoire à tous les joueurs.
             </p>
+          </section>
+          <section className="home-inscription">
+            <p className="home-inscription-text">
+              Inscrivez-vous pour profiter des aventures créé par notre communauté.
+            </p>
+            <div className="home-links">
+              <Link
+                className="link-inscription"
+                to="/inscription"
+              >
+                Inscription
+              </Link>
+              <Link
+                className="link-adventures"
+                to="/aventures"
+              >
+                Aventures
+              </Link>
+            </div>
           </section>
           <section className="latest-adventures">
             <h2 className="latest-adventures-title">

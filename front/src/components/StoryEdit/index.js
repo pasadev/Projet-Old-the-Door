@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Redirect } from 'react-router-dom';
 import { slugifyTitle } from 'src/utils';
 import PropTypes from 'prop-types';
-
+import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit/index.js';
 import ChapterEdit from 'src/containers/ChapterEdit';
@@ -45,8 +45,12 @@ const StoryEdit = ({
           {loading && <Loader />}
           {!loading && (
             <main className="storyEdit">
-              <h1>
-                La page d'édition pour : {initialTitle}
+              <h1 className="main-title">
+                <Typist
+                  cursor={{ hideWhenDone: true }}
+                >
+                  Editer : {initialTitle}
+                </Typist>
               </h1>
               <form
                 className="storyEdit-form"
