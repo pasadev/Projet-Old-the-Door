@@ -26,7 +26,9 @@ const StoryCreate = ({
       {!redirect && (
         <main className="storyCreate">
           <h1 className="adventures-title main-title">
-            <Typist>
+            <Typist
+              cursor={{ hideWhenDone: true }}
+            >
               Créer une aventure
             </Typist>
           </h1>

@@ -10,7 +10,9 @@ import {
 const initialState = {
   burgerMenuOpen: false,
   loading: true,
+
   redirect: false,
+
 };
 
 const utils = (state = initialState, action = {}) => {

@@ -1,7 +1,14 @@
 import { connect } from 'react-redux';
 
-import { fetchAdventureSelected, saveAdventureSelected } from 'src/actions/adventures';
+import {
+  fetchAdventureSelected,
+  saveAdventureSelected,
+  fetchAdventureTimer,
+  saveAdventureTimer,
+  clearAdventureTimer,
+} from 'src/actions/adventures';
 import { displayLoader, redirectOff } from 'src/actions/utils';
+
 
 import Adventure from 'src/components/Adventure';
 
@@ -9,6 +16,7 @@ import Adventure from 'src/components/Adventure';
 const mapStateToProps = (state) => ({
   loading: state.utils.loading,
   adventureSelected: state.adventures.adventureSelected,
+  adventureTimer: state.adventures.adventureTimer,
 });
 
 // === mapDispatchToProps
@@ -25,6 +33,14 @@ const mapDispatchToProps = (dispatch) => ({
   redirectOff: () => {
     dispatch(redirectOff());
   },
+  fetchAdventureTimer: () => {
+    dispatch(fetchAdventureTimer());
+  },
+  saveAdventureTimer: () => {
+    dispatch(saveAdventureTimer());
+  },
+  clearAdventureTimer: () => {
+    dispatch(clearAdventureTimer());
+  },
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(Adventure);

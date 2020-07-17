@@ -21,14 +21,18 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
       className="login"
       to="/connexion"
     >
-      Login
+      Connexion
     </Link>
 
     )}
     { (isLogged !== null) && (
-      <button className="logout" type="button" onClick={logOut}>
-        logout
-      </button>
+    <Link
+      className="logout"
+      onClick={logOut}
+      to="/"
+    >
+      Déconnexion
+    </Link>
     )}
 
     <div className="nav-container">
