@@ -5,6 +5,7 @@ import {
   LOG_OUT,
   saveUser,
   REGISTER_USER,
+  registerError,
   logError,
 } from 'src/actions/user';
 
@@ -52,29 +53,37 @@ const userMiddleware = (store) => (next) => (action) => {
     case REGISTER_USER: {
       const {
         emailRegister: email,
-        passwordRegister: password,
         nickname: username,
         firstname,
         lastname,
-        passwordConfirmation,
+        passwordFirst: first,
+        passwordSecond: second,
       } = store.getState().user;
-
       // withCredentials : autorisation d'accéder au cookie
       axios.post(`${baseURL}/api/v0/users`, {
         email,
-        password,
         username,
         firstname,
         lastname,
-        passwordConfirmation,
+        password: {
+          first,
+          second,
+        },
       }, {
         withCredentials: true,
-        headers: true,
       })
         .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
+          // Save user only for http 201
+          if (response.status === 201) {
+            store.dispatch(saveUser(response.data));
+            localStorage.setItem('currentuser', JSON.stringify(response.data));
+            localStorage.setItem('isLogged', `${true}`);
+            store.dispatch(redirectOn());
+          }
         })
         .catch((error) => {
+          // Display error message
+          store.dispatch(registerError());
           console.warn(error);
         });
 

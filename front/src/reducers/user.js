@@ -3,13 +3,14 @@ import {
   UPDATE_USER_FIELD,
   SAVE_USER,
   LOG_OUT,
+  REGISTER_ERROR,
   LOG_ERROR,
 } from 'src/actions/user';
 
 const initialState = {
   emailRegister: '',
-  passwordRegister: '',
-  passwordConfirmation: '',
+  passwordFirst: '',
+  passwordSecond: '',
   firstname: '',
   lastname: '',
   nickname: '',
@@ -20,6 +21,7 @@ const initialState = {
   // indique si l'utilisateur est loggué
   isLogged: JSON.parse(localStorage.getItem('isLogged')),
   user: JSON.parse(localStorage.getItem('currentuser')),
+  registerError: false,
   loginError: false,
 };
 
@@ -30,10 +32,19 @@ const user = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.newValue,
       };
+
     case UPDATE_USER_FIELD:
       return {
         ...state,
         [action.name]: action.newValue,
+      };
+
+    case REGISTER_ERROR:
+      return {
+        ...state,
+        registerError: true,
+        passwordFirst: '',
+        passwordSecond: '',
       };
 
     case SAVE_USER:
@@ -43,6 +54,13 @@ const user = (state = initialState, action = {}) => {
         user: action.data,
         email: '',
         password: '',
+        emailRegister: '',
+        passwordFirst: '',
+        passwordSecond: '',
+        firstname: '',
+        lastname: '',
+        nickname: '',
+        registerError: false,
         loginError: false,
       };
 
