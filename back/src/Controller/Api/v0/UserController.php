@@ -99,6 +99,6 @@ class UserController extends AbstractController
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false, 400));
+        return $this->json((string) $form->getErrors(true, false), 400);
     }
 }
