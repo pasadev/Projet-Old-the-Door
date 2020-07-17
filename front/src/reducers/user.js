@@ -3,6 +3,7 @@ import {
   UPDATE_USER_FIELD,
   SAVE_USER,
   LOG_OUT,
+  LOG_ERROR,
 } from 'src/actions/user';
 
 const initialState = {
@@ -19,7 +20,7 @@ const initialState = {
   // indique si l'utilisateur est loggué
   isLogged: JSON.parse(localStorage.getItem('isLogged')),
   user: JSON.parse(localStorage.getItem('currentuser')),
-
+  loginError: false,
 };
 
 const user = (state = initialState, action = {}) => {
@@ -41,6 +42,14 @@ const user = (state = initialState, action = {}) => {
         isLogged: true,
         user: action.data,
         email: '',
+        password: '',
+        loginError: false,
+      };
+
+    case LOG_ERROR:
+      return {
+        ...state,
+        loginError: true,
         password: '',
       };
 

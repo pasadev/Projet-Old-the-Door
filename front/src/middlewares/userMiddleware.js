@@ -5,7 +5,12 @@ import {
   LOG_OUT,
   saveUser,
   REGISTER_USER,
+  logError,
 } from 'src/actions/user';
+
+import {
+  redirectOn,
+} from 'src/actions/utils';
 
 import { baseURL } from 'src/utils';
 
@@ -25,8 +30,10 @@ const userMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveUser(response.data[0]));
           localStorage.setItem('currentuser', JSON.stringify(response.data[0]));
           localStorage.setItem('isLogged', `${true}`);
+          store.dispatch(redirectOn());
         })
         .catch((error) => {
+          store.dispatch(logError());
           console.warn(error);
         });
 
