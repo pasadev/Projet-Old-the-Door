@@ -21,7 +21,6 @@ const Connexion = ({
     evt.preventDefault();
     handleLogin();
   };
-
   return (
     <div className="login-form">
 
@@ -40,7 +39,7 @@ const Connexion = ({
         <Typist
           cursor={{ show: false }}
         >
-          <Typist.Delay ms={5000} />
+          <Typist.Delay ms={4000} />
           <div className="infos">
             <p className="infos-text">Accès refusé : identification requise</p>
           </div>
@@ -52,7 +51,7 @@ const Connexion = ({
             <Typist
               cursor={{ show: false }}
             >
-              <Typist.Delay ms={8000} />
+              <Typist.Delay ms={7000} />
               <label htmlFor="email"> Email : </label>
             </Typist>
             <Field
@@ -66,7 +65,7 @@ const Connexion = ({
             <Typist
               cursor={{ show: false }}
             >
-              <Typist.Delay ms={9000} />
+              <Typist.Delay ms={8000} />
               <label htmlFor="password"> Mot de passe : </label>
 
             </Typist>
@@ -80,9 +79,7 @@ const Connexion = ({
 
           {emailField && passwordField && (
           // if email field and password field are not empty, we will display the submit button.
-          <div className="button-submit">
-            <button type="submit">Sign In</button>
-          </div>
+            <button className="button-submit" type="submit">Sign In</button>
           )}
         </form>
       </div>

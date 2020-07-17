@@ -13,7 +13,6 @@ const Field = ({
   type,
   value,
   changeField,
-  maxLength,
 }) => {
   const handleChange = (event) => {
     const { value: inputValue, name } = event.target;
@@ -36,14 +35,12 @@ const Field = ({
         type={type}
         value={value}
         onChange={handleChange}
-        maxLength={maxLength}
       />
     </div>
   );
 };
 
 Field.propTypes = {
-  maxLength: PropTypes.string.isRequired,
   /** identifier for the input : used both for name and id => must be unique */
   identifier: PropTypes.string.isRequired,
   /** text used as placeholder */

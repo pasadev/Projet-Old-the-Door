@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 import './header.scss';
 
-const Header = ({ toggleBurgerMenuFromNav }) => (
+const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
   <div className="header">
     <Link
       onClick={toggleBurgerMenuFromNav}
@@ -15,6 +15,7 @@ const Header = ({ toggleBurgerMenuFromNav }) => (
     >
       O'ld the door
     </Link>
+    { (isLogged === null) && (
     <Link
       onClick={toggleBurgerMenuFromNav}
       className="login"
@@ -22,6 +23,14 @@ const Header = ({ toggleBurgerMenuFromNav }) => (
     >
       Login
     </Link>
+
+    )}
+    { (isLogged !== null) && (
+      <button className="logout" type="button" onClick={logOut}>
+        logout
+      </button>
+    )}
+
     <div className="nav-container">
       <Nav />
     </div>
@@ -31,6 +40,15 @@ const Header = ({ toggleBurgerMenuFromNav }) => (
 
 Header.propTypes = {
   toggleBurgerMenuFromNav: PropTypes.func.isRequired,
+  isLogged: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+  logOut: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  isLogged: null,
 };
 
 export default Header;

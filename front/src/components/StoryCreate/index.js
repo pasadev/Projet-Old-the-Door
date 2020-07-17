@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { slugifyTitle } from 'src/utils';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import FieldArea from 'src/components/FieldArea';
 import Typist from 'react-typist';
@@ -40,7 +40,6 @@ const StoryCreate = ({
               value={title}
               changeField={updateField}
               label="titre :"
-              maxLength="128"
             />
             <FieldArea
               identifier="synopsis"
@@ -70,11 +69,11 @@ const StoryCreate = ({
 };
 
 StoryCreate.propTypes = {
-  title: Proptypes.string.isRequired,
-  synopsis: Proptypes.string.isRequired,
-  description: Proptypes.string.isRequired,
-  sumbitStoryCreate: Proptypes.func.isRequired,
-  updateField: Proptypes.func.isRequired,
-  redirect: Proptypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  synopsis: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  sumbitStoryCreate: PropTypes.func.isRequired,
+  updateField: PropTypes.func.isRequired,
+  redirect: PropTypes.bool.isRequired,
 };
 export default StoryCreate;
