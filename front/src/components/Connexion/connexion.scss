@@ -18,7 +18,7 @@
 
 .blink{
   animation-name:  blinker;
-  animation-iteration-count: 4;
+  animation-iteration-count: 3;
   animation-duration: 1s;
 }
  /*Definition of what blink animation does */
@@ -51,7 +51,7 @@
 }
 
 
-button{
+.button-submit {
   border: 1px dashed #6BE145;
   color: #6BE145;
   padding: 1em 2em;
@@ -59,13 +59,13 @@ button{
   margin-top: 2em;
   font-weight: bold;
   border-radius: 2px;
-  animation-name: hiddenDuring;
+
+  &:hover{
+   background-color:#6BE145;
+   color: #1D1E22;
+  }
 }
 
-button:hover{
- background-color:#6BE145;
- color: #1D1E22;
-}
 
 @media only screen and (max-width: 1024px){
   .form{

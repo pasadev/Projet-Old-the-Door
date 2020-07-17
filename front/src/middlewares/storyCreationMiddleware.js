@@ -1,14 +1,15 @@
 import axios from 'axios';
 
-import {
-  SUBMIT_STORY_CREATE_FORM,
-  redirectOn,
-} from 'src/actions/storyCreation';
+import { SUBMIT_STORY_CREATE_FORM } from 'src/actions/storyCreation';
+
+import { redirectOn } from 'src/actions/utils';
+
+import { baseURL } from 'src/utils';
 
 const storyCreationMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_STORY_CREATE_FORM:
-      axios.post('http://damien-toscano.vpnuser.lan:8000/api/v0/stories', {
+      axios.post(`${baseURL}/api/v0/stories`, {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,

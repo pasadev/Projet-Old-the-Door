@@ -4,7 +4,9 @@ import { displayLoader } from 'src/actions/utils';
 import {
   fetchAdvEditSelected,
   submitAdvEditForm,
-} from 'src/actions/adventureEdit';
+  setEditOption,
+  fetchChapterEditSelected,
+} from 'src/actions/storyEdit';
 
 import StoryEdit from 'src/components/StoryEdit';
 
@@ -12,6 +14,11 @@ import StoryEdit from 'src/components/StoryEdit';
 const mapStateToProps = (state) => ({
   loading: state.utils.loading,
   storyEdit: state.storyEdit,
+  redirect: state.utils.redirect,
+  chapters: state.storyEdit.chapters,
+  editOption: state.storyEdit.editOption,
+  initialTitle: state.storyEdit.initialTitle,
+  chapterEdit: state.storyEdit.chapterEdit,
 });
 
 // === mapDispatchToProps
@@ -22,8 +29,14 @@ const mapDispatchToProps = (dispatch) => ({
   displayLoader: () => {
     dispatch(displayLoader());
   },
-  submitAdvEditForm: (title, synopsis, description) => {
-    dispatch(submitAdvEditForm(title, synopsis, description));
+  submitAdvEditForm: (title, synopsis, description, id) => {
+    dispatch(submitAdvEditForm(title, synopsis, description, id));
+  },
+  setEditOption: (newValue) => {
+    dispatch(setEditOption(newValue));
+  },
+  fetchChapterEditSelected: (id) => {
+    dispatch(fetchChapterEditSelected(id));
   },
 });
 
