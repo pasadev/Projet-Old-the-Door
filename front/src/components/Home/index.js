@@ -35,7 +35,7 @@ const Home = ({
             </h1>
             <Typist
               cursor={{ show: false }}
-              avgTypingDelay={20}
+              avgTypingDelay={5}
             >
               <pre className="asciiart">
                 ___________<br />
