@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Typist from 'react-typist';
 import './register.scss';
 import FieldRegister from './FieldRegister/FieldRegister';
 import ButtonRegister from './ButtonRegister';
@@ -27,6 +28,13 @@ const Register = ({
   };
   return (
     <main className="register">
+      <h1 className="adventure-title main-title">
+        <Typist
+          cursor={{ hideWhenDone: true }}
+        >
+          Insciption
+        </Typist>
+      </h1>
       <form
         className="form"
         onSubmit={handleSubmit}

@@ -12,7 +12,9 @@ const Profil = ({ redirectOff }) => {
   return (
     <main className="profil">
       <h1 className="team-title main-title">
-        <Typist>
+        <Typist
+          cursor={{ hideWhenDone: true }}
+        >
           Mon profil
         </Typist>
       </h1>
@@ -27,6 +29,7 @@ const Profil = ({ redirectOff }) => {
             Créer une Aventure
           </Link>
         </div>
+
       </div>
       <div className="profil-infos">
         Mon profil, nom, mail etc

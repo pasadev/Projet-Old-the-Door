@@ -13,6 +13,9 @@ import {
   clearGameScreenInput,
   hideChapter,
   setCounter,
+  toggleWrongAnswerMessage,
+  applyPenalty,
+  giveHint,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -39,6 +42,9 @@ const mapStateToProps = (state) => ({
 
   timerIsRunning: state.gameScreen.timerIsRunning,
 
+  showWrongAnswerMessage: state.gameScreen.showWrongAnswerMessage,
+
+  showHint: state.gameScreen.showHint,
 });
 
 // === mapDispatchToProps
@@ -70,7 +76,19 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(toggleAnswerValue());
       console.log('answer is true');
     }
-    else (console.log('handleCheckAnswer determined the answer is false'));
+    else {
+      dispatch(
+        // show error message when wrong answer
+        toggleWrongAnswerMessage(),
+        // apply penalty in seconds
+        dispatch(applyPenalty(60)),
+        // after xxx milliseconds, hide error message
+        setTimeout(() => {
+          dispatch(toggleWrongAnswerMessage());
+        }, 2500),
+      );
+      console.log('the answer is false');
+    }
   },
 
   // when the user clicks on next chapter button, fetchNextChapter
@@ -92,6 +110,19 @@ const mapDispatchToProps = (dispatch) => ({
 
   setCounter: (currentTime) => {
     dispatch(setCounter(currentTime));
+  },
+
+  toggleWrongAnswerMessage: () => {
+    dispatch(toggleWrongAnswerMessage());
+  },
+
+  giveHint: () => {
+    const randomHint = Math.floor(Math.random() * 2) + 1;
+    // for now there are two outcomes, key or lock to give a direct answer for.
+    // Giving a more indirect hint would be in the information of the chapter
+    // but that is not yet implemented
+    dispatch(giveHint(randomHint));
+    dispatch(applyPenalty(300));
   },
 });
 
