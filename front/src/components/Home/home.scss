@@ -9,8 +9,10 @@
     flex-direction: column;
 
     .presentation-description {
-      display: flex;
-      flex-direction: column;
+      .home-scenario {
+        display: inline;
+        color: $noticeColor;
+      }
     }
     .asciiart {
       white-space: pre;
@@ -49,6 +51,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5em;
+    color: $noticeColor;
     
     
     .home-inscription-text {
