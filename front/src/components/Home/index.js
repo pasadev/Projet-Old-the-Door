@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import AdventureSmall from 'src/containers/AdventureSmall';
 import Loader from 'src/components/Loader';
@@ -80,6 +81,25 @@ const Home = ({
               Vous aimez écrire ? Découvrez notre éditeur d’aventure
               pour proposer votre histoire à tous les joueurs.
             </p>
+          </section>
+          <section className="home-inscription">
+            <p className="home-inscription-text">
+              Inscrivez-vous pour profiter des aventures créé par notre communauté.
+            </p>
+            <div className="home-links">
+              <Link
+                className="link-inscription"
+                to="/inscription"
+              >
+                Inscription
+              </Link>
+              <Link
+                className="link-adventures"
+                to="/aventures"
+              >
+                Aventures
+              </Link>
+            </div>
           </section>
           <section className="latest-adventures">
             <h2 className="latest-adventures-title">
