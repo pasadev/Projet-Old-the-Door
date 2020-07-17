@@ -46,7 +46,6 @@ const Connexion = ({
                 <div className="infos">
                   <p className="infos-text ">Accès refusé : identification requise</p>
                 </div>
-
               </Typist>
               {loginError && (
                 <div className="infos-warning">

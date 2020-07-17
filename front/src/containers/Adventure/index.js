@@ -10,7 +10,6 @@ import {
 import { displayLoader, redirectOff } from 'src/actions/utils';
 
 
-
 import Adventure from 'src/components/Adventure';
 
 // === mapStateToProps
