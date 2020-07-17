@@ -4,6 +4,7 @@ import {
   SAVE_ADV_EDIT_CHAPTERS,
   CLEAR_ADV_EDIT_CHAPTERS,
   SET_EDIT_OPTION,
+  CLEAR_EDIT_OPTION,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -62,6 +63,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         editOption: action.newValue,
+      };
+
+    case CLEAR_EDIT_OPTION:
+      return {
+        ...state,
+        editOption: '',
       };
 
     default: return state;

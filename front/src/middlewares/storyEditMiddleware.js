@@ -13,6 +13,7 @@ import {
   SUBMIT_NEW_CHAPTER_FORM,
   SUBMIT_CHAPTER_EDIT_FORM,
   clearChapterEditField,
+  clearEditOption,
 } from 'src/actions/storyEdit';
 
 import {
@@ -67,20 +68,14 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       } = store.getState().chapterEdit;
       const {
         id,
-        initialTitle,
       } = store.getState().storyEdit;
-      const forStory = {
-        id,
-        initialTitle,
-      };
       axios.post(`${baseURL}/api/v0/chapters`, {
         title,
         content,
         keyword,
         lockword,
         unlockText,
-        forStory,
-        // TODO forStory doesn't work
+        forStory: id,
       })
         .then((response) => {
           store.dispatch(redirectOn());
@@ -89,7 +84,9 @@ const storyEditMiddleware = (store) => (next) => (action) => {
           console.warn(error);
         })
         .finally(() => {
-          store.dispatch(fetchAdvEditChapters());
+          // clear the state and fetch to have the new chapter
+          store.dispatch(clearChapterEditField());
+          store.dispatch(clearEditOption());
         });
       next(action);
       break;
