@@ -56,8 +56,8 @@ class UserController extends AbstractController
         if ($userRepository->findOneBy(['email' => $jsonArray['email']]) || $userRepository->findOneBy(['username' => $jsonArray['username']]))
         {
             return $this->json([
-                "message" => "Email or username already used"
-                ],409 ); 
+                "message" => "Invalid request"
+                ],400 ); 
         }
 
         //We submit this data array to the form
@@ -99,6 +99,8 @@ class UserController extends AbstractController
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false), 400);
+        return $this->json([
+            "message" => "Invalid request"
+            ],400 ); 
     }
 }
