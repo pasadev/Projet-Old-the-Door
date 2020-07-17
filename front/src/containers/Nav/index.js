@@ -7,6 +7,7 @@ import { toggleBurgerMenuFromNav } from 'src/actions/utils';
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
+  isLogged: state.user.isLogged,
 });
 
 // === mapDispatchToProps

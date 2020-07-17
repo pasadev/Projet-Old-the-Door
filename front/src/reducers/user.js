@@ -21,7 +21,6 @@ const initialState = {
   isLogged: JSON.parse(localStorage.getItem('isLogged')),
   user: JSON.parse(localStorage.getItem('currentuser')),
   loginError: false,
-
 };
 
 const user = (state = initialState, action = {}) => {

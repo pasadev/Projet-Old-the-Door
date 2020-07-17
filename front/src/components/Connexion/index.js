@@ -26,7 +26,7 @@ const Connexion = ({
   };
   return (
     <>
-      {redirect && <Redirect to={`/profil`} />}
+      {redirect && <Redirect to="/profil" />}
       {!redirect && (
         <>
           <div className="login-form">
@@ -53,7 +53,7 @@ const Connexion = ({
               </Typist>
               {loginError && (
                 <div className="infos-warning">
-                  <p className="infos-warnig blink">Accès refusé : Identifiant de connexion erronée</p>
+                  <p className="infos-text blink">Accès refusé : Informations de connexion erronées</p>
                 </div>
               )}
               <form autoComplete="off" onSubmit={handleSubmit}>
@@ -89,7 +89,8 @@ const Connexion = ({
                 </div>
 
                 {emailField && passwordField && (
-                // if email field and password field are not empty, we will display the submit button.
+                // if email field and password field are not empty
+                // we will display the submit button.
                   <button className="button-submit" type="submit">Sign In</button>
                 )}
               </form>
