@@ -10,13 +10,16 @@ const initialState = {
   keyword: '',
   lockword: '',
   unlockText: '',
+  chapterEditId: '',
 };
 
 const chapterEdit = (state = initialState, action = {}) => {
   switch (action.type) {
     case SAVE_CHAPTER_EDIT_SELECTED:
       return {
+        ...state,
         ...action.chapterEdit,
+        chapterEditId: action.chapterEdit.id,
       };
 
     case CLEAR_CHAPTER_EDIT_FIELD:

@@ -42,7 +42,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         synopsis: action.synopsis,
         description: action.description,
         active: 1,
-        author: 2,
+        author: 38,
         // TODO put real author id and active to 0.
       })
         .then((response) => {

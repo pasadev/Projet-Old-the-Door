@@ -29,7 +29,7 @@ const StoryEdit = ({
     displayLoader();
   }, []);
 
-  const handleStoryEditSubmit = (event) => {
+  const handleAdvEditSubmit = (event) => {
     event.preventDefault();
     submitAdvEditForm(storyEdit.title, storyEdit.synopsis, storyEdit.description, storyEdit.id);
   };
@@ -57,45 +57,46 @@ const StoryEdit = ({
               <h1>
                 La page d'édition pour : {initialTitle}
               </h1>
-              <form
-                className="storyEdit-form"
-                onSubmit={handleStoryEditSubmit}
-              >
-                <label htmlFor="storyEdit-form-editChoice">
-                  Editer :
-                  <select
-                    className="storyEdit-form-editChoice"
-                    id="storyEdit-form-editChoice"
-                    onChange={handleEditOption}
-                  >
-                    <option value="" defaultValue>
-                      Choix
+
+              <label htmlFor="storyEdit-form-editChoice">
+                Editer :
+                <select
+                  className="storyEdit-form-editChoice"
+                  id="storyEdit-form-editChoice"
+                  onChange={handleEditOption}
+                >
+                  <option value="">
+                    Choix
+                  </option>
+                  <option value="Nouveau Chapitre">
+                    Nouveau Chapitre
+                  </option>
+                  <option value={initialTitle}>
+                    Aventure: {initialTitle}
+                  </option>
+                  {chapters.map((chapter) => (
+                    <option
+                      key={chapter.id}
+                      value={chapter.id}
+                    >
+                      Chapitre: {chapter.title}
                     </option>
-                    <option value="Nouveau Chapitre">
-                      Nouveau Chapitre
-                    </option>
-                    <option value={initialTitle}>
-                      Aventure: {initialTitle}
-                    </option>
-                    {chapters.map((chapter) => (
-                      <option
-                        key={chapter.id}
-                        value={chapter.id}
-                      >
-                        Chapitre: {chapter.title}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                  ))}
+                </select>
+              </label>
 
-                {editOption === initialTitle && <AdventureEdit />}
+              {editOption === initialTitle && (
+                <form
+                  className="advEdit-form"
+                  onSubmit={handleAdvEditSubmit}
+                >
+                  <AdventureEdit />
+                  <button type="submit">Enregistrer les modifications sur l'aventure</button>
+                </form>
+              )}
 
-                {editOption === 'Nouveau Chapitre' && <ChapterEdit id="Nouveau Chapitre" />}
+              <ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} />
 
-                {<ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} /> }
-
-                {editOption !== '' && (<button type="submit">Enregistrer ces modifications</button>)}
-              </form>
             </main>
           )}
         </>
