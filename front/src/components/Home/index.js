@@ -27,11 +27,48 @@ const Home = ({
         <main className="home">
           <section className="presentation">
             <h1 className="presentation-title main-title">
-              <Typist>
+              <Typist
+                cursor={{ hideWhenDone: true }}
+              >
                 Bienvenue sur O'ld the door
               </Typist>
             </h1>
-            <p className="asciiart" />
+            {localStorage.getItem('isLogged') !== 'true' && (
+            <Typist
+              cursor={{ show: false }}
+              avgTypingDelay={5}
+            >
+              <pre className="asciiart">
+                ___________<br />
+                |  __  __  |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |  __  __()|<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |__________|<br />
+              </pre>
+            </Typist>
+            )}
+            {localStorage.getItem('isLogged') === 'true' && (
+              <pre className="asciiart">
+                ___________<br />
+                |  __  __  |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |  __  __()|<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |__________|<br />
+              </pre>
+            )}
+
             <p className="presentation-description">
               O'ld the door est un nouveau concept d’escape game se basant sur de l’ancien.
               Retrouvez l’ambiance des jeux d’aventures textuels dans des scénarios où

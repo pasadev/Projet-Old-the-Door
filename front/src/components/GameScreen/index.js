@@ -79,7 +79,7 @@ const GameScreen = ({
             </div>
             <div className="gameScreen-header-text">
               <Typist
-                cursor={{ blink: true, hideWhenDone: true }}
+                cursor={{ hideWhenDone: true }}
                 avgTypingDelay={30}
               >
                 <span>.....Initialisation de l'histoire v0.01.....</span>

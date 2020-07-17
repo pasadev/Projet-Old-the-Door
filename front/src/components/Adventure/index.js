@@ -13,10 +13,13 @@ const Adventure = ({
   displayLoader,
   loading,
   redirectOff,
+  adventureTimer,
+  clearAdventureTimer,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
     redirectOff();
+    clearAdventureTimer();
     fetchAdventureSelected(slug);
     displayLoader();
   }, []);
@@ -26,8 +29,12 @@ const Adventure = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
+          <p>Best Time: {adventureTimer.best}sec</p>
+          <p>average Time: {adventureTimer.average}sec</p>
           <h1 className="adventure-title main-title">
-            <Typist>
+            <Typist
+              cursor={{ hideWhenDone: true }}
+            >
               {adventureSelected.title}
             </Typist>
           </h1>
@@ -45,20 +52,16 @@ const Adventure = ({
             {adventureSelected.description}
           </p>
           <div className="adventure-links">
-            {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}>Jouer</Link>
+            {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
               : <Link to="#">Il n'y a pas de premier chapitre</Link>}
 
             <Link
               to={`/aventures/${slug}/edition`}
             >
-              Edition
+              <span className="adventure-link">Edition</span>
             </Link>
-            <button type="button">
-              Publier
-            </button>
-            <button type="button">
-              Supprimer
-            </button>
+            <span className="adventure-link publish-link">Publier</span>
+            <span className="adventure-link delete-link">Supprimer</span>
           </div>
         </main>
       )}
@@ -81,6 +84,18 @@ Adventure.propTypes = {
     createdAt: PropTypes.string.isRequired,
     firstChapter: PropTypes.object,
   }).isRequired,
+  // Adventure Timer
+  adventureTimer: PropTypes.shape({
+    best: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    average: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+  }).isRequired,
+  clearAdventureTimer: PropTypes.func.isRequired,
 };
 
 export default Adventure;

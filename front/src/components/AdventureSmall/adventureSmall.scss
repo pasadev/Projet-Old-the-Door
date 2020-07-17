@@ -5,6 +5,10 @@
   padding: 0.5em;
   margin-bottom: 1em;
   width: 100%;
+  overflow-wrap: break-word;
+  &:hover {
+    color: $noticeColor;
+  }
 
   .adventureSmall-title {
     font-weight: bold;
@@ -34,6 +38,7 @@
   .adventureSmall-link {
     padding-top: 0.5em;
     color: $linkColor;
+    width: fit-content;
   }
 
   .adventureSmall-link:hover {

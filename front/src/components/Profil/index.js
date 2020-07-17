@@ -7,7 +7,9 @@ import './profil.scss';
 const Profil = () => (
   <main className="profil">
     <h1 className="team-title main-title">
-      <Typist>
+      <Typist
+        cursor={{ hideWhenDone: true }}
+      >
         Mon profil
       </Typist>
     </h1>
