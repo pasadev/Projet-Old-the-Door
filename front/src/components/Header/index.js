@@ -28,7 +28,6 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
     { (isLogged !== null) && (
     <Link
       className="logout"
-      type="button"
       onClick={logOut}
       to="/"
     >

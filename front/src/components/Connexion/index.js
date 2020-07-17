@@ -2,10 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typist from 'react-typist';
-
-// import { useField } from './hooks';
-
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Field from './Field';
 import './connexion.scss';
 import PasswordCo from './Field/passwordco';
@@ -95,6 +92,21 @@ const Connexion = ({
                 )}
               </form>
             </div>
+          </div>
+          <div className="connexion-links">
+            <Link
+              className="link-home"
+              to="/"
+            >
+              Retour à l'accueil
+            </Link>
+            <span className="inscription-text">Pas encore inscrit ?</span>
+            <Link
+              className="link-inscription"
+              to="/inscription"
+            >
+              Inscription
+            </Link>
           </div>
         </>
       )}
