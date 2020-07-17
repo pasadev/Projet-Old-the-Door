@@ -3,6 +3,8 @@ export const FETCH_ADV_EDIT_SELECTED = 'FETCH_ADV_EDIT_SELECTED';
 export const SAVE_ADV_EDIT_SELECTED = 'SAVE_ADV_EDIT_SELECTED';
 export const UPDATE_ADVENTURE_EDIT_FIELD = 'UPDATE_ADVENTURE_EDIT_FIELD';
 export const SUBMIT_ADV_EDIT_FORM = 'SUBMIT_ADV_EDIT_FORM';
+export const SUBMIT_NEW_CHAPTER_FORM = 'SUBMIT_NEW_CHAPTER_FORM';
+export const SUBMIT_CHAPTER_EDIT_FORM = 'SUBMIT_CHAPTER_EDIT_FORM';
 export const FETCH_ADV_EDIT_CHAPTERS = 'FETCH_ADV_EDIT_CHAPTERS';
 export const SAVE_ADV_EDIT_CHAPTERS = 'SAVE_ADV_EDIT_CHAPTERS';
 export const CLEAR_ADV_EDIT_CHAPTERS = 'CLEAR_ADV_EDIT_CHAPTERS';
@@ -41,6 +43,14 @@ export const submitAdvEditForm = (title, synopsis, description, id) => ({
   synopsis,
   description,
   id,
+});
+
+export const submitNewChapterForm = () => ({
+  type: SUBMIT_NEW_CHAPTER_FORM,
+});
+
+export const submitChapterEditForm = () => ({
+  type: SUBMIT_CHAPTER_EDIT_FORM,
 });
 
 export const fetchAdvEditChapters = () => ({

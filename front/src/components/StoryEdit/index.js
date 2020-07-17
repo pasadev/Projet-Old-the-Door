@@ -104,7 +104,7 @@ const StoryEdit = ({
     </>
   );
 };
-// TODO split form by 3, one for AdventureEdit, one for Nouveau Chapitre and one for ChapterEdit
+// TODO clean state after submit
 
 StoryEdit.propTypes = {
   clearChapterEditField: PropTypes.func.isRequired,

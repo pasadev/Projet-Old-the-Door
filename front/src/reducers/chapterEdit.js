@@ -11,6 +11,7 @@ const initialState = {
   lockword: '',
   unlockText: '',
   chapterEditId: '',
+  // TODO Delete all chapterEditId stuff if it's not use
 };
 
 const chapterEdit = (state = initialState, action = {}) => {

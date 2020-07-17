@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 
 import {
   updateChapterEditField,
+  submitNewChapterForm,
+  submitChapterEditForm,
 } from 'src/actions/storyEdit';
 
 import ChapterEdit from 'src/components/ChapterEdit';
@@ -22,7 +24,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateField: (identifier, newValue) => {
     dispatch(updateChapterEditField(identifier, newValue));
-    console.log(identifier);
+  },
+  submitNewChapterForm: () => {
+    dispatch(submitNewChapterForm());
+  },
+  submitChapterEditForm: () => {
+    dispatch(submitChapterEditForm());
   },
 });
 

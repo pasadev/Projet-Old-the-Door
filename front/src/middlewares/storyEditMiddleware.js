@@ -10,6 +10,9 @@ import {
   clearAdvEditChapters,
   FETCH_CHAPTER_EDIT_SELECTED,
   saveChapterEditSelected,
+  SUBMIT_NEW_CHAPTER_FORM,
+  SUBMIT_CHAPTER_EDIT_FORM,
+  clearChapterEditField,
 } from 'src/actions/storyEdit';
 
 import {
@@ -44,6 +47,57 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         active: 1,
         author: 38,
         // TODO put real author id and active to 0.
+      })
+        .then((response) => {
+          store.dispatch(redirectOn());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+
+    case SUBMIT_NEW_CHAPTER_FORM: {
+      const {
+        title,
+        content,
+        keyword,
+        lockword,
+        unlockText,
+      } = store.getState().chapterEdit;
+      const {
+        id,
+        initialTitle,
+      } = store.getState().storyEdit;
+      const forStory = {
+        id,
+        initialTitle,
+      };
+      axios.post(`${baseURL}/api/v0/chapters`, {
+        title,
+        content,
+        keyword,
+        lockword,
+        unlockText,
+        forStory,
+        // TODO forStory doesn't work
+      })
+        .then((response) => {
+          store.dispatch(redirectOn());
+        })
+        .catch((error) => {
+          console.warn(error);
+        })
+        .finally(() => {
+          store.dispatch(fetchAdvEditChapters());
+        });
+      next(action);
+      break;
+    }
+
+    case SUBMIT_CHAPTER_EDIT_FORM:
+      axios.post(`${baseURL}/api/v0/chapters/[id]`, {
+        // TODO put info + id (title , text , key , lock , unlock text).
       })
         .then((response) => {
           store.dispatch(redirectOn());

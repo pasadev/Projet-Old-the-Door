@@ -12,17 +12,17 @@ const ChapterEdit = ({
   unlockText,
   updateField,
   editOption,
+  submitNewChapterForm,
+  submitChapterEditForm,
 }) => {
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
-    // TODO
-    console.log('chap edit');
+    submitChapterEditForm();
   };
 
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
-    console.log('newCHapter');
-    // TODO func api blabla
+    submitNewChapterForm();
   };
 
   return (
@@ -158,6 +158,8 @@ ChapterEdit.propTypes = {
   keyword: PropTypes.string,
   lockword: PropTypes.string,
   unlockText: PropTypes.string,
+  submitNewChapterForm: PropTypes.func.isRequired,
+  submitChapterEditForm: PropTypes.func.isRequired,
 };
 
 ChapterEdit.defaultProps = {
