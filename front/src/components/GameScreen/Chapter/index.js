@@ -38,7 +38,8 @@ const Chapter = ({
           avgTypingDelay={30}
         >
           <Typist.Delay ms={1000} />
-          { unlockText + " " }
+          {// eslint-disable-next-line prefer-template
+          }{ unlockText + ' ' }
 
           <span className="gameScreen-actionButton" onClick={fetchNextChapter}>> Chapitre suivant</span>
         </Typist>

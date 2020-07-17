@@ -52,11 +52,9 @@ const Adventure = ({
             {adventureSelected.description}
           </p>
           <div className="adventure-links">
-            <Link
-              to={`/aventures/${slug}/jouer`}
-            >
-              <span className="adventure-link">Jouer</span>
-            </Link>
+            {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
+              : <Link to="#">Il n'y a pas de premier chapitre</Link>}
+
             <Link
               to={`/aventures/${slug}/edition`}
             >
@@ -84,6 +82,7 @@ Adventure.propTypes = {
       username: PropTypes.string.isRequired,
     }).isRequired,
     createdAt: PropTypes.string.isRequired,
+    firstChapter: PropTypes.object,
   }).isRequired,
   // Adventure Timer
   adventureTimer: PropTypes.shape({
