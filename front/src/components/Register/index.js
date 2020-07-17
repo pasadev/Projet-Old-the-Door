@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Typist from 'react-typist';
 import './register.scss';
 import FieldRegister from './FieldRegister/FieldRegister';
@@ -35,11 +35,11 @@ const Register = ({
       {!redirect && (
       <>
         <main className="register">
-            <h1 className="adventure-title main-title">
+          <h1 className="adventure-title main-title">
             <Typist
               cursor={{ hideWhenDone: true }}
             >
-              Insciption
+              Inscription
             </Typist>
           </h1>
           <form
@@ -108,6 +108,14 @@ const Register = ({
               Les données indiquées sont incorrectes
             </div>
           )}
+          <div className="connexion-links">
+            <Link
+              className="link-home"
+              to="/"
+            >
+              Retour à l'accueil
+            </Link>
+          </div>
         </main>
       </>
       )}

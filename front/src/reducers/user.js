@@ -54,6 +54,12 @@ const user = (state = initialState, action = {}) => {
         user: action.data,
         email: '',
         password: '',
+        emailRegister: '',
+        passwordFirst: '',
+        passwordSecond: '',
+        firstname: '',
+        lastname: '',
+        nickname: '',
         registerError: false,
         loginError: false,
       };
