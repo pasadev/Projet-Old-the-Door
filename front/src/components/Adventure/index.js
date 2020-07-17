@@ -45,11 +45,9 @@ const Adventure = ({
             {adventureSelected.description}
           </p>
           <div className="adventure-links">
-            <Link
-              to={`/aventures/${slug}/jouer`}
-            >
-              Jouer
-            </Link>
+            {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}>Jouer</Link>
+              : <Link to="#">Il n'y a pas de premier chapitre</Link>}
+
             <Link
               to={`/aventures/${slug}/edition`}
             >
