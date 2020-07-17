@@ -12,7 +12,9 @@ import './team.scss';
 const Team = () => (
   <main className="team">
     <h1 className="team-title main-title">
-      <Typist>
+      <Typist
+        cursor={{ hideWhenDone: true }}
+      >
         Découvrez notre merveilleuse équipe
       </Typist>
     </h1>
