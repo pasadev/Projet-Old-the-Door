@@ -79,6 +79,7 @@ Adventure.propTypes = {
       username: PropTypes.string.isRequired,
     }).isRequired,
     createdAt: PropTypes.string.isRequired,
+    firstChapter: PropTypes.object,
   }).isRequired,
 };
 
