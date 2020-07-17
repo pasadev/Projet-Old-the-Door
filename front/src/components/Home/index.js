@@ -33,6 +33,7 @@ const Home = ({
                 Bienvenue sur O'ld the door
               </Typist>
             </h1>
+            {localStorage.getItem('isLogged') !== 'true' && (
             <Typist
               cursor={{ show: false }}
               avgTypingDelay={5}
@@ -51,6 +52,23 @@ const Home = ({
                 |__________|<br />
               </pre>
             </Typist>
+            )}
+            {localStorage.getItem('isLogged') === 'true' && (
+              <pre className="asciiart">
+                ___________<br />
+                |  __  __  |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |  __  __()|<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |  ||  | |<br />
+                | |__||__| |<br />
+                |__________|<br />
+              </pre>
+            )}
+
             <p className="presentation-description">
               O'ld the door est un nouveau concept d’escape game se basant sur de l’ancien.
               Retrouvez l’ambiance des jeux d’aventures textuels dans des scénarios où
