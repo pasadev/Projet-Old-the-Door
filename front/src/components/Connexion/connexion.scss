@@ -9,6 +9,7 @@
   margin: 0 auto;
   border: 1px dashed #6BE145;
   padding: 1em;
+  height: 13em;
 }
 
 .login-header{
@@ -110,6 +111,7 @@
 @media only screen and (min-width: 1024px){
   .form{
     width: 50%;
+    height: 11em;
   }
 
   .infos{
