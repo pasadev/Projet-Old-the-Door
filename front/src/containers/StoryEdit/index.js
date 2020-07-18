@@ -30,8 +30,8 @@ const mapDispatchToProps = (dispatch) => ({
   displayLoader: () => {
     dispatch(displayLoader());
   },
-  submitAdvEditForm: (title, synopsis, description, id) => {
-    dispatch(submitAdvEditForm(title, synopsis, description, id));
+  submitAdvEditForm: (title, synopsis, description, idStory) => {
+    dispatch(submitAdvEditForm(title, synopsis, description, idStory));
   },
   setEditOption: (newValue) => {
     dispatch(setEditOption(newValue));

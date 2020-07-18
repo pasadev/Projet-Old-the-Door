@@ -4,6 +4,7 @@ import FieldArea from 'src/components/FieldArea';
 import PropTypes from 'prop-types';
 
 const ChapterEdit = ({
+  chapterEdit,
   id,
   title,
   content,
@@ -34,11 +35,17 @@ const ChapterEdit = ({
         >
           <div className="chapterEdit">
             <label htmlFor="chapterEdit-parentChapter">
+              {chapterEdit.parentChapter !== null && (
+                <span>Chapitre parent actuel : {chapterEdit.parentChapter.title}<br /></span>
+              )}
               Choisir le Chapitre parent :
               <select className="chapterEdit-parentChapter" id="chapterEdit-parentChapter">
                 {/* TODO map */}
                 <option value="">
                   Chapitre parent à choisir
+                </option>
+                <option value="">
+                  test
                 </option>
               </select>
             </label>
@@ -160,6 +167,11 @@ ChapterEdit.propTypes = {
   unlockText: PropTypes.string,
   submitNewChapterForm: PropTypes.func.isRequired,
   submitChapterEditForm: PropTypes.func.isRequired,
+  chapterEdit: PropTypes.shape({
+    parentChapter: PropTypes.shape({
+      title: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 ChapterEdit.defaultProps = {
@@ -169,6 +181,7 @@ ChapterEdit.defaultProps = {
   keyword: '',
   lockword: '',
   unlockText: '',
+  // parentChapter: null,
 };
 
 export default ChapterEdit;

@@ -38,12 +38,12 @@ export const updateChapterEditField = (identifier, newValue) => ({
   newValue,
 });
 
-export const submitAdvEditForm = (title, synopsis, description, id) => ({
+export const submitAdvEditForm = (title, synopsis, description, idStory) => ({
   type: SUBMIT_ADV_EDIT_FORM,
   title,
   synopsis,
   description,
-  id,
+  idStory,
 });
 
 export const submitNewChapterForm = () => ({

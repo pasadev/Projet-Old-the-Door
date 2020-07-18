@@ -54,11 +54,16 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.warn(error);
+        }).finally(() => {
+          // clear the state and fetch to have the new chapter
+          store.dispatch(clearChapterEditField());
+          store.dispatch(clearEditOption());
         });
       next(action);
       break;
 
     case SUBMIT_NEW_CHAPTER_FORM: {
+      // TODO add chapter parent
       const {
         title,
         content,
@@ -92,21 +97,44 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       break;
     }
 
-    case SUBMIT_CHAPTER_EDIT_FORM:
-      axios.post(`${baseURL}/api/v0/chapters/[id]`, {
-        // TODO put info + id (title , text , key , lock , unlock text).
+    case SUBMIT_CHAPTER_EDIT_FORM: {
+      // TODO add chapter parent
+      const {
+        id,
+        title,
+        content,
+        keyword,
+        lockword,
+        unlockText,
+      } = store.getState().chapterEdit;
+      const {
+        idStory,
+      } = store.getState().storyEdit;
+      axios.put(`${baseURL}/api/v0/chapters/${id}`, {
+        title,
+        content,
+        keyword,
+        lockword,
+        unlockText,
+        forStory: idStory,
       })
         .then((response) => {
           store.dispatch(redirectOn());
         })
         .catch((error) => {
           console.warn(error);
+        })
+        .finally(() => {
+          // clear the state and fetch to have the new chapter
+          store.dispatch(clearChapterEditField());
+          store.dispatch(clearEditOption());
         });
       next(action);
       break;
+    }
 
     case FETCH_ADV_EDIT_CHAPTERS: {
-      axios.get(`${baseURL}/api/v0/chapters?story_id=${store.getState().storyEdit.id}`)
+      axios.get(`${baseURL}/api/v0/chapters?story_id=${store.getState().storyEdit.idStory}`)
         .then((response) => {
           store.dispatch(saveAdvEditChapters(response.data[0]));
         })

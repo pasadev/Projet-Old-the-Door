@@ -31,7 +31,12 @@ const StoryEdit = ({
 
   const handleAdvEditSubmit = (event) => {
     event.preventDefault();
-    submitAdvEditForm(storyEdit.title, storyEdit.synopsis, storyEdit.description, storyEdit.id);
+    submitAdvEditForm(
+      storyEdit.title,
+      storyEdit.synopsis,
+      storyEdit.description,
+      storyEdit.idStory,
+    );
   };
 
   const handleEditOption = (event) => {
@@ -119,7 +124,7 @@ StoryEdit.propTypes = {
   loading: PropTypes.bool.isRequired,
   // Adventure
   storyEdit: PropTypes.shape({
-    id: PropTypes.oneOfType([
+    idStory: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.string,
     ]).isRequired,

@@ -8,7 +8,7 @@ import {
 } from 'src/actions/storyEdit';
 
 const initialState = {
-  id: '',
+  idStory: '',
   title: '',
   initialTitle: '',
   synopsis: '',
@@ -32,7 +32,7 @@ const storyEdit = (state = initialState, action = {}) => {
     case SAVE_ADV_EDIT_SELECTED:
       return {
         ...state,
-        id: action.adventureEdit.id,
+        idStory: action.adventureEdit.id,
         title: action.adventureEdit.title,
         synopsis: action.adventureEdit.synopsis,
         description: action.adventureEdit.description,

@@ -30,6 +30,7 @@ const chapterEdit = (state = initialState, action = {}) => {
         keyword: '',
         lockword: '',
         unlockText: '',
+        chapterEditId: '',
       };
 
     case UPDATE_CHAPTER_EDIT_FIELD:

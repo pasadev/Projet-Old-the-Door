@@ -18,6 +18,7 @@ const mapStateToProps = (state) => ({
   lockword: state.chapterEdit.lockword,
   unlockText: state.chapterEdit.unlockText,
   chaperEditId: state.storyEdit.chaperEditId,
+  chapterEdit: state.chapterEdit,
 });
 
 // === mapDispatchToProps
