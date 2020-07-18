@@ -42,9 +42,9 @@ const Connexion = ({
               <Typist
                 cursor={{ show: false }}
               >
-                <Typist.Delay ms={4000} />
+                <Typist.Delay ms={3000} />
                 <div className="infos">
-                  <p className="infos-text ">Accès refusé : identification requise</p>
+                  <p className="infos-text ">Accès incomplet : identification requise</p>
                 </div>
               </Typist>
               {loginError && (
@@ -58,7 +58,7 @@ const Connexion = ({
                   <Typist
                     cursor={{ show: false }}
                   >
-                    <Typist.Delay ms={7000} />
+                    <Typist.Delay ms={6000} />
                     <label htmlFor="email"> Email : </label>
                   </Typist>
                   <Field
@@ -72,7 +72,7 @@ const Connexion = ({
                   <Typist
                     cursor={{ show: false }}
                   >
-                    <Typist.Delay ms={8000} />
+                    <Typist.Delay ms={7000} />
                     <label htmlFor="password"> Mot de passe : </label>
 
                   </Typist>

@@ -34,7 +34,7 @@ const Home = ({
                 Bienvenue sur O'ld the door
               </Typist>
             </h1>
-            {localStorage.getItem('isLogged') !== 'true' && (
+            {sessionStorage.getItem('isLogged') !== 'true' && (
             <Typist
               cursor={{ show: false }}
               avgTypingDelay={5}
@@ -54,7 +54,7 @@ const Home = ({
               </pre>
             </Typist>
             )}
-            {localStorage.getItem('isLogged') === 'true' && (
+            {sessionStorage.getItem('isLogged') === 'true' && (
               <pre className="asciiart">
                 ___________<br />
                 |  __  __  |<br />
