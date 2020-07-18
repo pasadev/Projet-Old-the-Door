@@ -26,6 +26,10 @@ const ChapterEdit = ({
     submitNewChapterForm();
   };
 
+  const handleParentChapterChoice = (event) => {
+    console.log(event.target.value);
+  };
+
   return (
     <>
       {editOption === id && (
@@ -39,13 +43,17 @@ const ChapterEdit = ({
                 <span>Chapitre parent actuel : {chapterEdit.parentChapter.title}<br /></span>
               )}
               Choisir le Chapitre parent :
-              <select className="chapterEdit-parentChapter" id="chapterEdit-parentChapter">
+              <select
+                className="chapterEdit-parentChapter"
+                id="chapterEdit-parentChapter"
+                onChange={handleParentChapterChoice}
+              >
                 {/* TODO map */}
                 <option value="">
-                  Chapitre parent à choisir
+                  Chapitre parent possible
                 </option>
                 <option value="">
-                  test
+                  Retirer le chapitre parent actuel
                 </option>
               </select>
             </label>

@@ -14,6 +14,8 @@ export const SAVE_CHAPTER_EDIT_SELECTED = 'SAVE_CHAPTER_EDIT_SELECTED';
 export const UPDATE_CHAPTER_EDIT_FIELD = 'UPDATE_CHAPTER_EDIT_FIELD';
 export const CLEAR_CHAPTER_EDIT_FIELD = 'CLEAR_CHAPTER_EDIT_FIELD';
 export const CLEAR_EDIT_OPTION = 'CLEAR_EDIT_OPTION';
+export const FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS';
+export const SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -88,4 +90,13 @@ export const clearChapterEditField = () => ({
 
 export const clearEditOption = () => ({
   type: CLEAR_EDIT_OPTION,
+});
+
+export const fetchParentChapterPossibleOptions = () => ({
+  type: FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,
+});
+
+export const saveParentChapterPossibleOptions = (parentChapterOption) => ({
+  type: SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
+  parentChapterOption,
 });

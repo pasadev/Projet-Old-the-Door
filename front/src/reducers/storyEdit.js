@@ -5,6 +5,7 @@ import {
   CLEAR_ADV_EDIT_CHAPTERS,
   SET_EDIT_OPTION,
   CLEAR_EDIT_OPTION,
+  SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
   slug: '',
   description: '',
   chapters: [],
+  parentChapterOption: [],
   editOption: '',
 };
 
@@ -69,6 +71,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         editOption: '',
+      };
+
+    case SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS:
+      return {
+        ...state,
+        parentChapterOption: action.parentChapterOption,
       };
 
     default: return state;

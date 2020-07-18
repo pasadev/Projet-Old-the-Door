@@ -14,6 +14,9 @@ import {
   SUBMIT_CHAPTER_EDIT_FORM,
   clearChapterEditField,
   clearEditOption,
+  fetchParentChapterPossibleOptions,
+  FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,
+  saveParentChapterPossibleOptions,
 } from 'src/actions/storyEdit';
 
 import {
@@ -134,12 +137,27 @@ const storyEditMiddleware = (store) => (next) => (action) => {
     }
 
     case FETCH_ADV_EDIT_CHAPTERS: {
-      axios.get(`${baseURL}/api/v0/chapters?story_id=${store.getState().storyEdit.idStory}`)
+      const { idStory } = store.getState().storyEdit.idStory;
+      axios.get(`${baseURL}/api/v0/chapters?story_id=${idStory}`)
         .then((response) => {
           store.dispatch(saveAdvEditChapters(response.data[0]));
+          store.dispatch(fetchParentChapterPossibleOptions());
         })
         .catch((error) => {
           store.dispatch(clearAdvEditChapters());
+        });
+      next(action);
+      break;
+    }
+
+    case FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS: {
+      const { idStory } = store.getState().storyEdit.idStory;
+      axios.get(`${baseURL}/api/v0/chapters/?story_id=${idStory}&non_parent=true`)
+        .then((response) => {
+          store.dispatch(saveParentChapterPossibleOptions(response.data[0]));
+        })
+        .catch((error) => {
+
         })
         .finally(() => {
           store.dispatch(hideLoader());
