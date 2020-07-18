@@ -29,8 +29,6 @@ const Adventure = ({
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
-          <p>Best Time: {adventureTimer.best}sec</p>
-          <p>average Time: {adventureTimer.average}sec</p>
           <h1 className="adventure-title main-title">
             <Typist
               cursor={{ hideWhenDone: true }}
@@ -38,7 +36,7 @@ const Adventure = ({
               {adventureSelected.title}
             </Typist>
           </h1>
-          <div className="adventure-authorAndDate">
+          <div className="adventure-metas">
             <span className="adventure-author">
               {adventureSelected.author.username}
             </span>
@@ -47,6 +45,8 @@ const Adventure = ({
                 {adventureSelected.createdAt}
               </Moment>
             </time>
+            <p>Meilleur temps: {adventureTimer.best}s</p>
+            <p>Temps moyen: {adventureTimer.average}s</p>
           </div>
           <p className="adventure-description">
             {adventureSelected.description}
