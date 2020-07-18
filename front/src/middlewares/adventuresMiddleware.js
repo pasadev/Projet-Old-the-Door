@@ -88,8 +88,11 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       // const adventureId = store.getState().adventures.adventureSelected;
       axios.get(`${baseURL}/api/v0/stories/${action.adventureId}/time`)
         .then((response) => {
-        // dispatch to save the Adventure selected
-          store.dispatch(saveAdventureTimer(response.data));
+          // If we have data for the time
+          if (response.status === 200) {
+            // dispatch to save the Adventure selected
+            store.dispatch(saveAdventureTimer(response.data));
+          }
           // dispatch to hide the loader
           store.dispatch(hideLoader());
         })
