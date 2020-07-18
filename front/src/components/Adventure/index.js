@@ -45,8 +45,12 @@ const Adventure = ({
                 {adventureSelected.createdAt}
               </Moment>
             </time>
-            <p>Meilleur temps: {adventureTimer.best}s</p>
-            <p>Temps moyen: {adventureTimer.average}s</p>
+            {adventureTimer.best && adventureTimer.average && (
+            <>
+              <p>Meilleur temps: {adventureTimer.best}s</p>
+              <p>Temps moyen: {adventureTimer.average}s</p>
+            </>
+            )}
           </div>
           <p className="adventure-description">
             {adventureSelected.description}
