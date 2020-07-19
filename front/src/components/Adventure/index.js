@@ -72,7 +72,8 @@ const Adventure = ({
             >
               <span className="adventure-link">Edition</span>
             </Link>
-            <span className="adventure-link publish-link">Publier</span>
+            {!adventureSelected.active && <span className="adventure-link publish-link">Publier</span>}
+            {adventureSelected.active && <span className="adventure-link unpublish-link">Dépublier</span>}
             <span className="adventure-link delete-link">Supprimer</span>
           </div>
         </main>
@@ -90,6 +91,7 @@ Adventure.propTypes = {
   adventureSelected: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    active: PropTypes.bool,
     author: PropTypes.shape({
       username: PropTypes.string.isRequired,
     }).isRequired,
