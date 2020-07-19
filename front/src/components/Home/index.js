@@ -35,28 +35,27 @@ const Home = ({
               </Typist>
             </h1>
             <div className="ascii-container">
-              {localStorage.getItem('isLogged') !== 'true' && (
-              <Typist
-                cursor={{ show: false }}
-                avgTypingDelay={5}
-              >
-
-                <pre className="asciiart">
-                  ___________<br />
-                  |  __  __  |<br />
-                  | |  ||  | |<br />
-                  | |  ||  | |<br />
-                  | |__||__| |<br />
-                  |  __  __()|<br />
-                  | |  ||  | |<br />
-                  | |  ||  | |<br />
-                  | |  ||  | |<br />
-                  | |__||__| |<br />
-                  |__________|<br />
-                </pre>
-              </Typist>
+              {sessionStorage.getItem('isLogged') !== 'true' && (
+                <Typist
+                  cursor={{ show: false }}
+                  avgTypingDelay={5}
+                >
+                  <pre className="asciiart">
+                    ___________<br />
+                    |  __  __  |<br />
+                    | |  ||  | |<br />
+                    | |  ||  | |<br />
+                    | |__||__| |<br />
+                    |  __  __()|<br />
+                    | |  ||  | |<br />
+                    | |  ||  | |<br />
+                    | |  ||  | |<br />
+                    | |__||__| |<br />
+                    |__________|<br />
+                  </pre>
+                </Typist>
               )}
-              {localStorage.getItem('isLogged') === 'true' && (
+              {sessionStorage.getItem('isLogged') === 'true' && (
                 <pre className="asciiart">
                   ___________<br />
                   |  __  __  |<br />
