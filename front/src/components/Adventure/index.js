@@ -15,6 +15,7 @@ const Adventure = ({
   redirectOff,
   adventureTimer,
   clearAdventureTimer,
+  activateStory,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -72,7 +73,7 @@ const Adventure = ({
             >
               <span className="adventure-link">Edition</span>
             </Link>
-            {!adventureSelected.active && <span className="adventure-link publish-link">Publier</span>}
+            {!adventureSelected.active && <span className="adventure-link publish-link" onClick={activateStory}>Publier</span>}
             {adventureSelected.active && <span className="adventure-link unpublish-link">Dépublier</span>}
             <span className="adventure-link delete-link">Supprimer</span>
           </div>
@@ -110,6 +111,7 @@ Adventure.propTypes = {
     ]).isRequired,
   }).isRequired,
   clearAdventureTimer: PropTypes.func.isRequired,
+  activateStory: PropTypes.func.isRequired,
 };
 
 export default Adventure;
