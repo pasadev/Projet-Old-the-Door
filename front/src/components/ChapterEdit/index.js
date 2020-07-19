@@ -29,7 +29,6 @@ const ChapterEdit = ({
   };
 
   const handleParentChapterChoice = (event) => {
-    console.log(event.target.value);
     setParentChapterChoice(event.target.value);
   };
 
@@ -132,12 +131,12 @@ const ChapterEdit = ({
                 <option value="">
                   Pas de Chapitre parent pour le moment
                 </option>
-                {parentChapterOption.map((parent) => (
+                {parentChapterOption.map((choice) => (
                   <option
-                    key={parent.id}
-                    value={parent.id}
+                    key={choice.id}
+                    value={choice.id}
                   >
-                    {parent.title}
+                    {choice.title}
                   </option>
                 ))}
               </select>

@@ -21,6 +21,7 @@ import {
 
 import {
   hideLoader,
+  displayLoader,
   redirectOn,
 } from 'src/actions/utils';
 
@@ -33,12 +34,14 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // dispatch to save the Adventure to edit selected
           store.dispatch(saveAdventureEditSelected(response.data[0]));
+          if (response.data[0].firstChapter !== null) {
+            store.dispatch(fetchAdvEditChapters());
+          }
         })
         .catch((error) => {
           console.warn(error);
-        })
-        .finally(() => {
-          store.dispatch(fetchAdvEditChapters());
+        }).finally(() => {
+          store.dispatch(hideLoader());
         });
       next(action);
       break;
@@ -144,6 +147,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       const { idStory } = store.getState().storyEdit;
       axios.get(`${baseURL}/api/v0/chapters?story_id=${idStory}`)
         .then((response) => {
+          store.dispatch(displayLoader());
           store.dispatch(saveAdvEditChapters(response.data[0]));
           store.dispatch(fetchParentChapterPossibleOptions());
         })
