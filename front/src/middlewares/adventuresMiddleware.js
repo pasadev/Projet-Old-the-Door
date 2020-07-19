@@ -14,9 +14,10 @@ import {
   fetchAdventureTimer,
   ACTIVATE_STORY,
   DESACTIVATE_STORY,
+  DELETE_STORY,
 } from 'src/actions/adventures';
 
-import { hideLoader } from 'src/actions/utils';
+import { hideLoader, redirectOn } from 'src/actions/utils';
 
 import { baseURL } from 'src/utils';
 
@@ -131,6 +132,23 @@ const adventuresMiddleware = (store) => (next) => (action) => {
           }
           // dispatch to hide the loader
           store.dispatch(hideLoader());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+
+    case DELETE_STORY:
+      axios.delete(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}`)
+        .then((response) => {
+          // If we have a valid answer
+          if (response.status === 204) {
+            // Redirect on profil page
+            store.dispatch(redirectOn());
+          }
+          // dispatch to hide the loader
+          // store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);
