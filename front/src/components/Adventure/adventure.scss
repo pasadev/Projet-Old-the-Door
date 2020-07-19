@@ -7,7 +7,7 @@
     font-weight: bold;
   }
 
-  .adventure-authorAndDate {
+  .adventure-metas {
     font-style: italic;
     color: $noticeColor;
     
@@ -34,6 +34,12 @@
       &:hover {
         text-decoration: underline;
         cursor: pointer;
+      }
+    }
+    .adventure-link-warning {
+      color: $noticeColor;
+      &:hover {
+        cursor: not-allowed;
       }
     }
     .delete-link {

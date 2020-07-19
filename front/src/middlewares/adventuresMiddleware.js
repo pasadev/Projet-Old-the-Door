@@ -86,10 +86,13 @@ const adventuresMiddleware = (store) => (next) => (action) => {
     case FETCH_ADVENTURE_TIMER:
       // eslint-disable-next-line no-case-declarations
       // const adventureId = store.getState().adventures.adventureSelected;
-      axios.get(`http://maxence-royer.vpnuser.lan:8000/api/v0/stories/${action.adventureId}/time`)
+      axios.get(`${baseURL}/api/v0/stories/${action.adventureId}/time`)
         .then((response) => {
-        // dispatch to save the Adventure selected
-          store.dispatch(saveAdventureTimer(response.data));
+          // If we have data for the time
+          if (response.status === 200) {
+            // dispatch to save the Adventure selected
+            store.dispatch(saveAdventureTimer(response.data));
+          }
           // dispatch to hide the loader
           store.dispatch(hideLoader());
         })

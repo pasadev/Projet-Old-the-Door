@@ -23,14 +23,20 @@ const Adventure = ({
     fetchAdventureSelected(slug);
     displayLoader();
   }, []);
+  // Average time calculation
+  const avgHours = Math.floor(adventureTimer.average / 3600);
+  const avgMinutes = Math.floor((adventureTimer.average - (avgHours * 3600)) / 60);
+  const avgSeconds = adventureTimer.average - ((avgHours * 3600) + (avgMinutes * 60));
+  // Best time calculation
+  const bestHours = Math.floor(adventureTimer.best / 3600);
+  const bestMinutes = Math.floor((adventureTimer.best - (bestHours * 3600)) / 60);
+  const bestSeconds = adventureTimer.best - ((bestHours * 3600) + (bestMinutes * 60));
 
   return (
     <>
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
-          <p>Best Time: {adventureTimer.best}sec</p>
-          <p>average Time: {adventureTimer.average}sec</p>
           <h1 className="adventure-title main-title">
             <Typist
               cursor={{ hideWhenDone: true }}
@@ -38,22 +44,28 @@ const Adventure = ({
               {adventureSelected.title}
             </Typist>
           </h1>
-          <div className="adventure-authorAndDate">
+          <div className="adventure-metas">
             <span className="adventure-author">
-              {adventureSelected.author.username}
+              Ecrit par {adventureSelected.author.username}
             </span>
             <time className="adventure-date" dateTime={adventureSelected.createdAt}>
               <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
                 {adventureSelected.createdAt}
               </Moment>
             </time>
+            {adventureTimer.best && adventureTimer.average && (
+            <>
+              <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
+              <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
+            </>
+            )}
           </div>
           <p className="adventure-description">
             {adventureSelected.description}
           </p>
           <div className="adventure-links">
             {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
-              : <Link to="#">Il n'y a pas de premier chapitre</Link>}
+              : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore prête</span></Link>}
 
             <Link
               to={`/aventures/${slug}/edition`}
