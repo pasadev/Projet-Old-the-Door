@@ -50,8 +50,7 @@ const userMiddleware = (store) => (next) => (action) => {
       {
         withCredentials: true,
       })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           sessionStorage.removeItem('isLogged');
           sessionStorage.removeItem('currentuser');
         })
