@@ -36,6 +36,9 @@ class LoginController extends AbstractController
                 //set User status in database
                 $user->setIsLogged(true);
 
+                //for more security, we change apiToken of user for every connection
+                $user->setApiToken(uuid_create(UUID_TYPE_RANDOM));
+
                 // persit a new status in database
                 $em = $this->getDoctrine()->getManager();
                 $em->flush();
