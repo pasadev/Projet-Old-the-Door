@@ -54,6 +54,14 @@
     .unpublish-link {
       color: $noticeColor;
     }
+
+    .confirm-delete {
+      display: none;
+    }
+
+    .active-delete {
+      display: inline;
+    }
     
   }
 }

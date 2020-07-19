@@ -83,7 +83,7 @@ const Adventure = ({
               {!active && <span className="adventure-link publish-link" onClick={activateStory}>Publier</span>}
               {console.log(active)}
               {active && <span className="adventure-link unpublish-link" onClick={desactivateStory}>Dépublier</span>}
-              <span className="adventure-link delete-link" onClick={deleteStory}>Supprimer</span>
+              <span className="adventure-link delete-link" onClick={() => document.getElementById('delete-button').classList.toggle('active-delete')}>Supprimer</span><span className="adventure-link delete-link confirm-delete" id="delete-button" onClick={deleteStory}>Sur ? </span>
             </div>
           </main>
         )}
