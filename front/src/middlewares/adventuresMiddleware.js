@@ -109,8 +109,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
           // If we have a valid answer
           if (response.status === 200) {
             // dispatch to save the new data
-            store.dispatch(saveAdventureSelected(response.data[0]));
-            console.log(response.data);
+            store.dispatch(saveAdventureSelected(response.data));
           }
           // dispatch to hide the loader
           store.dispatch(hideLoader());
