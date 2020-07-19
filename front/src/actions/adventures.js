@@ -11,6 +11,7 @@ export const FETCH_ADVENTURE_TIMER = 'FETCH_ADVENTURE_TIMER';
 export const SAVE_ADVENTURE_TIMER = 'SAVE_ADVENTURE_TIMER';
 export const CLEAR_ADVENTURE_TIMER = 'CLEAR_ADVENTURE_TIMER';
 export const ACTIVATE_STORY = 'ACTIVATE_STORY';
+export const DESACTIVATE_STORY = 'DESACTIVATE_STORY';
 // === action creators
 export const fetchAdventuresHome = () => ({
   type: FETCH_ADVENTURES_HOME,
@@ -61,4 +62,7 @@ export const clearAdventureTimer = () => ({
 });
 export const activateStory = () => ({
   type: ACTIVATE_STORY,
+});
+export const desactivateStory = () => ({
+  type: DESACTIVATE_STORY,
 });

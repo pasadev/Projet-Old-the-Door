@@ -13,6 +13,7 @@ import {
   saveAdventureTimer,
   fetchAdventureTimer,
   ACTIVATE_STORY,
+  DESACTIVATE_STORY,
 } from 'src/actions/adventures';
 
 import { hideLoader } from 'src/actions/utils';
@@ -105,6 +106,23 @@ const adventuresMiddleware = (store) => (next) => (action) => {
 
     case ACTIVATE_STORY:
       axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=true`)
+        .then((response) => {
+          // If we have a valid answer
+          if (response.status === 200) {
+            // dispatch to save the new data
+            store.dispatch(saveAdventureSelected(response.data));
+          }
+          // dispatch to hide the loader
+          store.dispatch(hideLoader());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+
+    case DESACTIVATE_STORY:
+      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=false`)
         .then((response) => {
           // If we have a valid answer
           if (response.status === 200) {

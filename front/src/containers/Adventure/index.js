@@ -7,6 +7,7 @@ import {
   saveAdventureTimer,
   clearAdventureTimer,
   activateStory,
+  desactivateStory,
 } from 'src/actions/adventures';
 import { displayLoader, redirectOff } from 'src/actions/utils';
 
@@ -45,6 +46,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   activateStory: () => {
     dispatch(activateStory());
+  },
+  desactivateStory: () => {
+    dispatch(desactivateStory());
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Adventure);
