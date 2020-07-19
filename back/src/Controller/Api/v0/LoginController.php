@@ -60,5 +60,35 @@ class LoginController extends AbstractController
             ], 404);
     }
 
+    /**
+     * @Route("/api/v0/logout", name="api_v0_logout", methods={"POST"})
+     */
+    public function logout (Request $request,UserRepository $userRepository)
+    {
+
+        //get JSON datas send with request
+        $datas = json_decode($request->getContent(), true);
+        
+        // if we found a user with his id
+        if ($userRepository->findBy(['id' => $datas['id']])){
+            // get user
+            $user = $userRepository->findOneBy(['id' => $datas['id']]);
+       
+            //set User status in database
+            $user->setIsLogged(false);
+    
+            // persit a new status in database
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->json([], 204);
+        }
+
+        return $this->json([
+            "message" => "No users found "
+        ], 404);
+
+
+    }
   
 }
