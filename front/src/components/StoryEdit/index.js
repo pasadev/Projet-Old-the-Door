@@ -21,10 +21,13 @@ const StoryEdit = ({
   initialTitle,
   fetchChapterEditSelected,
   chapterEdit,
-  clearChapterEditField,
+  clearChapterEdit,
+  clearStoryEdit,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
+    clearStoryEdit();
+    clearChapterEdit();
     fetchAdvEditSelected(slug);
     displayLoader();
   }, []);
@@ -44,7 +47,7 @@ const StoryEdit = ({
     // Condition to not do the get request if it's a new chapter or the adventure
     // And clear the state of chapterEdit
     if (event.target.value === 'Nouveau Chapitre' || event.target.value === initialTitle || event.target.value === '') {
-      clearChapterEditField();
+      clearChapterEdit();
     }
     else {
       fetchChapterEditSelected(event.target.value);
@@ -113,7 +116,8 @@ const StoryEdit = ({
 // TODO clean state after submit
 
 StoryEdit.propTypes = {
-  clearChapterEditField: PropTypes.func.isRequired,
+  clearStoryEdit: PropTypes.func.isRequired,
+  clearChapterEdit: PropTypes.func.isRequired,
   fetchChapterEditSelected: PropTypes.func.isRequired,
   initialTitle: PropTypes.string.isRequired,
   setEditOption: PropTypes.func.isRequired,

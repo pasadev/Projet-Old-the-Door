@@ -17,7 +17,7 @@ const storyCreationMiddleware = (store) => (next) => (action) => {
         author: 2,
         // TODO put real author id and active to 0.
       })
-        .then((response) => {
+        .then(() => {
           store.dispatch(redirectOn());
         })
         .catch((error) => {

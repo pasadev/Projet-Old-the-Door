@@ -1,5 +1,5 @@
 import {
-  CLEAR_CHAPTER_EDIT_FIELD,
+  CLEAR_CHAPTER_EDIT,
   UPDATE_CHAPTER_EDIT_FIELD,
   SAVE_CHAPTER_EDIT_SELECTED,
   SET_PARENT_CHAPTER_CHOICE,
@@ -22,17 +22,9 @@ const chapterEdit = (state = initialState, action = {}) => {
         ...action.chapterEdit,
       };
 
-    case CLEAR_CHAPTER_EDIT_FIELD:
+    case CLEAR_CHAPTER_EDIT:
       return {
-        title: '',
-        content: '',
-        keyword: '',
-        lockword: '',
-        unlockText: '',
-        parentChapterChoice: '',
-        createAt: '',
-        forStory: {},
-        parentChapter: null,
+        ...initialState,
       };
 
     case UPDATE_CHAPTER_EDIT_FIELD:

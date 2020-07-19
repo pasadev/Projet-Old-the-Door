@@ -7,13 +7,13 @@ export const SUBMIT_NEW_CHAPTER_FORM = 'SUBMIT_NEW_CHAPTER_FORM';
 export const SUBMIT_CHAPTER_EDIT_FORM = 'SUBMIT_CHAPTER_EDIT_FORM';
 export const FETCH_ADV_EDIT_CHAPTERS = 'FETCH_ADV_EDIT_CHAPTERS';
 export const SAVE_ADV_EDIT_CHAPTERS = 'SAVE_ADV_EDIT_CHAPTERS';
-export const CLEAR_ADV_EDIT_CHAPTERS = 'CLEAR_ADV_EDIT_CHAPTERS';
+export const CLEAR_STORY_EDIT = 'CLEAR_STORY_EDIT';
 export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
 export const FETCH_CHAPTER_EDIT_SELECTED = 'FETCH_CHAPTER_EDIT_SELECTED';
 export const SAVE_CHAPTER_EDIT_SELECTED = 'SAVE_CHAPTER_EDIT_SELECTED';
 export const UPDATE_CHAPTER_EDIT_FIELD = 'UPDATE_CHAPTER_EDIT_FIELD';
-export const CLEAR_CHAPTER_EDIT_FIELD = 'CLEAR_CHAPTER_EDIT_FIELD';
-export const CLEAR_EDIT_OPTION = 'CLEAR_EDIT_OPTION';
+export const CLEAR_CHAPTER_EDIT = 'CLEAR_CHAPTER_EDIT';
+// Unuse export const CLEAR_EDIT_OPTION = 'CLEAR_EDIT_OPTION';
 export const FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS';
 export const SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS';
 export const SET_PARENT_CHAPTER_CHOICE = 'SET_PARENT_CHAPTER_CHOICE';
@@ -66,8 +66,8 @@ export const saveAdvEditChapters = (chapters) => ({
   chapters,
 });
 
-export const clearAdvEditChapters = () => ({
-  type: CLEAR_ADV_EDIT_CHAPTERS,
+export const clearStoryEdit = () => ({
+  type: CLEAR_STORY_EDIT,
 });
 
 export const setEditOption = (newValue) => ({
@@ -85,13 +85,14 @@ export const saveChapterEditSelected = (chapterEdit) => ({
   chapterEdit,
 });
 
-export const clearChapterEditField = () => ({
-  type: CLEAR_CHAPTER_EDIT_FIELD,
+export const clearChapterEdit = () => ({
+  type: CLEAR_CHAPTER_EDIT,
 });
 
-export const clearEditOption = () => ({
-  type: CLEAR_EDIT_OPTION,
-});
+// unuse
+// export const clearEditOption = () => ({
+//   type: CLEAR_EDIT_OPTION,
+// });
 
 export const fetchParentChapterPossibleOptions = () => ({
   type: FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,

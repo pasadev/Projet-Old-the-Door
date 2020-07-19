@@ -2,9 +2,9 @@ import {
   SAVE_ADV_EDIT_SELECTED,
   UPDATE_ADVENTURE_EDIT_FIELD,
   SAVE_ADV_EDIT_CHAPTERS,
-  CLEAR_ADV_EDIT_CHAPTERS,
+  CLEAR_STORY_EDIT,
   SET_EDIT_OPTION,
-  CLEAR_EDIT_OPTION,
+  // CLEAR_EDIT_OPTION,
   SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
 } from 'src/actions/storyEdit';
 
@@ -55,10 +55,9 @@ const storyEdit = (state = initialState, action = {}) => {
         ...state,
         chapters: action.chapters,
       };
-    case CLEAR_ADV_EDIT_CHAPTERS:
+    case CLEAR_STORY_EDIT:
       return {
-        ...state,
-        chapters: [],
+        ...initialState,
       };
 
     case SET_EDIT_OPTION:
@@ -67,11 +66,12 @@ const storyEdit = (state = initialState, action = {}) => {
         editOption: action.newValue,
       };
 
-    case CLEAR_EDIT_OPTION:
-      return {
-        ...state,
-        editOption: '',
-      };
+      // unuse
+      // case CLEAR_EDIT_OPTION:
+      //   return {
+      //     ...state,
+      //     editOption: '',
+      //   };
 
     case SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS:
       return {

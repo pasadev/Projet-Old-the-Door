@@ -7,13 +7,13 @@ import {
   fetchAdvEditChapters,
   FETCH_ADV_EDIT_CHAPTERS,
   saveAdvEditChapters,
-  clearAdvEditChapters,
+  clearStoryEdit,
   FETCH_CHAPTER_EDIT_SELECTED,
   saveChapterEditSelected,
   SUBMIT_NEW_CHAPTER_FORM,
   SUBMIT_CHAPTER_EDIT_FORM,
-  clearChapterEditField,
-  clearEditOption,
+  // clearChapterEdit,
+  // clearEditOption,
   fetchParentChapterPossibleOptions,
   FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,
   saveParentChapterPossibleOptions,
@@ -55,15 +55,15 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         author: 38,
         // TODO put real author id and active to 0.
       })
-        .then((response) => {
+        .then(() => {
           store.dispatch(redirectOn());
         })
         .catch((error) => {
           console.warn(error);
         }).finally(() => {
           // clear the state and fetch to have the new chapter
-          store.dispatch(clearChapterEditField());
-          store.dispatch(clearEditOption());
+          // store.dispatch(clearChapterEdit());
+          // store.dispatch(clearEditOption());
         });
       next(action);
       break;
@@ -90,7 +90,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         forStory: idStory,
         parentChapter: parentChapterChoice,
       })
-        .then((response) => {
+        .then(() => {
           store.dispatch(redirectOn());
         })
         .catch((error) => {
@@ -98,8 +98,8 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         })
         .finally(() => {
           // clear the state and fetch to have the new chapter
-          store.dispatch(clearChapterEditField());
-          store.dispatch(clearEditOption());
+          // store.dispatch(clearChapterEdit());
+          // store.dispatch(clearEditOption());
         });
       next(action);
       break;
@@ -128,7 +128,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         forStory: idStory,
         parentChapter: parentChapterChoice,
       })
-        .then((response) => {
+        .then(() => {
           store.dispatch(redirectOn());
         })
         .catch((error) => {
@@ -136,8 +136,8 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         })
         .finally(() => {
           // clear the state and fetch to have the new chapter
-          store.dispatch(clearChapterEditField());
-          store.dispatch(clearEditOption());
+          // store.dispatch(clearChapterEdit());
+          // store.dispatch(clearEditOption());
         });
       next(action);
       break;
@@ -151,8 +151,8 @@ const storyEditMiddleware = (store) => (next) => (action) => {
           store.dispatch(saveAdvEditChapters(response.data[0]));
           store.dispatch(fetchParentChapterPossibleOptions());
         })
-        .catch((error) => {
-          store.dispatch(clearAdvEditChapters());
+        .catch(() => {
+          store.dispatch(clearStoryEdit());
         });
       next(action);
       break;
@@ -164,7 +164,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveParentChapterPossibleOptions(response.data[0]));
         })
-        .catch((error) => {
+        .catch(() => {
 
         })
         .finally(() => {
@@ -179,7 +179,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(saveChapterEditSelected(response.data[0]));
         })
-        .catch((error) => {
+        .catch(() => {
 
         })
         .finally(() => {
