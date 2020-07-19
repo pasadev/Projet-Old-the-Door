@@ -6,6 +6,7 @@ use App\Entity\Story;
 use App\Form\StoryType;
 use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
+use App\Repository\UserRepository;
 use App\Service\Slugger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -139,8 +140,9 @@ class StoryController extends AbstractController
      *
      * @return Story
      */
-    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository)
+    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository, UserRepository $userRepository)
     {
+
         //Create an empty story
         $story = new Story();
 
@@ -154,43 +156,66 @@ class StoryController extends AbstractController
         //Transform this Json in array
         $jsonArray = json_decode($jsonText, true);
 
-        //We submit this data array to the form
-        $form->submit($jsonArray);
+        //if the story author exist
+        if($userRepository->find($jsonArray['author'])){
+           
+            // get the author
+            $author = $userRepository->find($jsonArray['author']);
 
-        //Verify if the form is valid
-        if ($form->isValid()) {
-            //Set a created date
-            $story->setCreatedAt(new \DateTime());
+            // check if author is connected
+            if($author->getIsLogged()){
+                
 
-            //Set the slug
-            $story->setSlug($slugger->slugify($story->getTitle()));
+                //We submit this data array to the form
+                $form->submit($jsonArray);
 
-            //verify if the slug does not exists yet
-            if ($storyRepository->findOneBy(['slug' => $story->getSlug()])) {
-                return $this->json(['message' => 'This story title already exists'], 409);
+                //Verify if the form is valid
+                if ($form->isValid()) {
+                    //Set a created date
+                    $story->setCreatedAt(new \DateTime());
+
+                    //Set the slug
+                    $story->setSlug($slugger->slugify($story->getTitle()));
+
+                    //verify if the slug does not exists yet
+                    if ($storyRepository->findOneBy(['slug' => $story->getSlug()])) {
+                        return $this->json(['message' => 'This story title already exists'], 409);
+                    }
+
+                    //If it is valid, we persists and flush
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($story);
+                    $em->flush();
+
+
+                    //Then, we return 201 HTTP code with the Story Object created
+
+                    //Serialize the data
+                    $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+                    $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
+
+                    //And return it
+                    return $this->json($normalizedStory, 201);
+                }
+
+                //If it is not valid
+                //We display errors
+                //With a 400 Bad request HTTP code
+                return $this->json((string) $form->getErrors(true, false), 400);
             }
 
-            //If it is valid, we persists and flush
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($story);
-            $em->flush();
-
-
-            //Then, we return 201 HTTP code with the Story Object created
-
-            //Serialize the data
-            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
-
-            $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
-
-            //And return it
-            return $this->json($normalizedStory, 201);
+            // if user exist but he's not connected
+            return $this->json([
+                "message" => "Vous devez être connecté pour créer un histoire"
+            ], 403);
         }
 
-        //If it is not valid
-        //We display errors
-        //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false), 400);
+        // if any author/user found
+        return $this->json([
+            "message" => "Vous devez être inscrit pour créer un histoire"
+        ], 403);  
+        
     }
 
     /**
