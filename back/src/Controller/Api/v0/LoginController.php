@@ -33,7 +33,13 @@ class LoginController extends AbstractController
 
             // if password given in request match with password user
             if ($passwordEncoder->isPasswordValid($user, $datas['password'])){
+                //set User status in database
+                $user->setIsLogged(true);
 
+                // persit a new status in database
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+               
                 $serializer = new Serializer([new DateTimeNormalizer(), $objectNormalizer]);
 
                 $normalizedUser = $serializer->normalize($user, null, ['groups' => 'user_login']);

@@ -128,6 +128,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="boolean", nullable=true, options={"default" : 0})
+     * @Groups("user_show")
      */
     private $isLogged;
 
