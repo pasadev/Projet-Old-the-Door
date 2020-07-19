@@ -50,9 +50,10 @@ const ChapterEdit = ({
                 className="chapterEdit-parentChapter"
                 id="chapterEdit-parentChapter"
                 onChange={handleParentChapterChoice}
+                defaultValue=""
               >
-                <option value="">
-                  Chapitre parent possible
+                <option disabled value="">
+                  Liste des Chapitres parent possible
                 </option>
                 <option value="">
                   Retirer le chapitre parent actuel
@@ -123,9 +124,13 @@ const ChapterEdit = ({
                 className="chapterEdit-parentChapter"
                 id="chapterEdit-parentChapter"
                 onChange={handleParentChapterChoice}
+                defaultValue=""
               >
+                <option disabled value="">
+                  Liste des Chapitres parent possible
+                </option>
                 <option value="">
-                  Chapitre parent à choisir
+                  Pas de Chapitre parent pour le moment
                 </option>
                 {parentChapterOption.map((parent) => (
                   <option
@@ -212,7 +217,6 @@ ChapterEdit.defaultProps = {
   keyword: '',
   lockword: '',
   unlockText: '',
-  // parentChapter: null,
 };
 
 export default ChapterEdit;

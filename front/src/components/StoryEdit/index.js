@@ -69,8 +69,9 @@ const StoryEdit = ({
                   className="storyEdit-form-editChoice"
                   id="storyEdit-form-editChoice"
                   onChange={handleEditOption}
+                  defaultValue=""
                 >
-                  <option value="">
+                  <option disabled value="">
                     Choix
                   </option>
                   <option value="Nouveau Chapitre">

@@ -73,9 +73,10 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         keyword,
         lockword,
         unlockText,
+        parentChapterChoice,
       } = store.getState().chapterEdit;
       const {
-        id,
+        idStory,
       } = store.getState().storyEdit;
       axios.post(`${baseURL}/api/v0/chapters`, {
         title,
@@ -83,7 +84,8 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         keyword,
         lockword,
         unlockText,
-        forStory: id,
+        forStory: idStory,
+        parentChapter: parentChapterChoice,
       })
         .then((response) => {
           store.dispatch(redirectOn());
@@ -109,6 +111,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         keyword,
         lockword,
         unlockText,
+        parentChapterChoice,
       } = store.getState().chapterEdit;
       const {
         idStory,
@@ -120,6 +123,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         lockword,
         unlockText,
         forStory: idStory,
+        parentChapter: parentChapterChoice,
       })
         .then((response) => {
           store.dispatch(redirectOn());
