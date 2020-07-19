@@ -15,6 +15,8 @@ const ChapterEdit = ({
   editOption,
   submitNewChapterForm,
   submitChapterEditForm,
+  parentChapterOption,
+  setParentChapterChoice,
 }) => {
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
@@ -28,6 +30,7 @@ const ChapterEdit = ({
 
   const handleParentChapterChoice = (event) => {
     console.log(event.target.value);
+    setParentChapterChoice(event.target.value);
   };
 
   return (
@@ -48,13 +51,20 @@ const ChapterEdit = ({
                 id="chapterEdit-parentChapter"
                 onChange={handleParentChapterChoice}
               >
-                {/* TODO map */}
                 <option value="">
                   Chapitre parent possible
                 </option>
                 <option value="">
                   Retirer le chapitre parent actuel
                 </option>
+                {parentChapterOption.map((parent) => (
+                  <option
+                    key={parent.id}
+                    value={parent.id}
+                  >
+                    {parent.title}
+                  </option>
+                ))}
               </select>
             </label>
             <Field
@@ -109,11 +119,22 @@ const ChapterEdit = ({
           <div className="chapterEdit">
             <label htmlFor="chapterEdit-parentChapter">
               Choisir le Chapitre parent :
-              <select className="chapterEdit-parentChapter" id="chapterEdit-parentChapter">
-                {/* TODO map */}
+              <select
+                className="chapterEdit-parentChapter"
+                id="chapterEdit-parentChapter"
+                onChange={handleParentChapterChoice}
+              >
                 <option value="">
                   Chapitre parent à choisir
                 </option>
+                {parentChapterOption.map((parent) => (
+                  <option
+                    key={parent.id}
+                    value={parent.id}
+                  >
+                    {parent.title}
+                  </option>
+                ))}
               </select>
             </label>
             <Field
@@ -165,6 +186,8 @@ const ChapterEdit = ({
 };
 
 ChapterEdit.propTypes = {
+  setParentChapterChoice: PropTypes.func.isRequired,
+  parentChapterOption: PropTypes.array.isRequired,
   editOption: PropTypes.string.isRequired,
   updateField: PropTypes.func.isRequired,
   id: PropTypes.string,

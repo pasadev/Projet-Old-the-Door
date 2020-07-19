@@ -2,6 +2,7 @@ import {
   CLEAR_CHAPTER_EDIT_FIELD,
   UPDATE_CHAPTER_EDIT_FIELD,
   SAVE_CHAPTER_EDIT_SELECTED,
+  SET_PARENT_CHAPTER_CHOICE,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   lockword: '',
   unlockText: '',
   chapterEditId: '',
+  parentChapterChoice: '',
   // TODO Delete all chapterEditId stuff if it's not use
 };
 
@@ -38,6 +40,13 @@ const chapterEdit = (state = initialState, action = {}) => {
         ...state,
         [action.identifier]: action.newValue,
       };
+
+    case SET_PARENT_CHAPTER_CHOICE:
+      return {
+        ...state,
+        parentChapterChoice: action.parentChapterChoice,
+      };
+
     default: return state;
   }
 };
