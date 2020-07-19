@@ -76,10 +76,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(saveCurrentChapter());
   },
 
-  handleCheckAnswer: (thisIsABool) => {
-    if (thisIsABool === true) {
+  handleCheckAnswer: (thisIsABoolOrNoValue) => {
+    if (thisIsABoolOrNoValue === true) {
       dispatch(toggleAnswerValue());
       console.log('answer is true');
+    }
+    else if (thisIsABoolOrNoValue === 'no_value') {
+      // do nothing
     }
     else {
       dispatch(
