@@ -65,7 +65,7 @@ const Adventure = ({
           </p>
           <div className="adventure-links">
             {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
-              : <Link to="#">Il n'y a pas de premier chapitre</Link>}
+              : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore prête</span></Link>}
 
             <Link
               to={`/aventures/${slug}/edition`}
