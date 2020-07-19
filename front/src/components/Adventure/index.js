@@ -19,6 +19,7 @@ const Adventure = ({
   desactivateStory,
   deleteStory,
   redirect,
+  active,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -44,7 +45,7 @@ const Adventure = ({
         {loading && <Loader />}
         {!loading && (
           <main className="adventure">
-            <h1 className={adventureSelected.active ? 'adventure-title main-title' : 'adventure-title main-title unactive-storyTitle'}>
+            <h1 className={active ? 'adventure-title main-title' : 'adventure-title main-title unactive-storyTitle'}>
               <Typist
                 cursor={{ hideWhenDone: true }}
               >
@@ -79,8 +80,9 @@ const Adventure = ({
               >
                 <span className="adventure-link">Edition</span>
               </Link>
-              {!adventureSelected.active && <span className="adventure-link publish-link" onClick={activateStory}>Publier</span>}
-              {adventureSelected.active && <span className="adventure-link unpublish-link" onClick={desactivateStory}>Dépublier</span>}
+              {!active && <span className="adventure-link publish-link" onClick={activateStory}>Publier</span>}
+              {console.log(active)}
+              {active && <span className="adventure-link unpublish-link" onClick={desactivateStory}>Dépublier</span>}
               <span className="adventure-link delete-link" onClick={deleteStory}>Supprimer</span>
             </div>
           </main>
@@ -100,7 +102,6 @@ Adventure.propTypes = {
   adventureSelected: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    active: PropTypes.bool,
     author: PropTypes.shape({
       username: PropTypes.string.isRequired,
     }).isRequired,
@@ -123,6 +124,7 @@ Adventure.propTypes = {
   desactivateStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
   redirect: PropTypes.bool.isRequired,
+  active: PropTypes.bool.isRequired,
 };
 
 export default Adventure;

@@ -21,6 +21,7 @@ const mapStateToProps = (state) => ({
   adventureSelected: state.adventures.adventureSelected,
   adventureTimer: state.adventures.adventureTimer,
   redirect: state.utils.redirect,
+  active: state.adventures.adventureSelected.active,
 });
 
 // === mapDispatchToProps
