@@ -23,6 +23,14 @@ const Adventure = ({
     fetchAdventureSelected(slug);
     displayLoader();
   }, []);
+  // Average time calculation
+  const avgHours = Math.floor(adventureTimer.average / 3600);
+  const avgMinutes = Math.floor((adventureTimer.average - (avgHours * 3600)) / 60);
+  const avgSeconds = adventureTimer.average - ((avgHours * 3600) + (avgMinutes * 60));
+  // Best time calculation
+  const bestHours = Math.floor(adventureTimer.best / 3600);
+  const bestMinutes = Math.floor((adventureTimer.best - (bestHours * 3600)) / 60);
+  const bestSeconds = adventureTimer.best - ((bestHours * 3600) + (bestMinutes * 60));
 
   return (
     <>
@@ -38,7 +46,7 @@ const Adventure = ({
           </h1>
           <div className="adventure-metas">
             <span className="adventure-author">
-              {adventureSelected.author.username}
+              Ecrit par {adventureSelected.author.username}
             </span>
             <time className="adventure-date" dateTime={adventureSelected.createdAt}>
               <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
@@ -47,8 +55,8 @@ const Adventure = ({
             </time>
             {adventureTimer.best && adventureTimer.average && (
             <>
-              <p>Meilleur temps: {adventureTimer.best}s</p>
-              <p>Temps moyen: {adventureTimer.average}s</p>
+              <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
+              <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
             </>
             )}
           </div>
