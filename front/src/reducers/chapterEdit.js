@@ -11,9 +11,7 @@ const initialState = {
   keyword: '',
   lockword: '',
   unlockText: '',
-  chapterEditId: '',
   parentChapterChoice: '',
-  // TODO Delete all chapterEditId stuff if it's not use
 };
 
 const chapterEdit = (state = initialState, action = {}) => {
@@ -22,7 +20,6 @@ const chapterEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         ...action.chapterEdit,
-        chapterEditId: action.chapterEdit.id,
       };
 
     case CLEAR_CHAPTER_EDIT_FIELD:
@@ -32,7 +29,10 @@ const chapterEdit = (state = initialState, action = {}) => {
         keyword: '',
         lockword: '',
         unlockText: '',
-        chapterEditId: '',
+        parentChapterChoice: '',
+        createAt: '',
+        forStory: {},
+        parentChapter: null,
       };
 
     case UPDATE_CHAPTER_EDIT_FIELD:
