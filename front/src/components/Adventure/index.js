@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Redirect } from 'react-router-dom';
 
 import Loader from 'src/components/Loader';
 import Moment from 'react-moment';
@@ -15,6 +15,11 @@ const Adventure = ({
   redirectOff,
   adventureTimer,
   clearAdventureTimer,
+  activateStory,
+  desactivateStory,
+  deleteStory,
+  redirect,
+  active,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -34,48 +39,75 @@ const Adventure = ({
 
   return (
     <>
-      {loading && <Loader />}
-      {!loading && (
-        <main className="adventure">
-          <h1 className="adventure-title main-title">
-            <Typist
-              cursor={{ hideWhenDone: true }}
-            >
-              {adventureSelected.title}
-            </Typist>
-          </h1>
-          <div className="adventure-metas">
-            <span className="adventure-author">
-              Ecrit par {adventureSelected.author.username}
-            </span>
-            <time className="adventure-date" dateTime={adventureSelected.createdAt}>
-              <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
-                {adventureSelected.createdAt}
-              </Moment>
-            </time>
-            {adventureTimer.best && adventureTimer.average && (
-            <>
-              <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
-              <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
-            </>
-            )}
-          </div>
-          <p className="adventure-description">
-            {adventureSelected.description}
-          </p>
-          <div className="adventure-links">
-            {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
-              : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore prête</span></Link>}
+      {redirect && <Redirect to="/profil" />}
+      {!redirect && (
+      <>
+        {loading && <Loader />}
+        {!loading && (
+          <main className="adventure">
+            <h1 className={active ? 'adventure-title main-title' : 'adventure-title main-title unactive-storyTitle'}>
+              <Typist
+                cursor={{ hideWhenDone: true }}
+              >
+                {adventureSelected.title}
+              </Typist>
+            </h1>
+            <div className="adventure-metas">
+              <span className="adventure-author">
+                {adventureSelected.author.username}
+              </span>
+              <time className="adventure-date" dateTime={adventureSelected.createdAt}>
+                <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
+                  {adventureSelected.createdAt}
+                </Moment>
+              </time>
+              {adventureTimer.best && adventureTimer.average && (
+              <>
+                <div className="adventure-partyTime">
+                  <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
+                  <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
+                </div>
+              </>
+              )}
+            </div>
+            <p className="adventure-description">
+              {adventureSelected.description}
+            </p>
+            <div className="adventure-links">
+              {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
+                : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore jouable</span></Link>}
 
-            <Link
-              to={`/aventures/${slug}/edition`}
-            >
-              <span className="adventure-link">Edition</span>
-            </Link>
-            <span className="adventure-link publish-link">Publier</span>
-            <span className="adventure-link delete-link">Supprimer</span>
-          </div>
-        </main>
+              <Link
+                to={`/aventures/${slug}/edition`}
+              >
+                <span className="adventure-link">Edition</span>
+              </Link>
+              {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
+              {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+              <span
+                className="adventure-link delete-link"
+                id="delete-button"
+                onClick={() => {
+                  document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                  document.getElementById('delete-button').classList.toggle('active-delete');
+                }}
+              >Supprimer
+              </span>
+              <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
+                <span className="adventure-link" onClick={deleteStory}> Oui</span>
+                <span
+                  className="adventure-link"
+                  onClick={() => {
+                    document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                    document.getElementById('delete-button').classList.toggle('active-delete');
+                  }}
+                > Non
+                </span>
+              </span>
+            </div>
+          </main>
+        )}
+      </>
       )}
     </>
   );
@@ -108,6 +140,11 @@ Adventure.propTypes = {
     ]).isRequired,
   }).isRequired,
   clearAdventureTimer: PropTypes.func.isRequired,
+  activateStory: PropTypes.func.isRequired,
+  desactivateStory: PropTypes.func.isRequired,
+  deleteStory: PropTypes.func.isRequired,
+  redirect: PropTypes.bool.isRequired,
+  active: PropTypes.bool.isRequired,
 };
 
 export default Adventure;

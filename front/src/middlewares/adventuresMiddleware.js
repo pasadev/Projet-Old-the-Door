@@ -12,9 +12,12 @@ import {
   FETCH_ADVENTURE_TIMER,
   saveAdventureTimer,
   fetchAdventureTimer,
+  ACTIVATE_STORY,
+  DESACTIVATE_STORY,
+  DELETE_STORY,
 } from 'src/actions/adventures';
 
-import { hideLoader } from 'src/actions/utils';
+import { hideLoader, redirectOn } from 'src/actions/utils';
 
 import { baseURL } from 'src/utils';
 
@@ -95,6 +98,51 @@ const adventuresMiddleware = (store) => (next) => (action) => {
           }
           // dispatch to hide the loader
           store.dispatch(hideLoader());
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+
+    case ACTIVATE_STORY:
+      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=true`)
+        .then((response) => {
+          // If we have a valid answer
+          if (response.status === 200) {
+            // dispatch to save the new data
+            store.dispatch(saveAdventureSelected(response.data));
+          }
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+
+    case DESACTIVATE_STORY:
+      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=false`)
+        .then((response) => {
+          // If we have a valid answer
+          if (response.status === 200) {
+            // dispatch to save the new data
+            store.dispatch(saveAdventureSelected(response.data));
+          }
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+      next(action);
+      break;
+
+    case DELETE_STORY:
+      axios.delete(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}`)
+        .then((response) => {
+          // If we have a valid answer
+          if (response.status === 204) {
+            // Redirect on profil page
+            store.dispatch(redirectOn());
+          }
         })
         .catch((error) => {
           console.warn(error);
