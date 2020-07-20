@@ -20,8 +20,7 @@ const storyCreationMiddleware = (store) => (next) => (action) => {
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
-        // eslint-disable-next-line no-unused-vars
-        .then((response) => {
+        .then(() => {
           store.dispatch(redirectOn());
         })
         .catch((error) => {

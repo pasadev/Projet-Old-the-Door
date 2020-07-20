@@ -20,21 +20,38 @@ const StoryEdit = ({
   setEditOption,
   initialTitle,
   fetchChapterEditSelected,
+  chapterEdit,
+  clearChapterEdit,
+  clearStoryEdit,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
+    clearStoryEdit();
+    clearChapterEdit();
     fetchAdvEditSelected(slug);
     displayLoader();
   }, []);
 
-  const handleStoryEditSubmit = (event) => {
+  const handleAdvEditSubmit = (event) => {
     event.preventDefault();
-    submitAdvEditForm(storyEdit.title, storyEdit.synopsis, storyEdit.description, storyEdit.id);
+    submitAdvEditForm(
+      storyEdit.title,
+      storyEdit.synopsis,
+      storyEdit.description,
+      storyEdit.idStory,
+    );
   };
 
   const handleEditOption = (event) => {
     setEditOption(event.target.value);
-    fetchChapterEditSelected(event.target.value);
+    // Condition to not do the get request if it's a new chapter or the adventure
+    // And clear the state of chapterEdit
+    if (event.target.value === 'Nouveau Chapitre' || event.target.value === initialTitle || event.target.value === '') {
+      clearChapterEdit();
+    }
+    else {
+      fetchChapterEditSelected(event.target.value);
+    }
   };
 
   return (
@@ -52,47 +69,47 @@ const StoryEdit = ({
                   Editer : {initialTitle}
                 </Typist>
               </h1>
-              <form
-                className="storyEdit-form"
-                onSubmit={handleStoryEditSubmit}
-              >
-                <label htmlFor="storyEdit-form-editChoice">
-                  Editer :
-                  <select
-                    className="storyEdit-form-editChoice"
-                    id="storyEdit-form-editChoice"
-                    onChange={handleEditOption}
-                  >
-                    <option value="" defaultValue>
-                      Choix
+
+              <label htmlFor="storyEdit-form-editChoice">
+                Editer :
+                <select
+                  className="storyEdit-form-editChoice"
+                  id="storyEdit-form-editChoice"
+                  onChange={handleEditOption}
+                  defaultValue=""
+                >
+                  <option disabled value="">
+                    Choix
+                  </option>
+                  <option value="Nouveau Chapitre">
+                    Nouveau Chapitre
+                  </option>
+                  <option value={initialTitle}>
+                    Aventure: {initialTitle}
+                  </option>
+                  {chapters.map((chapter) => (
+                    <option
+                      key={chapter.id}
+                      value={chapter.id}
+                    >
+                      Chapitre: {chapter.title}
                     </option>
-                    <option value="Nouveau Chapitre">
-                      Nouveau Chapitre
-                    </option>
-                    <option value={initialTitle}>
-                      Aventure: {initialTitle}
-                    </option>
-                    {chapters.map((chapter) => (
-                      <option
-                        key={chapter.id}
-                        value={chapter.id}
-                      >
-                        Chapitre: {chapter.title}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+                  ))}
+                </select>
+              </label>
 
-                {editOption === initialTitle && <AdventureEdit />}
+              {editOption === initialTitle && (
+                <form
+                  className="advEdit-form"
+                  onSubmit={handleAdvEditSubmit}
+                >
+                  <AdventureEdit />
+                  <button type="submit">Enregistrer les modifications sur l'aventure</button>
+                </form>
+              )}
 
-                {editOption === 'Nouveau Chapitre' && <ChapterEdit title="Nouveau Chapitre" />}
+              <ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} />
 
-                {chapters.map((chapter) => (
-                  <ChapterEdit {...chapter} key={chapter.id} id={`${chapter.id}`} />
-                ))}
-
-                {editOption !== '' && (<button type="submit">Enregistrer ces modifications</button>)}
-              </form>
             </main>
           )}
         </>
@@ -100,9 +117,11 @@ const StoryEdit = ({
     </>
   );
 };
-// TODO split form by 3, one for AdventureEdit, one for NewChapter and one for ChapterEdit
+// TODO clean state after submit
 
 StoryEdit.propTypes = {
+  clearStoryEdit: PropTypes.func.isRequired,
+  clearChapterEdit: PropTypes.func.isRequired,
   fetchChapterEditSelected: PropTypes.func.isRequired,
   initialTitle: PropTypes.string.isRequired,
   setEditOption: PropTypes.func.isRequired,
@@ -114,7 +133,7 @@ StoryEdit.propTypes = {
   loading: PropTypes.bool.isRequired,
   // Adventure
   storyEdit: PropTypes.shape({
-    id: PropTypes.oneOfType([
+    idStory: PropTypes.oneOfType([
       PropTypes.number,
       PropTypes.string,
     ]).isRequired,
@@ -126,6 +145,9 @@ StoryEdit.propTypes = {
     }),
   }).isRequired,
   chapters: PropTypes.array.isRequired,
+  chapterEdit: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
 };
 
 export default StoryEdit;
