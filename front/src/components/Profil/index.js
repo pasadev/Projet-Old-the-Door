@@ -53,11 +53,13 @@ const Profil = ({
       </h1>
       <div className="profil-infos">
         <h2 className="profil-littletitle">Mes informations:</h2> <br />
-        nom: {parseUserInfo.lastname}<br />
-        prenom: {parseUserInfo.firstname}<br />
-        mail: {parseUserInfo.email}<br />
-        username: {parseUserInfo.username}<br />
-        role: {parseUserInfo.roles[0]} <br />
+        <div className ="profil-user">
+          nom: {parseUserInfo.lastname}<br />
+          prenom: {parseUserInfo.firstname}<br />
+          mail: {parseUserInfo.email}<br />
+          username: {parseUserInfo.username}<br />
+          role: {parseUserInfo.roles[0]} <br />
+        </div>
         <h2 className="profil-littletitle">Mes Aventures:</h2><br />
         {createdAdventures.map((adventure) => (
           <AdventureSmall {...adventure} key={adventure.id} />
@@ -65,10 +67,12 @@ const Profil = ({
         <h2 className="profil-littletitle">Mes Likes:</h2><br />
         Bonus
         <h2 className="profil-littletitle">Historique d'aventure:</h2><br />
-        {ownParties.map((ownParty)=>(
-          <Party {...ownParty} key={ownParty.id} />
+        <div className="profil-story">
+          {ownParties.map((ownParty) => (
+            <Party {...ownParty} key={ownParty.id} />
 
-        ))}
+          ))}
+        </div>
       </div>
     </main>
   );
@@ -90,15 +94,12 @@ Profil.propTypes = {
       time: PropTypes.number.isRequired,
       forStory: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
       }).isRequired,
       createdAt: PropTypes.string.isRequired,
       player: PropTypes.object,
-      
-      
-    }
-    )
-  )
+    }).isRequired,
+  ).isRequired,
 };
 
 export default Profil;

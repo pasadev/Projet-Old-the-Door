@@ -16,4 +16,12 @@
   .party-link:hover {
     text-decoration: underline;
   }
+  .party-story {
+    font-size: $mobileTitleSize;
+    margin-bottom: 0.5em;
+  }
+  .party-time{
+    font-style: italic;
+    padding-top: 0.3em;
+  }
 }
