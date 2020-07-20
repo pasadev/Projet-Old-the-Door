@@ -20,6 +20,7 @@ const chapterEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         ...action.chapterEdit,
+        parentChapterChoice: action.chapterEdit.parentChapter.id,
       };
 
     case CLEAR_CHAPTER_EDIT:
