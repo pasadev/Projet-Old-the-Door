@@ -178,12 +178,34 @@ class ChapterController extends AbstractController
         //Verify if the form is valid
         if ($form->isValid())
         {
+            /* ******************************* */
+            /* Lock and key verification start */
+
+            //Get values
+            $lockWord = $chapter->getLockword();
+            $keyWord = $chapter->getKeyword();
+            $chapterContent= $chapter->getContent();
+
+            // Check for presence
+            if (!strpos($chapterContent, $keyWord) || !strpos($chapterContent, $lockWord))
+            {
+                // If one of the word is not present in the content
+                // Return an error
+                return $this->json(["message" => "keyWord and LockWord should be in the chapter Content"], 400);
+            }
+
+            /* Lock and key verification end */
+            /* ***************************** */
+            
             //Set a created date
             $chapter->setCreatedAt(new \DateTime());
 
             //If it is valid, we persist and flush
             $em = $this->getDoctrine()->getManager();
             $em->persist($chapter);
+
+            /* ******************************* */
+            /* FirstChapter verification start */            
 
             // Register the story Id
             $storyId = json_decode($request->getContent(), true)["forStory"];
@@ -199,6 +221,9 @@ class ChapterController extends AbstractController
                 // Set this chapter has firstChapter for the story
                 $story->setFirstChapter($chapter);
             }
+
+            /* FirstChapter verification end */
+            /* ***************************** */
 
             $em->flush();
 
