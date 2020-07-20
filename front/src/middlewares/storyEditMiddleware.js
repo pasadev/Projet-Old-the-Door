@@ -71,7 +71,6 @@ const storyEditMiddleware = (store) => (next) => (action) => {
     }
 
     case SUBMIT_NEW_CHAPTER_FORM: {
-      // TODO add chapter parent
       const {
         title,
         content,
@@ -108,7 +107,6 @@ const storyEditMiddleware = (store) => (next) => (action) => {
     }
 
     case SUBMIT_CHAPTER_EDIT_FORM: {
-      // TODO add chapter parent
       const {
         id,
         title,
