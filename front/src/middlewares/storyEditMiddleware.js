@@ -54,7 +54,6 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         description: action.description,
         active: 0,
         author: id,
-        // TODO put real author id and active to 0.
       })
         .then(() => {
           store.dispatch(redirectOn());

@@ -17,6 +17,7 @@ export const CLEAR_CHAPTER_EDIT = 'CLEAR_CHAPTER_EDIT';
 export const FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS';
 export const SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS';
 export const SET_PARENT_CHAPTER_CHOICE = 'SET_PARENT_CHAPTER_CHOICE';
+export const SET_ERROR_KEY_LOCK_TRUE = 'SET_ERROR_KEY_LOCK_TRUE';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -106,4 +107,8 @@ export const saveParentChapterPossibleOptions = (parentChapterOption) => ({
 export const setParentChapterChoice = (parentChapterChoice) => ({
   type: SET_PARENT_CHAPTER_CHOICE,
   parentChapterChoice,
+});
+
+export const setErrorKeyLockTrue = () => ({
+  type: SET_ERROR_KEY_LOCK_TRUE,
 });

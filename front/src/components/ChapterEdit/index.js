@@ -17,15 +17,29 @@ const ChapterEdit = ({
   submitChapterEditForm,
   parentChapterOption,
   setParentChapterChoice,
+  setErrorKeyLockTrue,
+  errorKeyLock,
 }) => {
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
-    submitChapterEditForm();
+    // Check if keyword and lockword are in the content
+    if ((content.includes(keyword)) && (content.includes(lockword))) {
+      submitChapterEditForm();
+    }
+    else {
+      setErrorKeyLockTrue();
+    }
   };
 
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
-    submitNewChapterForm();
+    // Check if keyword and lockword are in the content
+    if ((content.includes(keyword)) && (content.includes(lockword))) {
+      submitNewChapterForm();
+    }
+    else {
+      setErrorKeyLockTrue();
+    }
   };
 
   const handleParentChapterChoice = (event) => {
@@ -110,6 +124,11 @@ const ChapterEdit = ({
               label="Texte de réussite du chapitre :"
             />
           </div>
+          {errorKeyLock && (
+            <div className="errorMessage">
+              La clé et/ou la serrure ne se trouve pas dans le contenu comme prévu.
+            </div>
+          )}
           <button type="submit">Enregistrer les modifications du chapitre</button>
         </form>
       )}
@@ -184,6 +203,11 @@ const ChapterEdit = ({
               label="Texte de réussite du chapitre :"
             />
           </div>
+          {errorKeyLock && (
+            <div className="errorMessage">
+              La clé et/ou la serrure ne se trouve pas dans le contenu comme prévu.
+            </div>
+          )}
           <button type="submit">Enregistrer le nouveau chapitre</button>
         </form>
       )}
@@ -192,6 +216,8 @@ const ChapterEdit = ({
 };
 
 ChapterEdit.propTypes = {
+  errorKeyLock: PropTypes.bool,
+  setErrorKeyLockTrue: PropTypes.func.isRequired,
   setParentChapterChoice: PropTypes.func.isRequired,
   parentChapterOption: PropTypes.array.isRequired,
   editOption: PropTypes.string.isRequired,
@@ -222,6 +248,7 @@ ChapterEdit.defaultProps = {
   keyword: '',
   lockword: '',
   unlockText: '',
+  errorKeyLock: false,
 };
 
 export default ChapterEdit;
