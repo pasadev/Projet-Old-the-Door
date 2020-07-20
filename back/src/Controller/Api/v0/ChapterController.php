@@ -184,10 +184,10 @@ class ChapterController extends AbstractController
             //Get values
             $lockWord = $chapter->getLockword();
             $keyWord = $chapter->getKeyword();
-            $chapterContent= $chapter->getContent();
+            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",$chapter->getContent());
 
             // Check for presence
-            if (!strpos($chapterContent, $keyWord) || !strpos($chapterContent, $lockWord))
+            if (!in_array($keyWord, $chapterContentArray) || !in_array($lockWord, $chapterContentArray))
             {
                 // If one of the word is not present in the content
                 // Return an error
@@ -272,6 +272,26 @@ class ChapterController extends AbstractController
         //Verify if the form is valide
         if ($form->isValid())
         {
+
+            /* ******************************* */
+            /* Lock and key verification start */
+
+            //Get values
+            $lockWord = $chapter->getLockword();
+            $keyWord = $chapter->getKeyword();
+            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",$chapter->getContent());
+
+            // Check for presence
+            if (!in_array($keyWord, $chapterContentArray) || !in_array($lockWord, $chapterContentArray))
+            {
+                // If one of the word is not present in the content
+                // Return an error
+                return $this->json(["message" => "keyWord and LockWord should be in the chapter Content"], 400);
+            }
+
+            /* Lock and key verification end */
+            /* ***************************** */
+
             //Set an updated date
             $chapter->setUpdatedAt(new \DateTime());
 
