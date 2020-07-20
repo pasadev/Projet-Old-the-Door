@@ -46,13 +46,14 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
-    case SUBMIT_ADV_EDIT_FORM:
+    case SUBMIT_ADV_EDIT_FORM: {
+      const { id } = store.getState().user.user;
       axios.put(`${baseURL}/api/v0/stories/${action.id}`, {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,
-        active: 1,
-        author: 38,
+        active: 0,
+        author: id,
         // TODO put real author id and active to 0.
       })
         .then(() => {
@@ -67,6 +68,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
 
     case SUBMIT_NEW_CHAPTER_FORM: {
       // TODO add chapter parent
