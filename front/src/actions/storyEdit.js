@@ -11,6 +11,7 @@ export const CLEAR_STORY_EDIT = 'CLEAR_STORY_EDIT';
 export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
 export const FETCH_CHAPTER_EDIT_SELECTED = 'FETCH_CHAPTER_EDIT_SELECTED';
 export const SAVE_CHAPTER_EDIT_SELECTED = 'SAVE_CHAPTER_EDIT_SELECTED';
+export const SAVE_CHAPTER_WHITOUT_PARENT = 'SAVE_CHAPTER_WHITOUT_PARENT';
 export const UPDATE_CHAPTER_EDIT_FIELD = 'UPDATE_CHAPTER_EDIT_FIELD';
 export const CLEAR_CHAPTER_EDIT = 'CLEAR_CHAPTER_EDIT';
 // Unuse export const CLEAR_EDIT_OPTION = 'CLEAR_EDIT_OPTION';
@@ -83,6 +84,12 @@ export const fetchChapterEditSelected = (id) => ({
 
 export const saveChapterEditSelected = (chapterEdit) => ({
   type: SAVE_CHAPTER_EDIT_SELECTED,
+  chapterEdit,
+});
+
+// use if a chapter selected doesn't have a parentChapter
+export const saveChapterWhitoutParent = (chapterEdit) => ({
+  type: SAVE_CHAPTER_WHITOUT_PARENT,
   chapterEdit,
 });
 

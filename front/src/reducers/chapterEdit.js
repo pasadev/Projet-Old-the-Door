@@ -4,6 +4,7 @@ import {
   SAVE_CHAPTER_EDIT_SELECTED,
   SET_PARENT_CHAPTER_CHOICE,
   SET_ERROR_KEY_LOCK_TRUE,
+  SAVE_CHAPTER_WHITOUT_PARENT,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -23,6 +24,12 @@ const chapterEdit = (state = initialState, action = {}) => {
         ...state,
         ...action.chapterEdit,
         parentChapterChoice: action.chapterEdit.parentChapter.id,
+      };
+
+    case SAVE_CHAPTER_WHITOUT_PARENT:
+      return {
+        ...state,
+        ...action.chapterEdit,
       };
 
     case CLEAR_CHAPTER_EDIT:
