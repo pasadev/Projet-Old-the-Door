@@ -2,20 +2,26 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Typist from 'react-typist';
 import PropTypes from 'prop-types';
+import AdventureSmall from 'src/components/AdventureSmall';
+import Party from './Party';
 
 import './profil.scss';
 
 const userInfo = sessionStorage.getItem('currentuser');
 const parseUserInfo = JSON.parse(userInfo);
 
+
 const Profil = ({
   redirectOff,
   fetchCreatedAdventures,
+  createdAdventures,
+  fetchOwnParties,
+  ownParties,
 }) => {
   useEffect(() => {
     redirectOff();
-    console.log(parseUserInfo.id);
     fetchCreatedAdventures(parseUserInfo.id);
+    fetchOwnParties(parseUserInfo.id);
   }, []);
   return (
     <main className="profil">
@@ -54,33 +60,16 @@ const Profil = ({
         username: {parseUserInfo.username}<br />
         role: {parseUserInfo.roles[0]} <br />
         <h2 className="profil-littletitle">Mes Aventures:</h2><br />
+        {createdAdventures.map((adventure) => (
+          <AdventureSmall {...adventure} key={adventure.id} />
+        ))}
         <h2 className="profil-littletitle">Mes Likes:</h2><br />
+        Bonus
         <h2 className="profil-littletitle">Historique d'aventure:</h2><br />
-        {/* <div className="adventureSmall">
-       <h3 className="adventureSmall-title">
-          {title}
-        </h3>
-         <div className="adventureSmall-authorAndDate">
-          <span className="adventureSmall-author">
-            {author.username}
-          </span>
-          <time className="adventureSmall-date" dateTime={createdAt}>
-            <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
-              {createdAt}
-            </Moment>
-          </time>
-        </div>
-        <p className="adventureSmall-synopsis">
-          {synopsis}
-        </p>
-        <div className="adventureSmall-link">
-          <Link
-            to={`/aventures/${slugifyTitle(title)}`}
-          >
-            Ouvrir le fichier
-          </Link>
-        </div>
-      </div> */}
+        {ownParties.map((ownParty)=>(
+          <Party {...ownParty} key={ownParty.id} />
+
+        ))}
       </div>
     </main>
   );
@@ -89,6 +78,28 @@ const Profil = ({
 Profil.propTypes = {
   redirectOff: PropTypes.func.isRequired,
   fetchCreatedAdventures: PropTypes.func.isRequired,
+  createdAdventures: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  ).isRequired,
+
+  fetchOwnParties: PropTypes.func.isRequired,
+  ownParties: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      time: PropTypes.number.isRequired,
+      forStory: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired
+      }).isRequired,
+      createdAt: PropTypes.string.isRequired,
+      player: PropTypes.object,
+      
+      
+    }
+    )
+  )
 };
 
 export default Profil;

@@ -1,10 +1,12 @@
 import {
   SAVE_CREATED_ADVENTURES,
+  SAVE_OWN_PARTIES,
 } from 'src/actions/profil';
 
 const initialState = {
   showCreatedAdventures: false,
   createdAdventures: [],
+  ownParties: [],
 };
 
 const profil = (state = initialState, action = {}) => {
@@ -15,6 +17,14 @@ const profil = (state = initialState, action = {}) => {
 
         createdAdventures: action.createdAdventures,
       };
+
+    case SAVE_OWN_PARTIES:
+      return {
+        ...state,
+
+        ownParties: action.ownParties,
+      };
+
     default: return state;
   }
 };

@@ -4,13 +4,14 @@ import Profil from 'src/components/Profil';
 
 import { redirectOff } from 'src/actions/utils';
 
-import { fetchCreatedAdventures } from 'src/actions/profil';
+import { fetchCreatedAdventures, fetchOwnParties } from 'src/actions/profil';
 
 // === mapStateToProps
 // si j'ai besoin de lire des informations dans le state
 const mapStateToProps = (state) => ({
   showCreatedAdventures: state.profil.showCreatedAdventures,
   createdAdventures: state.profil.createdAdventures,
+  ownParties: state.profil.ownParties,
 });
 
 // === mapDispatchToProps
@@ -22,6 +23,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchCreatedAdventures: (authorId) => {
     dispatch(fetchCreatedAdventures(authorId));
+  },
+  fetchOwnParties: (authorId) => {
+    dispatch(fetchOwnParties((authorId)));
   },
 });
 
