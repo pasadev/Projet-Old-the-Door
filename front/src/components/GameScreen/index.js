@@ -55,7 +55,7 @@ const GameScreen = ({
   const { slug } = useParams();
   useEffect(() => {
     // component did mount
-    console.log(slug);
+    // console.log(slug);
     fetchCurrentStory(slug);
     displayLoader();
   }, []);
