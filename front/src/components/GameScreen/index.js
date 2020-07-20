@@ -130,7 +130,7 @@ const GameScreen = ({
               <button className="gameScreen-formButton" type="submit">> Tester la combinaison</button>
             </form>
             {!showSuccessMessage
-            && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>Indice</button>))}
+            && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>[Indice]</button>))}
             {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
           </div>
         </div>
