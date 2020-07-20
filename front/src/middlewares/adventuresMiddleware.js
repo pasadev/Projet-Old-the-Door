@@ -121,7 +121,9 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       break;
 
     case DESACTIVATE_STORY:
-      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=false`)
+      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active`, {
+        set: 'false',
+      })
         .then((response) => {
           // If we have a valid answer
           if (response.status === 200) {
