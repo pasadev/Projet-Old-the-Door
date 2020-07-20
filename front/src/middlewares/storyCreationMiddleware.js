@@ -14,7 +14,7 @@ const storyCreationMiddleware = (store) => (next) => (action) => {
         synopsis: action.synopsis,
         description: action.description,
         active: 1,
-        author: 2,
+        author: 25,
         // TODO put real author id and active to 0.
       })
         // eslint-disable-next-line no-unused-vars

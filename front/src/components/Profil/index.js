@@ -45,15 +45,11 @@ const Profil = ({
 
       </div>
       <h1 className="profil-title">
-        <Typist
-          cursor={{ hideWhenDone: true }}
-        >
           BIENVENUE {parseUserInfo.username}
-        </Typist>
       </h1>
       <div className="profil-infos">
         <h2 className="profil-littletitle">Mes informations:</h2> <br />
-        <div className ="profil-user">
+        <div className="profil-user">
           nom: {parseUserInfo.lastname}<br />
           prenom: {parseUserInfo.firstname}<br />
           mail: {parseUserInfo.email}<br />
@@ -64,8 +60,6 @@ const Profil = ({
         {createdAdventures.map((adventure) => (
           <AdventureSmall {...adventure} key={adventure.id} />
         ))}
-        <h2 className="profil-littletitle">Mes Likes:</h2><br />
-        Bonus
         <h2 className="profil-littletitle">Historique d'aventure:</h2><br />
         <div className="profil-story">
           {ownParties.map((ownParty) => (
