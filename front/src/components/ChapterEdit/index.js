@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import React from 'react';
 import Field from 'src/components/Field';
 import FieldArea from 'src/components/FieldArea';
@@ -73,14 +75,19 @@ const ChapterEdit = ({
                 <option value="">
                   Retirer le chapitre parent actuel
                 </option>
-                {parentChapterOption.map((parent) => (
-                  <option
-                    key={parent.id}
-                    value={parent.id}
-                  >
-                    {parent.title}
-                  </option>
-                ))}
+                {parentChapterOption.map((chapter) => {
+                  // Condition to prevent the option to select a chapter as his own parent
+                  if (chapter.id !== parseInt(editOption, 10)) {
+                    return (
+                      <option
+                        key={chapter.id}
+                        value={chapter.id}
+                      >
+                        {chapter.title}
+                      </option>
+                    );
+                  }
+                })}
               </select>
             </label>
             <Field
