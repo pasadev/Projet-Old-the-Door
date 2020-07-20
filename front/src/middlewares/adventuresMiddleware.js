@@ -140,8 +140,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // If we have a valid answer
           if (response.status === 204) {
-            // Redirect on profil page
-            store.dispatch(redirectOn());
+            // Eventually do something
           }
         })
         .catch((error) => {
