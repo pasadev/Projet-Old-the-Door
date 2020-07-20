@@ -10,7 +10,6 @@ import './profil.scss';
 const userInfo = sessionStorage.getItem('currentuser');
 const parseUserInfo = JSON.parse(userInfo);
 
-
 const Profil = ({
   redirectOff,
   fetchCreatedAdventures,

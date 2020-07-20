@@ -1,7 +1,10 @@
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Typist from 'react-typist';
+import Moment from 'react-moment';
+
+// import Typist from 'react-typist'; 
+import './party.scss';
 
 const Party = ({
   time,
@@ -14,12 +17,23 @@ const Party = ({
     <div className="party">
       {id}
       <h3 className="party-time">{time}</h3>
-      <h3 className="party-played-when">{createdAt}</h3>
+      <h3 className="party-played-when">
+        <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
+          {createdAt}
+        </Moment>
+      </h3>
       <div className="party-story">
         {forStory.id}
         {forStory.title}
       </div>
       <div className="party-player">{player.username}{player.id}</div>
+      <div className="party-link">
+      <Link
+        to={`/aventures/${slugifyTitle(title)}`}
+      >
+        Ouvrir le fichier
+      </Link>
+      </div>
     </div>
   </>
 );
