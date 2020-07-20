@@ -6,13 +6,23 @@
   .adventure-title {
     font-weight: bold;
   }
+  .unactive-storyTitle {
+    text-decoration: line-through;
+  }
 
   .adventure-metas {
-    font-style: italic;
-    color: $noticeColor;
     
     .adventure-author {
       padding-right: 0.3em;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .adventure-partyTime{
+      font-style: italic;
+      margin-top: 0.5em;
+      border-left: 2px solid $lightScreenColor;
+      padding-left: 0.5em;
     }
     
     .adventure-date::before {
@@ -45,9 +55,10 @@
     .delete-link {
       color: $warningColor;
     }
-    .publish-link {
-      color: $lightColor;
+
+    .active-delete {
+      display: none;
     }
     
-  }
+  } 
 }

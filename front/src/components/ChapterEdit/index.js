@@ -49,9 +49,11 @@ const ChapterEdit = ({
                 className="chapterEdit-parentChapter"
                 id="chapterEdit-parentChapter"
                 onChange={handleParentChapterChoice}
-                defaultValue=""
+                defaultValue={chapterEdit.parentChapter !== null && chapterEdit.parentChapter.id}
               >
-                <option disabled value="">
+                <option
+                  value={chapterEdit.parentChapter !== null && chapterEdit.parentChapter.id}
+                >
                   Liste des Chapitres parent possible
                 </option>
                 <option value="">
@@ -205,6 +207,10 @@ ChapterEdit.propTypes = {
   chapterEdit: PropTypes.shape({
     parentChapter: PropTypes.shape({
       title: PropTypes.string,
+      id: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+      ]),
     }),
   }).isRequired,
 };
