@@ -83,7 +83,7 @@ const GameScreen = ({
             <div className="gameScreen-header-text">
               <Typist
                 cursor={{ hideWhenDone: true }}
-                avgTypingDelay={30}
+                avgTypingDelay={15}
               >
                 <span>.....Initialisation de l'histoire v0.01.....</span>
                 <Typist.Backspace count={39} delay={600} />
@@ -105,7 +105,7 @@ const GameScreen = ({
             {!showSuccessMessage && !loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
 
             {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-storySuccess">Bravo, vous avez terminé le scénario "{currentStory.title}" <Link to="/aventures/"> <span className="gameScreen-moreAdventureButton">> Voir les autres aventures</span></Link></div></Typist>}
-            {showWrongAnswerMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-answerError">This is not the end, try again</div> <Typist.Backspace count={39} delay={600} /></Typist>}
+            {showWrongAnswerMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-answerError">Mauvaise combinaison !</div> <Typist.Backspace count={23} delay={400} /></Typist>}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
               <div className="gameScreen-form-row" id="keyForm">
