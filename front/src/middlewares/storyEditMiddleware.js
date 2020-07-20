@@ -17,6 +17,7 @@ import {
   fetchParentChapterPossibleOptions,
   FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,
   saveParentChapterPossibleOptions,
+  saveChapterWhitoutParent,
 } from 'src/actions/storyEdit';
 
 import {
@@ -48,13 +49,12 @@ const storyEditMiddleware = (store) => (next) => (action) => {
 
     case SUBMIT_ADV_EDIT_FORM: {
       const { id } = store.getState().user.user;
-      axios.put(`${baseURL}/api/v0/stories/${action.id}`, {
+      axios.put(`${baseURL}/api/v0/stories/${action.idStory}`, {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,
         active: 0,
         author: id,
-        // TODO put real author id and active to 0.
       })
         .then(() => {
           store.dispatch(redirectOn());
@@ -179,10 +179,13 @@ const storyEditMiddleware = (store) => (next) => (action) => {
     case FETCH_CHAPTER_EDIT_SELECTED: {
       axios.get(`${baseURL}/api/v0/chapters/${action.id}`)
         .then((response) => {
+          if (response.data[0].parentChapter === null) {
+            store.dispatch(saveChapterWhitoutParent(response.data[0]));
+          }
           store.dispatch(saveChapterEditSelected(response.data[0]));
         })
-        .catch(() => {
-
+        .catch((error) => {
+          console.warn(error);
         })
         .finally(() => {
 
