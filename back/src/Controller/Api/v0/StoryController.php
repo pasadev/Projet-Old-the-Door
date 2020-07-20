@@ -190,7 +190,7 @@ class StoryController extends AbstractController
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false, 400));
+        return $this->json((string) $form->getErrors(true, false), 400);
     }
 
     /**
@@ -250,7 +250,7 @@ class StoryController extends AbstractController
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false, 400));
+        return $this->json((string) $form->getErrors(true, false),400);
     }
 
     /**
@@ -282,11 +282,35 @@ class StoryController extends AbstractController
         //If we have parties
         if ($parties) {
 
-            //Initializing a time table
+            //Initialize a filtering array
+            $filteringTable = [];
+
+            //For each party, save an entry in the filtering array
+            //With party id for key and player id for value
+            foreach ($parties as $party) {
+                $filteringTable[$party->getId()] = $party->getPlayer()->getId();
+            }
+
+            //Delete doublons
+            //array_unique left the first occurence it finds and delete others
+            //So we will keep only the first party the player made for this story
+            $uniquePlayerParties = array_unique($filteringTable);
+
+            
+
+            //Create the timeTable with only uniquePlayerParties
             $timeTable = [];
 
+            //For each party
             foreach ($parties as $party) {
-                $timeTable[] = $party->getTime();
+
+                //If it's Id is on of the key of the uniquePlayerParties array
+                if (array_key_exists($party->getId(), $uniquePlayerParties))
+                {
+                    //Add it to the parties time array
+                    $timeTable[] = $party->getTime();
+                }
+                
             }
 
             $bestTime = min($timeTable);
@@ -299,10 +323,7 @@ class StoryController extends AbstractController
         }
         //If we don't have parties
         else {
-            return $this->json(
-                ['message' => 'We do not have stats for this story',],
-                404
-            );
+            return $this->json([],204);
         }
     }
 

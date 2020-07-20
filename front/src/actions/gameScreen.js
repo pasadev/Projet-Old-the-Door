@@ -12,11 +12,15 @@ export const TOGGLE_ANSWER_VALUE = 'TOGGLE_ANSWER_VALUE';
 export const DISPLAY_CHAPTER_AFTER_LOAD = 'DISPLAY_CHAPTER_AFTER_LOAD';
 export const HIDE_CHAPTER = 'HIDE_CHAPTER';
 export const UPDATE_ANSWER_FIELD = 'UPDATE_ANSWER_FIELD';
+export const BLOCK_FIELD = 'BLOCK_FIELD';
 export const CLEAR_GAMESCREEN_INPUT = 'CLEAR_GAMESCREEN_INPUT';
 export const DISPLAY_SUCCESS_MESSAGE = 'DISPLAY_SUCCESS_MESSAGE';
 export const SET_COUNTER = 'SET_COUNTER';
 export const TOGGLE_THE_COUNTER = 'TOGGLE_THE_COUNTER';
 export const SAVE_PARTY_TIME = 'SAVE_PARTY_TIME';
+export const TOGGLE_WRONG_ANSWER_MESSAGE = 'TOGGLE_WRONG_ANSWER_MESSAGE';
+export const APPLY_PENALTY = 'APPLY_PENALTY';
+export const GIVE_HINT = 'GIVE_HINT';
 
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -76,6 +80,10 @@ export const updateAnswerField = (newValue, name) => ({
   name,
 });
 
+export const blockField = () => ({
+  type: BLOCK_FIELD,
+});
+
 export const clearGameScreenInput = () => ({
   type: CLEAR_GAMESCREEN_INPUT,
 });
@@ -106,4 +114,18 @@ export const savePartyTime = (endTime, player, forStory) => ({
   endTime,
   player,
   forStory,
+});
+
+export const toggleWrongAnswerMessage = () => ({
+  type: TOGGLE_WRONG_ANSWER_MESSAGE,
+});
+
+export const applyPenalty = (penaltyTime) => ({
+  type: APPLY_PENALTY,
+  penaltyTime,
+});
+
+export const giveHint = (randomHint) => ({
+  type: GIVE_HINT,
+  randomHint,
 });

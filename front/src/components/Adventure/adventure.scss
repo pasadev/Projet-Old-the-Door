@@ -7,10 +7,9 @@
     font-weight: bold;
   }
 
-  .adventure-authorAndDate {
-    padding-top: 0.5em;
+  .adventure-metas {
     font-style: italic;
-    font-size: 0.8em;
+    color: $noticeColor;
     
     .adventure-author {
       padding-right: 0.3em;
@@ -30,10 +29,25 @@
   .adventure-links {
     padding-top: 0.5em;
     color: $linkColor;
-    font-size: 1.2em;
-  }
-  
-  .adventure-links:hover {
-    text-decoration: underline;
+    .adventure-link {
+      margin: 0 0.25em;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+    .adventure-link-warning {
+      color: $noticeColor;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+    .delete-link {
+      color: $warningColor;
+    }
+    .publish-link {
+      color: $lightColor;
+    }
+    
   }
 }

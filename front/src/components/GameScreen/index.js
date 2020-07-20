@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
@@ -20,6 +22,7 @@ const GameScreen = ({
   changeField,
   gameKey,
   gameLock,
+  blockField,
 
   currentStory,
   fetchCurrentStory,
@@ -37,6 +40,9 @@ const GameScreen = ({
   timerCounter,
   setCounter,
   timerIsRunning,
+  showWrongAnswerMessage,
+  giveHint,
+  showHint,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -76,7 +82,7 @@ const GameScreen = ({
             </div>
             <div className="gameScreen-header-text">
               <Typist
-                cursor={{ blink: true, hideWhenDone: true }}
+                cursor={{ hideWhenDone: true }}
                 avgTypingDelay={30}
               >
                 <span>.....Initialisation de l'histoire v0.01.....</span>
@@ -99,28 +105,33 @@ const GameScreen = ({
             {!showSuccessMessage && !loadingChapter && <Chapter {... currentChapter} trueAnswer={trueAnswer} fetchNextChapter={fetchNextChapter} previousChapters={previousChapters} />}
 
             {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-storySuccess">Bravo, vous avez terminé le scénario "{currentStory.title}" <Link to="/aventures/"> <span className="gameScreen-moreAdventureButton">> Voir les autres aventures</span></Link></div></Typist>}
+            {showWrongAnswerMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-answerError">This is not the end, try again</div> <Typist.Backspace count={39} delay={600} /></Typist>}
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
-              <div className="gameScreen-form-row">
+              <div className="gameScreen-form-row" id="keyForm">
                 <label htmlFor="gameKey">Clé :</label>
                 <GameScreenField
                   name="gameKey"
                   placeholder="Clé"
-                  onChange={changeField}
-                  value={gameKey}
+                  onChange={showHint === 1 ? blockField : changeField}
+                  value={showHint === 1 ? (gameKey = `${currentChapter.keyword}`) : `${gameKey}`}
                 />
               </div>
-              <div className="gameScreen-form-row">
+              <div className="gameScreen-form-row" id="lockForm">
                 <label htmlFor="gameLock">Serrure :</label>
                 <GameScreenField
                   name="gameLock"
                   placeholder="Serrure"
-                  onChange={changeField}
-                  value={gameLock}
+                  onChange={showHint === 2 ? blockField : changeField}
+                  value={showHint === 2 ? (gameLock = `${currentChapter.lockword}`) : `${gameLock}`}
+
                 />
               </div>
               <button className="gameScreen-formButton" type="submit">> Tester la combinaison</button>
             </form>
+            {!showSuccessMessage
+            && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>Indice</button>))}
+            {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
           </div>
         </div>
       </main>
@@ -133,7 +144,12 @@ GameScreen.propTypes = {
   setCounter: PropTypes.func.isRequired,
   timerCounter: PropTypes.number.isRequired,
   timerIsRunning: PropTypes.bool.isRequired,
+  showWrongAnswerMessage: PropTypes.bool.isRequired,
 
+  giveHint: PropTypes.func.isRequired,
+  showHint: PropTypes.number.isRequired,
+
+  blockField: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   gameKey: PropTypes.string.isRequired,
   gameLock: PropTypes.string.isRequired,

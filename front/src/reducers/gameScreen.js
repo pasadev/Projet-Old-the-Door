@@ -10,6 +10,10 @@ import {
   DISPLAY_SUCCESS_MESSAGE,
   SET_COUNTER,
   TOGGLE_THE_COUNTER,
+  TOGGLE_WRONG_ANSWER_MESSAGE,
+  APPLY_PENALTY,
+  GIVE_HINT,
+  BLOCK_FIELD,
 } from 'src/actions/gameScreen';
 
 const initialState = {
@@ -46,6 +50,9 @@ const initialState = {
 
   timerCounter: 0,
   timerIsRunning: false,
+
+  showWrongAnswerMessage: false,
+  showHint: 0,
 };
 
 const gameScreen = (state = initialState, action = {}) => {
@@ -82,6 +89,11 @@ const gameScreen = (state = initialState, action = {}) => {
         [action.name]: action.newValue,
       };
 
+    case BLOCK_FIELD:
+      return {
+        ...state,
+      };
+
     case TOGGLE_ANSWER_VALUE:
       // return a new state
       return {
@@ -99,6 +111,7 @@ const gameScreen = (state = initialState, action = {}) => {
         // Clear gameKey and gameLock values
         gameKey: '',
         gameLock: '',
+        showHint: 0,
       };
 
     case DISPLAY_CHAPTER_AFTER_LOAD:
@@ -139,6 +152,27 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         timerIsRunning: !state.timerIsRunning,
+      };
+
+    case TOGGLE_WRONG_ANSWER_MESSAGE:
+      return {
+        ...state,
+
+        showWrongAnswerMessage: !state.showWrongAnswerMessage,
+      };
+
+    case APPLY_PENALTY:
+      return {
+        ...state,
+
+        timerCounter: state.timerCounter + action.penaltyTime,
+      };
+
+    case GIVE_HINT:
+      return {
+        ...state,
+
+        showHint: action.randomHint,
       };
 
     default: return state;

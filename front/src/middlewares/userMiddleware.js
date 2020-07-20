@@ -5,7 +5,13 @@ import {
   LOG_OUT,
   saveUser,
   REGISTER_USER,
+  registerError,
+  logError,
 } from 'src/actions/user';
+
+import {
+  redirectOn,
+} from 'src/actions/utils';
 
 import { baseURL } from 'src/utils';
 
@@ -23,10 +29,12 @@ const userMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveUser(response.data[0]));
-          localStorage.setItem('currentuser', JSON.stringify(response.data[0]));
-          localStorage.setItem('isLogged', `${true}`);
+          sessionStorage.setItem('currentuser', JSON.stringify(response.data[0]));
+          sessionStorage.setItem('isLogged', `${true}`);
+          store.dispatch(redirectOn());
         })
         .catch((error) => {
+          store.dispatch(logError());
           console.warn(error);
         });
 
@@ -35,8 +43,8 @@ const userMiddleware = (store) => (next) => (action) => {
     }
 
     case LOG_OUT: {
-      localStorage.removeItem('isLogged');
-      localStorage.removeItem('currentuser');
+      sessionStorage.removeItem('isLogged');
+      sessionStorage.removeItem('currentuser');
 
       next(action);
       break;
@@ -45,29 +53,37 @@ const userMiddleware = (store) => (next) => (action) => {
     case REGISTER_USER: {
       const {
         emailRegister: email,
-        passwordRegister: password,
         nickname: username,
         firstname,
         lastname,
-        passwordConfirmation,
+        passwordFirst: first,
+        passwordSecond: second,
       } = store.getState().user;
-
       // withCredentials : autorisation d'accéder au cookie
       axios.post(`${baseURL}/api/v0/users`, {
         email,
-        password,
         username,
         firstname,
         lastname,
-        passwordConfirmation,
+        password: {
+          first,
+          second,
+        },
       }, {
         withCredentials: true,
-        headers: true,
       })
         .then((response) => {
-          store.dispatch(saveUser(response.data.info, response.data.logged));
+          // Save user only for http 201
+          if (response.status === 201) {
+            store.dispatch(saveUser(response.data));
+            sessionStorage.setItem('currentuser', JSON.stringify(response.data));
+            sessionStorage.setItem('isLogged', `${true}`);
+            store.dispatch(redirectOn());
+          }
         })
         .catch((error) => {
+          // Display error message
+          store.dispatch(registerError());
           console.warn(error);
         });
 

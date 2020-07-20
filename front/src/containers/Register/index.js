@@ -5,11 +5,13 @@ import { updateRegistersField, createLogin } from 'src/actions/user';
 const mapStateToProps = (state) => ({
 
   emailRegister: state.user.emailRegister,
-  passwordRegister: state.user.passwordRegister,
   firstname: state.user.firstname,
   lastname: state.user.lastname,
   nickname: state.user.nickname,
-  passwordConfirmation: state.user.passwordConfirmation,
+  passwordSecond: state.user.passwordSecond,
+  passwordFirst: state.user.passwordFirst,
+  registerError: state.user.registerError,
+  redirect: state.utils.redirect,
 });
 
 const mapDispatchToProps = (dispatch) => ({

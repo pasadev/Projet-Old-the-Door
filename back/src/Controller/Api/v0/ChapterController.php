@@ -27,9 +27,42 @@ class ChapterController extends AbstractController
 
             // get URL parameter 
             $storyId = $request->query->get('story_id');
-            
-            // get chapter in terms of his story
-            $chapters = $chapterRepository->findChaptersForStory($storyId); 
+
+            // Verify if we have a parameter non_parent at true
+            if ($request->query->get('non_parent') === 'true')
+            {
+                //send non parents chapters for this story
+                $AllChapters = $chapterRepository->findChaptersForStory($storyId);
+                $chapterList = [];
+                $parentChapterList = [];
+
+                foreach ($AllChapters as $chapter) {
+
+                    $chapterList[] = $chapter->getId() ;
+
+                    if($chapter->getParentChapter())
+                    {
+                        $parentChapterList[] = $chapter->getParentChapter()->getId();
+                    }
+                }
+                $nonParentChapterList = array_diff($chapterList, $parentChapterList);
+                
+                //Initialize chapters list
+                $chapters = [];
+
+                // Rebuild $chapters
+                foreach ($nonParentChapterList as $nonParentChapterId) {
+                    $nonParentChapter = $chapterRepository->find($nonParentChapterId);
+                    $chapters[] = $nonParentChapter;
+                }
+               
+            }
+            //If not, we send all chapters for this story
+            else
+            {
+                // get chapter in terms of his story
+                $chapters = $chapterRepository->findChaptersForStory($storyId); 
+            }
             
             if ($chapters){
 
@@ -168,7 +201,7 @@ class ChapterController extends AbstractController
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false, 400));
+        return $this->json((string) $form->getErrors(true, false), 400);
 
     }
 
@@ -219,7 +252,7 @@ class ChapterController extends AbstractController
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false, 400));
+        return $this->json((string) $form->getErrors(true, false), 400);
     }
 
     /**
