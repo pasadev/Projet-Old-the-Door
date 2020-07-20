@@ -117,7 +117,6 @@ const StoryEdit = ({
     </>
   );
 };
-// TODO clean state after submit
 
 StoryEdit.propTypes = {
   clearStoryEdit: PropTypes.func.isRequired,
