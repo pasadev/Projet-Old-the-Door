@@ -5,6 +5,7 @@ import adventuresReducer from './adventures';
 import gameScreenReducer from './gameScreen';
 import storyCreationReducer from './storyCreation';
 import storyEditReducer from './storyEdit';
+import profilReducer from './profil';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   gameScreen: gameScreenReducer,
   storyCreation: storyCreationReducer,
   storyEdit: storyEditReducer,
+  profil: profilReducer,
 });
 
 export default rootReducer;
