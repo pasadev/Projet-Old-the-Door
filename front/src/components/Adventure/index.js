@@ -54,7 +54,7 @@ const Adventure = ({
             </h1>
             <div className="adventure-metas">
               <span className="adventure-author">
-                Ecrit par {adventureSelected.author.username}
+                {adventureSelected.author.username}
               </span>
               <time className="adventure-date" dateTime={adventureSelected.createdAt}>
                 <Moment format="DD/MM/YYYY" parse="YYYY-MM-DD HH:mm">
@@ -63,8 +63,10 @@ const Adventure = ({
               </time>
               {adventureTimer.best && adventureTimer.average && (
               <>
-                <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
-                <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
+                <div className="adventure-partyTime">
+                  <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
+                  <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
+                </div>
               </>
               )}
             </div>
@@ -73,17 +75,35 @@ const Adventure = ({
             </p>
             <div className="adventure-links">
               {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
-                : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore prête</span></Link>}
+                : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore jouable</span></Link>}
 
               <Link
                 to={`/aventures/${slug}/edition`}
               >
                 <span className="adventure-link">Edition</span>
               </Link>
-              {!active && <span className="adventure-link publish-link" onClick={activateStory}>Publier</span>}
-              {console.log(active)}
-              {active && <span className="adventure-link unpublish-link" onClick={desactivateStory}>Dépublier</span>}
-              <span className="adventure-link delete-link" onClick={() => document.getElementById('delete-button').classList.toggle('active-delete')}>Supprimer</span><span className="adventure-link delete-link confirm-delete" id="delete-button" onClick={deleteStory}>Sur ? </span>
+              {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
+              {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+              <span
+                className="adventure-link delete-link"
+                id="delete-button"
+                onClick={() => {
+                  document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                  document.getElementById('delete-button').classList.toggle('active-delete');
+                }}
+              >Supprimer
+              </span>
+              <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
+                <span className="adventure-link" onClick={deleteStory}> Oui</span>
+                <span
+                  className="adventure-link"
+                  onClick={() => {
+                    document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                    document.getElementById('delete-button').classList.toggle('active-delete');
+                  }}
+                > Non
+                </span>
+              </span>
             </div>
           </main>
         )}

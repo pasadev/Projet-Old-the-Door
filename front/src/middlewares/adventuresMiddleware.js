@@ -113,8 +113,6 @@ const adventuresMiddleware = (store) => (next) => (action) => {
             // dispatch to save the new data
             store.dispatch(saveAdventureSelected(response.data));
           }
-          // dispatch to hide the loader
-          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);
@@ -130,8 +128,6 @@ const adventuresMiddleware = (store) => (next) => (action) => {
             // dispatch to save the new data
             store.dispatch(saveAdventureSelected(response.data));
           }
-          // dispatch to hide the loader
-          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);
@@ -147,8 +143,6 @@ const adventuresMiddleware = (store) => (next) => (action) => {
             // Redirect on profil page
             store.dispatch(redirectOn());
           }
-          // dispatch to hide the loader
-          // store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);
