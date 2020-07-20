@@ -48,7 +48,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
 
     case SUBMIT_ADV_EDIT_FORM: {
       const { id } = store.getState().user.user;
-      axios.put(`${baseURL}/api/v0/stories/${action.id}`, {
+      axios.put(`${baseURL}/api/v0/stories/${action.idStory}`, {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,
