@@ -5,6 +5,7 @@ namespace App\Controller\Api\v0;
 use App\Entity\Chapter;
 use App\Form\ChapterType;
 use App\Repository\ChapterRepository;
+use App\Repository\StoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -156,8 +157,8 @@ class ChapterController extends AbstractController
      *
      * @return Chapter
      */
-    public function add(Request $request, ObjectNormalizer $normalizer)
-    {
+    public function add(Request $request, ObjectNormalizer $normalizer, StoryRepository $storyRepository)
+    {       
         //Create an empty chapter
         $chapter = new Chapter();
 
@@ -183,6 +184,22 @@ class ChapterController extends AbstractController
             //If it is valid, we persist and flush
             $em = $this->getDoctrine()->getManager();
             $em->persist($chapter);
+
+            // Register the story Id
+            $storyId = json_decode($request->getContent(), true)["forStory"];
+
+            // Fetch the story
+            $story = $storyRepository->find($storyId);
+            //Get all the chapters for this story
+            $chaptersForStory = $story->getHasChapters();
+
+            //If there is no chapter
+            if (count($chaptersForStory) === 0)
+            {
+                // Set this chapter has firstChapter for the story
+                $story->setFirstChapter($chapter);
+            }
+
             $em->flush();
 
 
