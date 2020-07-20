@@ -2,13 +2,14 @@ import {
   SAVE_ADV_EDIT_SELECTED,
   UPDATE_ADVENTURE_EDIT_FIELD,
   SAVE_ADV_EDIT_CHAPTERS,
-  CLEAR_ADV_EDIT_CHAPTERS,
+  CLEAR_STORY_EDIT,
   SET_EDIT_OPTION,
-  SAVE_CHAPTER_EDIT_SELECTED,
+  // CLEAR_EDIT_OPTION,
+  SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
 } from 'src/actions/storyEdit';
 
 const initialState = {
-  id: '',
+  idStory: '',
   title: '',
   initialTitle: '',
   synopsis: '',
@@ -24,8 +25,8 @@ const initialState = {
   slug: '',
   description: '',
   chapters: [],
+  parentChapterOption: [],
   editOption: '',
-  chapterEdit: {},
 };
 
 const storyEdit = (state = initialState, action = {}) => {
@@ -33,7 +34,7 @@ const storyEdit = (state = initialState, action = {}) => {
     case SAVE_ADV_EDIT_SELECTED:
       return {
         ...state,
-        id: action.adventureEdit.id,
+        idStory: action.adventureEdit.id,
         title: action.adventureEdit.title,
         synopsis: action.adventureEdit.synopsis,
         description: action.adventureEdit.description,
@@ -54,10 +55,9 @@ const storyEdit = (state = initialState, action = {}) => {
         ...state,
         chapters: action.chapters,
       };
-    case CLEAR_ADV_EDIT_CHAPTERS:
+    case CLEAR_STORY_EDIT:
       return {
-        ...state,
-        chapters: [],
+        ...initialState,
       };
 
     case SET_EDIT_OPTION:
@@ -66,10 +66,17 @@ const storyEdit = (state = initialState, action = {}) => {
         editOption: action.newValue,
       };
 
-    case SAVE_CHAPTER_EDIT_SELECTED:
+      // unuse
+      // case CLEAR_EDIT_OPTION:
+      //   return {
+      //     ...state,
+      //     editOption: '',
+      //   };
+
+    case SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS:
       return {
         ...state,
-        chapterEdit: action.chapterEdit,
+        parentChapterOption: action.parentChapterOption,
       };
 
     default: return state;

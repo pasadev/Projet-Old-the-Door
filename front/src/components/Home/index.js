@@ -34,41 +34,43 @@ const Home = ({
                 Bienvenue sur O'ld the door
               </Typist>
             </h1>
-            {sessionStorage.getItem('isLogged') !== 'true' && (
-            <Typist
-              cursor={{ show: false }}
-              avgTypingDelay={5}
-            >
-              <pre className="asciiart">
-                ___________<br />
-                |  __  __  |<br />
-                | |  ||  | |<br />
-                | |  ||  | |<br />
-                | |__||__| |<br />
-                |  __  __()|<br />
-                | |  ||  | |<br />
-                | |  ||  | |<br />
-                | |  ||  | |<br />
-                | |__||__| |<br />
-                |__________|<br />
-              </pre>
-            </Typist>
-            )}
-            {sessionStorage.getItem('isLogged') === 'true' && (
-              <pre className="asciiart">
-                ___________<br />
-                |  __  __  |<br />
-                | |  ||  | |<br />
-                | |  ||  | |<br />
-                | |__||__| |<br />
-                |  __  __()|<br />
-                | |  ||  | |<br />
-                | |  ||  | |<br />
-                | |  ||  | |<br />
-                | |__||__| |<br />
-                |__________|<br />
-              </pre>
-            )}
+            <div className="ascii-container">
+              {sessionStorage.getItem('isLogged') !== 'true' && (
+                <Typist
+                  cursor={{ show: false }}
+                  avgTypingDelay={5}
+                >
+                  <pre className="asciiart">
+                    ___________<br />
+                    |  __  __  |<br />
+                    | |  ||  | |<br />
+                    | |  ||  | |<br />
+                    | |__||__| |<br />
+                    |  __  __()|<br />
+                    | |  ||  | |<br />
+                    | |  ||  | |<br />
+                    | |  ||  | |<br />
+                    | |__||__| |<br />
+                    |__________|<br />
+                  </pre>
+                </Typist>
+              )}
+              {sessionStorage.getItem('isLogged') === 'true' && (
+                <pre className="asciiart">
+                  ___________<br />
+                  |  __  __  |<br />
+                  | |  ||  | |<br />
+                  | |  ||  | |<br />
+                  | |__||__| |<br />
+                  |  __  __()|<br />
+                  | |  ||  | |<br />
+                  | |  ||  | |<br />
+                  | |  ||  | |<br />
+                  | |__||__| |<br />
+                  |__________|<br />
+                </pre>
+              )}
+            </div>
 
             <p className="presentation-description">
               O'ld the door est un nouveau concept d’escape game se basant sur de l’ancien.

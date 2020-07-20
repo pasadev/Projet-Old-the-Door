@@ -53,7 +53,7 @@ const Profil = ({
       </h1>
       <div className="profil-infos">
         <h2 className="profil-littletitle">Mes informations:</h2> <br />
-        <div className ="profil-user">
+        <div className="profil-user">
           nom: {parseUserInfo.lastname}<br />
           prenom: {parseUserInfo.firstname}<br />
           mail: {parseUserInfo.email}<br />

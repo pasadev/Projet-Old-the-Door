@@ -15,6 +15,10 @@ const Adventure = ({
   redirectOff,
   adventureTimer,
   clearAdventureTimer,
+  activateStory,
+  desactivateStory,
+  deleteStory,
+  active,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -24,21 +28,28 @@ const Adventure = ({
     displayLoader();
   }, []);
 
+  // Average time calculation
+  const avgHours = Math.floor(adventureTimer.average / 3600);
+  const avgMinutes = Math.floor((adventureTimer.average - (avgHours * 3600)) / 60);
+  const avgSeconds = adventureTimer.average - ((avgHours * 3600) + (avgMinutes * 60));
+  // Best time calculation
+  const bestHours = Math.floor(adventureTimer.best / 3600);
+  const bestMinutes = Math.floor((adventureTimer.best - (bestHours * 3600)) / 60);
+  const bestSeconds = adventureTimer.best - ((bestHours * 3600) + (bestMinutes * 60));
+
   return (
     <>
       {loading && <Loader />}
       {!loading && (
         <main className="adventure">
-          <p>Best Time: {adventureTimer.best}sec</p>
-          <p>average Time: {adventureTimer.average}sec</p>
-          <h1 className="adventure-title main-title">
+          <h1 className={active ? 'adventure-title main-title' : 'adventure-title main-title unactive-storyTitle'}>
             <Typist
               cursor={{ hideWhenDone: true }}
             >
               {adventureSelected.title}
             </Typist>
           </h1>
-          <div className="adventure-authorAndDate">
+          <div className="adventure-metas">
             <span className="adventure-author">
               {adventureSelected.author.username}
             </span>
@@ -47,21 +58,49 @@ const Adventure = ({
                 {adventureSelected.createdAt}
               </Moment>
             </time>
+            {adventureTimer.best && adventureTimer.average && (
+            <>
+              <div className="adventure-partyTime">
+                <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
+                <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
+              </div>
+            </>
+            )}
           </div>
           <p className="adventure-description">
             {adventureSelected.description}
           </p>
           <div className="adventure-links">
             {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
-              : <Link to="#">Il n'y a pas de premier chapitre</Link>}
+              : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore jouable</span></Link>}
 
             <Link
               to={`/aventures/${slug}/edition`}
             >
               <span className="adventure-link">Edition</span>
             </Link>
-            <span className="adventure-link publish-link">Publier</span>
-            <span className="adventure-link delete-link">Supprimer</span>
+            {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
+            {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+            <span
+              className="adventure-link delete-link"
+              id="delete-button"
+              onClick={() => {
+                document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                document.getElementById('delete-button').classList.toggle('active-delete');
+              }}
+            >Supprimer
+            </span>
+            <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
+              <Link to="/profil"><span className="adventure-link" onClick={deleteStory}>Oui</span></Link>
+              <span
+                className="adventure-link"
+                onClick={() => {
+                  document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                  document.getElementById('delete-button').classList.toggle('active-delete');
+                }}
+              >Non
+              </span>
+            </span>
           </div>
         </main>
       )}
@@ -96,6 +135,10 @@ Adventure.propTypes = {
     ]).isRequired,
   }).isRequired,
   clearAdventureTimer: PropTypes.func.isRequired,
+  activateStory: PropTypes.func.isRequired,
+  desactivateStory: PropTypes.func.isRequired,
+  deleteStory: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
 };
 
 export default Adventure;

@@ -254,6 +254,57 @@ class StoryController extends AbstractController
     }
 
     /**
+     * Active or unactive a story, depending of the get parameter
+     * @Route("/api/v0/stories/{id}/active", name="api_v0_stories_active", methods={"PUT"}, requirements={"id":"\d+"})
+     * 
+     * @param Story $story
+     * @return void
+     */
+    public function active(Story $story, Request $request, ObjectNormalizer $normalizer)
+    {
+        //Verify if we have a set parameter
+        if ($request->query->get('set'))
+        {
+            //If set is at true
+            if ($request->query->get('set') === "true")
+            {
+                $story->setActive(1);
+            }
+            //If set is false
+            elseif($request->query->get('set') === "false")
+            {
+                $story->setActive(0);
+            }
+            //If set has another value
+            else 
+            {
+                //We send back a message with a 400 error
+                return $this->json(
+                ['message' => 'Set parameter only accepts true or false has a value',],
+                404
+                );
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            //Serialize the data
+            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+            $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
+
+            //And return the story with the new active status
+            return $this->json($normalizedStory, 200);
+        }
+        else{
+            //We send back a message with a 400 error
+            return $this->json(
+                ['message' => 'Missing set parameter in the url',],
+                404
+            );
+        }
+
+    }
+
+    /**
      * Delete one story with the id parameter
      * 
      * @Route("/api/v0/stories/{id}", name="api_v0_stories_delete", methods={"DELETE"}, requirements={"id":"\d+"})
