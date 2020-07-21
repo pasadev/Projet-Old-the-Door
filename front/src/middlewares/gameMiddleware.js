@@ -86,11 +86,17 @@ const gameMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
-    case SAVE_PARTY_TIME:
+    case SAVE_PARTY_TIME: {
+      const {
+        apiToken,
+      } = store.getState().user.user;
       axios.post(`${baseURL}/api/v0/parties`, {
         time: action.endTime,
         player: action.player,
         forStory: action.forStory,
+      },
+      {
+        headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then((response) => {
           console.log(response);
@@ -107,6 +113,7 @@ const gameMiddleware = (store) => (next) => (action) => {
 
       next(action);
       break;
+    }
 
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)

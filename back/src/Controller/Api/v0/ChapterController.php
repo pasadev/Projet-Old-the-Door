@@ -158,7 +158,10 @@ class ChapterController extends AbstractController
      * @return Chapter
      */
     public function add(Request $request, ObjectNormalizer $normalizer, StoryRepository $storyRepository)
-    {       
+    {
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         //Create an empty chapter
         $chapter = new Chapter();
 
@@ -257,6 +260,9 @@ class ChapterController extends AbstractController
      */
     public function edit(Chapter $chapter, Request $request, ObjectNormalizer $normalizer)
     {
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         //Create the associating form to send request data in the chapter in parameter
         //With the csrf option desactivated as we are on an API
         $form = $this->createForm(ChapterType::class, $chapter, ['csrf_protection' => false]); 
@@ -326,6 +332,8 @@ class ChapterController extends AbstractController
      */
     public function delete(Chapter $chapter)
     {
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         //Get back the manager
         $em = $this->getDoctrine()->getManager();

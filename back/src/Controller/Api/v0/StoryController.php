@@ -142,6 +142,8 @@ class StoryController extends AbstractController
      */
     public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository, UserRepository $userRepository)
     {
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         //Create an empty story
         $story = new Story();
@@ -227,6 +229,9 @@ class StoryController extends AbstractController
     public function edit(Story $story, Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository)
     {
 
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         //Create the associating form to send request data in the story in parameter
         //With the csrf option desactivated as we are on an API
         $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);
@@ -287,6 +292,10 @@ class StoryController extends AbstractController
      */
     public function active(Story $story, Request $request, ObjectNormalizer $normalizer)
     {
+
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         //Verify if we have a set parameter
         if ($request->query->get('set'))
         {
@@ -336,6 +345,8 @@ class StoryController extends AbstractController
      */
     public function delete(Story $story)
     {
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         //Get back the manager
         $em = $this->getDoctrine()->getManager();
