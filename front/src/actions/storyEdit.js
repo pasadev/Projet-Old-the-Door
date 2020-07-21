@@ -3,12 +3,22 @@ export const FETCH_ADV_EDIT_SELECTED = 'FETCH_ADV_EDIT_SELECTED';
 export const SAVE_ADV_EDIT_SELECTED = 'SAVE_ADV_EDIT_SELECTED';
 export const UPDATE_ADVENTURE_EDIT_FIELD = 'UPDATE_ADVENTURE_EDIT_FIELD';
 export const SUBMIT_ADV_EDIT_FORM = 'SUBMIT_ADV_EDIT_FORM';
+export const SUBMIT_NEW_CHAPTER_FORM = 'SUBMIT_NEW_CHAPTER_FORM';
+export const SUBMIT_CHAPTER_EDIT_FORM = 'SUBMIT_CHAPTER_EDIT_FORM';
 export const FETCH_ADV_EDIT_CHAPTERS = 'FETCH_ADV_EDIT_CHAPTERS';
 export const SAVE_ADV_EDIT_CHAPTERS = 'SAVE_ADV_EDIT_CHAPTERS';
-export const CLEAR_ADV_EDIT_CHAPTERS = 'CLEAR_ADV_EDIT_CHAPTERS';
+export const CLEAR_STORY_EDIT = 'CLEAR_STORY_EDIT';
 export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
 export const FETCH_CHAPTER_EDIT_SELECTED = 'FETCH_CHAPTER_EDIT_SELECTED';
 export const SAVE_CHAPTER_EDIT_SELECTED = 'SAVE_CHAPTER_EDIT_SELECTED';
+export const SAVE_CHAPTER_WHITOUT_PARENT = 'SAVE_CHAPTER_WHITOUT_PARENT';
+export const UPDATE_CHAPTER_EDIT_FIELD = 'UPDATE_CHAPTER_EDIT_FIELD';
+export const CLEAR_CHAPTER_EDIT = 'CLEAR_CHAPTER_EDIT';
+// Unuse export const CLEAR_EDIT_OPTION = 'CLEAR_EDIT_OPTION';
+export const FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS';
+export const SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS';
+export const SET_PARENT_CHAPTER_CHOICE = 'SET_PARENT_CHAPTER_CHOICE';
+export const SET_ERROR_KEY_LOCK_TRUE = 'SET_ERROR_KEY_LOCK_TRUE';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -27,12 +37,26 @@ export const updateAdventureEditField = (identifier, newValue) => ({
   newValue,
 });
 
-export const submitAdvEditForm = (title, synopsis, description, id) => ({
+export const updateChapterEditField = (identifier, newValue) => ({
+  type: UPDATE_CHAPTER_EDIT_FIELD,
+  identifier,
+  newValue,
+});
+
+export const submitAdvEditForm = (title, synopsis, description, idStory) => ({
   type: SUBMIT_ADV_EDIT_FORM,
   title,
   synopsis,
   description,
-  id,
+  idStory,
+});
+
+export const submitNewChapterForm = () => ({
+  type: SUBMIT_NEW_CHAPTER_FORM,
+});
+
+export const submitChapterEditForm = () => ({
+  type: SUBMIT_CHAPTER_EDIT_FORM,
 });
 
 export const fetchAdvEditChapters = () => ({
@@ -44,8 +68,8 @@ export const saveAdvEditChapters = (chapters) => ({
   chapters,
 });
 
-export const clearAdvEditChapters = () => ({
-  type: CLEAR_ADV_EDIT_CHAPTERS,
+export const clearStoryEdit = () => ({
+  type: CLEAR_STORY_EDIT,
 });
 
 export const setEditOption = (newValue) => ({
@@ -61,4 +85,37 @@ export const fetchChapterEditSelected = (id) => ({
 export const saveChapterEditSelected = (chapterEdit) => ({
   type: SAVE_CHAPTER_EDIT_SELECTED,
   chapterEdit,
+});
+
+// use if a chapter selected doesn't have a parentChapter
+export const saveChapterWhitoutParent = (chapterEdit) => ({
+  type: SAVE_CHAPTER_WHITOUT_PARENT,
+  chapterEdit,
+});
+
+export const clearChapterEdit = () => ({
+  type: CLEAR_CHAPTER_EDIT,
+});
+
+// unuse
+// export const clearEditOption = () => ({
+//   type: CLEAR_EDIT_OPTION,
+// });
+
+export const fetchParentChapterPossibleOptions = () => ({
+  type: FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,
+});
+
+export const saveParentChapterPossibleOptions = (parentChapterOption) => ({
+  type: SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
+  parentChapterOption,
+});
+
+export const setParentChapterChoice = (parentChapterChoice) => ({
+  type: SET_PARENT_CHAPTER_CHOICE,
+  parentChapterChoice,
+});
+
+export const setErrorKeyLockTrue = () => ({
+  type: SET_ERROR_KEY_LOCK_TRUE,
 });

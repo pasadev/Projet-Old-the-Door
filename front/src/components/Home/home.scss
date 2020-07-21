@@ -14,10 +14,17 @@
         color: $noticeColor;
       }
     }
-    .asciiart {
-      white-space: pre;
-      width: fit-content;
-      margin: 0 auto 1em;
+    .ascii-container{
+
+      width: 6em;
+      height: 11em;
+      margin: 0px auto 1em;
+
+      .asciiart {
+        white-space: pre;
+        width: fit-content;
+        margin: 0 auto 1em;
+      }
     }
   }
   
