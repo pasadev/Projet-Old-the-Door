@@ -8,9 +8,18 @@
     flex-direction: column;
 
     .storyCreate-form-button {
-      border: none;
-      font-family: $family;
-      margin-top: 0.5em;
+    border: 1px dashed #6BE145;
+    color: #6BE145;
+    padding: 1em 2em;
+    background-color:#1D1E22;
+    margin-top: 2em;
+    font-weight: bold;
+    border-radius: 2px;
+
+        &:hover{
+      background-color:#6BE145;
+      color: #1D1E22;
+      }
     }
   }
 }

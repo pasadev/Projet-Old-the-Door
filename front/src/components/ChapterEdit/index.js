@@ -5,6 +5,8 @@ import Field from 'src/components/Field';
 import FieldArea from 'src/components/FieldArea';
 import PropTypes from 'prop-types';
 
+import './chapterEdit.scss';
+
 const ChapterEdit = ({
   chapterEdit,
   id,
@@ -137,7 +139,7 @@ const ChapterEdit = ({
               La clé et/ou la serrure ne se trouve pas dans le contenu comme prévu.
             </div>
           )}
-          <button type="submit">Enregistrer les modifications du chapitre</button>
+          <button type="submit" className="chapterEdit-Button">Enregistrer les modifications du chapitre</button>
         </form>
       )}
       {editOption === 'Nouveau Chapitre' && (
@@ -216,7 +218,7 @@ const ChapterEdit = ({
               La clé et/ou la serrure ne se trouve pas dans le contenu comme prévu.
             </div>
           )}
-          <button type="submit">Enregistrer le nouveau chapitre</button>
+          <button type="submit" className="chapterEdit-Button">Enregistrer le nouveau chapitre</button>
         </form>
       )}
     </>

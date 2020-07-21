@@ -6,6 +6,7 @@ import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit/index.js';
 import ChapterEdit from 'src/containers/ChapterEdit';
 import './storyEdit.scss';
+import 'src/components/ChapterEdit/chapterEdit.scss';
 
 const StoryEdit = ({
   storyEdit,
@@ -103,7 +104,7 @@ const StoryEdit = ({
                   onSubmit={handleAdvEditSubmit}
                 >
                   <AdventureEdit />
-                  <button type="submit">Enregistrer les modifications sur l'aventure</button>
+                  <button type="submit" className="storyEdit-Button">Enregistrer les modifications sur l'aventure</button>
                 </form>
               )}
 
