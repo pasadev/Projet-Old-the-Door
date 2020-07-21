@@ -21,11 +21,12 @@ const ChapterEdit = ({
   setParentChapterChoice,
   setErrorKeyLockTrue,
   errorKeyLock,
+  checkWordInContent,
 }) => {
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((content.includes(keyword)) && (content.includes(lockword))) {
+    if ((checkWordInContent(content, keyword)) && (checkWordInContent(content, lockword))) {
       submitChapterEditForm();
     }
     else {
@@ -36,7 +37,7 @@ const ChapterEdit = ({
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((content.includes(keyword)) && (content.includes(lockword))) {
+    if ((checkWordInContent(content, keyword)) && (checkWordInContent(content, lockword))) {
       submitNewChapterForm();
     }
     else {
@@ -223,6 +224,7 @@ const ChapterEdit = ({
 };
 
 ChapterEdit.propTypes = {
+  checkWordInContent: PropTypes.func.isRequired,
   errorKeyLock: PropTypes.bool,
   setErrorKeyLockTrue: PropTypes.func.isRequired,
   setParentChapterChoice: PropTypes.func.isRequired,
