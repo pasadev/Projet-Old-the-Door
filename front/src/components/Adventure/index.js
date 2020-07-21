@@ -19,6 +19,7 @@ const Adventure = ({
   desactivateStory,
   deleteStory,
   active,
+  userId,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -74,7 +75,8 @@ const Adventure = ({
           <div className="adventure-links">
             {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
               : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore jouable</span></Link>}
-
+            {console.log(adventureSelected.author.id)}
+            {console.log(userId)}
             <Link
               to={`/aventures/${slug}/edition`}
             >
@@ -124,6 +126,7 @@ Adventure.propTypes = {
     description: PropTypes.string.isRequired,
     author: PropTypes.shape({
       username: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired,
     createdAt: PropTypes.string.isRequired,
     firstChapter: PropTypes.object,
@@ -148,6 +151,7 @@ Adventure.propTypes = {
   desactivateStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
   active: PropTypes.bool.isRequired,
+  userId: PropTypes.number.isRequired,
 };
 
 export default Adventure;
