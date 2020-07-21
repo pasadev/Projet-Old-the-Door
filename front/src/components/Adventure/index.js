@@ -80,8 +80,12 @@ const Adventure = ({
             >
               <span className="adventure-link">Edition</span>
             </Link>
-            {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
-            {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+            {adventureSelected.firstChapter && (
+              <>
+                {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
+                {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+              </>
+            )}
             <span
               className="adventure-link delete-link"
               id="delete-button"
