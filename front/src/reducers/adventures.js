@@ -24,6 +24,7 @@ const initialState = {
   adventureTimer: {
     average: '',
     best: '',
+    number: '',
   },
 
 };
@@ -66,6 +67,7 @@ const adventures = (state = initialState, action = {}) => {
         adventureTimer: {
           average: '',
           best: '',
+          number: '',
         },
 
       };
