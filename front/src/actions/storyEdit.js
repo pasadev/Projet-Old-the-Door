@@ -11,12 +11,14 @@ export const CLEAR_STORY_EDIT = 'CLEAR_STORY_EDIT';
 export const SET_EDIT_OPTION = 'SET_EDIT_OPTION';
 export const FETCH_CHAPTER_EDIT_SELECTED = 'FETCH_CHAPTER_EDIT_SELECTED';
 export const SAVE_CHAPTER_EDIT_SELECTED = 'SAVE_CHAPTER_EDIT_SELECTED';
+export const SAVE_CHAPTER_WHITOUT_PARENT = 'SAVE_CHAPTER_WHITOUT_PARENT';
 export const UPDATE_CHAPTER_EDIT_FIELD = 'UPDATE_CHAPTER_EDIT_FIELD';
 export const CLEAR_CHAPTER_EDIT = 'CLEAR_CHAPTER_EDIT';
 // Unuse export const CLEAR_EDIT_OPTION = 'CLEAR_EDIT_OPTION';
 export const FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS';
 export const SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS';
 export const SET_PARENT_CHAPTER_CHOICE = 'SET_PARENT_CHAPTER_CHOICE';
+export const SET_ERROR_KEY_LOCK_TRUE = 'SET_ERROR_KEY_LOCK_TRUE';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -85,6 +87,12 @@ export const saveChapterEditSelected = (chapterEdit) => ({
   chapterEdit,
 });
 
+// use if a chapter selected doesn't have a parentChapter
+export const saveChapterWhitoutParent = (chapterEdit) => ({
+  type: SAVE_CHAPTER_WHITOUT_PARENT,
+  chapterEdit,
+});
+
 export const clearChapterEdit = () => ({
   type: CLEAR_CHAPTER_EDIT,
 });
@@ -106,4 +114,8 @@ export const saveParentChapterPossibleOptions = (parentChapterOption) => ({
 export const setParentChapterChoice = (parentChapterChoice) => ({
   type: SET_PARENT_CHAPTER_CHOICE,
   parentChapterChoice,
+});
+
+export const setErrorKeyLockTrue = () => ({
+  type: SET_ERROR_KEY_LOCK_TRUE,
 });
