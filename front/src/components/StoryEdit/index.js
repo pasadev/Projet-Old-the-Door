@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams, Redirect } from 'react-router-dom';
-import { slugifyTitle } from 'src/utils';
 import PropTypes from 'prop-types';
 import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
@@ -56,7 +55,7 @@ const StoryEdit = ({
 
   return (
     <>
-      {redirect && <Redirect to={`/aventures/${slugifyTitle(storyEdit.title)}`} />}
+      {redirect && <Redirect to={`/aventures/${storyEdit.slug}`} />}
       {!redirect && (
         <>
           {loading && <Loader />}
@@ -136,6 +135,7 @@ StoryEdit.propTypes = {
       PropTypes.number,
       PropTypes.string,
     ]).isRequired,
+    slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     synopsis: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
