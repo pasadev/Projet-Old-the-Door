@@ -17,6 +17,7 @@ const FieldRegisterPassword = ({
   return (
     <div className="fieldRegister">
       <input
+        autoComplete="off"
         className="input"
         id={name}
         placeholder={placeholder}
