@@ -1,7 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
-import { slugifyTitle } from 'src/utils';
 import { Link } from 'react-router-dom';
 
 import './adventureSmall.scss';
@@ -11,6 +10,7 @@ const AdventureSmall = ({
   synopsis,
   author,
   createdAt,
+  slug,
 }) => (
   <div className="adventureSmall">
     <h3 className="adventureSmall-title">
@@ -31,7 +31,7 @@ const AdventureSmall = ({
     </p>
     <div className="adventureSmall-link">
       <Link
-        to={`/aventures/${slugifyTitle(title)}`}
+        to={`/aventures/${slug}`}
       >
         Ouvrir le fichier
       </Link>
@@ -40,6 +40,7 @@ const AdventureSmall = ({
 );
 
 AdventureSmall.propTypes = {
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   synopsis: PropTypes.string.isRequired,
   author: PropTypes.shape({
