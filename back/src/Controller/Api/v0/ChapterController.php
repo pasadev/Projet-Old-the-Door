@@ -184,10 +184,11 @@ class ChapterController extends AbstractController
             //Get values
             $lockWord = $chapter->getLockword();
             $keyWord = $chapter->getKeyword();
-            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",$chapter->getContent());
+            // Get the content, lower it, and split it into an array
+            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",strtolower($chapter->getContent()));
 
             // Check for presence
-            if (!in_array($keyWord, $chapterContentArray) || !in_array($lockWord, $chapterContentArray))
+            if (!in_array(strtolower($keyWord), $chapterContentArray) || !in_array(strtolower($lockWord), $chapterContentArray))
             {
                 // If one of the word is not present in the content
                 // Return an error
@@ -279,10 +280,11 @@ class ChapterController extends AbstractController
             //Get values
             $lockWord = $chapter->getLockword();
             $keyWord = $chapter->getKeyword();
-            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",$chapter->getContent());
+            // Get the content, lower it, and split it into an array
+            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",strtolower($chapter->getContent()));
 
             // Check for presence
-            if (!in_array($keyWord, $chapterContentArray) || !in_array($lockWord, $chapterContentArray))
+            if (!in_array(strtolower($keyWord), $chapterContentArray) || !in_array(strtolower($lockWord), $chapterContentArray))
             {
                 // If one of the word is not present in the content
                 // Return an error
