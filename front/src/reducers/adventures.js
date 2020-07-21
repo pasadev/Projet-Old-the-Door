@@ -18,6 +18,7 @@ const initialState = {
     author: {
       username: '',
     },
+    active: false,
   },
   adventuresActiveNumber: 0,
 
