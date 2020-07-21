@@ -10,11 +10,14 @@ export const scrollToTop = () => {
 // I guess I gotta put my function in here?
 
 export const checkAnswer = (keyGuess, lockGuess, keyAnswer, lockAnswer) => {
-  if (keyGuess.trim().toLowerCase() === keyAnswer.trim().toLowerCase()
-  && lockGuess.trim().toLowerCase() === lockAnswer.trim().toLowerCase()) {
-    return true;
+  if ((keyGuess !== '') && (lockGuess !== '')) {
+    if (keyGuess.trim().toLowerCase() === keyAnswer.trim().toLowerCase()
+    && lockGuess.trim().toLowerCase() === lockAnswer.trim().toLowerCase()) {
+      return true;
+    }
+    return false;
   }
-  return false;
+  return 'no_value';
 };
 
 export const doSomething = () => {

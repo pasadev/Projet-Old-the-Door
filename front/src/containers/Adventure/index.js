@@ -6,6 +6,9 @@ import {
   fetchAdventureTimer,
   saveAdventureTimer,
   clearAdventureTimer,
+  activateStory,
+  desactivateStory,
+  deleteStory,
 } from 'src/actions/adventures';
 import { displayLoader, redirectOff } from 'src/actions/utils';
 
@@ -17,6 +20,8 @@ const mapStateToProps = (state) => ({
   loading: state.utils.loading,
   adventureSelected: state.adventures.adventureSelected,
   adventureTimer: state.adventures.adventureTimer,
+  redirect: state.utils.redirect,
+  active: state.adventures.adventureSelected.active,
 });
 
 // === mapDispatchToProps
@@ -41,6 +46,15 @@ const mapDispatchToProps = (dispatch) => ({
   },
   clearAdventureTimer: () => {
     dispatch(clearAdventureTimer());
+  },
+  activateStory: () => {
+    dispatch(activateStory());
+  },
+  desactivateStory: () => {
+    dispatch(desactivateStory());
+  },
+  deleteStory: () => {
+    dispatch(deleteStory());
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Adventure);

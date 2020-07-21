@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import : local
@@ -25,7 +25,7 @@ import Profil from 'src/containers/Profil';
 import './styles.scss';
 
 // == Components
-const App = ({ burgerMenuOpen }) => (
+const App = ({ burgerMenuOpen, isLogged }) => (
   <div className="app">
     <Header />
     {burgerMenuOpen && <Nav />}
@@ -41,15 +41,19 @@ const App = ({ burgerMenuOpen }) => (
           <Register />
         </Route>
         <Route exact path="/aventures/creation">
+          {isLogged !== true && (<Redirect to="/connexion" />)}
           <StoryCreate />
         </Route>
         <Route exact path="/aventures/:slug/jouer">
+          {isLogged !== true && (<Redirect to="/connexion" />)}
           <GameScreen />
         </Route>
         <Route exact path="/aventures/:slug/edition">
+          {isLogged !== true && (<Redirect to="/connexion" />)}
           <StoryEdit />
         </Route>
         <Route exact path="/aventures/:slug">
+          {isLogged !== true && (<Redirect to="/connexion" />)}
           <Adventure />
         </Route>
         <Route exact path="/aventures">
@@ -72,6 +76,11 @@ const App = ({ burgerMenuOpen }) => (
 
 App.propTypes = {
   burgerMenuOpen: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
+};
+
+App.defaultProps = {
+  isLogged: null,
 };
 
 // == Export
