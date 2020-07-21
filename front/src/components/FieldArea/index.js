@@ -28,6 +28,7 @@ const FieldArea = ({
         {label}
       </label>
       <textarea
+        autoComplete="off"
         className="input"
         id={identifier}
         placeholder={placeholder}

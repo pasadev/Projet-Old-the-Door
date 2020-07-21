@@ -48,14 +48,14 @@ const StoryCreate = ({
               placeholder="synopsis"
               value={synopsis}
               changeField={updateField}
-              label="synopsis :"
+              label="synopsis : (50 charactères minimum)"
             />
             <FieldArea
               identifier="description"
               placeholder="description"
               value={description}
               changeField={updateField}
-              label="description :"
+              label="description : (50 charactères minimum)"
             />
             <button
               className="storyCreate-form-button"
