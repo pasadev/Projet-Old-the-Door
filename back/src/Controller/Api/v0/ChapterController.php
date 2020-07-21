@@ -5,6 +5,7 @@ namespace App\Controller\Api\v0;
 use App\Entity\Chapter;
 use App\Form\ChapterType;
 use App\Repository\ChapterRepository;
+use App\Repository\StoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -156,8 +157,8 @@ class ChapterController extends AbstractController
      *
      * @return Chapter
      */
-    public function add(Request $request, ObjectNormalizer $normalizer)
-    {
+    public function add(Request $request, ObjectNormalizer $normalizer, StoryRepository $storyRepository)
+    {       
         //Create an empty chapter
         $chapter = new Chapter();
 
@@ -177,12 +178,53 @@ class ChapterController extends AbstractController
         //Verify if the form is valid
         if ($form->isValid())
         {
+            /* ******************************* */
+            /* Lock and key verification start */
+
+            //Get values
+            $lockWord = $chapter->getLockword();
+            $keyWord = $chapter->getKeyword();
+            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",$chapter->getContent());
+
+            // Check for presence
+            if (!in_array($keyWord, $chapterContentArray) || !in_array($lockWord, $chapterContentArray))
+            {
+                // If one of the word is not present in the content
+                // Return an error
+                return $this->json(["message" => "keyWord and LockWord should be in the chapter Content"], 400);
+            }
+
+            /* Lock and key verification end */
+            /* ***************************** */
+            
             //Set a created date
             $chapter->setCreatedAt(new \DateTime());
 
             //If it is valid, we persist and flush
             $em = $this->getDoctrine()->getManager();
             $em->persist($chapter);
+
+            /* ******************************* */
+            /* FirstChapter verification start */            
+
+            // Register the story Id
+            $storyId = json_decode($request->getContent(), true)["forStory"];
+
+            // Fetch the story
+            $story = $storyRepository->find($storyId);
+            //Get all the chapters for this story
+            $chaptersForStory = $story->getHasChapters();
+
+            //If there is no chapter
+            if (count($chaptersForStory) === 0)
+            {
+                // Set this chapter has firstChapter for the story
+                $story->setFirstChapter($chapter);
+            }
+
+            /* FirstChapter verification end */
+            /* ***************************** */
+
             $em->flush();
 
 
@@ -230,6 +272,26 @@ class ChapterController extends AbstractController
         //Verify if the form is valide
         if ($form->isValid())
         {
+
+            /* ******************************* */
+            /* Lock and key verification start */
+
+            //Get values
+            $lockWord = $chapter->getLockword();
+            $keyWord = $chapter->getKeyword();
+            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",$chapter->getContent());
+
+            // Check for presence
+            if (!in_array($keyWord, $chapterContentArray) || !in_array($lockWord, $chapterContentArray))
+            {
+                // If one of the word is not present in the content
+                // Return an error
+                return $this->json(["message" => "keyWord and LockWord should be in the chapter Content"], 400);
+            }
+
+            /* Lock and key verification end */
+            /* ***************************** */
+
             //Set an updated date
             $chapter->setUpdatedAt(new \DateTime());
 
