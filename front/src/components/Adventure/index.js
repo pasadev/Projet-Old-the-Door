@@ -19,7 +19,7 @@ const Adventure = ({
   desactivateStory,
   deleteStory,
   active,
-  userId,
+  user,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -75,39 +75,41 @@ const Adventure = ({
           <div className="adventure-links">
             {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
               : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore jouable</span></Link>}
-            {console.log(adventureSelected.author.id)}
-            {console.log(userId)}
-            <Link
-              to={`/aventures/${slug}/edition`}
-            >
-              <span className="adventure-link">Edition</span>
-            </Link>
-            {adventureSelected.firstChapter && (
+            {user && adventureSelected.author.id === user.id && (
               <>
-                {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
-                {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+                <Link
+                  to={`/aventures/${slug}/edition`}
+                >
+                  <span className="adventure-link">Edition</span>
+                </Link>
+                {adventureSelected.firstChapter && (
+                  <>
+                    {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
+                    {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+                  </>
+                )}
+                <span
+                  className="adventure-link delete-link"
+                  id="delete-button"
+                  onClick={() => {
+                    document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                    document.getElementById('delete-button').classList.toggle('active-delete');
+                  }}
+                >Supprimer
+                </span>
+                <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
+                  <Link to="/profil"><span className="adventure-link" onClick={deleteStory}>Oui</span></Link>
+                  <span
+                    className="adventure-link"
+                    onClick={() => {
+                      document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                      document.getElementById('delete-button').classList.toggle('active-delete');
+                    }}
+                  >Non
+                  </span>
+                </span>
               </>
             )}
-            <span
-              className="adventure-link delete-link"
-              id="delete-button"
-              onClick={() => {
-                document.getElementById('delete-confirmation').classList.toggle('active-delete');
-                document.getElementById('delete-button').classList.toggle('active-delete');
-              }}
-            >Supprimer
-            </span>
-            <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
-              <Link to="/profil"><span className="adventure-link" onClick={deleteStory}>Oui</span></Link>
-              <span
-                className="adventure-link"
-                onClick={() => {
-                  document.getElementById('delete-confirmation').classList.toggle('active-delete');
-                  document.getElementById('delete-button').classList.toggle('active-delete');
-                }}
-              >Non
-              </span>
-            </span>
           </div>
         </main>
       )}
@@ -151,7 +153,13 @@ Adventure.propTypes = {
   desactivateStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
   active: PropTypes.bool.isRequired,
-  userId: PropTypes.number.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+  }),
+};
+
+Adventure.defaultProp = {
+  user: null,
 };
 
 export default Adventure;
