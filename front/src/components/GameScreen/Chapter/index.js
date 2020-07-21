@@ -16,17 +16,17 @@ const Chapter = ({
     <div className="gameScreen-content-text">
       <Typist
         cursor={{ show: false }}
-        avgTypingDelay={50}
+        avgTypingDelay={20}
       >
 
-        <Typist.Delay ms={previousChapters.length === 0 ? 8000 : 1000} />
+        <Typist.Delay ms={previousChapters.length === 0 ? 5000 : 500} />
         <h3 className="gameScreen-chapterTitle">{title}</h3>
       </Typist>
       <Typist
         cursor={{ show: false }}
-        avgTypingDelay={15}
+        avgTypingDelay={10}
       >
-        <Typist.Delay ms={previousChapters.length === 0 ? 8500 : 1500} />
+        <Typist.Delay ms={previousChapters.length === 0 ? 5500 : 1000} />
         {content}
       </Typist>
     </div>
