@@ -355,6 +355,8 @@ class StoryController extends AbstractController
         //Get parties for this stories
         $parties = $partyRepository->findBy(['forStory' => $id]);
 
+        $partyNumber = count($parties);
+
         //If we have parties
         if ($parties) {
 
@@ -395,6 +397,7 @@ class StoryController extends AbstractController
             return $this->json([
                 'best' => $bestTime,
                 'average' => $averageTime,
+                'number' => $partyNumber,
             ]);
         }
         //If we don't have parties

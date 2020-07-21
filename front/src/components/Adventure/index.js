@@ -63,6 +63,7 @@ const Adventure = ({
               <div className="adventure-partyTime">
                 <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
                 <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
+                <p>Parties jouées : {adventureTimer.number}</p>
               </div>
             </>
             )}
@@ -130,6 +131,10 @@ Adventure.propTypes = {
       PropTypes.number,
     ]).isRequired,
     average: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    number: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
     ]).isRequired,
