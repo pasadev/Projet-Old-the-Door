@@ -17,7 +17,7 @@ import {
   RESET_INITIAL_STATE,
 } from 'src/actions/gameScreen';
 
-export const initialState = {
+const initialState = {
   currentStory: {
     id: '',
     title: '',
@@ -180,7 +180,7 @@ const gameScreen = (state = initialState, action = {}) => {
       return {
         ...state,
 
-        ...action.initialState,
+        ...initialState,
 
       };
 

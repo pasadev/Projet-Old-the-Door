@@ -20,8 +20,6 @@ import {
   resetInitialState,
 } from 'src/actions/gameScreen';
 
-import { initialState } from 'src/reducers/gameScreen';
-
 import { displayLoader } from 'src/actions/utils';
 
 // === mapStateToProps
@@ -55,7 +53,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 
   resetInitialState: () => {
-    dispatch(resetInitialState(initialState));
+    dispatch(resetInitialState());
   },
 
   changeField: (newValue, name) => {
