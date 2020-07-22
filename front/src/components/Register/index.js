@@ -82,8 +82,10 @@ const Register = ({
                 value={emailRegister}
               />
             </label>
+            <div className="input-password">
             <label htmlFor="form-password-confirmation">
-              Mot de passe :
+              Mot de passe : 
+              <span className="form-password-rules">(taille minimum 8 caractere -> 1 majuscule, 1 chiffre, 1 caractere special)</span>             
               <FieldRegisterPassword
                 name="passwordFirst"
                 placeholder="password"
@@ -91,6 +93,8 @@ const Register = ({
                 value={passwordFirst}
               />
             </label>
+            </div>
+            <div className="input-password">
             <label htmlFor="form-password-confirmation">
               Confirmation du Mot de passe :
               <FieldRegisterPassword
@@ -100,6 +104,7 @@ const Register = ({
                 value={passwordSecond}
               />
             </label>
+            </div>
             {firstPassword === secondPassword && (
             <ButtonRegister />)}
           </form>

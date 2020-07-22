@@ -17,13 +17,16 @@ const initialState = {
     createdAt: '',
     author: {
       username: '',
+      id: 0,
     },
+    active: false,
   },
   adventuresActiveNumber: 0,
 
   adventureTimer: {
     average: '',
     best: '',
+    number: '',
   },
 
 };
@@ -66,6 +69,7 @@ const adventures = (state = initialState, action = {}) => {
         adventureTimer: {
           average: '',
           best: '',
+          number: '',
         },
 
       };

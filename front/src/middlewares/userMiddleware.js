@@ -43,8 +43,20 @@ const userMiddleware = (store) => (next) => (action) => {
     }
 
     case LOG_OUT: {
-      sessionStorage.removeItem('isLogged');
-      sessionStorage.removeItem('currentuser');
+      const { id } = store.getState().user.user;
+      axios.post(`${baseURL}/api/v0/logout`, {
+        id,
+      },
+      {
+        withCredentials: true,
+      })
+        .then(() => {
+          sessionStorage.removeItem('isLogged');
+          sessionStorage.removeItem('currentuser');
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
 
       next(action);
       break;

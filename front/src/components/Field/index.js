@@ -28,6 +28,7 @@ const Field = ({
         {label}
       </label>
       <input
+        autoComplete="off"
         className="input"
         id={identifier}
         placeholder={placeholder}

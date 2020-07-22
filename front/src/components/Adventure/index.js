@@ -19,6 +19,7 @@ const Adventure = ({
   desactivateStory,
   deleteStory,
   active,
+  user,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -63,6 +64,7 @@ const Adventure = ({
               <div className="adventure-partyTime">
                 <p>Meilleur temps: { bestHours > 0 && `${bestHours}h` }{ bestMinutes < 10 && 0 }{bestMinutes}m{ bestSeconds < 10 && 0 }{bestSeconds}s</p>
                 <p>Temps moyen: { avgHours > 0 && `${avgHours}h` }{ avgMinutes < 10 && 0 }{avgMinutes}m{ avgSeconds < 10 && 0 }{avgSeconds}s</p>
+                <p>Parties jouées : {adventureTimer.number}</p>
               </div>
             </>
             )}
@@ -73,34 +75,41 @@ const Adventure = ({
           <div className="adventure-links">
             {adventureSelected.firstChapter ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
               : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore jouable</span></Link>}
-
-            <Link
-              to={`/aventures/${slug}/edition`}
-            >
-              <span className="adventure-link">Edition</span>
-            </Link>
-            {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
-            {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
-            <span
-              className="adventure-link delete-link"
-              id="delete-button"
-              onClick={() => {
-                document.getElementById('delete-confirmation').classList.toggle('active-delete');
-                document.getElementById('delete-button').classList.toggle('active-delete');
-              }}
-            >Supprimer
-            </span>
-            <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
-              <Link to="/profil"><span className="adventure-link" onClick={deleteStory}>Oui</span></Link>
-              <span
-                className="adventure-link"
-                onClick={() => {
-                  document.getElementById('delete-confirmation').classList.toggle('active-delete');
-                  document.getElementById('delete-button').classList.toggle('active-delete');
-                }}
-              >Non
-              </span>
-            </span>
+            {user && adventureSelected.author.id === user.id && (
+              <>
+                <Link
+                  to={`/aventures/${slug}/edition`}
+                >
+                  <span className="adventure-link">Edition</span>
+                </Link>
+                {adventureSelected.firstChapter && (
+                  <>
+                    {!active && <span className="adventure-link" onClick={activateStory}>Publier</span>}
+                    {active && <span className="adventure-link" onClick={desactivateStory}>Dépublier</span>}
+                  </>
+                )}
+                <span
+                  className="adventure-link delete-link"
+                  id="delete-button"
+                  onClick={() => {
+                    document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                    document.getElementById('delete-button').classList.toggle('active-delete');
+                  }}
+                >Supprimer
+                </span>
+                <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
+                  <Link to="/profil"><span className="adventure-link" onClick={deleteStory}>Oui</span></Link>
+                  <span
+                    className="adventure-link"
+                    onClick={() => {
+                      document.getElementById('delete-confirmation').classList.toggle('active-delete');
+                      document.getElementById('delete-button').classList.toggle('active-delete');
+                    }}
+                  >Non
+                  </span>
+                </span>
+              </>
+            )}
           </div>
         </main>
       )}
@@ -119,6 +128,7 @@ Adventure.propTypes = {
     description: PropTypes.string.isRequired,
     author: PropTypes.shape({
       username: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired,
     createdAt: PropTypes.string.isRequired,
     firstChapter: PropTypes.object,
@@ -133,12 +143,23 @@ Adventure.propTypes = {
       PropTypes.string,
       PropTypes.number,
     ]).isRequired,
+    number: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
   }).isRequired,
   clearAdventureTimer: PropTypes.func.isRequired,
   activateStory: PropTypes.func.isRequired,
   desactivateStory: PropTypes.func.isRequired,
   deleteStory: PropTypes.func.isRequired,
   active: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+  }),
+};
+
+Adventure.defaultProps = {
+  user: '',
 };
 
 export default Adventure;

@@ -12,7 +12,6 @@ import {
 } from 'src/actions/adventures';
 import { displayLoader, redirectOff } from 'src/actions/utils';
 
-
 import Adventure from 'src/components/Adventure';
 
 // === mapStateToProps
@@ -22,6 +21,7 @@ const mapStateToProps = (state) => ({
   adventureTimer: state.adventures.adventureTimer,
   redirect: state.utils.redirect,
   active: state.adventures.adventureSelected.active,
+  user: state.user.user,
 });
 
 // === mapDispatchToProps

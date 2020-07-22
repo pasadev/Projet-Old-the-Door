@@ -105,8 +105,16 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
-    case ACTIVATE_STORY:
-      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=true`)
+    case ACTIVATE_STORY: {
+      const {
+        apiToken,
+      } = store.getState().user.user;
+      const { id } = store.getState().adventures.adventureSelected;
+      axios.put(`${baseURL}/api/v0/stories/${id}/active?set=true`, {
+      },
+      {
+        headers: { 'X-AUTH-TOKEN': apiToken },
+      })
         .then((response) => {
           // If we have a valid answer
           if (response.status === 200) {
@@ -119,9 +127,17 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
 
-    case DESACTIVATE_STORY:
-      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=false`)
+    case DESACTIVATE_STORY: {
+      const {
+        apiToken,
+      } = store.getState().user.user;
+      const { id } = store.getState().adventures.adventureSelected;
+      axios.put(`${baseURL}/api/v0/stories/${id}/active?set=false`, {
+      }, {
+        headers: { 'X-AUTH-TOKEN': apiToken },
+      })
         .then((response) => {
           // If we have a valid answer
           if (response.status === 200) {
@@ -134,9 +150,16 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
 
-    case DELETE_STORY:
-      axios.delete(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}`)
+    case DELETE_STORY: {
+      const {
+        apiToken,
+      } = store.getState().user.user;
+      const { id } = store.getState().adventures.adventureSelected;
+      axios.delete(`${baseURL}/api/v0/stories/${id}`, {
+        headers: { 'X-AUTH-TOKEN': apiToken },
+      })
         .then((response) => {
           // If we have a valid answer
           if (response.status === 204) {
@@ -148,7 +171,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
-
+    }
     default:
       next(action);
   }

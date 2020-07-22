@@ -20,6 +20,7 @@ const GameScreenField = ({
   return (
     <div className="gameScreen-form-field">
       <input
+        autoComplete="off"
         className="gameScreen-form-input"
         id={name}
         placeholder={placeholder}
