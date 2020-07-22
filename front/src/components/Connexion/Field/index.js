@@ -20,6 +20,7 @@ const Field = ({
   return (
     <div className="field">
       <input
+        autoComplete="off"
         className="input"
         id={name}
         placeholder={placeholder}

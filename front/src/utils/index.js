@@ -1,5 +1,3 @@
-import slugify from 'slugify';
-
 export const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -23,11 +21,6 @@ export const checkAnswer = (keyGuess, lockGuess, keyAnswer, lockAnswer) => {
 export const doSomething = () => {
 
 };
-
-// eslint-disable-next-line import/prefer-default-export
-export const slugifyTitle = (title) => (
-  slugify(title.replace('\'', '-'), { lower: true })
-);
 
 // http://damien-toscano.vpnuser.lan:8000
 // http://maxence-royer.vpnuser.lan:8000

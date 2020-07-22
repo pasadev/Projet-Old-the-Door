@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SUBMIT_STORY_CREATE_FORM } from 'src/actions/storyCreation';
+import { SUBMIT_STORY_CREATE_FORM, saveStoryCreateSlug } from 'src/actions/storyCreation';
 
 import { redirectOn } from 'src/actions/utils';
 
@@ -16,14 +16,17 @@ const storyCreationMiddleware = (store) => (next) => (action) => {
         description: action.description,
         active: 0,
         author: id,
-        // TODO put real author id and active to 0.
       })
-        .then(() => {
-          store.dispatch(redirectOn());
+        .then((response) => {
+          store.dispatch(saveStoryCreateSlug(response.data.slug));
         })
         .catch((error) => {
           console.warn(error);
+        })
+        .finally(() => {
+          store.dispatch(redirectOn());
         });
+
       next(action);
       break;
     }

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useParams, Redirect } from 'react-router-dom';
-import { slugifyTitle } from 'src/utils';
 import PropTypes from 'prop-types';
 import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit/index.js';
 import ChapterEdit from 'src/containers/ChapterEdit';
 import './storyEdit.scss';
+import 'src/components/ChapterEdit/chapterEdit.scss';
 
 const StoryEdit = ({
   storyEdit,
@@ -56,7 +56,7 @@ const StoryEdit = ({
 
   return (
     <>
-      {redirect && <Redirect to={`/aventures/${slugifyTitle(storyEdit.title)}`} />}
+      {redirect && <Redirect to={`/aventures/${storyEdit.slug}`} />}
       {!redirect && (
         <>
           {loading && <Loader />}
@@ -104,7 +104,7 @@ const StoryEdit = ({
                   onSubmit={handleAdvEditSubmit}
                 >
                   <AdventureEdit />
-                  <button type="submit">Enregistrer les modifications sur l'aventure</button>
+                  <button type="submit" className="storyEdit-Button">Enregistrer les modifications sur l'aventure</button>
                 </form>
               )}
 
@@ -117,7 +117,6 @@ const StoryEdit = ({
     </>
   );
 };
-// TODO clean state after submit
 
 StoryEdit.propTypes = {
   clearStoryEdit: PropTypes.func.isRequired,
@@ -137,6 +136,7 @@ StoryEdit.propTypes = {
       PropTypes.number,
       PropTypes.string,
     ]).isRequired,
+    slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     synopsis: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

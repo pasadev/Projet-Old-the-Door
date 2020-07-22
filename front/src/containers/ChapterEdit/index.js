@@ -5,6 +5,7 @@ import {
   submitNewChapterForm,
   submitChapterEditForm,
   setParentChapterChoice,
+  setErrorKeyLockTrue,
 } from 'src/actions/storyEdit';
 
 import ChapterEdit from 'src/components/ChapterEdit';
@@ -21,6 +22,7 @@ const mapStateToProps = (state) => ({
   chaperEditId: state.storyEdit.chaperEditId,
   chapterEdit: state.chapterEdit,
   parentChapterOption: state.storyEdit.parentChapterOption,
+  errorKeyLock: state.chapterEdit.errorKeyLock,
 });
 
 // === mapDispatchToProps
@@ -36,6 +38,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setParentChapterChoice: (parentChapterOption) => {
     dispatch(setParentChapterChoice(parentChapterOption));
+  },
+  setErrorKeyLockTrue: () => {
+    dispatch(setErrorKeyLockTrue());
   },
 });
 
