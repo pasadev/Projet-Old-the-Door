@@ -20,6 +20,7 @@ import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
 import Footer from 'src/containers/Footer';
 import Profil from 'src/containers/Profil';
+import Aside from 'src/containers/Aside';
 
 // == Import
 import './styles.scss';
@@ -33,6 +34,7 @@ const App = ({ burgerMenuOpen, isLogged }) => (
       <Switch>
         <Route exact path="/">
           <Home />
+          <Aside />
         </Route>
         <Route exact path="/connexion">
           <Connexion />
