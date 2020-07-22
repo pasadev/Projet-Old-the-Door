@@ -52,7 +52,6 @@ const Profil = ({
           prenom: {userInfo.firstname}<br />
           mail: {userInfo.email}<br />
           username: {userInfo.username}<br />
-          role: {userInfo.roles[0]} <br />
         </div>
         <h2 className="profil-littletitle">Mes Aventures:</h2><br />
         {createdAdventures.map((adventure) => (
