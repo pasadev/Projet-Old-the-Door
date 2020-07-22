@@ -14,7 +14,7 @@ const storyCreationMiddleware = (store) => (next) => (action) => {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,
-        active: 1,
+        active: 0,
         author: id,
       },
       {
