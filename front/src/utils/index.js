@@ -19,11 +19,13 @@ export const checkAnswer = (keyGuess, lockGuess, keyAnswer, lockAnswer) => {
 
 // Check if keyword and lockword are in the content
 export const checkWordInContent = (word, content) => {
+  const regex = /[,.;!?"'+*/']+/gi;
+
   // Content
-  const contentTrim = content.trim();
-  const contentLowerCase = contentTrim.toLowerCase();
-  const contentSplit = contentLowerCase.split(' ');
-  // .replace(,?/) etc ?
+  const contentLowerCase = content.toLowerCase();
+  const contentReplace = contentLowerCase.replace(regex, ' ');
+  const contentTrim = contentReplace.trim();
+  const contentSplit = contentTrim.split(' ');
 
   // Word
   const wordTrim = word.trim();
@@ -31,9 +33,8 @@ export const checkWordInContent = (word, content) => {
 
   // Check
   const checked = contentSplit.includes(wordLowerCase);
-  console.log(checked);
-  console.log(contentSplit);
-  console.log(wordLowerCase);
+
+  return checked;
 };
 
 // http://damien-toscano.vpnuser.lan:8000

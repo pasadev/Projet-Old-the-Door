@@ -5,6 +5,8 @@ import Field from 'src/components/Field';
 import FieldArea from 'src/components/FieldArea';
 import PropTypes from 'prop-types';
 
+import { checkWordInContent } from 'src/utils';
+
 import './chapterEdit.scss';
 
 const ChapterEdit = ({
@@ -23,12 +25,11 @@ const ChapterEdit = ({
   setParentChapterChoice,
   setErrorKeyLockTrue,
   errorKeyLock,
-  checkWordInContent,
 }) => {
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((checkWordInContent(keyword, content)) && (checkWordInContent(lockword, content))) {
+    if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
       submitChapterEditForm();
     }
     else {
@@ -39,7 +40,7 @@ const ChapterEdit = ({
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((checkWordInContent(keyword, content)) && (checkWordInContent(lockword, content))) {
+    if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
       submitNewChapterForm();
     }
     else {
@@ -226,7 +227,6 @@ const ChapterEdit = ({
 };
 
 ChapterEdit.propTypes = {
-  checkWordInContent: PropTypes.func.isRequired,
   errorKeyLock: PropTypes.bool,
   setErrorKeyLockTrue: PropTypes.func.isRequired,
   setParentChapterChoice: PropTypes.func.isRequired,
