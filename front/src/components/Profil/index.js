@@ -43,8 +43,7 @@ const Profil = ({
 
       </div>
       <h1 className="profil-title">
-          BIENVENUE {userInfo.username}
-        <
+        BIENVENUE {userInfo.username}
       </h1>
       <div className="profil-infos">
         <h2 className="profil-littletitle">Mes informations:</h2> <br />
