@@ -39,6 +39,7 @@ const App = ({ burgerMenuOpen, isLogged }) => (
         <Route exact path="/connexion">
           <Connexion />
         </Route>
+        {isLogged === true && (<Redirect to="/" />)}
         <Route exact path="/inscription">
           <Register />
         </Route>
