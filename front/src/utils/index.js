@@ -32,6 +32,8 @@ export const checkWordInContent = (word, content) => {
   // Check
   const checked = contentSplit.includes(wordLowerCase);
   console.log(checked);
+  console.log(contentSplit);
+  console.log(wordLowerCase);
 };
 
 // http://damien-toscano.vpnuser.lan:8000

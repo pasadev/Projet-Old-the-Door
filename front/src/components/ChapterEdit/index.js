@@ -28,7 +28,7 @@ const ChapterEdit = ({
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((checkWordInContent(content, keyword)) && (checkWordInContent(content, lockword))) {
+    if ((checkWordInContent(keyword, content)) && (checkWordInContent(lockword, content))) {
       submitChapterEditForm();
     }
     else {
@@ -39,7 +39,7 @@ const ChapterEdit = ({
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((checkWordInContent(content, keyword)) && (checkWordInContent(content, lockword))) {
+    if ((checkWordInContent(keyword, content)) && (checkWordInContent(lockword, content))) {
       submitNewChapterForm();
     }
     else {
