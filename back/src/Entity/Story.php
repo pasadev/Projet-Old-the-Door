@@ -102,6 +102,7 @@ class Story
      * @Assert\NotBlank(message="La description est obligatoire")
      * @Assert\Length(min=50)
      * @Groups("api_story_detail")
+     * @Groups("api_party_detail")
      */
     private $description;
 
