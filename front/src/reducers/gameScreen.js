@@ -14,9 +14,10 @@ import {
   APPLY_PENALTY,
   GIVE_HINT,
   BLOCK_FIELD,
+  RESET_INITIAL_STATE,
 } from 'src/actions/gameScreen';
 
-const initialState = {
+export const initialState = {
   currentStory: {
     id: '',
     title: '',
@@ -173,6 +174,14 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         showHint: action.randomHint,
+      };
+
+    case RESET_INITIAL_STATE:
+      return {
+        ...state,
+
+        ...action.initialState,
+
       };
 
     default: return state;

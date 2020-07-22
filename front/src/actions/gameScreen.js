@@ -21,6 +21,7 @@ export const SAVE_PARTY_TIME = 'SAVE_PARTY_TIME';
 export const TOGGLE_WRONG_ANSWER_MESSAGE = 'TOGGLE_WRONG_ANSWER_MESSAGE';
 export const APPLY_PENALTY = 'APPLY_PENALTY';
 export const GIVE_HINT = 'GIVE_HINT';
+export const RESET_INITIAL_STATE = 'RESET_INITIAL_STATE';
 
 // === action creators
 export const doSomething = (/* newValue */) => ({
@@ -128,4 +129,9 @@ export const applyPenalty = (penaltyTime) => ({
 export const giveHint = (randomHint) => ({
   type: GIVE_HINT,
   randomHint,
+});
+
+export const resetInitialState = (initialState) => ({
+  type: RESET_INITIAL_STATE,
+  initialState,
 });

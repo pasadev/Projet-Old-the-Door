@@ -17,7 +17,10 @@ import {
   applyPenalty,
   giveHint,
   blockField,
+  resetInitialState,
 } from 'src/actions/gameScreen';
+
+import { initialState } from 'src/reducers/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
 
@@ -50,6 +53,10 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
+
+  resetInitialState: () => {
+    dispatch(resetInitialState(initialState));
+  },
 
   changeField: (newValue, name) => {
     dispatch(updateAnswerField(newValue, name));
