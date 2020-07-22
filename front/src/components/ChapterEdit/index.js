@@ -5,6 +5,8 @@ import Field from 'src/components/Field';
 import FieldArea from 'src/components/FieldArea';
 import PropTypes from 'prop-types';
 
+import { checkWordInContent } from 'src/utils';
+
 import './chapterEdit.scss';
 
 const ChapterEdit = ({
@@ -27,7 +29,7 @@ const ChapterEdit = ({
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((content.includes(keyword)) && (content.includes(lockword))) {
+    if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
       submitChapterEditForm();
     }
     else {
@@ -38,7 +40,7 @@ const ChapterEdit = ({
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
     // Check if keyword and lockword are in the content
-    if ((content.includes(keyword)) && (content.includes(lockword))) {
+    if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
       submitNewChapterForm();
     }
     else {
@@ -114,7 +116,7 @@ const ChapterEdit = ({
               placeholder="Clé"
               value={keyword}
               changeField={updateField}
-              label="Clé :"
+              label="Un mot Clé :"
             />
             <Field
               className="chapterEdit-lock"
@@ -122,7 +124,7 @@ const ChapterEdit = ({
               placeholder="Serrure"
               value={lockword}
               changeField={updateField}
-              label="Serrure :"
+              label="Un mot Serrure :"
             />
             <Field
               className="chapterEdit-unlockText"
@@ -193,7 +195,7 @@ const ChapterEdit = ({
               placeholder="Clé"
               value={keyword}
               changeField={updateField}
-              label="Clé :"
+              label="Un mot Clé :"
             />
             <Field
               className="chapterEdit-lock"
@@ -201,7 +203,7 @@ const ChapterEdit = ({
               placeholder="Serrure"
               value={lockword}
               changeField={updateField}
-              label="Serrure :"
+              label="Un mot Serrure :"
             />
             <Field
               className="chapterEdit-unlockText"

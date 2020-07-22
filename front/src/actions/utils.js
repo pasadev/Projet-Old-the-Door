@@ -5,6 +5,7 @@ export const HIDE_LOADER = 'HIDE_LOADER';
 export const DISPLAY_LOADER = 'DISPLAY_LOADER';
 export const REDIRECT_ON = 'REDIRECT_ON';
 export const REDIRECT_OFF = 'REDIRECT_OFF';
+export const TOGGLE_ASIDE_OPEN = 'TOGGLE_ASIDE_OPEN';
 
 // === action creators
 // == Menu Burger
@@ -31,4 +32,8 @@ export const redirectOn = () => ({
 
 export const redirectOff = () => ({
   type: REDIRECT_OFF,
+});
+
+export const toggleAsideOpen = () => ({
+  type: TOGGLE_ASIDE_OPEN,
 });

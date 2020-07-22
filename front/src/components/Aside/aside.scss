@@ -1,0 +1,38 @@
+@import 'src/styles/vars';
+
+.aside {
+  position: fixed;
+  right: 0;
+  top: 6em;
+  color: $noticeColor;
+  display: flex;
+
+  .aside-icon {
+
+  }
+
+  .aside-content {
+    width: 70vw;
+    max-height: 80vh;
+    overflow: scroll;
+    border: double;
+    color: $darkColor;
+    background-color: rgba(250, 192, 59, 0.9);
+    padding: 0.2em;
+    display: flex;
+    flex-direction: column;
+
+    .aside-content-title {
+      font-weight: bold;
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .aside {
+    .aside-content {
+      width: 20vw;
+    }  
+  }
+}
