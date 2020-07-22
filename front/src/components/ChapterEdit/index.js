@@ -116,7 +116,7 @@ const ChapterEdit = ({
               placeholder="Clé"
               value={keyword}
               changeField={updateField}
-              label="Clé :"
+              label="Un mot Clé :"
             />
             <Field
               className="chapterEdit-lock"
@@ -124,7 +124,7 @@ const ChapterEdit = ({
               placeholder="Serrure"
               value={lockword}
               changeField={updateField}
-              label="Serrure :"
+              label="Un mot Serrure :"
             />
             <Field
               className="chapterEdit-unlockText"
@@ -195,7 +195,7 @@ const ChapterEdit = ({
               placeholder="Clé"
               value={keyword}
               changeField={updateField}
-              label="Clé :"
+              label="Un mot Clé :"
             />
             <Field
               className="chapterEdit-lock"
@@ -203,7 +203,7 @@ const ChapterEdit = ({
               placeholder="Serrure"
               value={lockword}
               changeField={updateField}
-              label="Serrure :"
+              label="Un mot Serrure :"
             />
             <Field
               className="chapterEdit-unlockText"
