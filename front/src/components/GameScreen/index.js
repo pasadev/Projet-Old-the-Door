@@ -111,7 +111,7 @@ const GameScreen = ({
 
             <form className="gameScreen-form" onSubmit={handleSubmit}>
               <div className="gameScreen-form-row" id="keyForm">
-                <label htmlFor="gameKey">Clé :</label>
+                <label className="gameScreen-label" htmlFor="gameKey">Clé:</label>
                 <GameScreenField
                   name="gameKey"
                   placeholder="Clé"
@@ -120,7 +120,7 @@ const GameScreen = ({
                 />
               </div>
               <div className="gameScreen-form-row" id="lockForm">
-                <label htmlFor="gameLock">Serrure :</label>
+                <label className="gameScreen-label" htmlFor="gameLock">Serrure:</label>
                 <GameScreenField
                   name="gameLock"
                   placeholder="Serrure"
