@@ -17,6 +17,7 @@ const initialState = {
     createdAt: '',
     author: {
       username: '',
+      id: 0,
     },
     active: false,
   },
