@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import : local
@@ -14,18 +14,18 @@ import Connexion from 'src/containers/Connexion';
 import Team from 'src/components/Team';
 import GameScreen from 'src/containers/GameScreen';
 import StoryCreate from 'src/containers/StoryCreate';
-import ChapterCreate from 'src/components/ChapterCreate';
+import StoryEdit from 'src/containers/StoryEdit';
 import Header from 'src/containers/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
 import Footer from 'src/containers/Footer';
-import Profil from 'src/components/Profil';
+import Profil from 'src/containers/Profil';
 
 // == Import
 import './styles.scss';
 
 // == Components
-const App = ({ burgerMenuOpen }) => (
+const App = ({ burgerMenuOpen, isLogged }) => (
   <div className="app">
     <Header />
     {burgerMenuOpen && <Nav />}
@@ -41,15 +41,19 @@ const App = ({ burgerMenuOpen }) => (
           <Register />
         </Route>
         <Route exact path="/aventures/creation">
+          {isLogged !== true && (<Redirect to="/connexion" />)}
           <StoryCreate />
         </Route>
         <Route exact path="/aventures/:slug/jouer">
+          {isLogged !== true && (<Redirect to="/connexion" />)}
           <GameScreen />
         </Route>
         <Route exact path="/aventures/:slug/edition">
-          <ChapterCreate />
+          {isLogged !== true && (<Redirect to="/connexion" />)}
+          <StoryEdit />
         </Route>
         <Route exact path="/aventures/:slug">
+          {isLogged !== true && (<Redirect to="/connexion" />)}
           <Adventure />
         </Route>
         <Route exact path="/aventures">
@@ -72,6 +76,11 @@ const App = ({ burgerMenuOpen }) => (
 
 App.propTypes = {
   burgerMenuOpen: PropTypes.bool.isRequired,
+  isLogged: PropTypes.bool,
+};
+
+App.defaultProps = {
+  isLogged: null,
 };
 
 // == Export

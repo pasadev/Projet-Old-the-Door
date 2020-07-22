@@ -9,6 +9,9 @@ export const updateCreationField = (identifier, newValue) => ({
   newValue,
 });
 
-export const sumbitStoryCreate = () => ({
+export const sumbitStoryCreate = (title, synopsis, description) => ({
   type: SUBMIT_STORY_CREATE_FORM,
+  title,
+  synopsis,
+  description,
 });

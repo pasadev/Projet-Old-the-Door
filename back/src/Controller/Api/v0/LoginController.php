@@ -5,6 +5,7 @@ namespace App\Controller\Api\v0;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
@@ -52,4 +53,6 @@ class LoginController extends AbstractController
                 'status_code' => 404,
             ], 404);
     }
+
+  
 }

@@ -1,23 +1,31 @@
+/* eslint-disable max-len */
 import React from 'react';
 import Typist from 'react-typist';
+import Damien from '../../assets/images/damien.png';
+import Tony from '../../assets/images/tony.png';
+import Jukka from '../../assets/images/jukka.png';
+import Hugo from '../../assets/images/hugo.png';
+import Maxence from '../../assets/images/maxence.png';
 
 import './team.scss';
 
 const Team = () => (
   <main className="team">
     <h1 className="team-title main-title">
-      <Typist>
+      <Typist
+        cursor={{ hideWhenDone: true }}
+      >
         Découvrez notre merveilleuse équipe
       </Typist>
     </h1>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
-        Damien
+        <img
+          src={Damien}
+          alt="damien ascii art"
+          className="ascii"
+        />
+
       </div>
       <div className="member-role">
         <span>Product Owner</span>
@@ -30,13 +38,12 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
-        Maxence
+        <img
+          src={Maxence}
+          alt="maxence ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Lead Développeur Back</span>
@@ -46,13 +53,12 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
-        Tony
+        <img
+          src={Tony}
+          alt="tony ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Lead Développeur Front</span>
@@ -63,13 +69,12 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
-        Hugo
+        <img
+          src={Hugo}
+          alt="hugo ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Git Master</span>
@@ -80,13 +85,12 @@ const Team = () => (
       </p>
     </div>
     <div className="member">
-      <img
-        className="member-picture"
-        src=""
-        alt=""
-      />
       <div className="member-name">
-        Jukka
+        <img
+          src={Jukka}
+          alt="jukka ascii art"
+          className="ascii"
+        />
       </div>
       <div className="member-role">
         <span>Scrum Master</span>

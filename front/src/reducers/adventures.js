@@ -3,12 +3,15 @@ import {
   SAVE_ADVENTURES_CATALOG,
   SAVE_ADVENTURE_SELECTED,
   SAVE_ADVENTURES_ACTIVE_NUMBER,
+  SAVE_ADVENTURE_TIMER,
+  CLEAR_ADVENTURE_TIMER,
 } from 'src/actions/adventures';
 
 const initialState = {
   adventuresHome: [],
   adventuresCatalog: [],
   adventureSelected: {
+    id: '',
     title: '',
     description: '',
     createdAt: '',
@@ -17,6 +20,12 @@ const initialState = {
     },
   },
   adventuresActiveNumber: 0,
+
+  adventureTimer: {
+    average: '',
+    best: '',
+  },
+
 };
 
 const adventures = (state = initialState, action = {}) => {
@@ -46,7 +55,20 @@ const adventures = (state = initialState, action = {}) => {
         ...state,
         adventuresActiveNumber: action.adventuresActiveNumber,
       };
+    case SAVE_ADVENTURE_TIMER:
+      return {
+        ...state,
+        adventureTimer: action.adventureTimer,
+      };
+    case CLEAR_ADVENTURE_TIMER:
+      return {
+        ...state,
+        adventureTimer: {
+          average: '',
+          best: '',
+        },
 
+      };
     default: return state;
   }
 };

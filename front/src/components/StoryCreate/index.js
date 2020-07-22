@@ -1,6 +1,9 @@
 import React from 'react';
-import Proptypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
+import { slugifyTitle } from 'src/utils';
+import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
+import FieldArea from 'src/components/FieldArea';
 import Typist from 'react-typist';
 import './storyCreate.scss';
 
@@ -10,85 +13,69 @@ const StoryCreate = ({
   description,
   updateField,
   sumbitStoryCreate,
-  // changeField,
+  redirect,
 }) => {
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
-    sumbitStoryCreate('sumbitStoryCreate');
+    sumbitStoryCreate(title, synopsis, description);
   };
 
-  // const handleChange = (event) => {
-  //   const { value: inputValue, name } = event.target;
-  //   changeField(name, inputValue);
-  // };
-
   return (
-    <main className="storyCreate">
-      <h1 className="adventures-title main-title">
-        <Typist>
-          Créer une aventure
-        </Typist>
-      </h1>
-      <form
-        className="storyCreate-form"
-        onSubmit={handleStoryCreateSubmit}
-      >
-        <Field
-          identifier="title"
-          placeholder="titre"
-          value={title}
-          changeField={updateField}
-          label="titre :"
-          maxLength="128"
-        />
-        <Field
-          identifier="synopsis"
-          placeholder="synopsis"
-          value={synopsis}
-          changeField={updateField}
-          label="synopsis :"
-          maxLength="524288"
-        />
-        <Field
-          identifier="description"
-          placeholder="description"
-          value={description}
-          changeField={updateField}
-          label="description :"
-          maxLength="524288"
-        />
-
-        {/* <label htmlFor="description">
-          Description
-          <textarea
-            identifier="description"
-            value={description}
-            onChange={handleChange}
-            placeholder="description"
-            name="description"
-            id="description"
-            cols="30"
-            rows="10"
-            type="text"
-          />
-        </label> */}
-        <button
-          className="storyCreate-form-button"
-          type="submit"
-        >
-          C'est parti !
-        </button>
-      </form>
-    </main>
+    <>
+      {redirect && <Redirect to={`/aventures/${slugifyTitle(title)}`} />}
+      {!redirect && (
+        <main className="storyCreate">
+          <h1 className="adventures-title main-title">
+            <Typist
+              cursor={{ hideWhenDone: true }}
+            >
+              Créer une aventure
+            </Typist>
+          </h1>
+          <form
+            className="storyCreate-form"
+            onSubmit={handleStoryCreateSubmit}
+          >
+            <Field
+              identifier="title"
+              placeholder="titre"
+              value={title}
+              changeField={updateField}
+              label="titre :"
+            />
+            <FieldArea
+              identifier="synopsis"
+              placeholder="synopsis"
+              value={synopsis}
+              changeField={updateField}
+              label="synopsis :"
+            />
+            <FieldArea
+              identifier="description"
+              placeholder="description"
+              value={description}
+              changeField={updateField}
+              label="description :"
+            />
+            <button
+              className="storyCreate-form-button"
+              type="submit"
+            >
+              C'est parti !
+            </button>
+          </form>
+        </main>
+      )}
+    </>
   );
 };
 
 StoryCreate.propTypes = {
-  title: Proptypes.string.isRequired,
-  synopsis: Proptypes.string.isRequired,
-  description: Proptypes.string.isRequired,
-  sumbitStoryCreate: Proptypes.func.isRequired,
-  updateField: Proptypes.func.isRequired,
-  // changeField: Proptypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  synopsis: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  sumbitStoryCreate: PropTypes.func.isRequired,
+  updateField: PropTypes.func.isRequired,
+  redirect: PropTypes.bool.isRequired,
 };
 export default StoryCreate;

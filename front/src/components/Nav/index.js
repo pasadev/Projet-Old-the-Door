@@ -1,43 +1,48 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './nav.scss';
 
-const Nav = ({ toggleBurgerMenuFromNav }) => (
+const Nav = ({ toggleBurgerMenuFromNav, isLogged }) => (
   <nav className="nav">
-    <NavLink
+    <Link
       className="nav-item"
       to="/"
-      activeClassName="nav-item-active"
-      exact
       onClick={toggleBurgerMenuFromNav}
     >
       <span className="nav-symbol">{'>:/'}</span>Home
-    </NavLink>
-    <NavLink
+    </Link>
+    <Link
       onClick={toggleBurgerMenuFromNav}
       className="nav-item"
       to="/aventures"
-      activeClassName="nav-item"
-      exact
     >
       <span className="nav-symbol">{'>:/'}</span>Aventures
-    </NavLink>
-    <NavLink
+    </Link>
+
+    {(isLogged !== null) && (
+    <Link
       onClick={toggleBurgerMenuFromNav}
       className="nav-item"
       to="/profil"
-      activeClassName="nav-item"
-      exact
     >
       <span className="nav-symbol">{'>:/'}</span>Mon Profil
-    </NavLink>
+    </Link>
+    )}
   </nav>
 );
 
 Nav.propTypes = {
   toggleBurgerMenuFromNav: PropTypes.func.isRequired,
+  isLogged: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string,
+  ]),
+};
+
+Nav.defaultProps = {
+  isLogged: null,
 };
 
 export default Nav;

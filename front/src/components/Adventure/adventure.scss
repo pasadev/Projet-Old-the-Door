@@ -6,14 +6,23 @@
   .adventure-title {
     font-weight: bold;
   }
+  .unactive-storyTitle {
+    text-decoration: line-through;
+  }
 
-  .adventure-authorAndDate {
-    padding-top: 0.5em;
-    font-style: italic;
-    font-size: 0.8em;
+  .adventure-metas {
     
     .adventure-author {
       padding-right: 0.3em;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .adventure-partyTime{
+      font-style: italic;
+      margin-top: 0.5em;
+      border-left: 2px solid $lightScreenColor;
+      padding-left: 0.5em;
     }
     
     .adventure-date::before {
@@ -27,13 +36,29 @@
 
   }
   
-  .adventure-link {
+  .adventure-links {
     padding-top: 0.5em;
     color: $linkColor;
-    font-size: 1.2em;
-  }
-  
-  .adventure-link:hover {
-    text-decoration: underline;
-  }
+    .adventure-link {
+      margin: 0 0.25em;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+    .adventure-link-warning {
+      color: $noticeColor;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+    .delete-link {
+      color: $warningColor;
+    }
+
+    .active-delete {
+      display: none;
+    }
+    
+  } 
 }

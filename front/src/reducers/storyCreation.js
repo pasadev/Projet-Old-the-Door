@@ -1,4 +1,6 @@
-import { UPDATE_CREATION_FIELD } from 'src/actions/storyCreation';
+import {
+  UPDATE_CREATION_FIELD,
+} from 'src/actions/storyCreation';
 
 const initialState = {
   title: '',
