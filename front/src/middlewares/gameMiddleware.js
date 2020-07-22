@@ -20,6 +20,7 @@ import { hideLoader } from 'src/actions/utils';
 import { baseURL } from 'src/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
+  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/back';
   switch (action.type) {
     case FETCH_CURRENT_STORY:
       axios.get(`${baseURL}/api/v0/stories/${action.slug}`)

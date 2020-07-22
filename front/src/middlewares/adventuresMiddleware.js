@@ -22,6 +22,7 @@ import { hideLoader, redirectOn } from 'src/actions/utils';
 import { baseURL } from 'src/utils';
 
 const adventuresMiddleware = (store) => (next) => (action) => {
+  const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/back';
   switch (action.type) {
     case FETCH_ADVENTURES_HOME:
       // API request for the last three adventures
