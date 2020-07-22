@@ -26,9 +26,16 @@ const Profil = ({
         <Typist
           cursor={{ hideWhenDone: true }}
         >
-          Mon profil
+          BIENVENUE {userInfo.username}
         </Typist>
       </h1>
+      <h2 className="profil-littletitle">Mes informations:</h2>
+      <div className="profil-user">
+        <p>Nom: {userInfo.lastname}</p>
+        <p>Prénom: {userInfo.firstname}</p>
+        <p>Email: {userInfo.email}</p>
+        <p>Username: {userInfo.username}</p>
+      </div>
       <div className="adventureSmall creationAdventure">
         <h3 className="adventureSmall-title">
           Pour créer une aventure c'est par ici.
@@ -42,28 +49,16 @@ const Profil = ({
         </div>
 
       </div>
-      <h1 className="profil-title">
-        BIENVENUE {userInfo.username}
-      </h1>
-      <div className="profil-infos">
-        <h2 className="profil-littletitle">Mes informations:</h2> <br />
-        <div className="profil-user">
-          nom: {userInfo.lastname}<br />
-          prenom: {userInfo.firstname}<br />
-          mail: {userInfo.email}<br />
-          username: {userInfo.username}<br />
-        </div>
-        <h2 className="profil-littletitle">Mes Aventures:</h2><br />
-        {createdAdventures.map((adventure) => (
-          <AdventureSmall {...adventure} key={adventure.id} />
-        ))}
-        <h2 className="profil-littletitle">Historique d'aventure:</h2><br />
-        <div className="profil-story">
-          {ownParties.map((ownParty) => (
-            <Party {...ownParty} key={ownParty.id} />
+      <h2 className="profil-littletitle">Mes Aventures créées:</h2>
+      {createdAdventures.map((adventure) => (
+        <AdventureSmall {...adventure} key={adventure.id} />
+      ))}
+      <h2 className="profil-littletitle">Mes parties jouées:</h2>
+      <div className="profil-story">
+        {ownParties.map((ownParty) => (
+          <Party {...ownParty} key={ownParty.id} />
 
-          ))}
-        </div>
+        ))}
       </div>
     </main>
   );
