@@ -25,11 +25,6 @@ export const GIVE_HINT = 'GIVE_HINT';
 export const RESET_INITIAL_STATE = 'RESET_INITIAL_STATE';
 
 // === action creators
-export const doSomething = (/* newValue */) => ({
-  type: DO_SOMETHING,
-  /* value: newValue, */
-});
-
 export const toggleButtonVisibility = () => ({
   type: TOGGLE_BUTTON_VISIBILITY,
 });
