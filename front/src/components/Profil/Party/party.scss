@@ -1,0 +1,27 @@
+@import 'src/styles/vars';
+
+.party {
+    border: 2px dotted #fff;
+    padding: 0.5em;
+    overflow-wrap: break-word;
+    margin : 0.5em;
+  &:hover {
+    color: $noticeColor;
+  }
+  .party-link {
+    padding-top: 0.5em;
+    color: $linkColor;
+    width: fit-content;
+  }
+  .party-link:hover {
+    text-decoration: underline;
+  }
+  .party-story {
+    font-size: $mobileTitleSize;
+    margin-bottom: 0.5em;
+  }
+  .party-time{
+    font-style: italic;
+    padding-top: 0.3em;
+  }
+}

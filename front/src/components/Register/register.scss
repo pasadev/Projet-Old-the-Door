@@ -1,0 +1,51 @@
+@import 'src/styles/vars';
+.button-submit {
+    border: 1px dashed #6BE145;
+    color: #6BE145;
+    padding: 1em 2em;
+    background-color:#1D1E22;
+    margin-top: 2em;
+    font-weight: bold;
+    border-radius: 2px;
+  
+    &:hover{
+     background-color:#6BE145;
+     color: #1D1E22;
+    }
+  }
+
+
+  input {
+      border-style:hidden;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    &:focus{
+    }
+  }
+  
+.form {
+
+  
+}
+.input-password {
+
+
+  .form-password-rules{
+    display: none;
+  }
+
+  &:hover {
+
+.form-password-rules{
+  display: inline;
+  font-size: 0.8em;
+  color:$noticeColor;
+  font-style: italic;
+
+
+}
+  }
+}
+.link-home{
+ margin: 0.8em;   
+}
