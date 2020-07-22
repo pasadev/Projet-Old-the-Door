@@ -8,11 +8,12 @@ import {
   saveCurrentChapter,
   FETCH_NEXT_CHAPTER,
   savePreviousChapters,
-  toggleTheCounter,
+  startTheCounter,
   displayChapterAfterLoad,
   displaySuccessMessage,
   savePartyTime,
   SAVE_PARTY_TIME,
+  stopTheCounter,
 } from 'src/actions/gameScreen';
 
 import { hideLoader } from 'src/actions/utils';
@@ -45,7 +46,7 @@ const gameMiddleware = (store) => (next) => (action) => {
           console.warn(error);
         })
         .finally(() => {
-          store.dispatch(toggleTheCounter());
+          store.dispatch(startTheCounter());
         });
 
       next(action);
@@ -65,7 +66,7 @@ const gameMiddleware = (store) => (next) => (action) => {
           }
           if (response.status === 204) {
             console.log('message test');
-            store.dispatch(toggleTheCounter());
+            store.dispatch(stopTheCounter());
             store.dispatch(savePreviousChapters(currentChapterForSave));
 
             store.dispatch(displaySuccessMessage());

@@ -16,7 +16,8 @@ export const BLOCK_FIELD = 'BLOCK_FIELD';
 export const CLEAR_GAMESCREEN_INPUT = 'CLEAR_GAMESCREEN_INPUT';
 export const DISPLAY_SUCCESS_MESSAGE = 'DISPLAY_SUCCESS_MESSAGE';
 export const SET_COUNTER = 'SET_COUNTER';
-export const TOGGLE_THE_COUNTER = 'TOGGLE_THE_COUNTER';
+export const START_THE_COUNTER = 'START_THE_COUNTER';
+export const STOP_THE_COUNTER = 'STOP_THE_COUNTER';
 export const SAVE_PARTY_TIME = 'SAVE_PARTY_TIME';
 export const TOGGLE_WRONG_ANSWER_MESSAGE = 'TOGGLE_WRONG_ANSWER_MESSAGE';
 export const APPLY_PENALTY = 'APPLY_PENALTY';
@@ -106,8 +107,12 @@ export const setCounter = (currentTime) => ({
   currentTime,
 });
 
-export const toggleTheCounter = () => ({
-  type: TOGGLE_THE_COUNTER,
+export const startTheCounter = () => ({
+  type: START_THE_COUNTER,
+});
+
+export const stopTheCounter = () => ({
+  type: STOP_THE_COUNTER,
 });
 
 export const savePartyTime = (endTime, player, forStory) => ({
