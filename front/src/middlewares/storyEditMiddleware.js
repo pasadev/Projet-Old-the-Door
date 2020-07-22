@@ -195,7 +195,9 @@ const storyEditMiddleware = (store) => (next) => (action) => {
           if (response.data[0].parentChapter === null) {
             store.dispatch(saveChapterWhitoutParent(response.data[0]));
           }
-          store.dispatch(saveChapterEditSelected(response.data[0]));
+          else {
+            store.dispatch(saveChapterEditSelected(response.data[0]));
+          }
         })
         .catch((error) => {
           console.warn(error);

@@ -6,7 +6,6 @@ export const scrollToTop = () => {
 };
 
 // I guess I gotta put my function in here?
-
 export const checkAnswer = (keyGuess, lockGuess, keyAnswer, lockAnswer) => {
   if ((keyGuess !== '') && (lockGuess !== '')) {
     if (keyGuess.trim().toLowerCase() === keyAnswer.trim().toLowerCase()
@@ -18,8 +17,24 @@ export const checkAnswer = (keyGuess, lockGuess, keyAnswer, lockAnswer) => {
   return 'no_value';
 };
 
-export const doSomething = () => {
+// Check if keyword and lockword are in the content
+export const checkWordInContent = (word, content) => {
+  const regex = /[,.;!?"'+*/']+/gi;
 
+  // Content
+  const contentLowerCase = content.toLowerCase();
+  const contentReplace = contentLowerCase.replace(regex, ' ');
+  const contentTrim = contentReplace.trim();
+  const contentSplit = contentTrim.split(' ');
+
+  // Word
+  const wordTrim = word.trim();
+  const wordLowerCase = wordTrim.toLowerCase();
+
+  // Check
+  const checked = contentSplit.includes(wordLowerCase);
+
+  return checked;
 };
 
 // http://damien-toscano.vpnuser.lan:8000
