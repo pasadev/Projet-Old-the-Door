@@ -4,9 +4,13 @@
     border: 2px dotted #fff;
     padding: 0.5em;
     overflow-wrap: break-word;
+    flex-grow: 2;
+    width: 300px;
+    /* margin-bottom: 0.5em;
+    margin-right: 0.5em; */
     margin : 0.5em;
   &:hover {
-    color: $noticeColor;
+    border: 2px solid #fff;
   }
   .party-link {
     padding-top: 0.5em;
