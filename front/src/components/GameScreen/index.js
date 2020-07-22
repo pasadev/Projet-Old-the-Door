@@ -43,6 +43,7 @@ const GameScreen = ({
   showWrongAnswerMessage,
   giveHint,
   showHint,
+  resetInitialState,
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -56,6 +57,7 @@ const GameScreen = ({
   useEffect(() => {
     // component did mount
     // console.log(slug);
+    resetInitialState();
     fetchCurrentStory(slug);
     displayLoader();
   }, []);
@@ -141,6 +143,7 @@ const GameScreen = ({
 };
 
 GameScreen.propTypes = {
+  resetInitialState: PropTypes.func.isRequired,
   setCounter: PropTypes.func.isRequired,
   timerCounter: PropTypes.number.isRequired,
   timerIsRunning: PropTypes.bool.isRequired,
