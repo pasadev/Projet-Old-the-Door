@@ -37,7 +37,6 @@ const Party = ({
 );
 
 Party.propTypes = {
-  slug: PropTypes.string.isRequired,
   time: PropTypes.number.isRequired,
   createdAt: PropTypes.string.isRequired,
   forStory: PropTypes.object.isRequired,
