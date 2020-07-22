@@ -44,6 +44,7 @@ const Profil = ({
       </div>
       <h1 className="profil-title">
           BIENVENUE {userInfo.username}
+        <
       </h1>
       <div className="profil-infos">
         <h2 className="profil-littletitle">Mes informations:</h2> <br />
@@ -92,7 +93,6 @@ Profil.propTypes = {
       player: PropTypes.object,
     }).isRequired,
   ).isRequired,
-
   userInfo: PropTypes.object.isRequired,
 };
 

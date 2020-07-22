@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { slugifyTitle } from 'src/utils';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import FieldArea from 'src/components/FieldArea';
@@ -14,6 +13,7 @@ const StoryCreate = ({
   updateField,
   sumbitStoryCreate,
   redirect,
+  slug,
 }) => {
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
@@ -22,7 +22,7 @@ const StoryCreate = ({
 
   return (
     <>
-      {redirect && <Redirect to={`/aventures/${slugifyTitle(title)}`} />}
+      {redirect && <Redirect to={`/aventures/${slug}`} />}
       {!redirect && (
         <main className="storyCreate">
           <h1 className="adventures-title main-title">
@@ -48,14 +48,14 @@ const StoryCreate = ({
               placeholder="synopsis"
               value={synopsis}
               changeField={updateField}
-              label="synopsis :"
+              label="synopsis : (50 charactères minimum)"
             />
             <FieldArea
               identifier="description"
               placeholder="description"
               value={description}
               changeField={updateField}
-              label="description :"
+              label="description : (50 charactères minimum)"
             />
             <button
               className="storyCreate-form-button"
@@ -71,6 +71,7 @@ const StoryCreate = ({
 };
 
 StoryCreate.propTypes = {
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   synopsis: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

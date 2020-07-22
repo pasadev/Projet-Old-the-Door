@@ -6,7 +6,6 @@ import gameScreenReducer from './gameScreen';
 import storyCreationReducer from './storyCreation';
 import storyEditReducer from './storyEdit';
 import profilReducer from './profil';
-
 import chapterEditReducer from './chapterEdit';
 
 const rootReducer = combineReducers({

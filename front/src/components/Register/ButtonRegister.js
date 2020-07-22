@@ -1,8 +1,8 @@
 import React from 'react';
-
+import "./register.scss"
 const ButtonRegister = () => (
   <button
-    className="form-firstname"
+    className="button-submit"
     type="submit"
   >
     Envoyer
