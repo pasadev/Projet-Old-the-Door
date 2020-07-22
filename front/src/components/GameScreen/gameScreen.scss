@@ -36,7 +36,7 @@
     }
     .gameScreen-form {
       padding-top: 1em;
-      width: 300px;
+      width: 350px;
 
       .gameScreen-form-row{
         display: flex;
@@ -45,8 +45,8 @@
         width: 100%;
       }
 
-      label {
-        width: 30%;
+      .gameScreen-label {
+        width: 80px;
       }
 
       .gameScreen-form-field {
@@ -141,20 +141,12 @@
 
 @media only screen and (min-width: 1024px) {
   .screenCase {
-    /* background: $lightCaseColor; */
-    /* top: $screenCaseTopPosition;	
-    bottom: 0;
-    width: $screenCaseWidth;
-    height: $screenCaseHeight; */
-    /* margin: auto; */
-    /* border: 5px solid $darkCaseColor; */
-    /* border-radius: 5px; */
-    
-    .gameScreen {  
-      /* margin: 35px 35px 35px 35px; */
-      /* border: 3px solid $darkBorderColor; */
-      /* border-radius: 20px; */
-      /* opacity : 0.9; */
+    .gameScreen {
+      .gameScreen-form {
+        .gameScreen-label {
+          width: 120px;
+        }
+      }
     }
   }
 }
