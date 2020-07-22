@@ -109,7 +109,8 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       const {
         apiToken,
       } = store.getState().user.user;
-      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=true`, {
+      const { id } = store.getState().adventures.adventureSelected;
+      axios.put(`${baseURL}/api/v0/stories/${id}/active?set=true`, {
       },
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
@@ -132,7 +133,8 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       const {
         apiToken,
       } = store.getState().user.user;
-      axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=false`, {
+      const { id } = store.getState().adventures.adventureSelected;
+      axios.put(`${baseURL}/api/v0/stories/${id}/active?set=false`, {
       }, {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
@@ -154,7 +156,8 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       const {
         apiToken,
       } = store.getState().user.user;
-      axios.delete(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}`, {
+      const { id } = store.getState().adventures.adventureSelected;
+      axios.delete(`${baseURL}/api/v0/stories/${id}`, {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then((response) => {
