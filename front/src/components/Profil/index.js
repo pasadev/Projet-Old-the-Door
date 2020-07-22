@@ -7,20 +7,18 @@ import Party from './Party';
 
 import './profil.scss';
 
-const userInfo = sessionStorage.getItem('currentuser');
-const parseUserInfo = JSON.parse(userInfo);
-
 const Profil = ({
   redirectOff,
   fetchCreatedAdventures,
   createdAdventures,
   fetchOwnParties,
   ownParties,
+  userInfo,
 }) => {
   useEffect(() => {
     redirectOff();
-    fetchCreatedAdventures(parseUserInfo.id);
-    fetchOwnParties(parseUserInfo.id);
+    fetchCreatedAdventures(userInfo.id);
+    fetchOwnParties(userInfo.id);
   }, []);
   return (
     <main className="profil">
@@ -45,27 +43,22 @@ const Profil = ({
 
       </div>
       <h1 className="profil-title">
-        <Typist
-          cursor={{ hideWhenDone: true }}
-        >
-          BIENVENUE {parseUserInfo.username}
-        </Typist>
+          BIENVENUE {userInfo.username}
+        <
       </h1>
       <div className="profil-infos">
         <h2 className="profil-littletitle">Mes informations:</h2> <br />
         <div className="profil-user">
-          nom: {parseUserInfo.lastname}<br />
-          prenom: {parseUserInfo.firstname}<br />
-          mail: {parseUserInfo.email}<br />
-          username: {parseUserInfo.username}<br />
-          role: {parseUserInfo.roles[0]} <br />
+          nom: {userInfo.lastname}<br />
+          prenom: {userInfo.firstname}<br />
+          mail: {userInfo.email}<br />
+          username: {userInfo.username}<br />
+          role: {userInfo.roles[0]} <br />
         </div>
         <h2 className="profil-littletitle">Mes Aventures:</h2><br />
         {createdAdventures.map((adventure) => (
           <AdventureSmall {...adventure} key={adventure.id} />
         ))}
-        <h2 className="profil-littletitle">Mes Likes:</h2><br />
-        Bonus
         <h2 className="profil-littletitle">Historique d'aventure:</h2><br />
         <div className="profil-story">
           {ownParties.map((ownParty) => (
@@ -100,6 +93,7 @@ Profil.propTypes = {
       player: PropTypes.object,
     }).isRequired,
   ).isRequired,
+  userInfo: PropTypes.object.isRequired,
 };
 
 export default Profil;
