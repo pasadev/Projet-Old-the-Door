@@ -2,8 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
-
-import { slugifyTitle } from 'src/utils';
 import { Link } from 'react-router-dom';
 
 // import Typist from 'react-typist';
@@ -13,7 +11,6 @@ const Party = ({
   time,
   createdAt,
   forStory,
-  id,
   player,
 }) => (
   <>
@@ -30,7 +27,7 @@ const Party = ({
       </div>
       <div className="party-link">
         <Link
-          to={`/aventures/${slugifyTitle(forStory.title)}`}
+          to={`/aventures/${forStory.slug}`}
         >
           Ouvrir le fichier
         </Link>
@@ -43,7 +40,6 @@ Party.propTypes = {
   time: PropTypes.number.isRequired,
   createdAt: PropTypes.string.isRequired,
   forStory: PropTypes.object.isRequired,
-  id: PropTypes.number.isRequired,
   player: PropTypes.object.isRequired,
 };
 
