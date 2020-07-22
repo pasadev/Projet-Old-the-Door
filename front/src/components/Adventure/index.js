@@ -158,8 +158,8 @@ Adventure.propTypes = {
   }),
 };
 
-Adventure.defaultProp = {
-  user: null,
+Adventure.defaultProps = {
+  user: '',
 };
 
 export default Adventure;
