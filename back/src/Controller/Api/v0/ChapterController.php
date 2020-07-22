@@ -159,24 +159,25 @@ class ChapterController extends AbstractController
      */
     public function add(Request $request, ObjectNormalizer $normalizer, StoryRepository $storyRepository)
     {
-        //check if user is logged
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
         //Create an empty chapter
         $chapter = new Chapter();
-
+        
+        
         //Create the associating form to send request data in the chapter
         //With the csrf option desactivated as we are on an API
         $form = $this->createForm(ChapterType::class, $chapter, ['csrf_protection' => false]);
-
+        
         //Extract the json content of the request
         $jsonText = $request->getContent();
-
+        
         //Transform this Json in array
         $jsonArray = json_decode($jsonText, true);
-
+        
         //We submit this data array to the form
         $form->submit($jsonArray);
+        
+        //check if user is logged
+        $this->denyAccessUnlessGranted('add', $chapter);
 
         //Verify if the form is valid
         if ($form->isValid())
@@ -260,8 +261,8 @@ class ChapterController extends AbstractController
      */
     public function edit(Chapter $chapter, Request $request, ObjectNormalizer $normalizer)
     {
-        //check if user is logged
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        //check if user is logged and also the author of the related story
+        $this->denyAccessUnlessGranted('edit', $chapter);
 
         //Create the associating form to send request data in the chapter in parameter
         //With the csrf option desactivated as we are on an API
@@ -332,8 +333,8 @@ class ChapterController extends AbstractController
      */
     public function delete(Chapter $chapter)
     {
-        //check if user is logged
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        //check if user is logged and user the author
+        $this->denyAccessUnlessGranted('delete', $chapter);
 
         //Get back the manager
         $em = $this->getDoctrine()->getManager();
