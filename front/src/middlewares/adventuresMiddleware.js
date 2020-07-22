@@ -110,6 +110,8 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         apiToken,
       } = store.getState().user.user;
       axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=true`, {
+      },
+      {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then((response) => {
@@ -131,6 +133,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         apiToken,
       } = store.getState().user.user;
       axios.put(`${baseURL}/api/v0/stories/${store.getState().adventures.adventureSelected.id}/active?set=false`, {
+      }, {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then((response) => {
