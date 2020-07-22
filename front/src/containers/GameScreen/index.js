@@ -79,7 +79,6 @@ const mapDispatchToProps = (dispatch) => ({
   handleCheckAnswer: (thisIsABoolOrNoValue) => {
     if (thisIsABoolOrNoValue === true) {
       dispatch(toggleAnswerValue());
-      console.log('answer is true');
     }
     else if (thisIsABoolOrNoValue === 'no_value') {
       // do nothing
@@ -95,7 +94,6 @@ const mapDispatchToProps = (dispatch) => ({
           dispatch(toggleWrongAnswerMessage());
         }, 2500),
       );
-      console.log('the answer is false');
     }
   },
 

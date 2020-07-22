@@ -56,7 +56,6 @@ const gameMiddleware = (store) => (next) => (action) => {
       const currentChapterForSave = store.getState().gameScreen.currentChapter;
       axios.get(`${baseURL}/api/v0/chapters/${currentChapterForSave.id}/child`)
         .then((response) => {
-          console.log(response);
           // Check if it's a 404 or a 200 http code
 
           if (response.status === 200) {
@@ -64,7 +63,6 @@ const gameMiddleware = (store) => (next) => (action) => {
             store.dispatch(saveCurrentChapter(response.data[0]));
           }
           if (response.status === 204) {
-            console.log('message test');
             store.dispatch(toggleTheCounter());
             store.dispatch(savePreviousChapters(currentChapterForSave));
 
@@ -86,14 +84,19 @@ const gameMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
-    case SAVE_PARTY_TIME:
+    case SAVE_PARTY_TIME: {
+      const {
+        apiToken,
+      } = store.getState().user.user;
       axios.post(`${baseURL}/api/v0/parties`, {
         time: action.endTime,
         player: action.player,
         forStory: action.forStory,
+      },
+      {
+        headers: { 'X-AUTH-TOKEN': apiToken },
       })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           // congratulations, you just played yourself,
           /* {
               "time": 1665,
@@ -107,6 +110,7 @@ const gameMiddleware = (store) => (next) => (action) => {
 
       next(action);
       break;
+    }
 
     default:
       // on passe l'action au suivant (middleware suivant ou reducer)
