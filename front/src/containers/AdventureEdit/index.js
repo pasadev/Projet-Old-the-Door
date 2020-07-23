@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
   title: state.storyEdit.title,
   synopsis: state.storyEdit.synopsis,
   description: state.storyEdit.description,
+  validationErrorAdvEdit: state.storyEdit.validationErrorAdvEdit,
 });
 
 // === mapDispatchToProps

@@ -3,7 +3,7 @@ import { useParams, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
-import AdventureEdit from 'src/containers/AdventureEdit/index.js';
+import AdventureEdit from 'src/containers/AdventureEdit';
 import ChapterEdit from 'src/containers/ChapterEdit';
 import './storyEdit.scss';
 import 'src/components/ChapterEdit/chapterEdit.scss';
@@ -23,6 +23,9 @@ const StoryEdit = ({
   chapterEdit,
   clearChapterEdit,
   clearStoryEdit,
+  setValidationErrorAdvEditTrue,
+  setValidationErrorAdvEditFalse,
+  setValidationErrorChapEditFalse,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -34,16 +37,30 @@ const StoryEdit = ({
 
   const handleAdvEditSubmit = (event) => {
     event.preventDefault();
-    submitAdvEditForm(
-      storyEdit.title,
-      storyEdit.synopsis,
-      storyEdit.description,
-      storyEdit.idStory,
-    );
+    // Reset error display
+    setValidationErrorAdvEditFalse();
+    if (
+      (storyEdit.title.length > 3)
+      && (storyEdit.synopsis.length > 50)
+      && (storyEdit.description.length > 50)
+    ) {
+      submitAdvEditForm(
+        storyEdit.title,
+        storyEdit.synopsis,
+        storyEdit.description,
+        storyEdit.idStory,
+      );
+    }
+    else {
+      setValidationErrorAdvEditTrue();
+    }
   };
 
   const handleEditOption = (event) => {
     setEditOption(event.target.value);
+    // Reset error display
+    setValidationErrorAdvEditFalse();
+    setValidationErrorChapEditFalse();
     // Condition to not do the get request if it's a new chapter or the adventure
     // And clear the state of chapterEdit
     if (event.target.value === 'Nouveau Chapitre' || event.target.value === initialTitle || event.target.value === '') {
@@ -119,6 +136,9 @@ const StoryEdit = ({
 };
 
 StoryEdit.propTypes = {
+  setValidationErrorChapEditFalse: PropTypes.func.isRequired,
+  setValidationErrorAdvEditFalse: PropTypes.func.isRequired,
+  setValidationErrorAdvEditTrue: PropTypes.func.isRequired,
   clearStoryEdit: PropTypes.func.isRequired,
   clearChapterEdit: PropTypes.func.isRequired,
   fetchChapterEditSelected: PropTypes.func.isRequired,
