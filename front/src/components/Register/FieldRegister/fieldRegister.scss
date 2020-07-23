@@ -1,4 +1,7 @@
-.input{
+@import 'src/styles/vars'; 
+
+ .fieldRegister-first{
+  font-style: $family;
   resize: none;
   border-radius: 5px;
   padding: 10px;
@@ -9,9 +12,8 @@
   margin-top: 0.5em;
   margin-bottom:0.5em;
 
-}
-.input:focus {
+ }
+ .fieldRegister-first:focus {
   
   color: white;
 }
-

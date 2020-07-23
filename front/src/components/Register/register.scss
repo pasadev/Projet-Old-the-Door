@@ -1,0 +1,17 @@
+.button-register{
+  border: 1px dashed #6BE145;
+  color: #6BE145;
+  padding: 1em 2em;
+  background-color:#1D1E22;
+  margin-top: 1em;
+  font-weight: bold;
+  border-radius: 2px;
+  margin-bottom:0.5em ;
+  margin-left:0.5em;
+
+  &:hover{
+   background-color:#6BE145;
+   color: #1D1E22;
+  }
+
+}
