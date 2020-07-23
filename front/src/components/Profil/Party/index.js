@@ -11,7 +11,6 @@ const Party = ({
   time,
   createdAt,
   forStory,
-  player,
 }) => (
   <>
     <div className="party">
@@ -21,9 +20,19 @@ const Party = ({
           {createdAt}
         </Moment>
       </h3>
-      <div className="party-player">{player.username}</div>
       <div className="party-time">
-        {time} seconds
+        {/* Display hours only if > 1 */}
+        {Math.floor(time / 3600) > 0 && `${Math.floor(time / 3600)}h`}
+        {/* Add a 0 before minutes if < 10 */}
+        {Math.floor((time - ((Math.floor(time / 3600)) * 3600)) / 60) < 10 && 0}
+        {/* Set minutes */}
+        {Math.floor((time - ((Math.floor(time / 3600)) * 3600)) / 60)}m
+        {/*  Add a 0 before seconds if < 10 */}
+        {time - (((Math.floor(time / 3600)) * 3600)
+        + ((Math.floor((time - ((Math.floor(time / 3600)) * 3600)) / 60)) * 60)) < 10 && 0}
+        {/* Set seconds */}
+        {time - (((Math.floor(time / 3600)) * 3600)
+        + ((Math.floor((time - ((Math.floor(time / 3600)) * 3600)) / 60)) * 60))}s
       </div>
       <div className="party-link">
         <Link
@@ -40,7 +49,6 @@ Party.propTypes = {
   time: PropTypes.number.isRequired,
   createdAt: PropTypes.string.isRequired,
   forStory: PropTypes.object.isRequired,
-  player: PropTypes.object.isRequired,
 };
 
 export default Party;

@@ -1,17 +1,17 @@
 @import 'src/styles/vars';
-
-.profil-infos{
-    
-}
-.profil-title{
-    font-size: $titleSize;
-    text-align:center;
-}
-.profil-littletitle{
-    margin-top : 1em;
-    color : $noticeColor;
-}
-.profil-story{
-    display: flex;
-    flex-wrap: wrap;
+.profil {
+  .profil-littletitle{
+      margin : 1em 0;
+      color : $noticeColor;
+      font-size: $secondTitleSize;
+  }
+  .profil-user {
+    margin-bottom: 1em;
+  }
+  .profil-story{
+      display: flex;
+      flex-wrap: wrap;
+      /* margin: -0.5em; */
+      margin-bottom: 1em;
+  }
 }
