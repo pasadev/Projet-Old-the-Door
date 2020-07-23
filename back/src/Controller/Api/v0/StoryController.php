@@ -121,6 +121,8 @@ class StoryController extends AbstractController
      */
     public function showBySlug (Story $story , ObjectNormalizer $normalizer)
     {
+        $this->denyAccessUnlessGranted('showBySlug', $story);
+
         $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
 
         $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
