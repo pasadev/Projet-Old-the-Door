@@ -1,4 +1,5 @@
 @import 'src/styles/vars';
+
 .button-submit {
     border: 1px dashed #6BE145;
     color: #6BE145;
@@ -17,18 +18,12 @@
 
   input {
       border-style:hidden;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    &:focus{
-    }
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      width: 100%;
   }
   
-.form {
-
-  
-}
 .input-password {
-
 
   .form-password-rules{
     display: none;
@@ -36,16 +31,15 @@
 
   &:hover {
 
-.form-password-rules{
-  display: inline;
-  font-size: 0.8em;
-  color:$noticeColor;
-  font-style: italic;
-
-
-}
+    .form-password-rules{
+      display: inline;
+      font-size: 0.8em;
+      color:$noticeColor;
+      font-style: italic;
+    }
   }
 }
+
 .link-home{
  margin: 0.8em;   
 }

@@ -3,6 +3,7 @@ export const UPDATE_CREATION_FIELD = 'UPDATE_CREATION_FIELD';
 export const SUBMIT_STORY_CREATE_FORM = 'SUBMIT_STORY_CREATE_FORM';
 export const SAVE_STORY_CREATE_SLUG = 'SAVE_STORY_CREATE_SLUG';
 export const CLEAR_STORY_CREATION = 'CLEAR_STORY_CREATION';
+export const SET_VALIDATION_ERROR_TRUE = 'SET_VALIDATION_ERROR_TRUE';
 
 // === action creators
 export const updateCreationField = (identifier, newValue) => ({
@@ -25,4 +26,8 @@ export const saveStoryCreateSlug = (slug) => ({
 
 export const clearStoryCreation = () => ({
   type: CLEAR_STORY_CREATION,
+});
+
+export const setValidationErrorTrue = () => ({
+  type: SET_VALIDATION_ERROR_TRUE,
 });

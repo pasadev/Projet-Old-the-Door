@@ -15,6 +15,8 @@ const StoryCreate = ({
   redirect,
   slug,
   clearStoryCreation,
+  validationError,
+  setValidationErrorTrue,
 }) => {
   useEffect(() => {
     clearStoryCreation();
@@ -22,7 +24,12 @@ const StoryCreate = ({
 
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
-    sumbitStoryCreate(title, synopsis, description);
+    if ((title.length > 3) && (synopsis.length > 50) && (description.length > 50)) {
+      sumbitStoryCreate(title, synopsis, description);
+    }
+    else {
+      setValidationErrorTrue();
+    }
   };
 
   return (
@@ -62,6 +69,11 @@ const StoryCreate = ({
               changeField={updateField}
               label="description : (50 charactères minimum)"
             />
+            {validationError && (
+              <div className="validationError">
+                Les informations envoyées ne correspondent pas aux prérequis
+              </div>
+            )}
             <button
               className="storyCreate-form-button"
               type="submit"
@@ -76,6 +88,8 @@ const StoryCreate = ({
 };
 
 StoryCreate.propTypes = {
+  setValidationErrorTrue: PropTypes.func.isRequired,
+  validationError: PropTypes.bool.isRequired,
   clearStoryCreation: PropTypes.func.isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

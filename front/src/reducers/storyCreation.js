@@ -2,6 +2,7 @@ import {
   UPDATE_CREATION_FIELD,
   SAVE_STORY_CREATE_SLUG,
   CLEAR_STORY_CREATION,
+  SET_VALIDATION_ERROR_TRUE,
 } from 'src/actions/storyCreation';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   synopsis: '',
   description: '',
   slug: '',
+  validationError: false,
 };
 
 const storyCreation = (state = initialState, action = {}) => {
@@ -28,6 +30,12 @@ const storyCreation = (state = initialState, action = {}) => {
     case CLEAR_STORY_CREATION:
       return {
         ...initialState,
+      };
+
+    case SET_VALIDATION_ERROR_TRUE:
+      return {
+        ...state,
+        validationError: true,
       };
 
     default: return state;
