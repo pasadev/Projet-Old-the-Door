@@ -5,6 +5,7 @@ import {
   SET_PARENT_CHAPTER_CHOICE,
   SET_ERROR_KEY_LOCK_TRUE,
   SAVE_CHAPTER_WHITOUT_PARENT,
+  SET_VALIDATION_ERROR_CHAP_EDIT_TRUE,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   unlockText: '',
   parentChapterChoice: '',
   errorKeyLock: false,
+  validationErrorChapEdit: false,
 };
 
 const chapterEdit = (state = initialState, action = {}) => {
@@ -53,6 +55,12 @@ const chapterEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         errorKeyLock: true,
+      };
+
+    case SET_VALIDATION_ERROR_CHAP_EDIT_TRUE:
+      return {
+        ...state,
+        validationErrorChapEdit: true,
       };
 
     default: return state;

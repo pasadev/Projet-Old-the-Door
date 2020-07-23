@@ -20,6 +20,7 @@ export const SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS = 'SAVE_PARENT_CHAPTER_POSSIBL
 export const SET_PARENT_CHAPTER_CHOICE = 'SET_PARENT_CHAPTER_CHOICE';
 export const SET_ERROR_KEY_LOCK_TRUE = 'SET_ERROR_KEY_LOCK_TRUE';
 export const SET_VALIDATION_ERROR_ADV_EDIT_TRUE = 'SET_VALIDATION_ERROR_ADV_EDIT_TRUE';
+export const SET_VALIDATION_ERROR_CHAP_EDIT_TRUE = 'SET_VALIDATION_ERROR_CHAP_EDIT_TRUE';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -123,4 +124,8 @@ export const setErrorKeyLockTrue = () => ({
 
 export const setValidationErrorAdvEditTrue = () => ({
   type: SET_VALIDATION_ERROR_ADV_EDIT_TRUE,
+});
+
+export const setValidationErrorChapEditTrue = () => ({
+  type: SET_VALIDATION_ERROR_CHAP_EDIT_TRUE,
 });

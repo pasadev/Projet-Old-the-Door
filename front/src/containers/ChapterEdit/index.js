@@ -6,6 +6,7 @@ import {
   submitChapterEditForm,
   setParentChapterChoice,
   setErrorKeyLockTrue,
+  setValidationErrorChapEditTrue,
 } from 'src/actions/storyEdit';
 
 import { checkWordInContent } from 'src/utils';
@@ -21,10 +22,10 @@ const mapStateToProps = (state) => ({
   keyword: state.chapterEdit.keyword,
   lockword: state.chapterEdit.lockword,
   unlockText: state.chapterEdit.unlockText,
-  chaperEditId: state.storyEdit.chaperEditId,
   chapterEdit: state.chapterEdit,
   parentChapterOption: state.storyEdit.parentChapterOption,
   errorKeyLock: state.chapterEdit.errorKeyLock,
+  validationErrorChapEdit: state.chapterEdit.validationErrorChapEdit,
 });
 
 // === mapDispatchToProps
@@ -46,6 +47,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   checkWordInContent: (word, content) => {
     dispatch(checkWordInContent(word, content));
+  },
+  setValidationErrorChapEditTrue: () => {
+    dispatch(setValidationErrorChapEditTrue());
   },
 });
 

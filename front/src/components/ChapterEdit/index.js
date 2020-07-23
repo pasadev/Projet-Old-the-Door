@@ -25,26 +25,40 @@ const ChapterEdit = ({
   setParentChapterChoice,
   setErrorKeyLockTrue,
   errorKeyLock,
+  validationErrorChapEdit,
+  setValidationErrorChapEditTrue,
 }) => {
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
-    // Check if keyword and lockword are in the content
-    if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
-      submitChapterEditForm();
+    // Check the length of title and content
+    if ((title.length > 3) && (content.length) > 3) {
+      // Check if keyword and lockword are in the content
+      if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
+        submitChapterEditForm();
+      }
+      else {
+        setErrorKeyLockTrue();
+      }
     }
     else {
-      setErrorKeyLockTrue();
+      setValidationErrorChapEditTrue();
     }
   };
 
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
-    // Check if keyword and lockword are in the content
-    if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
-      submitNewChapterForm();
+    // Check the length of title and content
+    if ((title.length > 3) && (content.length) > 3) {
+      // Check if keyword and lockword are in the content
+      if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
+        submitNewChapterForm();
+      }
+      else {
+        setErrorKeyLockTrue();
+      }
     }
     else {
-      setErrorKeyLockTrue();
+      setValidationErrorChapEditTrue();
     }
   };
 
@@ -140,6 +154,13 @@ const ChapterEdit = ({
               La clé et/ou la serrure ne se trouve pas dans le contenu comme prévu.
             </div>
           )}
+
+          {validationErrorChapEdit && (
+            <div className="validationError">
+              Les informations envoyées ne correspondent pas aux prérequis
+            </div>
+          )}
+
           <button type="submit" className="chapterEdit-Button">Enregistrer les modifications du chapitre</button>
         </form>
       )}
@@ -219,6 +240,13 @@ const ChapterEdit = ({
               La clé et/ou la serrure ne se trouve pas dans le contenu comme prévu.
             </div>
           )}
+
+          {validationErrorChapEdit && (
+            <div className="validationError">
+              Les informations envoyées ne correspondent pas aux prérequis
+            </div>
+          )}
+
           <button type="submit" className="chapterEdit-Button">Enregistrer le nouveau chapitre</button>
         </form>
       )}
@@ -227,6 +255,8 @@ const ChapterEdit = ({
 };
 
 ChapterEdit.propTypes = {
+  setValidationErrorChapEditTrue: PropTypes.func.isRequired,
+  validationErrorChapEdit: PropTypes.bool.isRequired,
   errorKeyLock: PropTypes.bool,
   setErrorKeyLockTrue: PropTypes.func.isRequired,
   setParentChapterChoice: PropTypes.func.isRequired,
