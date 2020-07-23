@@ -28,6 +28,7 @@ const profilMiddleware = (store) => (next) => (action) => {
       axios.get(`${baseURL}/api/v0/parties?user_id=${action.authorId}`)
         .then((response) => {
           store.dispatch(saveOwnParties(response.data[0]));
+          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);
