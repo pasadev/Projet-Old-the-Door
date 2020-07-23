@@ -30,8 +30,11 @@ import { baseURL } from 'src/utils';
 
 const storyEditMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_ADV_EDIT_SELECTED:
-      axios.get(`${baseURL}/api/v0/stories/${action.slug}`)
+    case FETCH_ADV_EDIT_SELECTED: {
+      const { apiToken } = store.getState().user.user;
+      axios.get(`${baseURL}/api/v0/stories/${action.slug}`, {
+        headers: { 'X-AUTH-TOKEN': apiToken },
+      })
         .then((response) => {
           // dispatch to save the Adventure to edit selected
           store.dispatch(saveAdventureEditSelected(response.data[0]));
@@ -46,6 +49,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
 
     case SUBMIT_ADV_EDIT_FORM: {
       const { id, apiToken } = store.getState().user.user;
