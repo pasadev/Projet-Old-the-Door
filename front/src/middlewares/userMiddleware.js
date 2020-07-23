@@ -29,8 +29,8 @@ const userMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveUser(response.data[0]));
-          sessionStorage.setItem('currentuser', JSON.stringify(response.data[0]));
-          sessionStorage.setItem('isLogged', `${true}`);
+          localStorage.setItem('currentuser', JSON.stringify(response.data[0]));
+          localStorage.setItem('isLogged', `${true}`);
           store.dispatch(redirectOn());
         })
         .catch((error) => {
@@ -51,8 +51,8 @@ const userMiddleware = (store) => (next) => (action) => {
         withCredentials: true,
       })
         .then(() => {
-          sessionStorage.removeItem('isLogged');
-          sessionStorage.removeItem('currentuser');
+          localStorage.removeItem('isLogged');
+          localStorage.removeItem('currentuser');
         })
         .catch((error) => {
           console.warn(error);
@@ -88,8 +88,8 @@ const userMiddleware = (store) => (next) => (action) => {
           // Save user only for http 201
           if (response.status === 201) {
             store.dispatch(saveUser(response.data));
-            sessionStorage.setItem('currentuser', JSON.stringify(response.data));
-            sessionStorage.setItem('isLogged', `${true}`);
+            localStorage.setItem('currentuser', JSON.stringify(response.data));
+            localStorage.setItem('isLogged', `${true}`);
             store.dispatch(redirectOn());
           }
         })

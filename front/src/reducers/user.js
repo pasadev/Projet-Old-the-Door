@@ -19,8 +19,8 @@ const initialState = {
   // contenu de l'input pour le mot de passe
   password: '',
   // indique si l'utilisateur est loggué
-  isLogged: JSON.parse(sessionStorage.getItem('isLogged')),
-  user: JSON.parse(sessionStorage.getItem('currentuser')),
+  isLogged: JSON.parse(localStorage.getItem('isLogged')),
+  user: JSON.parse(localStorage.getItem('currentuser')),
   registerError: false,
   loginError: false,
 };
