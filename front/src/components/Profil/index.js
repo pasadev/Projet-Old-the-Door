@@ -26,7 +26,7 @@ const Profil = ({
         <Typist
           cursor={{ hideWhenDone: true }}
         >
-          BIENVENUE {userInfo.username}
+          Profil de {userInfo.username}
         </Typist>
       </h1>
       <h2 className="profil-littletitle">Mes informations:</h2>
