@@ -26,5 +26,11 @@
       flex-direction: row !important;
       justify-content: center;
     }
+  }
 }
+
+@media screen and (min-width: 1024px) {
+  .adventures {
+    padding: 0;
+  }
 }

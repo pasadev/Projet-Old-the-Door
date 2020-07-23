@@ -5,10 +5,8 @@
     padding: 0.5em;
     overflow-wrap: break-word;
     flex-grow: 2;
-    width: 300px;
-    /* margin-bottom: 0.5em;
-    margin-right: 0.5em; */
-    margin : 0.5em;
+    width: 250px;
+    margin-bottom: 1em;
   &:hover {
     border: 2px solid #fff;
   }
@@ -29,11 +27,17 @@
     }
   }
   .party-story {
-    font-size: $mobileTitleSize;
+    text-transform: uppercase;
     margin-bottom: 0.5em;
   }
   .party-time{
     font-style: italic;
     padding-top: 0.3em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .party {
+    margin: 0.5em;
   }
 }
