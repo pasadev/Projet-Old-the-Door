@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'src/containers/Nav';
 import BurgerMenu from 'src/containers/BurgerMenu';
 import PropTypes from 'prop-types';
+import Logo from '../../assets/images/logo.png';
 
 import './header.scss';
 
@@ -13,7 +14,8 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
       className="nav-logo"
       to="/"
     >
-      O'ld the door
+      <img className="logo-img" src={Logo} alt="logo o'ld the door" />
+      <span className="logo-text">'ld the door</span>
     </Link>
     { (isLogged === null) && (
     <Link

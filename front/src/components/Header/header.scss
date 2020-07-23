@@ -12,10 +12,23 @@
   top: 0;
   left: 0;
   right: 0;
+
   .nav-logo {
     position: absolute;
     left: 0;
     padding-left: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo-img {
+      height: 1.4em;
+      width: 1.4em;
+    }
+
+    .logo-text {
+      display: none;
+    }
   }
 
   .nav-container {
@@ -27,7 +40,9 @@
 
 @media only screen and (min-width: 768px) {
   .header {  
-    
+    .logo-text {
+      display: inline !important;
+    }
     .nav-container {
       display: flex;
       position: absolute;
