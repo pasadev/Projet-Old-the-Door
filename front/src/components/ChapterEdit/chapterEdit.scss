@@ -35,14 +35,20 @@
 }
 
 .storyEdit{
-.storyEdit-form-editChoice{
-  background-color: $darkBorderColor;
-  border-style: hidden;
-  padding: 0.8em 1em;
-  color: $lightColor;
-  font-size: $baseFontSize;
-  font-family: $family;
-  margin-left:0.5em;
-}
+  padding: 0 1em;
+  .storyEdit-form-editChoice{
+    background-color: $darkBorderColor;
+    border-style: hidden;
+    padding: 0.8em 1em;
+    color: $lightColor;
+    font-size: $baseFontSize;
+    font-family: $family;
+    margin-left:0.5em;
+  }
 }
 
+@media screen and (min-width: 768px) {
+  .storyEdit {
+    padding: 0 2em;
+  }
+}

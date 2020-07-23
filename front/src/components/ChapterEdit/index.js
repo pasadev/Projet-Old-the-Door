@@ -93,10 +93,10 @@ const ChapterEdit = ({
                 <option
                   value={chapterEdit.parentChapter !== null && chapterEdit.parentChapter.id}
                 >
-                  Liste des Chapitres parent possible
+                  Chapitres parent possible
                 </option>
                 <option value="">
-                  Retirer le chapitre parent actuel
+                  Retirer le choix actuel
                 </option>
                 {parentChapterOption.map((chapter) => {
                   // Condition to prevent the option to select a chapter as his own parent
@@ -184,10 +184,10 @@ const ChapterEdit = ({
                 defaultValue=""
               >
                 <option disabled value="">
-                  Liste des Chapitres parent possible
+                  Chapitres parent possible
                 </option>
                 <option value="">
-                  Pas de Chapitre parent pour le moment
+                  Aucun pour le moment
                 </option>
                 {parentChapterOption.map((choice) => (
                   <option
