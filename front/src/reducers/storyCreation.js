@@ -2,7 +2,7 @@ import {
   UPDATE_CREATION_FIELD,
   SAVE_STORY_CREATE_SLUG,
   CLEAR_STORY_CREATION,
-  SET_VALIDATION_ERROR_TRUE,
+  SET_VALIDATION_ERROR_ADV_TRUE,
 } from 'src/actions/storyCreation';
 
 const initialState = {
@@ -32,7 +32,7 @@ const storyCreation = (state = initialState, action = {}) => {
         ...initialState,
       };
 
-    case SET_VALIDATION_ERROR_TRUE:
+    case SET_VALIDATION_ERROR_ADV_TRUE:
       return {
         ...state,
         validationError: true,

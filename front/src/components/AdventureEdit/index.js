@@ -8,6 +8,7 @@ const AdventureEdit = ({
   synopsis,
   description,
   updateField,
+  validationErrorAdvEdit,
 }) => (
   <div className="adventureEdit">
     <Field
@@ -34,10 +35,16 @@ const AdventureEdit = ({
       changeField={updateField}
       label="description :"
     />
+    {validationErrorAdvEdit && (
+      <div className="validationError">
+        Les informations envoyées ne correspondent pas aux prérequis
+      </div>
+    )}
   </div>
 );
 
 AdventureEdit.propTypes = {
+  validationErrorAdvEdit: Proptypes.bool.isRequired,
   updateField: Proptypes.func.isRequired,
   // Adventure data
   title: Proptypes.string.isRequired,

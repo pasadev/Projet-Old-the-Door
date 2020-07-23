@@ -6,6 +6,7 @@ import {
   SET_EDIT_OPTION,
   // CLEAR_EDIT_OPTION,
   SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
+  SET_VALIDATION_ERROR_ADV_EDIT_TRUE,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -27,6 +28,7 @@ const initialState = {
   chapters: [],
   parentChapterOption: [],
   editOption: '',
+  validationErrorAdvEdit: false,
 };
 
 const storyEdit = (state = initialState, action = {}) => {
@@ -77,6 +79,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         parentChapterOption: action.parentChapterOption,
+      };
+
+    case SET_VALIDATION_ERROR_ADV_EDIT_TRUE:
+      return {
+        ...state,
+        validationErrorAdvEdit: true,
       };
 
     default: return state;
