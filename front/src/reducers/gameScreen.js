@@ -185,7 +185,7 @@ const gameScreen = (state = initialState, action = {}) => {
 
     case RESET_INITIAL_STATE:
       return {
-         ...initialState,
+        ...initialState,
 
       };
 
