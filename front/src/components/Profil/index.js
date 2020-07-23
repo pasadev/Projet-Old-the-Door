@@ -11,7 +11,7 @@ const Profil = ({
   redirectOff,
   fetchCreatedAdventures,
   createdAdventures,
-  fetchOwnParties,
+
   ownParties,
   userInfo,
   displayLoader,
@@ -20,7 +20,6 @@ const Profil = ({
     redirectOff();
     displayLoader();
     fetchCreatedAdventures(userInfo.id);
-    fetchOwnParties(userInfo.id);
   }, []);
   return (
     <main className="profil">
@@ -75,7 +74,6 @@ Profil.propTypes = {
     }).isRequired,
   ).isRequired,
 
-  fetchOwnParties: PropTypes.func.isRequired,
   ownParties: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
