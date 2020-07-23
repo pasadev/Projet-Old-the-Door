@@ -9,6 +9,8 @@ import {
   clearChapterEdit,
   clearStoryEdit,
   setValidationErrorAdvEditTrue,
+  setValidationErrorAdvEditFalse,
+  setValidationErrorChapEditFalse,
 } from 'src/actions/storyEdit';
 
 import StoryEdit from 'src/components/StoryEdit';
@@ -49,6 +51,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setValidationErrorAdvEditTrue: () => {
     dispatch(setValidationErrorAdvEditTrue());
+  },
+  setValidationErrorAdvEditFalse: () => {
+    dispatch(setValidationErrorAdvEditFalse());
+  },
+  setValidationErrorChapEditFalse: () => {
+    dispatch(setValidationErrorChapEditFalse());
   },
 });
 

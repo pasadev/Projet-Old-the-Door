@@ -7,6 +7,7 @@ import {
   // CLEAR_EDIT_OPTION,
   SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
   SET_VALIDATION_ERROR_ADV_EDIT_TRUE,
+  SET_VALIDATION_ERROR_ADV_EDIT_FALSE,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -85,6 +86,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         validationErrorAdvEdit: true,
+      };
+
+    case SET_VALIDATION_ERROR_ADV_EDIT_FALSE:
+      return {
+        ...state,
+        validationErrorAdvEdit: false,
       };
 
     default: return state;

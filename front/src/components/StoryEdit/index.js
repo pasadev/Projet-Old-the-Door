@@ -24,6 +24,8 @@ const StoryEdit = ({
   clearChapterEdit,
   clearStoryEdit,
   setValidationErrorAdvEditTrue,
+  setValidationErrorAdvEditFalse,
+  setValidationErrorChapEditFalse,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -35,6 +37,8 @@ const StoryEdit = ({
 
   const handleAdvEditSubmit = (event) => {
     event.preventDefault();
+    // Reset error display
+    setValidationErrorAdvEditFalse();
     if (
       (storyEdit.title.length > 3)
       && (storyEdit.synopsis.length > 50)
@@ -54,6 +58,9 @@ const StoryEdit = ({
 
   const handleEditOption = (event) => {
     setEditOption(event.target.value);
+    // Reset error display
+    setValidationErrorAdvEditFalse();
+    setValidationErrorChapEditFalse();
     // Condition to not do the get request if it's a new chapter or the adventure
     // And clear the state of chapterEdit
     if (event.target.value === 'Nouveau Chapitre' || event.target.value === initialTitle || event.target.value === '') {
@@ -129,6 +136,8 @@ const StoryEdit = ({
 };
 
 StoryEdit.propTypes = {
+  setValidationErrorChapEditFalse: PropTypes.func.isRequired,
+  setValidationErrorAdvEditFalse: PropTypes.func.isRequired,
   setValidationErrorAdvEditTrue: PropTypes.func.isRequired,
   clearStoryEdit: PropTypes.func.isRequired,
   clearChapterEdit: PropTypes.func.isRequired,

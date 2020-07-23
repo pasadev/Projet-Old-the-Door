@@ -7,6 +7,7 @@ import {
   setParentChapterChoice,
   setErrorKeyLockTrue,
   setValidationErrorChapEditTrue,
+  setValidationErrorChapEditFalse,
 } from 'src/actions/storyEdit';
 
 import { checkWordInContent } from 'src/utils';
@@ -50,6 +51,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setValidationErrorChapEditTrue: () => {
     dispatch(setValidationErrorChapEditTrue());
+  },
+  setValidationErrorChapEditFalse: () => {
+    dispatch(setValidationErrorChapEditFalse());
   },
 });
 

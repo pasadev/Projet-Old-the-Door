@@ -27,9 +27,12 @@ const ChapterEdit = ({
   errorKeyLock,
   validationErrorChapEdit,
   setValidationErrorChapEditTrue,
+  setValidationErrorChapEditFalse,
 }) => {
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
+    // Reset error display
+    setValidationErrorChapEditFalse();
     // Check the length of title and content
     if ((title.length > 3) && (content.length) > 3 && (unlockText.length) > 0) {
       // Check if keyword and lockword are in the content
@@ -47,6 +50,8 @@ const ChapterEdit = ({
 
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
+    // Reset error display
+    setValidationErrorChapEditFalse();
     // Check the length of title and content
     if ((title.length > 3) && (content.length) > 3 && (unlockText.length) > 0) {
       // Check if keyword and lockword are in the content
@@ -255,6 +260,7 @@ const ChapterEdit = ({
 };
 
 ChapterEdit.propTypes = {
+  setValidationErrorChapEditFalse: PropTypes.func.isRequired,
   setValidationErrorChapEditTrue: PropTypes.func.isRequired,
   validationErrorChapEdit: PropTypes.bool.isRequired,
   errorKeyLock: PropTypes.bool,
