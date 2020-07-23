@@ -44,19 +44,19 @@ const App = ({ burgerMenuOpen, isLogged }) => (
         </Route>
         <Route exact path="/aventures/creation">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <StoryCreate />
+          {isLogged === true && (<StoryCreate />)}
         </Route>
         <Route exact path="/aventures/:slug/jouer">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <GameScreen />
+          {isLogged === true && (<GameScreen />)}
         </Route>
         <Route exact path="/aventures/:slug/edition">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <StoryEdit />
+          {isLogged === true && (<StoryEdit />)}
         </Route>
         <Route exact path="/aventures/:slug">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <Adventure />
+          {isLogged === true && (<Adventure />)}
         </Route>
         <Route exact path="/aventures">
           <Adventures />
