@@ -69,16 +69,12 @@ class StoryVoter extends Voter
                 }
                 break;
 
-            case 'showBySlug':
-              
-        
+            case 'showBySlug':      
                 // if the story is active or if connected user is author
                 if($subject->getActive() ||$subject->getAuthor()->getId() === $user->getId())
                 { 
                     return true;
-                }
-  
-               
+                }             
          
                 break;
         }
