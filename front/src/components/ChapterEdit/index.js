@@ -31,7 +31,7 @@ const ChapterEdit = ({
   const handleChapterEditSubmit = (event) => {
     event.preventDefault();
     // Check the length of title and content
-    if ((title.length > 3) && (content.length) > 3) {
+    if ((title.length > 3) && (content.length) > 3 && (unlockText.length) > 0) {
       // Check if keyword and lockword are in the content
       if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
         submitChapterEditForm();
@@ -48,7 +48,7 @@ const ChapterEdit = ({
   const handleNewChapterSubmit = (event) => {
     event.preventDefault();
     // Check the length of title and content
-    if ((title.length > 3) && (content.length) > 3) {
+    if ((title.length > 3) && (content.length) > 3 && (unlockText.length) > 0) {
       // Check if keyword and lockword are in the content
       if (checkWordInContent(keyword, content) && checkWordInContent(lockword, content)) {
         submitNewChapterForm();
