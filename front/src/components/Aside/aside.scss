@@ -2,7 +2,7 @@
 
 .aside {
   position: fixed;
-  right: 0;
+  right: 10px;
   top: 6em;
   color: $noticeColor;
   display: flex;
@@ -18,7 +18,7 @@
     border: double;
     color: $darkColor;
     background-color: rgba(250, 192, 59, 0.9);
-    padding: 0.2em;
+    padding: 0.5em;
     display: flex;
     flex-direction: column;
 
