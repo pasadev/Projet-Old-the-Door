@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
@@ -14,7 +14,12 @@ const StoryCreate = ({
   sumbitStoryCreate,
   redirect,
   slug,
+  clearStoryCreation,
 }) => {
+  useEffect(() => {
+    clearStoryCreation();
+  }, []);
+
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
     sumbitStoryCreate(title, synopsis, description);
@@ -71,6 +76,7 @@ const StoryCreate = ({
 };
 
 StoryCreate.propTypes = {
+  clearStoryCreation: PropTypes.func.isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   synopsis: PropTypes.string.isRequired,

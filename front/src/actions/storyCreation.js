@@ -2,6 +2,7 @@
 export const UPDATE_CREATION_FIELD = 'UPDATE_CREATION_FIELD';
 export const SUBMIT_STORY_CREATE_FORM = 'SUBMIT_STORY_CREATE_FORM';
 export const SAVE_STORY_CREATE_SLUG = 'SAVE_STORY_CREATE_SLUG';
+export const CLEAR_STORY_CREATION = 'CLEAR_STORY_CREATION';
 
 // === action creators
 export const updateCreationField = (identifier, newValue) => ({
@@ -20,4 +21,8 @@ export const sumbitStoryCreate = (title, synopsis, description) => ({
 export const saveStoryCreateSlug = (slug) => ({
   type: SAVE_STORY_CREATE_SLUG,
   slug,
+});
+
+export const clearStoryCreation = () => ({
+  type: CLEAR_STORY_CREATION,
 });
