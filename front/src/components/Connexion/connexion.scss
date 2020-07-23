@@ -3,6 +3,9 @@
 .login-form {
   padding: 1em;
 }
+.login-email{
+  margin-right: 4em;
+}
 
 .form {
   width: 80%;
@@ -38,6 +41,7 @@
   align-items: baseline;
   flex-wrap: wrap;
   overflow: hidden;
+  flex-direction: column;
   
 }
 
@@ -113,11 +117,9 @@
     width: 50%;
    
   }
-
   .infos{
     margin-bottom: 1em;
   }
-  
 
 }
 
