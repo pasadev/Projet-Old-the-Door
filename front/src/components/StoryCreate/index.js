@@ -50,24 +50,24 @@ const StoryCreate = ({
           >
             <Field
               identifier="title"
-              placeholder="titre"
+              placeholder="L'énigme mystérieuse ..."
               value={title}
               changeField={updateField}
-              label="titre :"
+              label="Titre :"
             />
             <FieldArea
               identifier="synopsis"
-              placeholder="synopsis"
+              placeholder="Il était une fois, dans une contrée lointaine ..."
               value={synopsis}
               changeField={updateField}
-              label="synopsis : (50 charactères minimum)"
+              label="Synopsis : (50 caractères min.)"
             />
             <FieldArea
               identifier="description"
-              placeholder="description"
+              placeholder="L'histoire commence dans une grange abandonnée ..."
               value={description}
               changeField={updateField}
-              label="description : (50 charactères minimum)"
+              label="Description : (50 caractères min.)"
             />
             {validationError && (
               <div className="validationError">

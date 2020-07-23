@@ -17,7 +17,7 @@ const AdventureEdit = ({
       placeholder="titre"
       value={title}
       changeField={updateField}
-      label="titre :"
+      label="Titre :"
     />
     <FieldArea
       className="adventureEdit-synopsis"
@@ -25,7 +25,7 @@ const AdventureEdit = ({
       placeholder="synopsis"
       value={synopsis}
       changeField={updateField}
-      label="synopsis :"
+      label="Synopsis :"
     />
     <FieldArea
       className="adventureEdit-description"
@@ -33,7 +33,7 @@ const AdventureEdit = ({
       placeholder="description"
       value={description}
       changeField={updateField}
-      label="description :"
+      label="Description :"
     />
     {validationErrorAdvEdit && (
       <div className="validationError">

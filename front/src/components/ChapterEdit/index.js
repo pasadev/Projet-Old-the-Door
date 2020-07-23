@@ -116,22 +116,22 @@ const ChapterEdit = ({
             <Field
               className="chapterEdit-chapterTitle"
               identifier="title"
-              placeholder="titre"
+              placeholder="Le coffre"
               value={title}
               changeField={updateField}
-              label="titre :"
+              label="Titre :"
             />
             <FieldArea
               className="chapter-Edit-chapterText"
               identifier="content"
-              placeholder="Contenu"
+              placeholder="Vous voyez devant vous un bureau sur lequel est posé un coffre fermé par un cadenas, ainsi qu'une clé accroché à un clou sur le mur"
               value={content}
               changeField={updateField}
               label="Contenu :"
             />
             <Field
               className="chapterEdit-key"
-              identifier="keyword"
+              identifier="Clé"
               placeholder="Clé"
               value={keyword}
               changeField={updateField}
@@ -140,7 +140,7 @@ const ChapterEdit = ({
             <Field
               className="chapterEdit-lock"
               identifier="lockword"
-              placeholder="Serrure"
+              placeholder="Cadenas"
               value={lockword}
               changeField={updateField}
               label="Un mot Serrure :"
@@ -148,7 +148,7 @@ const ChapterEdit = ({
             <Field
               className="chapterEdit-unlockText"
               identifier="unlockText"
-              placeholder="Texte de réussite du chapitre"
+              placeholder="Vous avez déverouillé le cadenas avec la clé et ouvrez le coffre ..."
               value={unlockText}
               changeField={updateField}
               label="Texte de réussite du chapitre :"
@@ -202,15 +202,15 @@ const ChapterEdit = ({
             <Field
               className="chapterEdit-chapterTitle"
               identifier="title"
-              placeholder="titre"
+              placeholder="Le coffre"
               value={title}
               changeField={updateField}
-              label="titre :"
+              label="Titre :"
             />
             <FieldArea
               className="chapter-Edit-chapterText"
               identifier="content"
-              placeholder="Contenu"
+              placeholder="Vous voyez devant vous un bureau sur lequel est posé un coffre fermé par un cadenas, ainsi qu'une clé accroché à un clou sur le mur"
               value={content}
               changeField={updateField}
               label="Contenu :"
@@ -226,7 +226,7 @@ const ChapterEdit = ({
             <Field
               className="chapterEdit-lock"
               identifier="lockword"
-              placeholder="Serrure"
+              placeholder="Cadenas"
               value={lockword}
               changeField={updateField}
               label="Un mot Serrure :"
@@ -234,7 +234,7 @@ const ChapterEdit = ({
             <Field
               className="chapterEdit-unlockText"
               identifier="unlockText"
-              placeholder="Texte de réussite du chapitre"
+              placeholder="Vous avez déverouillé le cadenas avec la clé et ouvrez le coffre ..."
               value={unlockText}
               changeField={updateField}
               label="Texte de réussite du chapitre :"
