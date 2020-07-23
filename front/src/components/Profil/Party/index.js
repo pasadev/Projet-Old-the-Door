@@ -35,11 +35,16 @@ const Party = ({
         + ((Math.floor((time - ((Math.floor(time / 3600)) * 3600)) / 60)) * 60))}s
       </div>
       <div className="party-link">
-        <Link
-          to={`/aventures/${forStory.slug}`}
-        >
-          Ouvrir le fichier
-        </Link>
+
+        {forStory.active ? (
+          <Link
+            to={`/aventures/${forStory.slug}`}
+          >
+            Ouvrir le fichier
+          </Link>
+        )
+          : <>Ce jeu n est plus disponible</>}
+
       </div>
     </div>
   </>

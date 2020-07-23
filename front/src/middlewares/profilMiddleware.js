@@ -27,6 +27,7 @@ const profilMiddleware = (store) => (next) => (action) => {
     case FETCH_OWN_PARTIES:
       axios.get(`${baseURL}/api/v0/parties?user_id=${action.authorId}`)
         .then((response) => {
+          console.log(response);
           store.dispatch(saveOwnParties(response.data[0]));
         })
         .catch((error) => {
