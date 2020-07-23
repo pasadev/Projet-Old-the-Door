@@ -43,7 +43,7 @@ const Party = ({
             Ouvrir le fichier
           </Link>
         )
-          : <>Ce jeu n est plus disponible</>}
+          : <>Ce jeu n/'est plus publié</>}
 
       </div>
     </div>
