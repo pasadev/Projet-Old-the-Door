@@ -36,17 +36,8 @@ const Connexion = ({
             </h1>
             <div className="form">
               <div className="login-header">
-                <h2 className="blink">Connexion à O'ld the door</h2>
+                <h2>Connexion à O'ld the door</h2>
               </div>
-
-              <Typist
-                cursor={{ show: false }}
-              >
-                <Typist.Delay ms={3000} />
-                <div className="infos">
-                  <p className="infos-text ">Accès incomplet : identification requise</p>
-                </div>
-              </Typist>
               {loginError && (
                 <div className="infos-warning">
                   <p className="infos-text blink">Accès refusé : Informations de connexion erronées</p>
@@ -55,12 +46,7 @@ const Connexion = ({
               <form autoComplete="off" onSubmit={handleSubmit}>
 
                 <div className="login-input">
-                  <Typist
-                    cursor={{ show: false }}
-                  >
-                    <Typist.Delay ms={6000} />
-                    <label htmlFor="email" className="login-email"> Email : </label>
-                  </Typist>
+                  <label htmlFor="email" className="login-email"> Email : </label>
                   <Field
                     name="email"
                     placeholder=""
@@ -69,13 +55,7 @@ const Connexion = ({
                   />
                 </div>
                 <div className="login-input">
-                  <Typist
-                    cursor={{ show: false }}
-                  >
-                    <Typist.Delay ms={7000} />
-                    <label htmlFor="password" className="login-input-password"> Mot de passe : </label>
-
-                  </Typist>
+                  <label htmlFor="password" className="login-input-password"> Mot de passe : </label>
                   <PasswordCo
                     name="password"
                     placeholder=""

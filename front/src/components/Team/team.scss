@@ -15,9 +15,8 @@
     }
 
     .member-name{
-      font-size: 0.45em;
-      
-      
+      font-size: 0.40em;
+      font-weight: bold;   
     }
 
     .member-description {
@@ -31,14 +30,7 @@
   .team{
     padding: 0 0.5em;
   }
-  .ascii{
-   
-    transform: scale(0.40) translate(-77%) ;
-   
-  }
-
-  @keyframes downSising{
-
-  }
+  
 }
+
 
