@@ -16,7 +16,9 @@
     }
 
     .member-name{
-      display: flex;
+      font-size: 0.45em;
+      
+      
     }
 
     .member-description {
@@ -25,14 +27,3 @@
   }
 }
 
-@media only screen and (max-width: 730px){
-  .ascii{
-   
-    transform: scale(0.40) translate(-77%) ;
-   
-  }
-
-  @keyframes downSising{
-
-  }
-}
