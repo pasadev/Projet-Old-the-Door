@@ -11,14 +11,15 @@ const Profil = ({
   redirectOff,
   fetchCreatedAdventures,
   createdAdventures,
-  fetchOwnParties,
+
   ownParties,
   userInfo,
+  displayLoader,
 }) => {
   useEffect(() => {
     redirectOff();
+    displayLoader();
     fetchCreatedAdventures(userInfo.id);
-    fetchOwnParties(userInfo.id);
   }, []);
   return (
     <main className="profil">
@@ -73,7 +74,6 @@ Profil.propTypes = {
     }).isRequired,
   ).isRequired,
 
-  fetchOwnParties: PropTypes.func.isRequired,
   ownParties: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -87,6 +87,7 @@ Profil.propTypes = {
     }).isRequired,
   ).isRequired,
   userInfo: PropTypes.object.isRequired,
+  displayLoader: PropTypes.func.isRequired,
 };
 
 export default Profil;

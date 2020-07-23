@@ -8,6 +8,7 @@ import {
   saveCreatedAdventures,
   FETCH_OWN_PARTIES,
   saveOwnParties,
+  fetchOwnParties,
 } from '../actions/profil';
 
 const profilMiddleware = (store) => (next) => (action) => {
@@ -16,7 +17,7 @@ const profilMiddleware = (store) => (next) => (action) => {
       axios.get(`${baseURL}/api/v0/stories/?author_id=${action.authorId}`)
         .then((response) => {
           store.dispatch(saveCreatedAdventures(response.data[0]));
-          store.dispatch(hideLoader());
+          store.dispatch(fetchOwnParties(action.authorId));
         })
         .catch((error) => {
           console.warn(error);
@@ -28,6 +29,7 @@ const profilMiddleware = (store) => (next) => (action) => {
       axios.get(`${baseURL}/api/v0/parties?user_id=${action.authorId}`)
         .then((response) => {
           store.dispatch(saveOwnParties(response.data[0]));
+          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);
