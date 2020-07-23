@@ -15,7 +15,9 @@
     }
 
     .member-name{
-      display: flex;
+      font-size: 0.45em;
+      
+      
     }
 
     .member-description {
@@ -23,6 +25,7 @@
     }
   }
 }
+
 
 @media only screen and (max-width: 768px){
   .team{
@@ -38,3 +41,4 @@
 
   }
 }
+

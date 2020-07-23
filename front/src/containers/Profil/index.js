@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Profil from 'src/components/Profil';
 
-import { redirectOff } from 'src/actions/utils';
+import { redirectOff, displayLoader } from 'src/actions/utils';
 
 import { fetchCreatedAdventures, fetchOwnParties } from 'src/actions/profil';
 
@@ -21,6 +21,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   redirectOff: () => {
     dispatch(redirectOff());
+  },
+
+  displayLoader: () => {
+    dispatch(displayLoader());
   },
 
   fetchCreatedAdventures: (authorId) => {

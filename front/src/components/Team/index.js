@@ -1,11 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
 import Typist from 'react-typist';
-import Damien from '../../assets/images/damien.png';
-import Tony from '../../assets/images/tony.png';
-import Jukka from '../../assets/images/jukka.png';
-import Hugo from '../../assets/images/hugo.png';
-import Maxence from '../../assets/images/maxence.png';
 
 import './team.scss';
 
@@ -20,12 +15,15 @@ const Team = () => (
     </h1>
     <div className="member">
       <div className="member-name">
-        <img
-          src={Damien}
-          alt="damien ascii art"
-          className="ascii"
-        />
-
+        <pre>
+        &nbsp;________  ________  _____ ______   ___  _______   ________      <br />
+          |\   ___ \|\   __  \|\   _ \  _   \|\  \|\  ___ \ |\   ___  \     <br />
+          \ \  \_|\ \ \  \|\  \ \  \\\__\ \  \ \  \ \   __/|\ \  \\ \  \    <br />
+        &nbsp;\ \  \ \\ \ \   __  \ \  \\|__| \  \ \  \ \  \_|/_\ \  \\ \  \   <br />
+        &nbsp;&nbsp;\ \  \_\\ \ \  \ \  \ \  \    \ \  \ \  \ \  \_|\ \ \  \\ \  \  <br />
+        &nbsp;&nbsp;&nbsp;\ \_______\ \__\ \__\ \__\    \ \__\ \__\ \_______\ \__\\ \__\ <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;\|_______|\|__|\|__|\|__|     \|__|\|__|\|_______|\|__| \|__| <br />
+        </pre>
       </div>
       <div className="member-role">
         <span>Product Owner</span>
@@ -39,11 +37,16 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        <img
-          src={Maxence}
-          alt="maxence ascii art"
-          className="ascii"
-        />
+        <pre>
+          &nbsp;&nbsp;_____ ______   ________     ___    ___ _______   ________   ________  _______      <br />
+          &nbsp;|\   _ \  _   \|\   __  \   |\  \  /  /|\  ___ \ |\   ___  \|\   ____\|\  ___ \     <br />
+          &nbsp;\ \  \\\__\ \  \ \  \|\  \  \ \  \/  / | \   __/|\ \  \\ \  \ \  \___|\ \   __/|    <br />
+          &nbsp;&nbsp;\ \  \\|__| \  \ \   __  \  \ \    / / \ \  \_|/_\ \  \\ \  \ \  \    \ \  \_|/__  <br />
+          &nbsp;&nbsp;&nbsp;\ \  \    \ \  \ \  \ \  \  /     \/   \ \  \_|\ \ \  \\ \  \ \  \____\ \  \_|\ \ <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;\ \__\    \ \__\ \__\ \__\/  /\   \    \ \_______\ \__\\ \__\ \_______\ \_______\<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|     \|__|\|__|\|__/__/ /\ __\    \|_______|\|__| \|__|\|_______|\|_______|<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__|/ \|__|
+        </pre>
       </div>
       <div className="member-role">
         <span>Lead Développeur Back</span>
@@ -54,11 +57,16 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        <img
-          src={Tony}
-          alt="tony ascii art"
-          className="ascii"
-        />
+        <pre>
+          &nbsp;_________  ________  ________       ___    ___ <br />
+          |\___   ___\\   __  \|\   ___  \    |\  \  /  /|<br />
+          \|___ \  \_\ \  \|\  \ \  \\ \  \   \ \  \/  / /<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ \  \ \ \  \\\  \ \  \\ \  \   \ \    / / <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ \  \ \ \  \\\  \ \  \\ \  \   \/  /  /  <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ \__\ \ \_______\ \__\\ \__\__/  / /    <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|__|  \|_______|\|__| \|__|\___/ /     <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\|___|/      <br />
+        </pre>
       </div>
       <div className="member-role">
         <span>Lead Développeur Front</span>
@@ -70,11 +78,16 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        <img
-          src={Hugo}
-          alt="hugo ascii art"
-          className="ascii"
-        />
+        <pre>
+         &nbsp;___  ___  ___  ___  ________  ________     <br />
+          |\  \|\  \|\  \|\  \|\   ____\|\   __  \    <br />
+          \ \  \\\  \ \  \\\  \ \  \___|\ \  \|\  \   <br />
+         &nbsp;\ \   __  \ \  \\\  \ \  \  __\ \  \\\  \  <br />
+         &nbsp;&nbsp;\ \  \ \  \ \  \\\  \ \  \|\  \ \  \\\  \ <br />
+         &nbsp;&nbsp;&nbsp;\ \__\ \__\ \_______\ \_______\ \_______\<br />
+         &nbsp;&nbsp;&nbsp;&nbsp;\|__|\|__|\|_______|\|_______|\|_______|<br />
+
+        </pre>
       </div>
       <div className="member-role">
         <span>Git Master</span>
@@ -86,11 +99,15 @@ const Team = () => (
     </div>
     <div className="member">
       <div className="member-name">
-        <img
-          src={Jukka}
-          alt="jukka ascii art"
-          className="ascii"
-        />
+        <pre>
+          &nbsp;&nbsp;&nbsp;&nbsp;___  ___  ___  ___  __    ___  __    ________     <br />
+          &nbsp;&nbsp;&nbsp;|\  \|\  \|\  \|\  \|\  \ |\  \|\  \ |\   __  \    <br />
+          &nbsp;&nbsp;&nbsp;\ \  \ \  \\\  \ \  \/  /|\ \  \/  /|\ \  \|\  \   <br />
+          &nbsp;__ \ \  \ \  \\\  \ \   ___  \ \   ___  \ \   __  \  <br />
+          |\  \\_\  \ \  \\\  \ \  \\ \  \ \  \\ \  \ \  \ \  \ <br />
+          \ \________\ \_______\ \__\\ \__\ \__\\ \__\ \__\ \__\<br />
+          &nbsp;\|________|\|_______|\|__| \|__|\|__| \|__|\|__|\|__|<br />
+        </pre>
       </div>
       <div className="member-role">
         <span>Scrum Master</span>

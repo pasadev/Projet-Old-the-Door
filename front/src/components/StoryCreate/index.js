@@ -16,7 +16,7 @@ const StoryCreate = ({
   slug,
   clearStoryCreation,
   validationError,
-  setValidationErrorTrue,
+  setValidationErrorAdvTrue,
 }) => {
   useEffect(() => {
     clearStoryCreation();
@@ -28,7 +28,7 @@ const StoryCreate = ({
       sumbitStoryCreate(title, synopsis, description);
     }
     else {
-      setValidationErrorTrue();
+      setValidationErrorAdvTrue();
     }
   };
 
@@ -88,7 +88,7 @@ const StoryCreate = ({
 };
 
 StoryCreate.propTypes = {
-  setValidationErrorTrue: PropTypes.func.isRequired,
+  setValidationErrorAdvTrue: PropTypes.func.isRequired,
   validationError: PropTypes.bool.isRequired,
   clearStoryCreation: PropTypes.func.isRequired,
   slug: PropTypes.string.isRequired,
