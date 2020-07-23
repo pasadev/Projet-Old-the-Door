@@ -4,6 +4,7 @@ import {
   updateCreationField,
   sumbitStoryCreate,
   clearStoryCreation,
+  setValidationErrorTrue,
 } from 'src/actions/storyCreation';
 
 const mapStateToProps = (state) => ({
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => ({
   description: state.storyCreation.description,
   redirect: state.utils.redirect,
   slug: state.storyCreation.slug,
+  validationError: state.storyCreation.validationError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -23,6 +25,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   clearStoryCreation: () => {
     dispatch(clearStoryCreation());
+  },
+  setValidationErrorTrue: () => {
+    dispatch(setValidationErrorTrue());
   },
 });
 

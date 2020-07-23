@@ -51,7 +51,7 @@ const Register = ({
             </label>
             <FieldRegister
               name="nickname"
-              placeholder="Pseudo"
+              placeholder="xXDarkSasukeXx, Fabigeon, LeBGdu75 ..."
               onChange={changeField}
               value={nickname}
             />
@@ -60,7 +60,7 @@ const Register = ({
             </label>
             <FieldRegister
               name="firstname"
-              placeholder="Prénom"
+              placeholder="Nathan, Lara, Indiana, Daffy ..."
               onChange={changeField}
               value={firstname}
             />
@@ -68,7 +68,7 @@ const Register = ({
               Nom :
               <FieldRegister
                 name="lastname"
-                placeholder="Nom"
+                placeholder="Drake, Croft, Jones, Duck ..."
                 onChange={changeField}
                 value={lastname}
               />
@@ -77,33 +77,33 @@ const Register = ({
               Email :
               <FieldRegister
                 name="emailRegister"
-                placeholder="email"
+                placeholder="monadressemail@gmail.com ..."
                 onChange={changeField}
                 value={emailRegister}
               />
             </label>
             <div className="input-password">
-            <label htmlFor="form-password-confirmation">
-              Mot de passe : 
-              <span className="form-password-rules">(taille minimum 8 caractere -> 1 majuscule, 1 chiffre, 1 caractere special)</span>             
-              <FieldRegisterPassword
-                name="passwordFirst"
-                placeholder="password"
-                onChange={changeField}
-                value={passwordFirst}
-              />
-            </label>
+              <label htmlFor="form-password-confirmation">
+                Mot de passe :
+                <span className="form-password-rules">(taille minimum 8 caractere -> 1 majuscule, 1 chiffre, 1 caractere special)</span>
+                <FieldRegisterPassword
+                  name="passwordFirst"
+                  placeholder="1234Azerty!"
+                  onChange={changeField}
+                  value={passwordFirst}
+                />
+              </label>
             </div>
             <div className="input-password">
-            <label htmlFor="form-password-confirmation">
-              Confirmation du Mot de passe :
-              <FieldRegisterPassword
-                name="passwordSecond"
-                placeholder="confirmation password"
-                onChange={changeField}
-                value={passwordSecond}
-              />
-            </label>
+              <label htmlFor="form-password-confirmation">
+                Confirmation du Mot de passe :
+                <FieldRegisterPassword
+                  name="passwordSecond"
+                  placeholder="1234Azerty!"
+                  onChange={changeField}
+                  value={passwordSecond}
+                />
+              </label>
             </div>
             {firstPassword === secondPassword && (
             <ButtonRegister />)}
