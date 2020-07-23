@@ -55,9 +55,12 @@ const adventuresMiddleware = (store) => (next) => (action) => {
       next(action);
       break;
 
-    case FETCH_ADVENTURE_SELECTED:
+    case FETCH_ADVENTURE_SELECTED: {
+      const { apiToken } = store.getState().user.user;
       // API request for the adventures catalog
-      axios.get(`${baseURL}/api/v0/stories/${action.slug}`)
+      axios.get(`${baseURL}/api/v0/stories/${action.slug}`, {
+        headers: { 'X-AUTH-TOKEN': apiToken },
+      })
         .then((response) => {
           // dispatch to save the Adventure selected
           store.dispatch(saveAdventureSelected(response.data[0]));
@@ -70,6 +73,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
         });
       next(action);
       break;
+    }
 
     case FETCH_ADVENTURES_ACTIVE_NUMBER:
       // API request for the number of active adventures

@@ -52,6 +52,7 @@ class Story
      * 1 indicate that the story is active
      * @ORM\Column(type="boolean", options={"default" : 0})
      * @Groups("api_story_detail")
+     * @Groups("api_party_detail")
      */
     private $active;
 
