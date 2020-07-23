@@ -34,13 +34,19 @@ const Party = ({
         {time - (((Math.floor(time / 3600)) * 3600)
         + ((Math.floor((time - ((Math.floor(time / 3600)) * 3600)) / 60)) * 60))}s
       </div>
-      <div className="party-link">
-        <Link
-          to={`/aventures/${forStory.slug}`}
-        >
-          Ouvrir le fichier
-        </Link>
-      </div>
+
+      {forStory.active ? (
+        <div className="party-link">
+
+          <Link
+            to={`/aventures/${forStory.slug}`}
+          >
+            Ouvrir le fichier
+          </Link>
+        </div>
+      )
+        : <><p className="profil-unactiveParty">Indisponible</p></>}
+
     </div>
   </>
 );

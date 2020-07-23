@@ -64,7 +64,6 @@ const gameMiddleware = (store) => (next) => (action) => {
             store.dispatch(saveCurrentChapter(response.data[0]));
           }
           if (response.status === 204) {
-            console.log('message test');
             store.dispatch(stopTheCounter());
             store.dispatch(savePreviousChapters(currentChapterForSave));
 

@@ -13,12 +13,20 @@
     border: 2px solid #fff;
   }
   .party-link {
-    padding-top: 0.5em;
+    margin-top: 0.5em;
     color: $linkColor;
     width: fit-content;
   }
   .party-link:hover {
     text-decoration: underline;
+  }
+  .profil-unactiveParty {
+    margin-top: 0.5em;
+    color: $noticeColor;
+    width: fit-content;
+    &:hover {
+      cursor: not-allowed;
+    }
   }
   .party-story {
     font-size: $mobileTitleSize;
