@@ -65,8 +65,6 @@ const adventuresMiddleware = (store) => (next) => (action) => {
           // dispatch to save the Adventure selected
           store.dispatch(saveAdventureSelected(response.data[0]));
           store.dispatch(fetchAdventureTimer(response.data[0].id));
-          // dispatch to hide the loader
-          store.dispatch(hideLoader());
         })
         .catch((error) => {
           console.warn(error);

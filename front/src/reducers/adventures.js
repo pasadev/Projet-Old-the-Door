@@ -20,6 +20,7 @@ const initialState = {
       id: 0,
     },
     active: false,
+    slug: '',
   },
   adventuresActiveNumber: 0,
 

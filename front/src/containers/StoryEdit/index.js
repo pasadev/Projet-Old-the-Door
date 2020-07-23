@@ -24,6 +24,7 @@ const mapStateToProps = (state) => ({
   editOption: state.storyEdit.editOption,
   initialTitle: state.storyEdit.initialTitle,
   chapterEdit: state.chapterEdit,
+  advSelectedSlug: state.adventures.adventureSelected.slug,
 });
 
 // === mapDispatchToProps

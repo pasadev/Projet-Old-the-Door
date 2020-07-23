@@ -20,6 +20,8 @@ import {
   saveChapterWhitoutParent,
 } from 'src/actions/storyEdit';
 
+import { saveAdventureSelected } from 'src/actions/adventures';
+
 import {
   hideLoader,
   displayLoader,
@@ -63,15 +65,13 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
-        .then(() => {
-          store.dispatch(redirectOn());
+        .then((response) => {
+          store.dispatch(saveAdventureSelected(response.data));
         })
         .catch((error) => {
           console.warn(error);
         }).finally(() => {
-          // clear the state and fetch to have the new chapter
-          // store.dispatch(clearChapterEdit());
-          // store.dispatch(clearEditOption());
+          store.dispatch(redirectOn());
         });
       next(action);
       break;

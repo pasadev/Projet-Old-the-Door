@@ -26,6 +26,7 @@ const StoryEdit = ({
   setValidationErrorAdvEditTrue,
   setValidationErrorAdvEditFalse,
   setValidationErrorChapEditFalse,
+  advSelectedSlug,
 }) => {
   const { slug } = useParams();
   useEffect(() => {
@@ -73,7 +74,7 @@ const StoryEdit = ({
 
   return (
     <>
-      {redirect && <Redirect to={`/aventures/${storyEdit.slug}`} />}
+      {redirect && <Redirect to={`/aventures/${advSelectedSlug}`} />}
       {!redirect && (
         <>
           {loading && <Loader />}
@@ -136,6 +137,7 @@ const StoryEdit = ({
 };
 
 StoryEdit.propTypes = {
+  advSelectedSlug: PropTypes.string.isRequired,
   setValidationErrorChapEditFalse: PropTypes.func.isRequired,
   setValidationErrorAdvEditFalse: PropTypes.func.isRequired,
   setValidationErrorAdvEditTrue: PropTypes.func.isRequired,
