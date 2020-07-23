@@ -20,7 +20,7 @@ body {
   font-weight: bold;
     font-size: $mobileTitleSize;
     margin: auto;
-    margin-top: 0.5em;
+    margin-top: 1em;
     border-bottom: 3px dashed #fff;
     width: fit-content;
     padding-bottom: 0.3em;
@@ -41,7 +41,7 @@ body {
 @media screen and (min-width: 1024px) {
   body {
     font-size: 1.4em;
-    width: 1024px;
+    width: 900px;
     margin: auto;
   }
 }
@@ -49,7 +49,7 @@ body {
 @media screen and (min-width: 1680px) {
   body {
     font-size: 1.7em;
-    width: 1680px;
+    width: 1300px;
     margin: auto;
   }
 }
