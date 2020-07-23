@@ -1,6 +1,7 @@
 @import 'src/styles/vars';
 
 .adventures {
+  padding: 0 1em;
   .adventures-create-link {
     padding-top: 0.5em;
     text-decoration: underline;
@@ -12,19 +13,18 @@
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    
-    .main-title {
-      font-size: 1.5em;
-    }
   }
 
 }
 
 
 @media screen and (min-width: 768px) {
-  .adventureSmall-container {
-    align-items: flex-start !important;
-    flex-direction: row !important;
-    justify-content: center;
-  }
+  .adventures {
+    padding: 0 2em;
+    .adventureSmall-container {
+      align-items: flex-start !important;
+      flex-direction: row !important;
+      justify-content: center;
+    }
+}
 }
