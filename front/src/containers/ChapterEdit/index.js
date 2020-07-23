@@ -8,6 +8,8 @@ import {
   setErrorKeyLockTrue,
 } from 'src/actions/storyEdit';
 
+import { checkWordInContent } from 'src/utils';
+
 import ChapterEdit from 'src/components/ChapterEdit';
 
 // === mapStateToProps
@@ -41,6 +43,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setErrorKeyLockTrue: () => {
     dispatch(setErrorKeyLockTrue());
+  },
+  checkWordInContent: (word, content) => {
+    dispatch(checkWordInContent(word, content));
   },
 });
 

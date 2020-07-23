@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   adventuresActiveNumber: state.adventures.adventuresActiveNumber,
   adventuresHome: state.adventures.adventuresHome,
   loading: state.utils.loading,
+  isLogged: state.user.isLogged,
 });
 
 // === mapDispatchToProps

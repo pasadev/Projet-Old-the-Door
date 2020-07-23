@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import { slugifyTitle } from 'src/utils';
 import PropTypes from 'prop-types';
 import Field from 'src/components/Field';
 import FieldArea from 'src/components/FieldArea';
@@ -14,7 +13,13 @@ const StoryCreate = ({
   updateField,
   sumbitStoryCreate,
   redirect,
+  slug,
+  clearStoryCreation,
 }) => {
+  useEffect(() => {
+    clearStoryCreation();
+  }, []);
+
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
     sumbitStoryCreate(title, synopsis, description);
@@ -22,7 +27,7 @@ const StoryCreate = ({
 
   return (
     <>
-      {redirect && <Redirect to={`/aventures/${slugifyTitle(title)}`} />}
+      {redirect && <Redirect to={`/aventures/${slug}`} />}
       {!redirect && (
         <main className="storyCreate">
           <h1 className="adventures-title main-title">
@@ -71,6 +76,8 @@ const StoryCreate = ({
 };
 
 StoryCreate.propTypes = {
+  clearStoryCreation: PropTypes.func.isRequired,
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   synopsis: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,

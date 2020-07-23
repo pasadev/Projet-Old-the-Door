@@ -20,6 +20,7 @@ import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
 import Footer from 'src/containers/Footer';
 import Profil from 'src/containers/Profil';
+import Aside from 'src/containers/Aside';
 
 // == Import
 import './styles.scss';
@@ -33,6 +34,7 @@ const App = ({ burgerMenuOpen, isLogged }) => (
       <Switch>
         <Route exact path="/">
           <Home />
+          <Aside />
         </Route>
         <Route exact path="/connexion">
           <Connexion />
@@ -42,19 +44,19 @@ const App = ({ burgerMenuOpen, isLogged }) => (
         </Route>
         <Route exact path="/aventures/creation">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <StoryCreate />
+          {isLogged === true && (<StoryCreate />)}
         </Route>
         <Route exact path="/aventures/:slug/jouer">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <GameScreen />
+          {isLogged === true && (<GameScreen />)}
         </Route>
         <Route exact path="/aventures/:slug/edition">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <StoryEdit />
+          {isLogged === true && (<StoryEdit />)}
         </Route>
         <Route exact path="/aventures/:slug">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          <Adventure />
+          {isLogged === true && (<Adventure />)}
         </Route>
         <Route exact path="/aventures">
           <Adventures />

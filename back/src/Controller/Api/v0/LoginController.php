@@ -33,7 +33,16 @@ class LoginController extends AbstractController
 
             // if password given in request match with password user
             if ($passwordEncoder->isPasswordValid($user, $datas['password'])){
+                //set User status in database
+                $user->setIsLogged(true);
 
+                //for more security, we change apiToken of user for every connection
+                $user->setApiToken(uuid_create(UUID_TYPE_RANDOM));
+
+                // persit a new status in database
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+               
                 $serializer = new Serializer([new DateTimeNormalizer(), $objectNormalizer]);
 
                 $normalizedUser = $serializer->normalize($user, null, ['groups' => 'user_login']);
@@ -54,5 +63,35 @@ class LoginController extends AbstractController
             ], 404);
     }
 
+    /**
+     * @Route("/api/v0/logout", name="api_v0_logout", methods={"POST"})
+     */
+    public function logout (Request $request,UserRepository $userRepository)
+    {
+
+        //get JSON datas send with request
+        $datas = json_decode($request->getContent(), true);
+        
+        // if we found a user with his id
+        if ($userRepository->findBy(['id' => $datas['id']])){
+            // get user
+            $user = $userRepository->findOneBy(['id' => $datas['id']]);
+       
+            //set User status in database
+            $user->setIsLogged(false);
+    
+            // persit a new status in database
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            return $this->json([], 204);
+        }
+
+        return $this->json([
+            "message" => "No users found "
+        ], 404);
+
+
+    }
   
 }

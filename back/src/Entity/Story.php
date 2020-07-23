@@ -52,6 +52,7 @@ class Story
      * 1 indicate that the story is active
      * @ORM\Column(type="boolean", options={"default" : 0})
      * @Groups("api_story_detail")
+     * @Groups("api_party_detail")
      */
     private $active;
 
@@ -94,6 +95,7 @@ class Story
     /**
      * @ORM\Column(type="string", length=255, nullable=true, unique=true)
      * @Groups("api_story_detail")
+     * @Groups("api_party_detail")
      */
     private $slug;
 
@@ -102,6 +104,7 @@ class Story
      * @Assert\NotBlank(message="La description est obligatoire")
      * @Assert\Length(min=50)
      * @Groups("api_story_detail")
+     * @Groups("api_party_detail")
      */
     private $description;
 

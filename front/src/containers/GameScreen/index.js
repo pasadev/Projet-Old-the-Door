@@ -17,6 +17,7 @@ import {
   applyPenalty,
   giveHint,
   blockField,
+  resetInitialState,
 } from 'src/actions/gameScreen';
 
 import { displayLoader } from 'src/actions/utils';
@@ -51,6 +52,10 @@ const mapStateToProps = (state) => ({
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
 
+  resetInitialState: () => {
+    dispatch(resetInitialState());
+  },
+
   changeField: (newValue, name) => {
     dispatch(updateAnswerField(newValue, name));
   },
@@ -79,7 +84,6 @@ const mapDispatchToProps = (dispatch) => ({
   handleCheckAnswer: (thisIsABoolOrNoValue) => {
     if (thisIsABoolOrNoValue === true) {
       dispatch(toggleAnswerValue());
-      console.log('answer is true');
     }
     else if (thisIsABoolOrNoValue === 'no_value') {
       // do nothing
@@ -95,7 +99,6 @@ const mapDispatchToProps = (dispatch) => ({
           dispatch(toggleWrongAnswerMessage());
         }, 2500),
       );
-      console.log('the answer is false');
     }
   },
 

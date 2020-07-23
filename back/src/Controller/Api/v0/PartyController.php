@@ -74,6 +74,9 @@ class PartyController extends AbstractController
      */
     public function add(Request $request, ObjectNormalizer $normalizer)
     {
+        //check if user is logged
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        
         //Create an empty party
         $party = new Party();
 

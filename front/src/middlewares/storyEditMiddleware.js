@@ -48,13 +48,16 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_ADV_EDIT_FORM: {
-      const { id } = store.getState().user.user;
+      const { id, apiToken } = store.getState().user.user;
       axios.put(`${baseURL}/api/v0/stories/${action.idStory}`, {
         title: action.title,
         synopsis: action.synopsis,
         description: action.description,
         active: 0,
         author: id,
+      },
+      {
+        headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then(() => {
           store.dispatch(redirectOn());
@@ -82,6 +85,9 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       const {
         idStory,
       } = store.getState().storyEdit;
+      const {
+        apiToken,
+      } = store.getState().user.user;
       axios.post(`${baseURL}/api/v0/chapters`, {
         title,
         content,
@@ -90,6 +96,9 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         unlockText,
         forStory: idStory,
         parentChapter: parentChapterChoice,
+      },
+      {
+        headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then(() => {
           store.dispatch(redirectOn());
@@ -119,6 +128,9 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       const {
         idStory,
       } = store.getState().storyEdit;
+      const {
+        apiToken,
+      } = store.getState().user.user;
       axios.put(`${baseURL}/api/v0/chapters/${id}`, {
         title,
         content,
@@ -127,6 +139,9 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         unlockText,
         forStory: idStory,
         parentChapter: parentChapterChoice,
+      },
+      {
+        headers: { 'X-AUTH-TOKEN': apiToken },
       })
         .then(() => {
           store.dispatch(redirectOn());
@@ -180,7 +195,9 @@ const storyEditMiddleware = (store) => (next) => (action) => {
           if (response.data[0].parentChapter === null) {
             store.dispatch(saveChapterWhitoutParent(response.data[0]));
           }
-          store.dispatch(saveChapterEditSelected(response.data[0]));
+          else {
+            store.dispatch(saveChapterEditSelected(response.data[0]));
+          }
         })
         .catch((error) => {
           console.warn(error);

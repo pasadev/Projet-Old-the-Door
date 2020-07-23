@@ -126,6 +126,12 @@ class User implements UserInterface
      */
     private $apiToken;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true, options={"default" : 0})
+     * @Groups("user_show")
+     */
+    private $isLogged;
+
     public function __construct()
     {
         $this->stories = new ArrayCollection();
@@ -343,6 +349,18 @@ class User implements UserInterface
                 $playedParty->setPlayer(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsLogged(): ?bool
+    {
+        return $this->isLogged;
+    }
+
+    public function setIsLogged(?bool $isLogged): self
+    {
+        $this->isLogged = $isLogged;
 
         return $this;
     }

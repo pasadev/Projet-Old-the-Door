@@ -15,6 +15,7 @@ const Home = ({
   displayLoader,
   fetchAdventuresActiveNumber,
   adventuresActiveNumber,
+  isLogged,
 }) => {
   useEffect(() => {
     fetchAdventuresHome();
@@ -35,7 +36,7 @@ const Home = ({
               </Typist>
             </h1>
             <div className="ascii-container">
-              {sessionStorage.getItem('isLogged') !== 'true' && (
+              {isLogged !== 'true' && (
                 <Typist
                   cursor={{ show: false }}
                   avgTypingDelay={5}
@@ -55,7 +56,7 @@ const Home = ({
                   </pre>
                 </Typist>
               )}
-              {sessionStorage.getItem('isLogged') === 'true' && (
+              {isLogged === 'true' && (
                 <pre className="asciiart">
                   ___________<br />
                   |  __  __  |<br />
@@ -81,25 +82,27 @@ const Home = ({
               Vous aimez jouer ? <span className="home-scenario">{adventuresActiveNumber} scénarios sont disponibles pour vous !</span> Vous aimez écrire ? Découvrez notre éditeur d’aventure pour proposer votre histoire à tous les joueurs.
             </p>
           </section>
-          <section className="home-inscription">
-            <p className="home-inscription-text">
-              Inscrivez-vous pour profiter des aventures créées par notre communauté.
-            </p>
-            <div className="home-links">
-              <Link
-                className="link-inscription"
-                to="/inscription"
-              >
-                Inscription
-              </Link>
-              <Link
-                className="link-adventures"
-                to="/aventures"
-              >
-                Aventures
-              </Link>
-            </div>
-          </section>
+          {isLogged !== true && (
+            <section className="home-inscription">
+              <p className="home-inscription-text">
+                Inscrivez-vous pour profiter des aventures créées par notre communauté.
+              </p>
+              <div className="home-links">
+                <Link
+                  className="link-inscription"
+                  to="/inscription"
+                >
+                  Inscription
+                </Link>
+                <Link
+                  className="link-adventures"
+                  to="/aventures"
+                >
+                  Aventures
+                </Link>
+              </div>
+            </section>
+          )}
           <section className="latest-adventures">
             <h2 className="latest-adventures-title">
               Découvrez les dernières aventures !
@@ -117,6 +120,9 @@ const Home = ({
 };
 
 Home.propTypes = {
+  isLogged: PropTypes.oneOfType([
+    PropTypes.bool,
+  ]),
   adventuresActiveNumber: PropTypes.number.isRequired,
   fetchAdventuresActiveNumber: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
@@ -127,6 +133,10 @@ Home.propTypes = {
   ).isRequired,
   fetchAdventuresHome: PropTypes.func.isRequired,
   displayLoader: PropTypes.func.isRequired,
+};
+
+Home.defaultProps = {
+  isLogged: null,
 };
 
 export default Home;

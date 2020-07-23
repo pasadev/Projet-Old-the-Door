@@ -6,6 +6,7 @@ use App\Entity\Story;
 use App\Form\StoryType;
 use App\Repository\PartyRepository;
 use App\Repository\StoryRepository;
+use App\Repository\UserRepository;
 use App\Service\Slugger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -120,6 +121,8 @@ class StoryController extends AbstractController
      */
     public function showBySlug (Story $story , ObjectNormalizer $normalizer)
     {
+        $this->denyAccessUnlessGranted('showBySlug', $story);
+
         $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
 
         $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
@@ -139,20 +142,27 @@ class StoryController extends AbstractController
      *
      * @return Story
      */
-    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository)
+    public function add(Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository, UserRepository $userRepository)
     {
+
         //Create an empty story
         $story = new Story();
 
+        //check if user is logged
+        $this->denyAccessUnlessGranted('add', $story);
+ 
+        
         //Create the associating form to send request data in the story
         //With the csrf option desactivated as we are on an API
         $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);
-
+        
         //Extract the json content of the request
         $jsonText = $request->getContent();
-
+        
         //Transform this Json in array
         $jsonArray = json_decode($jsonText, true);
+        
+        
 
         //We submit this data array to the form
         $form->submit($jsonArray);
@@ -190,7 +200,8 @@ class StoryController extends AbstractController
         //If it is not valid
         //We display errors
         //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false), 400);
+        return $this->json((string) $form->getErrors(true, false), 400); 
+
     }
 
     /**
@@ -199,58 +210,62 @@ class StoryController extends AbstractController
      *
      * @return Story
      */
-    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository)
+    public function edit(Story $story, Request $request, ObjectNormalizer $normalizer, Slugger $slugger, StoryRepository $storyRepository, UserRepository $userRepository)
     {
 
-        //Create the associating form to send request data in the story in parameter
-        //With the csrf option desactivated as we are on an API
-        $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);
+        //check if user is logged
+      $this->denyAccessUnlessGranted('edit', $story);
 
-        //Extract the json content of the request
-        $jsonText = $request->getContent();
+    //Create the associating form to send request data in the story in parameter
+    //With the csrf option desactivated as we are on an API
+    $form = $this->createForm(StoryType::class, $story, ['csrf_protection' => false]);
 
-        //Transform this Json in array
-        $jsonArray = json_decode($jsonText, true);
+    //Extract the json content of the request
+    $jsonText = $request->getContent();
 
-        //We submit this data array to the form
-        $form->submit($jsonArray);
+    //Transform this Json in array
+    $jsonArray = json_decode($jsonText, true);
+    
 
-        //Verify if the form is valide
-        if ($form->isValid()) {
-            //Set an updated date
-            $story->setUpdatedAt(new \DateTime());
+    //We submit this data array to the form
+    $form->submit($jsonArray);
 
-            //If the title has changed
-            if ($story->getSlug() !== $slugger->slugify($story->getTitle())) {
-                //verify if the slug does not exists yet
-                if ($storyRepository->findOneBy(['slug' => $slugger->slugify($story->getTitle())]))
-                {
-                    return $this->json(['message' => 'This story title already exists'], 409);
-                }
+    //Verify if the form is valide
+    if ($form->isValid()) {
+        //Set an updated date
+        $story->setUpdatedAt(new \DateTime());
+
+        //If the title has changed
+        if ($story->getSlug() !== $slugger->slugify($story->getTitle())) {
+            //verify if the slug does not exists yet
+            if ($storyRepository->findOneBy(['slug' => $slugger->slugify($story->getTitle())]))
+            {
+                return $this->json(['message' => 'This story title already exists'], 409);
             }
-
-            //Set the slug
-            $story->setSlug($slugger->slugify($story->getTitle()));
-
-            //If it is valid, we flush
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
-
-            //Then, we return 200 HTTP code with the Story Object updated
-
-            //Serialize the data
-            $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
-
-            $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
-
-            //And return it
-            return $this->json($normalizedStory, 200);
         }
 
-        //If it is not valid
-        //We display errors
-        //With a 400 Bad request HTTP code
-        return $this->json((string) $form->getErrors(true, false),400);
+        //Set the slug
+        $story->setSlug($slugger->slugify($story->getTitle()));
+
+        //If it is valid, we flush
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+
+        //Then, we return 200 HTTP code with the Story Object updated
+
+        //Serialize the data
+        $serializer = new Serializer([new DateTimeNormalizer(), $normalizer]);
+
+        $normalizedStory = $serializer->normalize($story, null, ['groups' => 'api_story_detail']);
+
+        //And return it
+        return $this->json($normalizedStory, 200);
+    }
+
+    //If it is not valid
+    //We display errors
+    //With a 400 Bad request HTTP code
+    return $this->json((string) $form->getErrors(true, false),400);
     }
 
     /**
@@ -262,6 +277,10 @@ class StoryController extends AbstractController
      */
     public function active(Story $story, Request $request, ObjectNormalizer $normalizer)
     {
+
+        //check if user is logged
+        $this->denyAccessUnlessGranted('active', $story);
+
         //Verify if we have a set parameter
         if ($request->query->get('set'))
         {
@@ -311,6 +330,8 @@ class StoryController extends AbstractController
      */
     public function delete(Story $story)
     {
+        //check if user is logged
+        $this->denyAccessUnlessGranted('delete', $story);
 
         //Get back the manager
         $em = $this->getDoctrine()->getManager();
@@ -329,6 +350,8 @@ class StoryController extends AbstractController
     {
         //Get parties for this stories
         $parties = $partyRepository->findBy(['forStory' => $id]);
+
+        $partyNumber = count($parties);
 
         //If we have parties
         if ($parties) {
@@ -370,6 +393,7 @@ class StoryController extends AbstractController
             return $this->json([
                 'best' => $bestTime,
                 'average' => $averageTime,
+                'number' => $partyNumber,
             ]);
         }
         //If we don't have parties

@@ -9,11 +9,13 @@ import {
   HIDE_CHAPTER,
   DISPLAY_SUCCESS_MESSAGE,
   SET_COUNTER,
-  TOGGLE_THE_COUNTER,
   TOGGLE_WRONG_ANSWER_MESSAGE,
   APPLY_PENALTY,
   GIVE_HINT,
   BLOCK_FIELD,
+  START_THE_COUNTER,
+  STOP_THE_COUNTER,
+  RESET_INITIAL_STATE,
 } from 'src/actions/gameScreen';
 
 const initialState = {
@@ -146,12 +148,18 @@ const gameScreen = (state = initialState, action = {}) => {
         timerCounter: action.currentTime,
       };
 
-    case TOGGLE_THE_COUNTER:
-
+    case START_THE_COUNTER:
       return {
         ...state,
 
-        timerIsRunning: !state.timerIsRunning,
+        timerIsRunning: true,
+      };
+
+    case STOP_THE_COUNTER:
+      return {
+        ...state,
+
+        timerIsRunning: false,
       };
 
     case TOGGLE_WRONG_ANSWER_MESSAGE:
@@ -173,6 +181,12 @@ const gameScreen = (state = initialState, action = {}) => {
         ...state,
 
         showHint: action.randomHint,
+      };
+
+    case RESET_INITIAL_STATE:
+      return {
+        ...initialState,
+
       };
 
     default: return state;

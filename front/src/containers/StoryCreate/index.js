@@ -3,6 +3,7 @@ import StoryCreate from 'src/components/StoryCreate';
 import {
   updateCreationField,
   sumbitStoryCreate,
+  clearStoryCreation,
 } from 'src/actions/storyCreation';
 
 const mapStateToProps = (state) => ({
@@ -10,6 +11,7 @@ const mapStateToProps = (state) => ({
   synopsis: state.storyCreation.synopsis,
   description: state.storyCreation.description,
   redirect: state.utils.redirect,
+  slug: state.storyCreation.slug,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,6 +20,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   sumbitStoryCreate: (title, synopsis, description) => {
     dispatch(sumbitStoryCreate(title, synopsis, description));
+  },
+  clearStoryCreation: () => {
+    dispatch(clearStoryCreation());
   },
 });
 

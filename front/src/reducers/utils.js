@@ -5,14 +5,14 @@ import {
   HIDE_LOADER,
   REDIRECT_ON,
   REDIRECT_OFF,
+  TOGGLE_ASIDE_OPEN,
 } from 'src/actions/utils';
 
 const initialState = {
   burgerMenuOpen: false,
   loading: true,
-
+  asideOpen: false,
   redirect: false,
-
 };
 
 const utils = (state = initialState, action = {}) => {
@@ -59,6 +59,12 @@ const utils = (state = initialState, action = {}) => {
       return {
         ...state,
         redirect: false,
+      };
+
+    case TOGGLE_ASIDE_OPEN:
+      return {
+        ...state,
+        asideOpen: !state.asideOpen,
       };
 
     default: return state;
