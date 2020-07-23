@@ -1,10 +1,8 @@
 @import 'src/styles/vars';
 
 .screenCase {
-  padding: 0;
-  background: $lightCaseColor;
   .gameScreen {
-    padding: 0.5em;
+    padding: 0 1em;
     position:relative;
     min-height: 100vh;
     left: 0;
@@ -51,7 +49,7 @@
 
       .gameScreen-form-field {
         display: flex;
-        width: 70%;
+        width: 60%;
 
         .gameScreen-form-input {
           padding: 0.2em 0.5em;
@@ -139,12 +137,16 @@
   }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 768px) {
   .screenCase {
     .gameScreen {
+      padding: 0 2em;
       .gameScreen-form {
         .gameScreen-label {
           width: 120px;
+        }
+        .gameScreen-form-field {
+          width: 100%;
         }
       }
     }
