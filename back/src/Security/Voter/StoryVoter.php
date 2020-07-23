@@ -2,6 +2,7 @@
 
 namespace App\Security\Voter;
 
+use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -17,12 +18,9 @@ class StoryVoter extends Voter
     }
 
     protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
-    {
-        
+    {   
         $user = $token->getUser();
      
-       
-
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case 'edit':
@@ -73,17 +71,14 @@ class StoryVoter extends Voter
 
             case 'showBySlug':
               
-                // if the story isn't active 
-                if (!$subject->getActive()){
-                    // and if story author isn't the user who try access to story
-                    if ($subject->getAuthor()->getId() !== $user->getId()){
-                        
-                        return false;
-                    }    
+        
+                // if the story is active or if connected user is author
+                if($subject->getActive() ||$subject->getAuthor()->getId() === $user->getId())
+                { 
+                    return true;
                 }
   
-                // if story is active , everybody can see details of story
-                  return true;  
+               
          
                 break;
         }
