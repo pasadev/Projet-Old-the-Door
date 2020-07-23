@@ -17,7 +17,7 @@ import {
   DELETE_STORY,
 } from 'src/actions/adventures';
 
-import { hideLoader, redirectOn } from 'src/actions/utils';
+import { hideLoader } from 'src/actions/utils';
 
 import { baseURL } from 'src/utils';
 
