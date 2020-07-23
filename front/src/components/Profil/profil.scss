@@ -1,7 +1,7 @@
 
 @import 'src/styles/vars';
 .profil {
-  padding: 0 0.5em;
+  padding: 0 1em;
   .profil-littletitle{
       margin : 1em 0;
       color : $noticeColor;
@@ -15,5 +15,17 @@
       flex-wrap: wrap;
       /* margin: -0.5em; */
       margin-bottom: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .profil {
+    padding: 0 2em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profil {
+    padding: 0;
   }
 }

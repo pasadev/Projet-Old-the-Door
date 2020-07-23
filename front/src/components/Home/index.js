@@ -75,8 +75,7 @@ const Home = ({
 
             <p className="presentation-description">
               O'ld the door est un nouveau concept d’escape game se basant sur du old school.
-              Retrouvez l’ambiance des jeux d’aventures textuels dans des scénarios où
-              il faudra vous servir de votre environnement pour avancer.
+              Retrouvez l’ambiance des jeux d’aventures textuels dans des scénarios où il faudra vous servir de votre environnement pour avancer.
               Trouver votre chemin dans les mots du texte de l’aventure et laissez votre
               imagination créer l'environnement qui vous entoure.
               Vous aimez jouer ? <span className="home-scenario">{adventuresActiveNumber} scénarios sont disponibles pour vous !</span> Vous aimez écrire ? Découvrez notre éditeur d’aventure pour proposer votre histoire à tous les joueurs.
