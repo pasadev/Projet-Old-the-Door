@@ -18,7 +18,7 @@ const FieldRegisterPassword = ({
     <div className="fieldRegister">
       <input
         autoComplete="off"
-        className="input"
+        className="fieldRegister-second"
         id={name}
         placeholder={placeholder}
         name={name}

@@ -18,7 +18,7 @@ const FieldRegister = ({
     <div className="fieldRegister">
       <input
         autoComplete="off"
-        className="input"
+        className="fieldRegister-first"
         id={name}
         placeholder={placeholder}
         name={name}
