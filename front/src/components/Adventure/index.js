@@ -73,7 +73,7 @@ const Adventure = ({
             {adventureSelected.description}
           </p>
           <div className="adventure-links">
-            {adventureSelected.firstChapter && active ? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
+            {adventureSelected.firstChapter? <Link to={`/aventures/${slug}/jouer`}><span className="adventure-link">Jouer</span></Link>
               : <Link to="#"><span className="adventure-link-warning">L'aventure n'est pas encore jouable</span></Link>}
             {user && adventureSelected.author.id === user.id && (
               <>
