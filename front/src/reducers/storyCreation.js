@@ -1,6 +1,7 @@
 import {
   UPDATE_CREATION_FIELD,
   SAVE_STORY_CREATE_SLUG,
+  CLEAR_STORY_CREATION,
 } from 'src/actions/storyCreation';
 
 const initialState = {
@@ -22,6 +23,11 @@ const storyCreation = (state = initialState, action = {}) => {
       return {
         ...state,
         slug: action.slug,
+      };
+
+    case CLEAR_STORY_CREATION:
+      return {
+        ...initialState,
       };
 
     default: return state;
