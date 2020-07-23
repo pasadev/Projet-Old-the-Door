@@ -59,7 +59,7 @@ const Connexion = ({
                     cursor={{ show: false }}
                   >
                     <Typist.Delay ms={6000} />
-                    <label htmlFor="email"> Email : </label>
+                    <label htmlFor="email" className="login-email"> Email : </label>
                   </Typist>
                   <Field
                     name="email"
@@ -73,7 +73,7 @@ const Connexion = ({
                     cursor={{ show: false }}
                   >
                     <Typist.Delay ms={7000} />
-                    <label htmlFor="password"> Mot de passe : </label>
+                    <label htmlFor="password" className="login-input-password"> Mot de passe : </label>
 
                   </Typist>
                   <PasswordCo

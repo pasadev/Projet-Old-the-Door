@@ -1,7 +1,6 @@
 @import 'src/styles/vars';
 
 .team {
-
   .member {
     border: 2px dotted #fff;
     padding: 0.5em;
@@ -24,6 +23,22 @@
     .member-description {
       padding-top: 0.5em;
     }
+  }
+}
+
+
+@media only screen and (max-width: 768px){
+  .team{
+    padding: 0 0.5em;
+  }
+  .ascii{
+   
+    transform: scale(0.40) translate(-77%) ;
+   
+  }
+
+  @keyframes downSising{
+
   }
 }
 

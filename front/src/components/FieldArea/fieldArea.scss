@@ -1,3 +1,17 @@
 .input{
   resize: none;
+  border-radius: 5px;
+  padding: 10px;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
+  background-color: rgba(15, 15, 15, 0.849);
+  margin-top: 0.5em;
+  margin-bottom:0.5em;
+
 }
+.input:focus {
+  
+  color: white;
+}
+

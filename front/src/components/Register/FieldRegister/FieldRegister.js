@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import './fieldRegister.scss';
 /**
  * A field to be used inside a form : label and input
  */
