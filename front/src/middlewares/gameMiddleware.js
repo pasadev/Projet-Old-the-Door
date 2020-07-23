@@ -22,8 +22,11 @@ import { baseURL } from 'src/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case FETCH_CURRENT_STORY:
-      axios.get(`${baseURL}/api/v0/stories/${action.slug}`)
+    case FETCH_CURRENT_STORY: {
+      const { apiToken } = store.getState().user.user;
+      axios.get(`${baseURL}/api/v0/stories/${action.slug}`, {
+        headers: { 'X-AUTH-TOKEN': apiToken },
+      })
         .then((response) => {
           store.dispatch(saveCurrentStory(response.data[0]));
           store.dispatch(fetchFirstChapter(response.data[0].firstChapter.id));
@@ -34,7 +37,7 @@ const gameMiddleware = (store) => (next) => (action) => {
 
       next(action);
       break;
-
+}
     case FETCH_FIRST_CHAPTER:
       axios.get(`${baseURL}/api/v0/chapters/${action.firstChapterId}`)
         .then((response) => {
