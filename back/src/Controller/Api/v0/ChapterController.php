@@ -6,6 +6,7 @@ use App\Entity\Chapter;
 use App\Form\ChapterType;
 use App\Repository\ChapterRepository;
 use App\Repository\StoryRepository;
+use App\Service\KeyLockWordChecker;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -157,7 +158,7 @@ class ChapterController extends AbstractController
      *
      * @return Chapter
      */
-    public function add(Request $request, ObjectNormalizer $normalizer, StoryRepository $storyRepository)
+    public function add(Request $request, ObjectNormalizer $normalizer, StoryRepository $storyRepository, KeyLockWordChecker $checker)
     {
         //Create an empty chapter
         $chapter = new Chapter();
@@ -186,17 +187,15 @@ class ChapterController extends AbstractController
             /* Lock and key verification start */
 
             //Get values
-            $lockWord = $chapter->getLockword();
             $keyWord = $chapter->getKeyword();
-            // Get the content, lower it, and split it into an array
-            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",strtolower($chapter->getContent()));
+            $lockWord = $chapter->getLockword();
+            $content = $chapter->getContent();
 
-            // Check for presence
-            if (!in_array(strtolower($keyWord), $chapterContentArray) || !in_array(strtolower($lockWord), $chapterContentArray))
+            // Call the service to check if words are in the chapter content
+            if ($checker->checkWords($keyWord, $lockWord, $content) === false)
             {
-                // If one of the word is not present in the content
-                // Return an error
-                return $this->json(["message" => "keyWord and LockWord should be in the chapter Content"], 400);
+                // If it is not ok, send an error
+                return $this->json(["message" => "keyword and lockword should be in the chapter content"], 400);
             }
 
             /* Lock and key verification end */
@@ -259,7 +258,7 @@ class ChapterController extends AbstractController
      *
      * @return Chapter
      */
-    public function edit(Chapter $chapter, Request $request, ObjectNormalizer $normalizer)
+    public function edit(Chapter $chapter, Request $request, ObjectNormalizer $normalizer, KeyLockWordChecker $checker)
     {
         //check if user is logged and also the author of the related story
         $this->denyAccessUnlessGranted('edit', $chapter);
@@ -285,17 +284,16 @@ class ChapterController extends AbstractController
             /* Lock and key verification start */
 
             //Get values
-            $lockWord = $chapter->getLockword();
+            //Get values
             $keyWord = $chapter->getKeyword();
-            // Get the content, lower it, and split it into an array
-            $chapterContentArray= preg_split("/[\s,._;!?\"\'+*\/']+/",strtolower($chapter->getContent()));
+            $lockWord = $chapter->getLockword();
+            $content = $chapter->getContent();
 
-            // Check for presence
-            if (!in_array(strtolower($keyWord), $chapterContentArray) || !in_array(strtolower($lockWord), $chapterContentArray))
+            // Call the service to check if words are in the chapter content
+            if ($checker->checkWords($keyWord, $lockWord, $content) === false)
             {
-                // If one of the word is not present in the content
-                // Return an error
-                return $this->json(["message" => "keyWord and LockWord should be in the chapter Content"], 400);
+                // If it is not ok, send an error
+                return $this->json(["message" => "keyword and lockword should be in the chapter content"], 400);
             }
 
             /* Lock and key verification end */
