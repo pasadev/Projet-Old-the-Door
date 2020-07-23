@@ -16,7 +16,8 @@
     width: fit-content;
   }
   .party-link:hover {
-    text-decoration: underline;
+    background-color: $linkColor;
+    color: #1d1e22;
   }
   .profil-unactiveParty {
     margin-top: 0.5em;
