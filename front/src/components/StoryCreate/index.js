@@ -24,7 +24,7 @@ const StoryCreate = ({
 
   const handleStoryCreateSubmit = (event) => {
     event.preventDefault();
-    if ((title.length > 3) && (synopsis.length > 50) && (description.length > 50)) {
+    if ((title.length > 3 && !(/^\d+$/.test(title))) && (synopsis.length > 50) && (description.length > 50)) {
       sumbitStoryCreate(title, synopsis, description);
     }
     else {

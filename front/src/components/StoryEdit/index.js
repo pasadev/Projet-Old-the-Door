@@ -41,7 +41,7 @@ const StoryEdit = ({
     // Reset error display
     setValidationErrorAdvEditFalse();
     if (
-      (storyEdit.title.length > 3)
+      ((storyEdit.title.length > 3) && !(/^\d+$/.test(storyEdit.title)))
       && (storyEdit.synopsis.length > 50)
       && (storyEdit.description.length > 50)
     ) {
