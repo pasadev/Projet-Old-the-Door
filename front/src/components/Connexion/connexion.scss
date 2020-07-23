@@ -10,7 +10,7 @@
 .form {
   width: 80%;
   margin: 0 auto;
-  border: 1px dashed #6BE145;
+  border: 3px dashed #fff;
   padding: 1em;
  
 }
@@ -71,6 +71,7 @@
   margin-top: 2em;
   font-weight: bold;
   border-radius: 2px;
+  width: 100%;
 
   &:hover{
    background-color:#6BE145;
