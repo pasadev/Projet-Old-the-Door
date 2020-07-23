@@ -45,7 +45,7 @@ const Party = ({
           </Link>
         </div>
       )
-        : <>Ce jeu n'est plus publié</>}
+        : <><p className="profil-unactiveParty">Indisponible</p></>}
 
     </div>
   </>
