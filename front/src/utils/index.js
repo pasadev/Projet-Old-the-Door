@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router';
+
 export const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -16,6 +18,8 @@ export const checkAnswer = (keyGuess, lockGuess, keyAnswer, lockAnswer) => {
   }
   return 'no_value';
 };
+
+export const history = useHistory();
 
 // Check if keyword and lockword are in the content
 export const checkWordInContent = (word, content) => {

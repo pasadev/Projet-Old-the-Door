@@ -18,7 +18,7 @@ import {
 
 import { hideLoader } from 'src/actions/utils';
 
-import { baseURL } from 'src/utils';
+import { baseURL, history } from 'src/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -32,7 +32,10 @@ const gameMiddleware = (store) => (next) => (action) => {
           store.dispatch(fetchFirstChapter(response.data[0].firstChapter.id));
         })
         .catch((error) => {
-          console.warn(error);
+          console.warn(error.response);
+          if (error.response.status === 404) {
+            console.log('hello');
+          }
         });
 
       next(action);

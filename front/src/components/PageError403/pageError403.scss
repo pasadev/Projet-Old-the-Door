@@ -1,7 +1,7 @@
 @import 'src/styles/vars';
 
 .error403-container {
-  background-color: $altScreenColor;
+  background-color: rgb(187, 134, 20);
   color:  #fff;
   position: relative;
   min-height: 100vh;
@@ -55,5 +55,33 @@
 
     }
   }
+  .gandalf{
+    font-size: 10px;
+    margin-top:7em ;
+    margin-bottom:1em;
+    margin-left: 60%;
+  }
+}
+.door{
+position: absolute;
+margin-top: 14em;
+margin-left: 5em;
+}
+.stop{
+  position: absolute;
+  margin-top: 15em;
+  margin-left: 19em;
 }
 
+@media screen and (max-width: 768px) {
+  .gandalf{
+    display:none; 
+  }
+
+.door{
+  display:none;
+}
+.stop{
+ display:none;
+}
+}
