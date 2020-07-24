@@ -39,4 +39,4 @@ export const checkWordInContent = (word, content) => {
 
 // http://damien-toscano.vpnuser.lan:8000
 // http://maxence-royer.vpnuser.lan:8000
-export const baseURL = 'http://damien-toscano.vpnuser.lan:8000';
+export const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/back';
