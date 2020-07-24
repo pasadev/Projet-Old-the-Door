@@ -115,7 +115,7 @@ const Register = ({
           )}
           <div className="connexion-links">
             <Link
-              className="link-home"
+              className="link-home register-link-home"
               to="/"
             >
               Retour à l'accueil
