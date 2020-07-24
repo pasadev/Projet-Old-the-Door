@@ -1,30 +1,87 @@
-import React from 'react';
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
+import React, { useEffect } from 'react';
 import { CornerDownRight } from 'react-feather';
 import PropTypes from 'prop-types';
 
-const Architecture = ({ title, firstChapter }) => (
-  <section className="architecture">
-    {title}
-    {firstChapter !== null && (
-      <CornerDownRight />
-    )}
-    {firstChapter !== null && (
-      {  firstChapter }
-    )}
-  </section>
-);
+const Architecture = ({
+  titleStory,
+  firstChapter,
+  firstChapterId,
+  chapters,
+  previousChapterMapped,
+  chaptersDisplay,
+}) => {
+  useEffect(() => {
+
+  }, []);
+  chaptersDisplay = [];
+  previousChapterMapped[0] = firstChapterId;
+  for (let i = 0; i < chapters.length; i++) {
+    chapters.map((chapter) => {
+      if (chapter.parentChapter !== null) {
+        if (chapter.parentChapter.id === previousChapterMapped[0]) {
+          previousChapterMapped[0] = chapter.id;
+          chaptersDisplay.push(
+            <div key={chapter.id}>
+              <CornerDownRight />
+              <span>Chapitre suivant : {chapter.title}</span>
+            </div>,
+          );
+        }
+      }
+    });
+  }
+
+  return (
+    <section className="architecture">
+      {/* Adventure */}
+      <span>Aventure : {titleStory}</span>
+      {firstChapter !== null && (
+        <div>
+          <CornerDownRight />
+          <span>Premier Chapitre : {firstChapter}</span>
+        </div>
+      )}
+
+      {/* Chapter with a parent */}
+      {chaptersDisplay}
+
+      {/* Chapter without a parent */}
+      {chapters.map((chapter) => {
+        if ((chapter.parentChapter == null) && (chapter.id !== firstChapterId)) {
+          return (
+            <div key={chapter.id}>
+              <span>Chapitre sans parent : {chapter.title}</span>
+            </div>
+          );
+        }
+      })}
+
+    </section>
+  );
+};
 
 Architecture.propTypes = {
-  title: PropTypes.string.isRequired,
-  firstChapter: PropTypes.shape({
-    title: PropTypes.string,
-  }),
+  titleStory: PropTypes.string.isRequired,
+  firstChapter: PropTypes.string,
+  firstChapterId: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  chapters: PropTypes.array,
+  previousChapterMapped: PropTypes.array,
+  chaptersDisplay: PropTypes.array,
 };
 
 Architecture.defaultProps = {
-  firstChapter: {
-    title: '',
-  }
+  firstChapter: null,
+  chapters: [],
+  firstChapterId: null,
+  previousChapterMapped: [],
+  chaptersDisplay: [],
 };
 
 export default Architecture;

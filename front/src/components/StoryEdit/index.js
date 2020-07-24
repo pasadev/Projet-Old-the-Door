@@ -129,7 +129,17 @@ const StoryEdit = ({
 
               <ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} />
 
-              {/* <Architecture {...storyEdit} /> */}
+              {storyEdit.chapters.length > 0 && (
+                <>
+                  <Architecture
+                    titleStory={storyEdit.title}
+                    firstChapter={storyEdit.firstChapter.title}
+                    firstChapterId={storyEdit.firstChapter.id}
+                    chapters={storyEdit.chapters}
+                  />
+                </>
+              )}
+
             </main>
           )}
         </>
@@ -166,12 +176,21 @@ StoryEdit.propTypes = {
     description: PropTypes.string.isRequired,
     firstChapter: PropTypes.shape({
       title: PropTypes.string,
+      id: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+      ]),
     }),
+    chapters: PropTypes.array,
   }).isRequired,
   chapters: PropTypes.array.isRequired,
   chapterEdit: PropTypes.shape({
     id: PropTypes.number,
   }).isRequired,
+};
+
+StoryEdit.defautProps = {
+  firstChapter: [],
 };
 
 export default StoryEdit;
