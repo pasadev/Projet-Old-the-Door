@@ -15,5 +15,8 @@
       color: $darkCaseColor;
       font-family: $family;
     }
+    &::selection {
+      background-color: $lightColor;
+    }
   }
 }
