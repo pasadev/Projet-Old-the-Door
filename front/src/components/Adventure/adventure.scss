@@ -42,8 +42,9 @@
     .adventure-link {
       margin: 0 0.25em;
       &:hover {
-        text-decoration: underline;
         cursor: pointer;
+        color: $backgroundColor;
+        background-color: $linkColor;
       }
     }
     .adventure-link-warning {
@@ -54,6 +55,18 @@
     }
     .delete-link {
       color: $warningColor;
+      &:hover {
+        background-color: $warningColor;
+        color: $backgroundColor;
+      }
+    }
+
+    .confirmation-delete-link {
+      margin-right: 0;
+      &:hover {
+        background-color: $backgroundColor;
+        color: $warningColor;
+      }
     }
 
     .active-delete {

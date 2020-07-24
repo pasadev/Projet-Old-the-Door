@@ -1,7 +1,7 @@
 @import 'src/styles/vars';
 
 .footer {
-  background-color: $lightCaseColor;
+  /* background-color: $lightCaseColor; */
   position: absolute;
   bottom: 0;
   left: 0;
@@ -9,7 +9,14 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: $darkColor;
+  color: #fff;
   height: 1.5em;
-}
+  border-top: solid 2px #fff;
+  .footer-team {
 
+    &:hover {
+      background-color: #fff;
+      color: #1d1e22;
+    }
+  }
+}

@@ -105,17 +105,17 @@ const Register = ({
                 />
               </label>
             </div>
-            {firstPassword === secondPassword && (
-            <ButtonRegister />)}
-          </form>
-          {registerError && (
+            {registerError && (
             <div className="infos-warning">
               Les données indiquées sont incorrectes
             </div>
-          )}
+            )}
+            {firstPassword === secondPassword && (
+            <ButtonRegister />)}
+          </form>
           <div className="connexion-links">
             <Link
-              className="link-home"
+              className="link-home register-link-home"
               to="/"
             >
               Retour à l'accueil
