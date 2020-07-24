@@ -24,7 +24,7 @@ const Chapter = ({
       </Typist>
       <Typist
         cursor={{ show: false }}
-        avgTypingDelay={10}
+        avgTypingDelay={2}
       >
         <Typist.Delay ms={previousChapters.length === 0 ? 5500 : 1000} />
         {content}

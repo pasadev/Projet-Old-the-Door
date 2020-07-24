@@ -143,6 +143,9 @@ const GameScreen = ({
             <p className="computer-factory"> Model: fabirex</p>
             <p className="computer-factory"> OLD THE DOOR</p>
           </div>
+
+          <div className="computer-blowhole"> </div>
+
           <div className="disk-reader">
             <div className="disk-insert"> </div>
             <div className="disk-eject">
