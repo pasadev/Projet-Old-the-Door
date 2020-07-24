@@ -10,6 +10,7 @@ import { checkWordInContent } from 'src/utils';
 import './chapterEdit.scss';
 
 const ChapterEdit = ({
+  firstChapter,
   chapterEdit,
   id,
   title,
@@ -79,40 +80,42 @@ const ChapterEdit = ({
           onSubmit={handleChapterEditSubmit}
         >
           <div className="chapterEdit">
-            <label htmlFor="chapterEdit-parentChapter">
-              {chapterEdit.parentChapter !== null && (
-                <span>Chapitre parent actuel : {chapterEdit.parentChapter.title}<br /></span>
-              )}
-              Choisir le Chapitre parent :
-              <select
-                className="chapterEdit-parentChapter"
-                id="chapterEdit-parentChapter"
-                onChange={handleParentChapterChoice}
-                defaultValue={chapterEdit.parentChapter !== null && chapterEdit.parentChapter.id}
-              >
-                <option
-                  value={chapterEdit.parentChapter !== null && chapterEdit.parentChapter.id}
+            {firstChapter.id !== parseInt(editOption, 10) && (
+              <label htmlFor="chapterEdit-parentChapter">
+                {chapterEdit.parentChapter !== null && (
+                  <span>Chapitre parent actuel : {chapterEdit.parentChapter.title}<br /></span>
+                )}
+                Choisir le Chapitre parent :
+                <select
+                  className="chapterEdit-parentChapter"
+                  id="chapterEdit-parentChapter"
+                  onChange={handleParentChapterChoice}
+                  defaultValue={chapterEdit.parentChapter !== null && chapterEdit.parentChapter.id}
                 >
-                  Chapitres parent possible
-                </option>
-                <option value="">
-                  Retirer le choix actuel
-                </option>
-                {parentChapterOption.map((chapter) => {
-                  // Condition to prevent the option to select a chapter as his own parent
-                  if (chapter.id !== parseInt(editOption, 10)) {
-                    return (
-                      <option
-                        key={chapter.id}
-                        value={chapter.id}
-                      >
-                        {chapter.title}
-                      </option>
-                    );
-                  }
-                })}
-              </select>
-            </label>
+                  <option
+                    value={chapterEdit.parentChapter !== null && chapterEdit.parentChapter.id}
+                  >
+                    Chapitres parent possible
+                  </option>
+                  <option value="">
+                    Retirer le choix actuel
+                  </option>
+                  {parentChapterOption.map((chapter) => {
+                    // Condition to prevent the option to select a chapter as his own parent
+                    if (chapter.id !== parseInt(editOption, 10)) {
+                      return (
+                        <option
+                          key={chapter.id}
+                          value={chapter.id}
+                        >
+                          {chapter.title}
+                        </option>
+                      );
+                    }
+                  })}
+                </select>
+              </label>
+            )}
             <Field
               className="chapterEdit-chapterTitle"
               identifier="title"
@@ -175,30 +178,33 @@ const ChapterEdit = ({
           onSubmit={handleNewChapterSubmit}
         >
           <div className="chapterEdit">
-            <label htmlFor="chapterEdit-parentChapter">
-              Choisir le Chapitre parent :
-              <select
-                className="chapterEdit-parentChapter"
-                id="chapterEdit-parentChapter"
-                onChange={handleParentChapterChoice}
-                defaultValue=""
-              >
-                <option disabled value="">
-                  Chapitres parent possible
-                </option>
-                <option value="">
-                  Aucun pour le moment
-                </option>
-                {parentChapterOption.map((choice) => (
-                  <option
-                    key={choice.id}
-                    value={choice.id}
-                  >
-                    {choice.title}
+            {/* Conditional display if there is no chapter yet */}
+            {firstChapter !== null && (
+              <label htmlFor="chapterEdit-parentChapter">
+                Choisir le Chapitre parent :
+                <select
+                  className="chapterEdit-parentChapter"
+                  id="chapterEdit-parentChapter"
+                  onChange={handleParentChapterChoice}
+                  defaultValue=""
+                >
+                  <option disabled value="">
+                    Chapitres parent possible
                   </option>
-                ))}
-              </select>
-            </label>
+                  <option value="">
+                    Aucun pour le moment
+                  </option>
+                  {parentChapterOption.map((choice) => (
+                    <option
+                      key={choice.id}
+                      value={choice.id}
+                    >
+                      {choice.title}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
             <Field
               className="chapterEdit-chapterTitle"
               identifier="title"
@@ -286,6 +292,12 @@ ChapterEdit.propTypes = {
       ]),
     }),
   }).isRequired,
+  firstChapter: PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]),
+  }),
 };
 
 ChapterEdit.defaultProps = {
@@ -296,6 +308,7 @@ ChapterEdit.defaultProps = {
   lockword: '',
   unlockText: '',
   errorKeyLock: false,
+  firstChapter: null,
 };
 
 export default ChapterEdit;
