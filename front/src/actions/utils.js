@@ -6,6 +6,8 @@ export const DISPLAY_LOADER = 'DISPLAY_LOADER';
 export const REDIRECT_ON = 'REDIRECT_ON';
 export const REDIRECT_OFF = 'REDIRECT_OFF';
 export const TOGGLE_ASIDE_OPEN = 'TOGGLE_ASIDE_OPEN';
+export const SET_AUTHORIZED = 'SET_AUTHORIZED';
+export const UNSET_AUTHORIZED = 'UNSET_AUTHORIZED';
 
 // === action creators
 // == Menu Burger
@@ -36,4 +38,12 @@ export const redirectOff = () => ({
 
 export const toggleAsideOpen = () => ({
   type: TOGGLE_ASIDE_OPEN,
+});
+
+export const setAuthorized = () => ({
+  type: SET_AUTHORIZED,
+});
+
+export const unsetAuthorized = () => ({
+  type: UNSET_AUTHORIZED,
 });

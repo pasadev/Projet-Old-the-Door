@@ -6,6 +6,8 @@ import {
   REDIRECT_ON,
   REDIRECT_OFF,
   TOGGLE_ASIDE_OPEN,
+  SET_AUTHORIZED,
+  UNSET_AUTHORIZED,
 } from 'src/actions/utils';
 
 const initialState = {
@@ -13,6 +15,7 @@ const initialState = {
   loading: true,
   asideOpen: false,
   redirect: false,
+  isAuthorized: false,
 };
 
 const utils = (state = initialState, action = {}) => {
@@ -65,6 +68,19 @@ const utils = (state = initialState, action = {}) => {
       return {
         ...state,
         asideOpen: !state.asideOpen,
+      };
+
+    case SET_AUTHORIZED:
+      return {
+        ...state,
+        isAuthorized: true,
+
+      };
+
+    case UNSET_AUTHORIZED:
+      return {
+        ...state,
+        isAuthorized: false,
       };
 
     default: return state;

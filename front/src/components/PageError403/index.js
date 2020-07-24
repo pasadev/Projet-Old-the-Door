@@ -57,31 +57,31 @@ const PageError403 = () => (
 &nbsp;                  '._____|'.\\......'''''''.:..''' <br />
 &nbsp;                             \\  <br />
       </pre>
-      <pre className='door'>
+      <pre className="door">
 &nbsp;    /|<br />
 &nbsp;   / |<br />
-&nbsp;  /__|_____ __ <br />  
+&nbsp;  /__|_____ __ <br />
 &nbsp;  |  __  __  |<br />
-&nbsp;  | |  ||  | |<br />               
+&nbsp;  | |  ||  | |<br />
 &nbsp;  | |__||__| |<br />
-&nbsp;  |  __  __()| <br /> 
-&nbsp;  | |  ||  | |<br />     
+&nbsp;  |  __  __()| <br />
+&nbsp;  | |  ||  | |<br />
 &nbsp;  | |  ||  | |<br />
 &nbsp;  | |__||__| |<br />
 &nbsp;  |__________|<br />
       </pre>
       <pre className="stop">
-&nbsp;   __ <br /> 
-&nbsp; /    \ <br /> 
-&nbsp;| STOP |<br /> 
-&nbsp; \ __ /<br /> 
-&nbsp;   ||<br /> 
-&nbsp;   ||<br /> 
-&nbsp;   ||<br /> 
-&nbsp;   ||<br /> 
-&nbsp;   ||<br /> 
-&nbsp; ~~~~~~~<br /> 
-  </pre>
+&nbsp;   __ <br />
+&nbsp; /    \ <br />
+&nbsp;| STOP |<br />
+&nbsp; \ __ /<br />
+&nbsp;   ||<br />
+&nbsp;   ||<br />
+&nbsp;   ||<br />
+&nbsp;   ||<br />
+&nbsp;   ||<br />
+&nbsp; ~~~~~~~<br />
+      </pre>
     </div>
 
   </>
