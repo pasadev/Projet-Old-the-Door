@@ -3,12 +3,16 @@
 .screenCase {
 
   border: 5px solid $darkBorderColor;
+
   
  
   .gameScreen {
     padding: 0 1em;
     position:relative;
     min-height: 100vh;
+   
+    
+  
     left: 0;
     right: 0;
     overflow:hidden;
@@ -109,6 +113,11 @@
     
   }
 
+  .computer-facade{
+    display: none;
+  }
+  
+
   .gameScreen-storySuccess {
     color: $noticeColor;
     .gameScreen-moreAdventureButton {
@@ -151,14 +160,44 @@
     border: 2em solid rgb(175, 167, 167);
     background-color: rgb(175, 167, 167);
 
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
     .gameScreen{
       border: 15px solid $darkBorderColor;
       border-radius: 1%;
+      min-height: 70vh;
+      max-height: 70vh;
+      overflow: auto;
+      
     }
 
-    .disk-placement {
+    .computer-facade {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      
+
+      .computer-brand{
+        width: 3em;
+        background: rgb(139, 139, 139);
+        align-self: center;
+        border-radius: 5%;
+        padding: 2px;
+        
+
+        
+        .computer-factory {
+          color: rgb(87, 90, 94);
+          font-size: 0.2em;
+          line-height: 1px;
+          padding: 1em;
+          border: rgb(118, 126, 134) 1px solid;
+          margin: 1px 3px;
+        }
+
+      }
 
       .disk-reader {
         height: 5em;
