@@ -1,6 +1,7 @@
 import {
   SAVE_CREATED_ADVENTURES,
   SAVE_OWN_PARTIES,
+  CLEAR_PROFIL,
 } from 'src/actions/profil';
 
 const initialState = {
@@ -23,6 +24,11 @@ const profil = (state = initialState, action = {}) => {
         ...state,
 
         ownParties: action.ownParties,
+      };
+
+    case CLEAR_PROFIL:
+      return {
+        ...initialState,
       };
 
     default: return state;
