@@ -129,6 +129,7 @@ const StoryEdit = ({
 
               <ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} />
 
+              {/* display the adventure architecture if there is one */}
               {storyEdit.chapters.length > 0 && (
                 <>
                   <Architecture

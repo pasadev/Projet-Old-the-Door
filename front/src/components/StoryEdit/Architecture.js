@@ -17,9 +17,13 @@ const Architecture = ({
   useEffect(() => {
 
   }, []);
+  // Array to put the chapter in
   chaptersDisplay = [];
+  // Start with the firstChapter
   previousChapterMapped[0] = firstChapterId;
+  // Loop for every chapters
   for (let i = 0; i < chapters.length; i++) {
+    // Map to push in an array only the chapter that's the previousChapter's child
     chapters.map((chapter) => {
       if (chapter.parentChapter !== null) {
         if (chapter.parentChapter.id === previousChapterMapped[0]) {
