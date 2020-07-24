@@ -14,8 +14,8 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
       className="nav-logo"
       to="/"
     >
-      <img className="logo-img" src={Logo} alt="logo o'ld the door" />
-      <span className="logo-text">'ld the door</span>
+      [<img className="logo-img" src={Logo} alt="logo o'ld the door" />
+      <span className="logo-text">'ld the door]</span>
     </Link>
     { (isLogged === null) && (
     <Link
@@ -23,7 +23,7 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
       className="login"
       to="/connexion"
     >
-      Connexion
+      [Connexion]
     </Link>
 
     )}
@@ -33,7 +33,7 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
       onClick={logOut}
       to="/"
     >
-      Déconnexion
+      [Déconnexion]
     </Link>
     )}
 
