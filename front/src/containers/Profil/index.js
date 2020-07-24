@@ -12,6 +12,7 @@ const mapStateToProps = (state) => ({
   showCreatedAdventures: state.profil.showCreatedAdventures,
   createdAdventures: state.profil.createdAdventures,
   ownParties: state.profil.ownParties,
+  loading: state.utils.loading,
 
   userInfo: state.user.user,
 });

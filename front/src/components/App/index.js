@@ -18,6 +18,7 @@ import StoryEdit from 'src/containers/StoryEdit';
 import Header from 'src/containers/Header';
 import Nav from 'src/containers/Nav';
 import PageError404 from 'src/components/PageError404';
+import PageError403 from 'src/components/PageError403';
 import Footer from 'src/containers/Footer';
 import Profil from 'src/containers/Profil';
 import Aside from 'src/containers/Aside';
@@ -26,7 +27,12 @@ import Aside from 'src/containers/Aside';
 import './styles.scss';
 
 // == Components
-const App = ({ burgerMenuOpen, isLogged }) => (
+const App = ({
+  burgerMenuOpen,
+  isLogged,
+  user,
+  storyEdit,
+}) => (
   <div className="app">
     <Header />
     {burgerMenuOpen && <Nav />}
@@ -52,7 +58,8 @@ const App = ({ burgerMenuOpen, isLogged }) => (
         </Route>
         <Route exact path="/aventures/:slug/edition">
           {isLogged !== true && (<Redirect to="/connexion" />)}
-          {isLogged === true && (<StoryEdit />)}
+          {((isLogged === true) && (user.id === storyEdit.author.id)) && (<StoryEdit />)}
+          {((isLogged === true) && (user.id !== storyEdit.author.id)) && (<Redirect to="/aventures" />)}
         </Route>
         <Route exact path="/aventures/:slug">
           {isLogged !== true && (<Redirect to="/connexion" />)}
@@ -67,9 +74,13 @@ const App = ({ burgerMenuOpen, isLogged }) => (
         <Route exact path="/profil">
           <Profil />
         </Route>
+        <Route exact path="/403">
+          <PageError403 />
+        </Route>
         <Route>
           <PageError404 />
         </Route>
+
       </Switch>
     )}
     <Footer />
@@ -79,6 +90,9 @@ const App = ({ burgerMenuOpen, isLogged }) => (
 App.propTypes = {
   burgerMenuOpen: PropTypes.bool.isRequired,
   isLogged: PropTypes.bool,
+
+  user: PropTypes.object.isRequired,
+  storyEdit: PropTypes.object.isRequired,
 };
 
 App.defaultProps = {

@@ -6,6 +6,8 @@ import App from 'src/components/App';
 const mapStateToProps = (state) => ({
   burgerMenuOpen: state.utils.burgerMenuOpen,
   isLogged: state.user.isLogged,
+  user: state.user.user,
+  storyEdit: state.storyEdit,
 });
 
 // === mapDispatchToProps

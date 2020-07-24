@@ -1,0 +1,59 @@
+@import 'src/styles/vars';
+
+.error403-container {
+  background-color: $altScreenColor;
+  color:  #fff;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+
+  .error403-title {
+    font-size: 3em;
+    align-self: center;
+    margin-top: 0.5em;
+  }
+
+  .error403-disclaimer {
+    font-style: italic;
+    font-size: 0.8em;
+    align-self: center;
+  }
+
+  .error403-text {
+    margin-top: 1.5em;
+    
+    
+    .error403-texts {
+      flex-direction: column;
+      padding-bottom: 0.8em;
+      
+      .error403-span {
+        font-size: 0.9em;
+        font-style: italic;
+      }
+      
+      .fabigeon {
+        display: inline;
+          .tooltip {
+            display: none;
+          }
+        }
+        .fabigeon:hover {
+          color: #f0f;
+          text-shadow: none;
+          
+          .tooltip {
+          display: block;
+          max-width: 90vw;
+          max-height: 50vh;
+          margin: auto;
+        }  
+      }
+
+    }
+  }
+}
+

@@ -5,10 +5,12 @@ import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit';
 import ChapterEdit from 'src/containers/ChapterEdit';
+import { redirectOn } from 'src/actions/utils';
 import './storyEdit.scss';
 import 'src/components/ChapterEdit/chapterEdit.scss';
 
 const StoryEdit = ({
+  user,
   storyEdit,
   fetchAdvEditSelected,
   displayLoader,
@@ -29,7 +31,15 @@ const StoryEdit = ({
   advSelectedSlug,
 }) => {
   const { slug } = useParams();
+
+  const checkIfAuthorOfAdventure = () => {
+    if (user.user.id !== storyEdit.author.id) {
+      redirectOn();
+    }
+  };
+
   useEffect(() => {
+    checkIfAuthorOfAdventure();
     clearStoryEdit();
     clearChapterEdit();
     fetchAdvEditSelected(slug);
@@ -153,6 +163,11 @@ StoryEdit.propTypes = {
   fetchAdvEditSelected: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   // Adventure
+  user: PropTypes.shape({
+    user: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
   storyEdit: PropTypes.shape({
     idStory: PropTypes.oneOfType([
       PropTypes.number,
@@ -165,6 +180,10 @@ StoryEdit.propTypes = {
     firstChapter: PropTypes.shape({
       title: PropTypes.string,
     }),
+    author: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      username: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   chapters: PropTypes.array.isRequired,
   chapterEdit: PropTypes.shape({
