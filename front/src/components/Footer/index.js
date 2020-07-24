@@ -11,7 +11,7 @@ const Footer = ({ toggleBurgerMenuFromNav }) => (
       className="footer-team"
       to="/equipe"
     >
-      Notre équipe
+      [Notre équipe]
     </Link>
     <span className="footer-copyright">&copy; 2020 - O'ld the door</span>
   </footer>

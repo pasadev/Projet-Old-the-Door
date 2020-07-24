@@ -33,7 +33,7 @@ const AdventureSmall = ({
       <Link
         to={`/aventures/${slug}`}
       >
-        Ouvrir le fichier
+        Explorer
       </Link>
     </div>
   </div>

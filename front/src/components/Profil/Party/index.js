@@ -41,7 +41,7 @@ const Party = ({
           <Link
             to={`/aventures/${forStory.slug}`}
           >
-            Ouvrir le fichier
+            Explorer
           </Link>
         </div>
       )
