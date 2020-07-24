@@ -5,6 +5,7 @@ import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit';
 import ChapterEdit from 'src/containers/ChapterEdit';
+import Architecture from 'src/components/StoryEdit/Architecture';
 import './storyEdit.scss';
 import 'src/components/ChapterEdit/chapterEdit.scss';
 
@@ -128,6 +129,7 @@ const StoryEdit = ({
 
               <ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} />
 
+              {/* <Architecture {...storyEdit} /> */}
             </main>
           )}
         </>
