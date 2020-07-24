@@ -12,4 +12,11 @@
   color: #fff;
   height: 1.5em;
   border-top: solid 2px #fff;
+  .footer-team {
+
+    &:hover {
+      background-color: #fff;
+      color: #1d1e22;
+    }
+  }
 }
