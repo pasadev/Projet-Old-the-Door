@@ -136,6 +136,13 @@ const GameScreen = ({
             {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
           </div>
         </div>
+        <div className="disk">
+          <div className="disk-insert"> </div>
+          <div className="disk-eject">
+            <div className="triangle"></div>
+            <div className="rectangle"></div>
+          </div>
+        </div>
       </main>
       )}
     </>
