@@ -98,9 +98,9 @@ const Adventure = ({
                 >Supprimer
                 </span>
                 <span className="delete-link active-delete" id="delete-confirmation">Êtes-vous sûr ?
-                  <Link to="/profil"><span className="adventure-link" onClick={deleteStory}>Oui</span></Link>
+                  <Link to="/profil"><span className="adventure-link confirmation-delete-link" onClick={deleteStory}>Oui</span></Link>
                   <span
-                    className="adventure-link"
+                    className="adventure-link confirmation-delete-link"
                     onClick={() => {
                       document.getElementById('delete-confirmation').classList.toggle('active-delete');
                       document.getElementById('delete-button').classList.toggle('active-delete');

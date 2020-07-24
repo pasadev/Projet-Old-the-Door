@@ -74,11 +74,12 @@
       align-items: center;
       
       .link-inscription {
-        padding-bottom: 0.5em;
         color: $linkColor;
+        margin-right: 0.5em;
 
         &:hover {
-          text-decoration: underline;
+          background-color: $linkColor;
+          color: $backgroundColor;
         }
       }
   
@@ -86,7 +87,8 @@
         color: $linkColor;
 
         &:hover {
-          text-decoration: underline;
+          background-color: $linkColor;
+          color: $backgroundColor;
         }
       }
     }
@@ -105,14 +107,6 @@
 
     .home-links {
       flex-direction: row !important;
-
-      .link-inscription {
-        padding-bottom: 0 !important;
-      }
-
-      .link-adventures {
-        padding-left: 0.5em;
-      }
     }
   }
 }

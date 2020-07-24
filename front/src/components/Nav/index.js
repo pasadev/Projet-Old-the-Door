@@ -11,14 +11,14 @@ const Nav = ({ toggleBurgerMenuFromNav, isLogged }) => (
       to="/"
       onClick={toggleBurgerMenuFromNav}
     >
-      <span className="nav-symbol">{'>:/'}</span>Home
+      <span className="nav-symbol">{'>:/'}</span>[Home]
     </Link>
     <Link
       onClick={toggleBurgerMenuFromNav}
       className="nav-item"
       to="/aventures"
     >
-      <span className="nav-symbol">{'>:/'}</span>Aventures
+      <span className="nav-symbol">{'>:/'}</span>[Aventures]
     </Link>
 
     {(isLogged !== null) && (
@@ -27,7 +27,7 @@ const Nav = ({ toggleBurgerMenuFromNav, isLogged }) => (
       className="nav-item"
       to="/profil"
     >
-      <span className="nav-symbol">{'>:/'}</span>Mon Profil
+      <span className="nav-symbol">{'>:/'}</span>[Profil]
     </Link>
     )}
   </nav>

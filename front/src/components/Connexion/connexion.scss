@@ -41,7 +41,6 @@
   align-items: baseline;
   flex-wrap: wrap;
   flex-direction: column;
-  
 }
 
 .infos{
@@ -75,7 +74,7 @@
 
   &:hover{
    background-color:#6BE145;
-   color: #1D1E22;
+   color: $backgroundColor;
   }
 }
 
@@ -83,14 +82,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 0.5em;
   align-items: center;
+  margin-bottom: 1em;
   
   .link-home {
     color: $linkColor;
 
     &:hover {
-      text-decoration: underline;
+      background-color: $linkColor;
+      color: $backgroundColor;
     }
   }
   
@@ -104,11 +104,11 @@
   }
 
   .link-inscription {
-    padding-bottom: 0.5em;
     color: $linkColor;
   
     &:hover {
-      text-decoration: underline;
+      background-color: $linkColor;
+      color: $backgroundColor;
     }
   }
 }

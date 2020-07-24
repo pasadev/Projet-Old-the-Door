@@ -37,13 +37,13 @@
   }
 
   .adventureSmall-link {
-    padding-top: 0.5em;
+    margin-top: 0.5em;
     color: $linkColor;
     width: fit-content;
-  }
-
-  .adventureSmall-link:hover {
-    text-decoration: underline;
+    &:hover {
+      background-color: $linkColor;
+      color: #1d1e22;
+    }
   }
   
 }
