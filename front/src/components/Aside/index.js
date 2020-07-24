@@ -1,5 +1,5 @@
 import React from 'react';
-import { Info } from 'react-feather';
+import { Info, XCircle } from 'react-feather';
 import PropTypes from 'prop-types';
 
 import './aside.scss';
@@ -7,7 +7,8 @@ import './aside.scss';
 const Aside = ({ toggleAsideOpen, asideOpen, data }) => (
   <aside className="aside">
     <div className="aside-icon" onClick={toggleAsideOpen}>
-      <Info size={30} />
+      {asideOpen && (<XCircle size={30} />)}
+      {!asideOpen && (<Info size={30} />)}
     </div>
     {asideOpen && (
       <div className="aside-content">

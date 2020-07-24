@@ -17,6 +17,8 @@ import {
   DELETE_STORY,
 } from 'src/actions/adventures';
 
+import { clearProfil } from 'src/actions/profil';
+
 import { hideLoader } from 'src/actions/utils';
 
 import { baseURL } from 'src/utils';
@@ -166,6 +168,7 @@ const adventuresMiddleware = (store) => (next) => (action) => {
           // If we have a valid answer
           if (response.status === 204) {
             // Eventually do something
+            store.dispatch(clearProfil());
           }
         })
         .catch((error) => {

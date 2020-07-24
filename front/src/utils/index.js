@@ -40,7 +40,7 @@ export const checkWordInContent = (word, content) => {
 export const asideData = {
   storyCreate: {
     title: 'Création d\'une aventure',
-    content: 'Une aventure est constituée d\'un titre, d\'un synopsis, d\'une description',
+    content: 'Une aventure est constituée d\'un titre, d\'un synopsis, d\'une description. Le synopsis est un texte résumé visible lorsque l\'aventure est listé sur une autre page et la descripsion est le texte détaillé visible seulement sur la page de l\'aventure',
   },
   storyEdit: {
     title: 'Edition d\'une aventure',

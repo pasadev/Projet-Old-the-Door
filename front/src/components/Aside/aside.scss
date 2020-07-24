@@ -2,15 +2,11 @@
 
 .aside {
   position: fixed;
-  right: 10px;
-  top: 6em;
+  right: 5px;
+  top: 3.2em;
   color: $noticeColor;
   display: flex;
   z-index: 11;
-
-  .aside-icon {
-
-  }
 
   .aside-content {
     width: 70vw;
@@ -30,10 +26,6 @@
 }
 
 
-@media screen and (min-width: 768px) {
-  .aside {
-    .aside-content {
-      width: 20vw;
-    }  
-  }
+@media screen and (min-width: 1024px) {
+
 }

@@ -27,6 +27,7 @@ const mapStateToProps = (state) => ({
   parentChapterOption: state.storyEdit.parentChapterOption,
   errorKeyLock: state.chapterEdit.errorKeyLock,
   validationErrorChapEdit: state.chapterEdit.validationErrorChapEdit,
+  firstChapter: state.storyEdit.firstChapter,
 });
 
 // === mapDispatchToProps
