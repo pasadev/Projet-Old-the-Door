@@ -161,10 +161,23 @@
     background-color: rgb(175, 167, 167);
 
 
-    ::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
-    }
+   ::-webkit-scrollbar-track {
+     border: 1px solid black;
+     background-color: #F5F5F5;
+   }
+
+   ::-webkit-scrollbar {
+     width: 10px;
+     background-color: #F5F5F5;
+   }
+
+   :-webkit-scrollbar-thumb {
+     background-color: #11d432;
+     width: 10px;
+   }
+
+    
+
     .gameScreen{
       border: 15px solid $darkBorderColor;
       border-radius: 1%;
