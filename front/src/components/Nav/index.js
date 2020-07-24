@@ -27,7 +27,7 @@ const Nav = ({ toggleBurgerMenuFromNav, isLogged }) => (
       className="nav-item"
       to="/profil"
     >
-      <span className="nav-symbol">{'>:/'}</span>[Mon Profil]
+      <span className="nav-symbol">{'>:/'}</span>[Profil]
     </Link>
     )}
   </nav>

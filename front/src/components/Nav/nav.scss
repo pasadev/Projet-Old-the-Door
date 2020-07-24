@@ -9,7 +9,12 @@
   color: #fff;
 
   .nav-item {
-    padding: $baseSize * 2;
+    padding: $baseSize;
+    font-size: 1.5em;
+    &:hover {
+      background-color: #fff;
+      color: $backgroundColor;
+    }
   }
 }
 
@@ -27,7 +32,8 @@
 
     .nav-item {
       padding: 0em;
-      padding-left: $baseSize;
+      margin-left: $baseSize;
+      font-size: 1em;
     }
   }
 }

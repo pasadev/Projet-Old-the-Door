@@ -27,6 +27,20 @@
       height: 1.4em;
       width: 1.4em;
     }
+
+    .logo-text {
+      &:hover {
+        color: $backgroundColor;
+        background-color: #fff;
+      }
+    }
+  }
+
+  .login, .logout {
+    &:hover {
+      color: $backgroundColor;
+      background-color: #fff;
+    }
   }
 
   .nav-container {
