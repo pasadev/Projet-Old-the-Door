@@ -21,14 +21,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100px;
 
     .logo-img {
       height: 1.4em;
       width: 1.4em;
-    }
-
-    .logo-text {
-      display: none;
     }
   }
 
@@ -39,12 +36,17 @@
 
 }
 
+@media only screen and (min-width: 400px) {
+  .header {
+    .nav-logo {
+    width: fit-content;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
 
-  .header {  
-    .logo-text {
-      display: inline !important;
-    }
+  .header {
     .nav-container {
       display: flex;
       position: absolute;

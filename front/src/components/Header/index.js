@@ -14,8 +14,7 @@ const Header = ({ toggleBurgerMenuFromNav, isLogged, logOut }) => (
       className="nav-logo"
       to="/"
     >
-      [<img className="logo-img" src={Logo} alt="logo o'ld the door" />
-      <span className="logo-text">'ld the door]</span>
+      <span className="logo-text">O'ld the door</span>
     </Link>
     { (isLogged === null) && (
     <Link
