@@ -131,7 +131,7 @@ const ChapterEdit = ({
             />
             <Field
               className="chapterEdit-key"
-              identifier="Clé"
+              identifier="keyword"
               placeholder="Clé"
               value={keyword}
               changeField={updateField}
