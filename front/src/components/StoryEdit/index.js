@@ -46,12 +46,7 @@ const StoryEdit = ({
       && (storyEdit.synopsis.length > 50)
       && (storyEdit.description.length > 50)
     ) {
-      submitAdvEditForm(
-        storyEdit.title,
-        storyEdit.synopsis,
-        storyEdit.description,
-        storyEdit.idStory,
-      );
+      submitAdvEditForm();
     }
     else {
       setValidationErrorAdvEditTrue();

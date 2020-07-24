@@ -55,12 +55,20 @@ const storyEditMiddleware = (store) => (next) => (action) => {
 
     case SUBMIT_ADV_EDIT_FORM: {
       const { id, apiToken } = store.getState().user.user;
-      axios.put(`${baseURL}/api/v0/stories/${action.idStory}`, {
-        title: action.title,
-        synopsis: action.synopsis,
-        description: action.description,
+      const {
+        title,
+        synopsis,
+        description,
+        firstChapter,
+        idStory,
+      } = store.getState().storyEdit;
+      axios.put(`${baseURL}/api/v0/stories/${idStory}`, {
+        title,
+        synopsis,
+        description,
         active: 0,
         author: id,
+        firstChapter: firstChapter.id,
       },
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
