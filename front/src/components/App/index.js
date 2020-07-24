@@ -22,6 +22,8 @@ import Footer from 'src/containers/Footer';
 import Profil from 'src/containers/Profil';
 import Aside from 'src/containers/Aside';
 
+import { asideData } from 'src/utils';
+
 // == Import
 import './styles.scss';
 
@@ -34,7 +36,6 @@ const App = ({ burgerMenuOpen, isLogged }) => (
       <Switch>
         <Route exact path="/">
           <Home />
-          <Aside />
         </Route>
         <Route exact path="/connexion">
           <Connexion />
@@ -43,14 +44,17 @@ const App = ({ burgerMenuOpen, isLogged }) => (
           <Register />
         </Route>
         <Route exact path="/aventures/creation">
+          <Aside data={asideData.storyCreate} />
           {isLogged !== true && (<Redirect to="/connexion" />)}
           {isLogged === true && (<StoryCreate />)}
         </Route>
         <Route exact path="/aventures/:slug/jouer">
+          <Aside data={asideData.gameScreen} />
           {isLogged !== true && (<Redirect to="/connexion" />)}
           {isLogged === true && (<GameScreen />)}
         </Route>
         <Route exact path="/aventures/:slug/edition">
+          <Aside data={asideData.storyEdit} />
           {isLogged !== true && (<Redirect to="/connexion" />)}
           {isLogged === true && (<StoryEdit />)}
         </Route>
