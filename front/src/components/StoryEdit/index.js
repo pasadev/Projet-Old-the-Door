@@ -5,6 +5,7 @@ import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit';
 import ChapterEdit from 'src/containers/ChapterEdit';
+import Architecture from 'src/components/StoryEdit/Architecture';
 import './storyEdit.scss';
 import 'src/components/ChapterEdit/chapterEdit.scss';
 
@@ -41,16 +42,11 @@ const StoryEdit = ({
     // Reset error display
     setValidationErrorAdvEditFalse();
     if (
-      (storyEdit.title.length > 3)
+      ((storyEdit.title.length > 3) && !(/^\d+$/.test(storyEdit.title)))
       && (storyEdit.synopsis.length > 50)
       && (storyEdit.description.length > 50)
     ) {
-      submitAdvEditForm(
-        storyEdit.title,
-        storyEdit.synopsis,
-        storyEdit.description,
-        storyEdit.idStory,
-      );
+      submitAdvEditForm();
     }
     else {
       setValidationErrorAdvEditTrue();
@@ -128,6 +124,18 @@ const StoryEdit = ({
 
               <ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} />
 
+              {/* display the adventure architecture if there is one */}
+              {storyEdit.chapters.length > 0 && (
+                <>
+                  <Architecture
+                    titleStory={storyEdit.title}
+                    firstChapter={storyEdit.firstChapter.title}
+                    firstChapterId={storyEdit.firstChapter.id}
+                    chapters={storyEdit.chapters}
+                  />
+                </>
+              )}
+
             </main>
           )}
         </>
@@ -164,12 +172,21 @@ StoryEdit.propTypes = {
     description: PropTypes.string.isRequired,
     firstChapter: PropTypes.shape({
       title: PropTypes.string,
+      id: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+      ]),
     }),
+    chapters: PropTypes.array,
   }).isRequired,
   chapters: PropTypes.array.isRequired,
   chapterEdit: PropTypes.shape({
     id: PropTypes.number,
   }).isRequired,
+};
+
+StoryEdit.defautProps = {
+  firstChapter: [],
 };
 
 export default StoryEdit;
