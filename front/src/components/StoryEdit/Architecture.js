@@ -24,14 +24,16 @@ const Architecture = ({
   // Loop for every chapters
   for (let i = 0; i < chapters.length; i++) {
     // Map to push in an array only the chapter that's the previousChapter's child
+    let indexChapters = 1;
     chapters.map((chapter) => {
       if (chapter.parentChapter !== null) {
         if (chapter.parentChapter.id === previousChapterMapped[0]) {
+          indexChapters++;
           previousChapterMapped[0] = chapter.id;
           chaptersDisplay.push(
             <div className="architecture-row" key={chapter.id}>
               <CornerDownRight />
-              <span>Chapitre suivant : {chapter.title}</span>
+              <span>#{indexChapters}: {chapter.title}</span>
             </div>,
           );
         }
@@ -42,25 +44,25 @@ const Architecture = ({
   return (
     <section className="architecture">
       {/* Adventure */}
-      <a href="#hide1" className="hide architecture-link" id="hide1">Architecture +</a>
-      <a href="#show1" className="show architecture-link" id="show1">Architecture -</a>
+      <a href="#hide1" className="hide architecture-link" id="hide1">Sommaire +</a>
+      <a href="#show1" className="show architecture-link" id="show1">Sommaire -</a>
       <div className="architecture-details">
         {firstChapter !== null && (
           <div className="architecture-row">
             <CornerDownRight />
-            <span>Premier Chapitre : {firstChapter}</span>
+            <span>#1: {firstChapter}</span>
           </div>
         )}
 
         {/* Chapter with a parent */}
         {chaptersDisplay}
-
+        <div className="architecture-subtitle">Chapitres sans parents</div>
         {/* Chapter without a parent */}
         {chapters.map((chapter) => {
           if ((chapter.parentChapter == null) && (chapter.id !== firstChapterId)) {
             return (
               <div key={chapter.id}>
-                <span>Chapitre sans parent : {chapter.title}</span>
+                <span>- {chapter.title}</span>
               </div>
             );
           }

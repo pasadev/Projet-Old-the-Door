@@ -38,11 +38,10 @@
       background-color: $lightColor;
     }
   }
-  .architecture-row {
-    &:hover {
-      background-color: $backgroundColor;
-      color: white;
-    }
+  .architecture-subtitle {
+    background-color: $backgroundColor;
+    color: white;
+    margin-top: 0.5em;
   }
   .hide:target + .show {
     display: inline; 
