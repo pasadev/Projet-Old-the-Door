@@ -13,14 +13,18 @@
     max-height: 80vh;
     overflow: scroll;
     border: double;
-    color: $darkColor;
-    background-color: rgba(250, 192, 59, 0.9);
+    color: white;
+    background-color: $noticeColor;
     padding: 0.5em;
     display: flex;
     flex-direction: column;
 
     .aside-content-title {
       font-weight: bold;
+      color: $noticeColor;
+      background-color: white;
+      width: fit-content;
+      padding: 0 0.2em;
     }
   }
 }
