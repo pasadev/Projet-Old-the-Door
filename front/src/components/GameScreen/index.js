@@ -87,7 +87,7 @@ const GameScreen = ({
                 cursor={{ hideWhenDone: true }}
                 avgTypingDelay={15}
               >
-                <span>■■■ Initialisation de l'histoire v0.01</span>
+                <span>■■■ Initialisation de l'histoire v1.0</span>
                 <Typist.Backspace count={34} delay={600} />
                 <span>Chargement des chapitres</span>
                 <Typist.Backspace count={24} delay={600} />
