@@ -17,7 +17,7 @@
     max-height: 80vh;
     overflow: scroll;
     border: double;
-    color: white;
+    color: $backgroundColor;
     background-color: $noticeColor;
     padding: 0.5em;
     display: flex;
@@ -26,7 +26,7 @@
     .aside-content-title {
       font-weight: bold;
       color: $noticeColor;
-      background-color: white;
+      background-color: $backgroundColor;
       width: fit-content;
       padding: 0 0.2em;
       margin-bottom: 0.5em;
