@@ -1,10 +1,13 @@
 @import 'src/styles/vars';
 
 .screenCase {
+  border: 5px solid $darkBorderColor;
+
   .gameScreen {
     padding: 0 1em;
     position:relative;
     min-height: 100vh;
+    overflow-wrap: break-word;
     left: 0;
     right: 0;
     overflow:hidden;
@@ -15,7 +18,6 @@
     color: $lightScreenColor;
     text-shadow: 0px 0px 10px $lightColor;
     opacity : 0.9;
-    border: 3px solid $darkBorderColor;
 
     .gameScreen-header {
       padding-top: 0.5em;
@@ -101,6 +103,10 @@
     }
   }
 
+  .computer-facade{
+    display: none;
+  }
+
   .gameScreen-storySuccess {
     color: $noticeColor;
     .gameScreen-moreAdventureButton {
@@ -124,23 +130,48 @@
     text-shadow: 0px 0px 10px $linkColor;
     font-weight: bold;
     margin-top: 0.5em;
+    margin-bottom: 1em;
     disabled {
       text-decoration: line-through;
       color: gray;
     }
   }
+
   .gameScreen-hintButton:disabled{
-    
-      text-decoration: line-through;
-      color: gray;
-    
+    text-decoration: line-through;
+    color: gray;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .screenCase {
-    .gameScreen {
+    border: 2em solid rgb(175, 167, 167);
+    background-color: rgb(175, 167, 167);
+
+   ::-webkit-scrollbar-track {
+     border: 1px solid black;
+     background-color: $darkBorderColor;
+   }
+
+   ::-webkit-scrollbar {
+     width: 10px;
+     background-color: #F5F5F5;
+   }
+
+   ::-webkit-scrollbar-thumb {
+     background-color: $lightCaseColor;
+   }
+
+    .gameScreen{
       padding: 0 2em;
+      box-shadow: 0px 0px 15px rgb(7, 8, 8);
+      border: 15px solid $darkBorderColor;
+      border-radius: 1%;
+      min-height: 70vh;
+      max-height: 70vh;
+      overflow: auto;
+      overflow-wrap: break-word;
+
       .gameScreen-form {
         .gameScreen-label {
           width: 120px;
@@ -150,5 +181,117 @@
         }
       }
     }
+
+    .computer-facade {
+      display: flex;
+      justify-content: space-between;
+      
+      .computer-brand{
+        width: 3em;
+        background: rgb(139, 139, 139);
+        align-self: center;
+        border-radius: 5%;
+        padding: 2px;
+      
+        .computer-factory {
+          color: rgb(87, 90, 94);
+          font-size: 0.2em;
+          line-height: 1px;
+          padding: 1em;
+          border: rgb(118, 126, 134) 1px solid;
+          margin: 1px 3px;
+        }  
+      }
+
+      .computer-blowhole {
+        position: relative;
+        left: 10px;
+        top: 35px;
+        background: repeating-linear-gradient(
+          to right,
+          rgb(175, 167, 167),
+          rgb(175, 167, 167) 4px,
+          $darkBorderColor 4px,
+          $darkBorderColor 8px
+        );
+        height: 80px;
+        width: 80px;
+        border-radius: 50%
+      }
+
+
+      .disk-reader {
+        height: 5em;
+        width: 25em;
+        margin-top: 1em;
+        background: $darkBorderColor;
+        display: flex;
+        border-radius: 2%;
+        justify-content: center;
+        margin: 1em 0 0 0;
+        box-shadow: 0px 0px 15px rgb(7, 8, 8);
+
+        &::before {
+          content: '';
+          position: relative;
+          left: 10px;
+          top: 15px;
+          width: 12px;
+          height: 12px;
+          background-color: #690;
+          border-radius: 50%;
+          box-shadow: #000 0 -1px 7px 1px, inset #460 0 -1px 9px, #7D0 0 2px 12px;
+        }
+
+        .disk-insert {
+          height: 20px;
+          border: 2px solid rgb(17, 15, 15);
+          width: 80%;
+          align-self: center;
+          box-shadow: 0px 0px 5px rgb(7, 8, 8);
+        }
+
+        .disk-eject {
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          border: 2px solid rgb(29, 29, 29);
+          box-shadow: 0px 0px 5px rgb(0, 0, 0);
+          align-self: center;
+          margin-left: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .eject {
+            position: relative;
+            left: 5px;
+            bottom: 8px;
+
+            .triangle {
+              display: inline-block;
+              height: 0;
+              width: 0;
+              border-right: 8px solid transparent;
+              border-bottom: 8px solid rgb(175, 167, 167);
+              border-left: 8px solid transparent;
+            }
+
+            .rectangle {
+              background: rgb(175, 167, 167);
+              height: 4px;
+              width: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .computer-blowhole {
+    height: 100px !important;
+    width: 100px !important;
   }
 }

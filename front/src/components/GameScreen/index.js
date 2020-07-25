@@ -136,6 +136,26 @@ const GameScreen = ({
             {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
           </div>
         </div>
+        <div className="computer-facade">
+          <div className="computer-brand">
+            <p className="computer-factory"> Fabigeon 8000</p>
+            <p className="computer-factory"> N°: 682984XCE</p>
+            <p className="computer-factory"> Model: fabirex</p>
+            <p className="computer-factory"> OLD THE DOOR</p>
+          </div>
+
+          <div className="computer-blowhole"> </div>
+
+          <div className="disk-reader">
+            <div className="disk-insert"> </div>
+            <div className="disk-eject">
+              <div className="eject">
+                <div className="triangle"> </div>
+                <div className="rectangle"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
       )}
     </>
