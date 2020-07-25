@@ -75,3 +75,24 @@
     
   } 
 }
+
+@media screen and (min-width: 1024px) {
+  .adventure {
+    width: 900px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .adventure {
+    width: 1300px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .adventure {
+    width: 1600px;
+    margin: auto;
+  }
+}

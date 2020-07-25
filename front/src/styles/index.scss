@@ -41,16 +41,24 @@ body {
 @media screen and (min-width: 1024px) {
   body {
     font-size: 1.4em;
-    width: 900px;
-    margin: auto;
+    // width: 900px;
+    // margin: auto;
   }
 }
 
 @media screen and (min-width: 1680px) {
   body {
     font-size: 1.7em;
-    width: 1300px;
-    margin: auto;
+    // width: 1300px;
+    // margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  body {
+    font-size: 2em;
+    // width: 1600px;
+    // margin: auto;
   }
 }
 

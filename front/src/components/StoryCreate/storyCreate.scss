@@ -25,8 +25,24 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .storyCreate {
-    padding: 0 2em;
+    padding: 2em 0;
+    width: 900px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .storyCreate {
+    width: 1300px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .storyCreate {
+    width: 1600px;
+    margin: auto;
   }
 }

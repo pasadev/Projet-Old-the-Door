@@ -7,7 +7,7 @@
   justify-content: center;
   color: #fff;
   height: 1.5em;
-  /* position: absolute; */
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -36,7 +36,6 @@
 
   .nav-container {
     display: none;
-    
   }
 
 }
@@ -64,5 +63,26 @@
       padding-right: 0.5em;
       
     }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    width: 900px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .header {
+    width: 1300px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .header {
+    width: 1600px;
+    margin: auto;
   }
 }
