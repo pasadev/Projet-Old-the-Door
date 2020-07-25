@@ -1,10 +1,18 @@
+@import 'src/styles/vars';
+
 .burgerMenuContainer {  
   position: absolute;
   right: 0.5em;
-  top: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .menu {
+    &:hover {
+      color: $backgroundColor;
+      background-color: #fff;
+    }
+  }
 }
 
 

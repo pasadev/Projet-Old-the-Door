@@ -31,6 +31,22 @@
 
 @media screen and (min-width: 1024px) {
   .adventures {
+    width: 900px;
+    margin: auto;
     padding: 0;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .adventures {
+    width: 1300px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .adventures {
+    width: 1600px;
+    margin: auto;
   }
 }

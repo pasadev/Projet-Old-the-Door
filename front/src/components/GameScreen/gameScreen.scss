@@ -63,7 +63,7 @@
       }
       .gameScreen-formButton {
         border: none;
-        padding: 0;
+        padding-bottom: 0.5em;
         margin: 0;
         width: 100%;
         text-align: left;
@@ -145,6 +145,7 @@
 
 @media only screen and (min-width: 768px) {
   .screenCase {
+    margin: 0.5em 0;
     border: 2em solid rgb(175, 167, 167);
     background-color: rgb(175, 167, 167);
 
@@ -167,8 +168,7 @@
       box-shadow: 0px 0px 15px rgb(7, 8, 8);
       border: 15px solid $darkBorderColor;
       border-radius: 1%;
-      min-height: 70vh;
-      max-height: 70vh;
+      height: 75vh;
       overflow: auto;
       overflow-wrap: break-word;
       animation: textShadow 0.3s infinite;
@@ -438,12 +438,25 @@
           content: '';
           position: relative;
           left: 10px;
-          top: 15px;
+          top: 12px;
           width: 12px;
           height: 12px;
           background-color: #690;
           border-radius: 50%;
           box-shadow: #000 0 -1px 7px 1px, inset #460 0 -1px 9px, #7D0 0 2px 12px;
+          animation: pulse 0.2s ease-in-out;
+          animation-iteration-count: 21;
+        }
+
+        @keyframes pulse {
+          0% {
+            background-color: #940;
+            box-shadow: #000 0 -1px 7px 1px, inset #600 0 -1px 9px, #F00 0 2px 12px;
+          }
+          100% {
+            background-color: #A90;
+            box-shadow: #000 0 -1px 7px 1px, inset #660 0 -1px 9px, #DD0 0 2px 12px;
+          }
         }
 
         .disk-insert {
@@ -496,5 +509,12 @@
   .computer-blowhole {
     height: 100px !important;
     width: 100px !important;
+  }
+
+  .gameScreen-form {
+    width: 500px !important;
+    .gameScreen-label {
+      width: 170px !important;
+    }
   }
 }

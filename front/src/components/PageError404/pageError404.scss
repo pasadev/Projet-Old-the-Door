@@ -57,3 +57,24 @@
   }
 }
 
+@media screen and (min-width: 1024px) {
+  .error404-container {
+    width: 900px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .error404-container {
+    width: 1300px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .error404-container {
+    width: 1600px;
+    margin: auto;
+  }
+}
+
