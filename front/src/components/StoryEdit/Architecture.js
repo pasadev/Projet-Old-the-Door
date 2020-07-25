@@ -29,7 +29,7 @@ const Architecture = ({
         if (chapter.parentChapter.id === previousChapterMapped[0]) {
           previousChapterMapped[0] = chapter.id;
           chaptersDisplay.push(
-            <div key={chapter.id}>
+            <div className="architecture-row" key={chapter.id}>
               <CornerDownRight />
               <span>Chapitre suivant : {chapter.title}</span>
             </div>,
@@ -42,27 +42,30 @@ const Architecture = ({
   return (
     <section className="architecture">
       {/* Adventure */}
-      <span>Aventure : {titleStory}</span>
-      {firstChapter !== null && (
-        <div>
-          <CornerDownRight />
-          <span>Premier Chapitre : {firstChapter}</span>
-        </div>
-      )}
+      <a href="#hide1" className="hide architecture-link" id="hide1">Architecture +</a>
+      <a href="#show1" className="show architecture-link" id="show1">Architecture -</a>
+      <div className="architecture-details">
+        {firstChapter !== null && (
+          <div className="architecture-row">
+            <CornerDownRight />
+            <span>Premier Chapitre : {firstChapter}</span>
+          </div>
+        )}
 
-      {/* Chapter with a parent */}
-      {chaptersDisplay}
+        {/* Chapter with a parent */}
+        {chaptersDisplay}
 
-      {/* Chapter without a parent */}
-      {chapters.map((chapter) => {
-        if ((chapter.parentChapter == null) && (chapter.id !== firstChapterId)) {
-          return (
-            <div key={chapter.id}>
-              <span>Chapitre sans parent : {chapter.title}</span>
-            </div>
-          );
-        }
-      })}
+        {/* Chapter without a parent */}
+        {chapters.map((chapter) => {
+          if ((chapter.parentChapter == null) && (chapter.id !== firstChapterId)) {
+            return (
+              <div key={chapter.id}>
+                <span>Chapitre sans parent : {chapter.title}</span>
+              </div>
+            );
+          }
+        })}
+      </div>
 
     </section>
   );
