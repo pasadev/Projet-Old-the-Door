@@ -17,6 +17,13 @@
     
   }
 }
+.errorMessage, .validationError {
+  margin-top: 0.5em;
+  background: $warningColor ;
+  color: black;
+  padding: 1em;
+}
+
 .chapterEdit-Button{
   border: 1px dashed #6BE145;
   color: #6BE145;
