@@ -54,7 +54,8 @@ const Architecture = ({
 
         {/* Chapter with a parent */}
         {chaptersDisplay}
-        <div className="architecture-subtitle">Chapitres sans parents</div>
+        {/* Display the chapters without parent category only when we have some */}
+        {(chapters.length - chaptersDisplay.length) > 1 && <div className="architecture-subtitle">Chapitres sans parents</div>}
         {/* Chapter without a parent */}
         {chapters.map((chapter) => {
           if ((chapter.parentChapter == null) && (chapter.id !== firstChapterId)) {
