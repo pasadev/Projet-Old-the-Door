@@ -18,7 +18,7 @@ import {
 
 import { hideLoader } from 'src/actions/utils';
 
-import { baseURL, history } from 'src/utils';
+import { baseURL } from 'src/utils';
 
 const gameMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -32,15 +32,12 @@ const gameMiddleware = (store) => (next) => (action) => {
           store.dispatch(fetchFirstChapter(response.data[0].firstChapter.id));
         })
         .catch((error) => {
-          console.warn(error.response);
-          if (error.response.status === 404) {
-            console.log('hello');
-          }
+          console.warn(error);
         });
 
       next(action);
       break;
-}
+    }
     case FETCH_FIRST_CHAPTER:
       axios.get(`${baseURL}/api/v0/chapters/${action.firstChapterId}`)
         .then((response) => {
@@ -63,7 +60,7 @@ const gameMiddleware = (store) => (next) => (action) => {
       const currentChapterForSave = store.getState().gameScreen.currentChapter;
       axios.get(`${baseURL}/api/v0/chapters/${currentChapterForSave.id}/child`)
         .then((response) => {
-          // Check if it's a 404 or a 200 http code
+          // Check if it's a 204 or a 200 http code
 
           if (response.status === 200) {
             store.dispatch(savePreviousChapters(currentChapterForSave));

@@ -1,10 +1,13 @@
 @import 'src/styles/vars';
 
 .screenCase {
+  border: 5px solid $darkBorderColor;
+
   .gameScreen {
     padding: 0 1em;
     position:relative;
     min-height: 100vh;
+    overflow-wrap: break-word;
     left: 0;
     right: 0;
     overflow:hidden;
@@ -15,7 +18,6 @@
     color: $lightScreenColor;
     text-shadow: 0px 0px 10px $lightColor;
     opacity : 0.9;
-    border: 3px solid $darkBorderColor;
 
     .gameScreen-header {
       padding-top: 0.5em;
@@ -61,7 +63,7 @@
       }
       .gameScreen-formButton {
         border: none;
-        padding: 0;
+        padding-bottom: 0.5em;
         margin: 0;
         width: 100%;
         text-align: left;
@@ -101,6 +103,10 @@
     }
   }
 
+  .computer-facade{
+    display: none;
+  }
+
   .gameScreen-storySuccess {
     color: $noticeColor;
     .gameScreen-moreAdventureButton {
@@ -124,23 +130,49 @@
     text-shadow: 0px 0px 10px $linkColor;
     font-weight: bold;
     margin-top: 0.5em;
+    margin-bottom: 1em;
     disabled {
       text-decoration: line-through;
       color: gray;
     }
   }
+
   .gameScreen-hintButton:disabled{
-    
-      text-decoration: line-through;
-      color: gray;
-    
+    text-decoration: line-through;
+    color: gray;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .screenCase {
-    .gameScreen {
+    margin: 0.5em 0;
+    border: 2em solid rgb(175, 167, 167);
+    background-color: rgb(175, 167, 167);
+
+   ::-webkit-scrollbar-track {
+     border: 1px solid black;
+     background-color: $darkBorderColor;
+   }
+
+   ::-webkit-scrollbar {
+     width: 10px;
+     background-color: #F5F5F5;
+   }
+
+   ::-webkit-scrollbar-thumb {
+     background-color: $lightCaseColor;
+   }
+
+    .gameScreen{
       padding: 0 2em;
+      box-shadow: 0px 0px 15px rgb(7, 8, 8);
+      border: 15px solid $darkBorderColor;
+      border-radius: 1%;
+      height: 75vh;
+      overflow: auto;
+      overflow-wrap: break-word;
+      animation: textShadow 0.3s infinite;
+
       .gameScreen-form {
         .gameScreen-label {
           width: 120px;
@@ -149,6 +181,340 @@
           width: 100%;
         }
       }
+    }
+    .gameScreen::before {
+      
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 2;
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+      
+    }
+    @keyframes flicker {
+      0% {
+        opacity: 0.27861;
+      }
+
+      5% {
+        opacity: 0.34769;
+      }
+
+      10% {
+        opacity: 0.23604;
+      }
+
+      15% {
+        opacity: 0.90626;
+      }
+
+      20% {
+        opacity: 0.18128;
+      }
+
+      25% {
+        opacity: 0.83891;
+      }
+
+      30% {
+        opacity: 0.65583;
+      }
+
+      35% {
+        opacity: 0.67807;
+      }
+
+      40% {
+        opacity: 0.26559;
+      }
+
+      45% {
+        opacity: 0.84693;
+      }
+
+      50% {
+        opacity: 0.96019;
+      }
+
+      55% {
+        opacity: 0.08594;
+      }
+
+      60% {
+        opacity: 0.20313;
+      }
+
+      65% {
+        opacity: 0.71988;
+      }
+
+      70% {
+        opacity: 0.53455;
+      }
+
+      75% {
+        opacity: 0.37288;
+      }
+
+      80% {
+        opacity: 0.71428;
+      }
+
+      85% {
+        opacity: 0.70419;
+      }
+
+      90% {
+        opacity: 0.7003;
+      }
+
+      95% {
+        opacity: 0.36108;
+      }
+
+      100% {
+        opacity: 0.24387;
+      }
+    }
+
+    .gameScreen::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(18, 16, 16, 0.1);
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+      animation: flicker 0.15s infinite;
+    }
+    @keyframes textShadow {
+      0% {
+        text-shadow: 0.4389924193300864px 0 1px rgba(0, 30, 255, 0.5), -0.4389924193300864px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      5% {
+        text-shadow: 2.7928974010788217px 0 1px rgba(0, 30, 255, 0.5), -2.7928974010788217px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      10% {
+        text-shadow: 0.02956275843481219px 0 1px rgba(0, 30, 255, 0.5), -0.02956275843481219px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      15% {
+        text-shadow: 0.40218538552878136px 0 1px rgba(0, 30, 255, 0.5), -0.40218538552878136px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      20% {
+        text-shadow: 3.4794037899852017px 0 1px rgba(0, 30, 255, 0.5), -3.4794037899852017px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      25% {
+        text-shadow: 1.6125630401149584px 0 1px rgba(0, 30, 255, 0.5), -1.6125630401149584px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      30% {
+        text-shadow: 0.7015590085143956px 0 1px rgba(0, 30, 255, 0.5), -0.7015590085143956px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      35% {
+        text-shadow: 3.896914047650351px 0 1px rgba(0, 30, 255, 0.5), -3.896914047650351px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      40% {
+        text-shadow: 3.870905614848819px 0 1px rgba(0, 30, 255, 0.5), -3.870905614848819px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      45% {
+        text-shadow: 2.231056963361899px 0 1px rgba(0, 30, 255, 0.5), -2.231056963361899px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      50% {
+        text-shadow: 0.08084290417898504px 0 1px rgba(0, 30, 255, 0.5), -0.08084290417898504px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      55% {
+        text-shadow: 2.3758461067427543px 0 1px rgba(0, 30, 255, 0.5), -2.3758461067427543px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      60% {
+        text-shadow: 2.202193051050636px 0 1px rgba(0, 30, 255, 0.5), -2.202193051050636px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      65% {
+        text-shadow: 2.8638780614874975px 0 1px rgba(0, 30, 255, 0.5), -2.8638780614874975px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      70% {
+        text-shadow: 0.48874025155497314px 0 1px rgba(0, 30, 255, 0.5), -0.48874025155497314px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      75% {
+        text-shadow: 1.8948491305757957px 0 1px rgba(0, 30, 255, 0.5), -1.8948491305757957px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      80% {
+        text-shadow: 0.0833037308038857px 0 1px rgba(0, 30, 255, 0.5), -0.0833037308038857px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      85% {
+        text-shadow: 0.09769827255241735px 0 1px rgba(0, 30, 255, 0.5), -0.09769827255241735px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      90% {
+        text-shadow: 3.443339761481782px 0 1px rgba(0, 30, 255, 0.5), -3.443339761481782px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      95% {
+        text-shadow: 2.1841838852799786px 0 1px rgba(0, 30, 255, 0.5), -2.1841838852799786px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+
+      100% {
+        text-shadow: 2.6208764473832513px 0 1px rgba(0, 30, 255, 0.5), -2.6208764473832513px 0 1px rgba(255, 0, 80, 0.3), 0 0 3px;
+      }
+    }
+
+    
+
+    .computer-facade {
+      display: flex;
+      justify-content: space-between;
+      
+      .computer-brand{
+        width: 3em;
+        background: rgb(139, 139, 139);
+        align-self: center;
+        border-radius: 5%;
+        padding: 2px;
+      
+        .computer-factory {
+          color: rgb(87, 90, 94);
+          font-size: 0.2em;
+          line-height: 1px;
+          padding: 1em;
+          border: rgb(118, 126, 134) 1px solid;
+          margin: 1px 3px;
+        }  
+      }
+
+      .computer-blowhole {
+        position: relative;
+        left: 10px;
+        top: 35px;
+        background: repeating-linear-gradient(
+          to right,
+          rgb(175, 167, 167),
+          rgb(175, 167, 167) 4px,
+          $darkBorderColor 4px,
+          $darkBorderColor 8px
+        );
+        height: 80px;
+        width: 80px;
+        border-radius: 50%
+      }
+
+
+      .disk-reader {
+        height: 5em;
+        width: 25em;
+        margin-top: 1em;
+        background: $darkBorderColor;
+        display: flex;
+        border-radius: 2%;
+        justify-content: center;
+        margin: 1em 0 0 0;
+        box-shadow: 0px 0px 15px rgb(7, 8, 8);
+
+        &::before {
+          content: '';
+          position: relative;
+          left: 10px;
+          top: 12px;
+          width: 12px;
+          height: 12px;
+          background-color: #690;
+          border-radius: 50%;
+          box-shadow: #000 0 -1px 7px 1px, inset #460 0 -1px 9px, #7D0 0 2px 12px;
+          animation: pulse 0.2s ease-in-out;
+          animation-iteration-count: 21;
+        }
+
+        @keyframes pulse {
+          0% {
+            background-color: #940;
+            box-shadow: #000 0 -1px 7px 1px, inset #600 0 -1px 9px, #F00 0 2px 12px;
+          }
+          100% {
+            background-color: #A90;
+            box-shadow: #000 0 -1px 7px 1px, inset #660 0 -1px 9px, #DD0 0 2px 12px;
+          }
+        }
+
+        .disk-insert {
+          height: 20px;
+          border: 2px solid rgb(17, 15, 15);
+          width: 80%;
+          align-self: center;
+          box-shadow: 0px 0px 5px rgb(7, 8, 8);
+        }
+
+        .disk-eject {
+          height: 30px;
+          width: 30px;
+          border-radius: 50%;
+          border: 2px solid rgb(29, 29, 29);
+          box-shadow: 0px 0px 5px rgb(0, 0, 0);
+          align-self: center;
+          margin-left: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .eject {
+            position: relative;
+            left: 5px;
+            bottom: 8px;
+
+            .triangle {
+              display: inline-block;
+              height: 0;
+              width: 0;
+              border-right: 8px solid transparent;
+              border-bottom: 8px solid rgb(175, 167, 167);
+              border-left: 8px solid transparent;
+            }
+
+            .rectangle {
+              background: rgb(175, 167, 167);
+              height: 4px;
+              width: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .computer-blowhole {
+    height: 100px !important;
+    width: 100px !important;
+  }
+
+  .gameScreen-form {
+    width: 500px !important;
+    .gameScreen-label {
+      width: 170px !important;
     }
   }
 }

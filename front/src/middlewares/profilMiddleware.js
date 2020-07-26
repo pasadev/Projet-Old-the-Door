@@ -20,6 +20,7 @@ const profilMiddleware = (store) => (next) => (action) => {
           store.dispatch(fetchOwnParties(action.authorId));
         })
         .catch((error) => {
+          store.dispatch(fetchOwnParties(action.authorId));
           console.warn(error);
         });
 

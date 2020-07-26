@@ -87,7 +87,7 @@ const GameScreen = ({
                 cursor={{ hideWhenDone: true }}
                 avgTypingDelay={15}
               >
-                <span>■■■ Initialisation de l'histoire v0.01</span>
+                <span>■■■ Initialisation de l'histoire v1.0</span>
                 <Typist.Backspace count={34} delay={600} />
                 <span>Chargement des chapitres</span>
                 <Typist.Backspace count={24} delay={600} />
@@ -134,6 +134,26 @@ const GameScreen = ({
             {!showSuccessMessage
             && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>[Indice]</button>))}
             {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
+          </div>
+        </div>
+        <div className="computer-facade">
+          <div className="computer-brand">
+            <p className="computer-factory"> Fabigeon 8000</p>
+            <p className="computer-factory"> N°: 682984XCE</p>
+            <p className="computer-factory"> Model: fabirex</p>
+            <p className="computer-factory"> OLD THE DOOR</p>
+          </div>
+
+          <div className="computer-blowhole"> </div>
+
+          <div className="disk-reader">
+            <div className="disk-insert"> </div>
+            <div className="disk-eject">
+              <div className="eject">
+                <div className="triangle"> </div>
+                <div className="rectangle"> </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>

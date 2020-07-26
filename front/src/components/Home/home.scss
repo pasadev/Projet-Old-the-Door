@@ -114,5 +114,21 @@
 @media screen and (min-width: 1024px) {
   .home {
     padding: 0;
+    width: 900px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .home {
+    width: 1300px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .home {
+    width: 1600px;
+    margin: auto;
   }
 }

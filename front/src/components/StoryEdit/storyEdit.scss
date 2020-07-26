@@ -19,3 +19,29 @@
       }
 }
 
+.architecture {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1024px) {
+  .storyEdit {
+    padding: 0;
+    width: 900px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .storyEdit {
+    width: 1300px;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .storyEdit {
+    width: 1600px;
+    margin: auto;
+  }
+}
