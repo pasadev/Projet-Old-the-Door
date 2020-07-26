@@ -45,31 +45,33 @@ const Architecture = ({
   return (
     <section className="architecture">
       {/* Adventure */}
-      <a href="#hide1" className="hide architecture-link" id="hide1" onClick={showStoryStructure}>Sommaire +</a>
-      <a href="#show1" className="show architecture-link" id="show1" onClick={hideStoryStructure}>Sommaire -</a>
-      <div className="architecture-details">
-        {firstChapter !== null && (
-          <div className="architecture-row">
-            <CornerDownRight />
-            <span>#1: {firstChapter}</span>
-          </div>
-        )}
+      {!structureView && <span className="architecture-link" onClick={showStoryStructure}>Sommaire +</span>}
+      {structureView && <span className="architecture-link" onClick={hideStoryStructure}>Sommaire -</span>}
+      {structureView && (
+        <div className="architecture-details">
+          {firstChapter !== null && (
+            <div className="architecture-row">
+              <CornerDownRight />
+              <span>#1: {firstChapter}</span>
+            </div>
+          )}
 
-        {/* Chapter with a parent */}
-        {chaptersDisplay}
-        {/* Display the chapters without parent category only when we have some */}
-        {(chapters.length - chaptersDisplay.length) > 1 && <div className="architecture-subtitle">Chapitres sans parents</div>}
-        {/* Chapter without a parent */}
-        {chapters.map((chapter) => {
-          if ((chapter.parentChapter == null) && (chapter.id !== firstChapterId)) {
-            return (
-              <div key={chapter.id}>
-                <span>- {chapter.title}</span>
-              </div>
-            );
-          }
-        })}
-      </div>
+          {/* Chapter with a parent */}
+          {chaptersDisplay}
+          {/* Display the chapters without parent category only when we have some */}
+          {(chapters.length - chaptersDisplay.length) > 1 && <div className="architecture-subtitle">Chapitres sans parents</div>}
+          {/* Chapter without a parent */}
+          {chapters.map((chapter) => {
+            if ((chapter.parentChapter == null) && (chapter.id !== firstChapterId)) {
+              return (
+                <div key={chapter.id}>
+                  <span>- {chapter.title}</span>
+                </div>
+              );
+            }
+          })}
+        </div>
+      )}
 
     </section>
   );
