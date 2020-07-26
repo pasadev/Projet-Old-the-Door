@@ -7,7 +7,6 @@ import { CornerDownRight } from 'react-feather';
 import PropTypes from 'prop-types';
 
 const Architecture = ({
-  titleStory,
   firstChapter,
   firstChapterId,
   chapters,
@@ -22,9 +21,8 @@ const Architecture = ({
   // Start with the firstChapter
   previousChapterMapped[0] = firstChapterId;
   // Loop for every chapters
-  for (let i = 0; i < chapters.length; i++) {
+  for (let i = 0, indexChapters = 1; i < chapters.length; i++) {
     // Map to push in an array only the chapter that's the previousChapter's child
-    let indexChapters = 1;
     chapters.map((chapter) => {
       if (chapter.parentChapter !== null) {
         if (chapter.parentChapter.id === previousChapterMapped[0]) {
@@ -74,7 +72,6 @@ const Architecture = ({
 };
 
 Architecture.propTypes = {
-  titleStory: PropTypes.string.isRequired,
   firstChapter: PropTypes.string,
   firstChapterId: PropTypes.oneOfType([
     PropTypes.number,
