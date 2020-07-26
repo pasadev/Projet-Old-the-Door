@@ -109,6 +109,7 @@ const GameScreen = ({
             {showSuccessMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-storySuccess">Bravo, vous avez terminé le scénario "{currentStory.title}" <Link to="/aventures/"> <span className="gameScreen-moreAdventureButton">> Voir les autres aventures</span></Link></div></Typist>}
             {showWrongAnswerMessage && <Typist cursor={{ show: false }} avgTypingDelay={15}><div className="gameScreen-answerError">Mauvaise combinaison !</div> <Typist.Backspace count={23} delay={400} /></Typist>}
 
+            {!showSuccessMessage && (
             <form className="gameScreen-form" onSubmit={handleSubmit}>
               <div className="gameScreen-form-row" id="keyForm">
                 <label className="gameScreen-label" htmlFor="gameKey">Clé:</label>
@@ -126,11 +127,11 @@ const GameScreen = ({
                   placeholder="Serrure"
                   onChange={showHint === 2 ? blockField : changeField}
                   value={showHint === 2 ? (gameLock = `${currentChapter.lockword}`) : `${gameLock}`}
-
                 />
               </div>
               <button className="gameScreen-formButton" type="submit">> Tester la combinaison</button>
             </form>
+            )}
             {!showSuccessMessage
             && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>[Indice]</button>))}
             {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
