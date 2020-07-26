@@ -8,6 +8,7 @@ import {
   SAVE_PARENT_CHAPTER_POSSIBLE_OPTIONS,
   SET_VALIDATION_ERROR_ADV_EDIT_TRUE,
   SET_VALIDATION_ERROR_ADV_EDIT_FALSE,
+  SHOW_STRUCTURE,
 } from 'src/actions/storyEdit';
 
 const initialState = {
@@ -93,6 +94,12 @@ const storyEdit = (state = initialState, action = {}) => {
       return {
         ...state,
         validationErrorAdvEdit: false,
+      };
+
+    case SHOW_STRUCTURE:
+      return {
+        ...state,
+        structureView: true,
       };
 
     default: return state;

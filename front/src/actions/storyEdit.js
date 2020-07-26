@@ -23,6 +23,7 @@ export const SET_VALIDATION_ERROR_ADV_EDIT_TRUE = 'SET_VALIDATION_ERROR_ADV_EDIT
 export const SET_VALIDATION_ERROR_CHAP_EDIT_TRUE = 'SET_VALIDATION_ERROR_CHAP_EDIT_TRUE';
 export const SET_VALIDATION_ERROR_ADV_EDIT_FALSE = 'SET_VALIDATION_ERROR_ADV_EDIT_FALSE';
 export const SET_VALIDATION_ERROR_CHAP_EDIT_FALSE = 'SET_VALIDATION_ERROR_CHAP_EDIT_FALSE';
+export const SHOW_STRUCTURE = 'SHOW_STRUCTURE';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -134,4 +135,8 @@ export const setValidationErrorAdvEditFalse = () => ({
 
 export const setValidationErrorChapEditFalse = () => ({
   type: SET_VALIDATION_ERROR_CHAP_EDIT_FALSE,
+});
+
+export const showStructure = () => ({
+  type: SHOW_STRUCTURE,
 });
