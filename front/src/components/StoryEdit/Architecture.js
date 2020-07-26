@@ -12,6 +12,8 @@ const Architecture = ({
   chapters,
   previousChapterMapped,
   chaptersDisplay,
+  structureView,
+  showStructure,
 }) => {
   useEffect(() => {
 
@@ -42,7 +44,8 @@ const Architecture = ({
   return (
     <section className="architecture">
       {/* Adventure */}
-      <a href="#hide1" className="hide architecture-link" id="hide1">Sommaire +</a>
+      <a href="#hide1" className="hide architecture-link" id="hide1" onClick={showStructure}>Sommaire +</a>
+      {console.log(structureView)}
       <a href="#show1" className="show architecture-link" id="show1">Sommaire -</a>
       <div className="architecture-details">
         {firstChapter !== null && (
@@ -81,6 +84,8 @@ Architecture.propTypes = {
   chapters: PropTypes.array,
   previousChapterMapped: PropTypes.array,
   chaptersDisplay: PropTypes.array,
+  structureView: PropTypes.bool.isRequired,
+  showStructure: PropTypes.func.isRequired,
 };
 
 Architecture.defaultProps = {

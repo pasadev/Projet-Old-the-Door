@@ -30,6 +30,7 @@ const initialState = {
   parentChapterOption: [],
   editOption: '',
   validationErrorAdvEdit: false,
+  structureView: false,
 };
 
 const storyEdit = (state = initialState, action = {}) => {
