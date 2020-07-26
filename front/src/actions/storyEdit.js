@@ -23,7 +23,8 @@ export const SET_VALIDATION_ERROR_ADV_EDIT_TRUE = 'SET_VALIDATION_ERROR_ADV_EDIT
 export const SET_VALIDATION_ERROR_CHAP_EDIT_TRUE = 'SET_VALIDATION_ERROR_CHAP_EDIT_TRUE';
 export const SET_VALIDATION_ERROR_ADV_EDIT_FALSE = 'SET_VALIDATION_ERROR_ADV_EDIT_FALSE';
 export const SET_VALIDATION_ERROR_CHAP_EDIT_FALSE = 'SET_VALIDATION_ERROR_CHAP_EDIT_FALSE';
-export const SHOW_STRUCTURE = 'SHOW_STRUCTURE';
+export const SHOW_STORY_STRUCTURE = 'SHOW_STORY_STRUCTURE';
+export const HIDE_STORY_STRUCTURE = 'HIDE_STORY_STRUCTURE';
 
 // === action creators
 export const fetchAdvEditSelected = (slug) => ({
@@ -137,6 +138,10 @@ export const setValidationErrorChapEditFalse = () => ({
   type: SET_VALIDATION_ERROR_CHAP_EDIT_FALSE,
 });
 
-export const showStructure = () => ({
-  type: SHOW_STRUCTURE,
+export const showStoryStructure = () => ({
+  type: SHOW_STORY_STRUCTURE,
+});
+
+export const hideStoryStructure = () => ({
+  type: HIDE_STORY_STRUCTURE,
 });

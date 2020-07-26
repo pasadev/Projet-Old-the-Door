@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import {
-  showStructure,
+  showStoryStructure,
+  hideStoryStructure,
 } from 'src/actions/storyEdit';
 
 import Architecture from 'src/components/StoryEdit/Architecture';
@@ -13,8 +14,11 @@ const mapStateToProps = (state) => ({
 
 // === mapDispatchToProps
 const mapDispatchToProps = (dispatch) => ({
-  showStructure: () => {
-    dispatch(showStructure());
+  showStoryStructure: () => {
+    dispatch(showStoryStructure());
+  },
+  hideStoryStructure: () => {
+    dispatch(hideStoryStructure());
   },
 });
 
