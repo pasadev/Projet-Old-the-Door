@@ -63,9 +63,9 @@
       }
       .gameScreen-formButton {
         border: none;
-        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
         margin: 0;
-        width: 100%;
+        width: fit-content;
         text-align: left;
         font-weight: bold;
         font-size: 0.8em;
@@ -75,7 +75,9 @@
         text-shadow: 0 0 10px $linkColor;
       }
       .gameScreen-formButton:hover {
-        text-decoration: underline;
+        background: $noticeColor;
+        color: $backgroundColor;
+        text-shadow: none;
       }
     }
 
@@ -126,20 +128,19 @@
     color: $linkColor;
     background: transparent;
     border: none;
-    font-size: $baseFontSize;
+    font-size: 0.7em;
     text-shadow: 0px 0px 10px $linkColor;
     font-weight: bold;
     margin-top: 0.5em;
     margin-bottom: 1em;
-    disabled {
+    &:disabled {
       text-decoration: line-through;
       color: gray;
     }
-  }
-
-  .gameScreen-hintButton:disabled{
-    text-decoration: line-through;
-    color: gray;
+    &:hover {
+      background-color: $linkColor;
+      color: white;
+    }
   }
 }
 
