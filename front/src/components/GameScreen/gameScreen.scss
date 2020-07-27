@@ -6,7 +6,7 @@
   .gameScreen {
     padding: 0 1em;
     position:relative;
-    min-height: 100vh;
+    min-height: 95vh;
     overflow-wrap: break-word;
     left: 0;
     right: 0;
@@ -37,6 +37,7 @@
     .gameScreen-form {
       padding-top: 1em;
       width: 350px;
+      padding-bottom: 1em;
 
       .gameScreen-form-row{
         display: flex;
@@ -63,9 +64,9 @@
       }
       .gameScreen-formButton {
         border: none;
-        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
         margin: 0;
-        width: 100%;
+        width: fit-content;
         text-align: left;
         font-weight: bold;
         font-size: 0.8em;
@@ -75,7 +76,9 @@
         text-shadow: 0 0 10px $linkColor;
       }
       .gameScreen-formButton:hover {
-        text-decoration: underline;
+        background: $noticeColor;
+        color: $backgroundColor;
+        text-shadow: none;
       }
     }
 
@@ -126,20 +129,17 @@
     color: $linkColor;
     background: transparent;
     border: none;
-    font-size: $baseFontSize;
+    font-size: 0.7em;
     text-shadow: 0px 0px 10px $linkColor;
     font-weight: bold;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-    disabled {
+    &:disabled {
       text-decoration: line-through;
       color: gray;
     }
-  }
-
-  .gameScreen-hintButton:disabled{
-    text-decoration: line-through;
-    color: gray;
+    &:hover {
+      background-color: $linkColor;
+      color: white;
+    }
   }
 }
 
@@ -168,6 +168,7 @@
       box-shadow: 0px 0px 15px rgb(7, 8, 8);
       border: 15px solid $darkBorderColor;
       border-radius: 1%;
+      min-height: 50vh;
       height: 75vh;
       overflow: auto;
       overflow-wrap: break-word;
@@ -438,7 +439,7 @@
           content: '';
           position: relative;
           left: 10px;
-          top: 12px;
+          top: 0.7em;
           width: 12px;
           height: 12px;
           background-color: #690;
@@ -506,6 +507,13 @@
 }
 
 @media only screen and (min-width: 1024px) {
+  .screenCase {
+    margin: 0.5em 3em;
+    .gameScreen {
+      height: 85vh;
+    }
+  }
+
   .computer-blowhole {
     height: 100px !important;
     width: 100px !important;
@@ -516,5 +524,17 @@
     .gameScreen-label {
       width: 170px !important;
     }
+  }
+}
+
+@media only screen and (min-width: 1350px) {
+  .screenCase {
+    margin: 0.5em 5em;
+  }
+}
+
+@media only screen and (min-width: 1680px) {
+  .screenCase {
+    margin: 0.5em 7em;
   }
 }
