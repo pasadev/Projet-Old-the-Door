@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 import React, { useEffect } from 'react';
-import { CornerDownRight, PlusSquare, MinusSquare } from 'react-feather';
+import { PlusSquare, MinusSquare } from 'react-feather';
 import PropTypes from 'prop-types';
 
 const Architecture = ({
@@ -33,7 +33,6 @@ const Architecture = ({
           previousChapterMapped[0] = chapter.id;
           chaptersDisplay.push(
             <div className="architecture-row" key={chapter.id}>
-              <CornerDownRight />
               <span>#{indexChapters}: {chapter.title}</span>
             </div>,
           );
@@ -51,7 +50,6 @@ const Architecture = ({
         <div className="architecture-details">
           {firstChapter !== null && (
             <div className="architecture-row">
-              <CornerDownRight />
               <span>#1: {firstChapter}</span>
             </div>
           )}
