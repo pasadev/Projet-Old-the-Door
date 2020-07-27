@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 .storyEdit-form {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,31 @@
 .architecture {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+  a {
+    margin-bottom: 0.5em;
+  }
+  .architecture-link {
+    margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
+    &:hover {
+      color: $backgroundColor;
+      background-color: $lightColor;
+      cursor: pointer;
+    }
+  }
+  .architecture-subtitle {
+    background-color: $backgroundColor;
+    color: white;
+    margin-top: 0.5em;
+  }
+  .architecture-details {
+    background-color: white;
+    color: $backgroundColor;
+    padding: 0.5em;
+  }
 }
 
 @media screen and (min-width: 1024px) {

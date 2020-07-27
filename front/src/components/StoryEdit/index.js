@@ -5,7 +5,7 @@ import Typist from 'react-typist';
 import Loader from 'src/components/Loader';
 import AdventureEdit from 'src/containers/AdventureEdit';
 import ChapterEdit from 'src/containers/ChapterEdit';
-import Architecture from 'src/components/StoryEdit/Architecture';
+import Architecture from 'src/containers/StoryEdit/Architecture';
 import './storyEdit.scss';
 import 'src/components/ChapterEdit/chapterEdit.scss';
 
@@ -80,9 +80,21 @@ const StoryEdit = ({
                 <Typist
                   cursor={{ hideWhenDone: true }}
                 >
-                  Editer : {initialTitle}
+                  {initialTitle}
                 </Typist>
               </h1>
+
+              {/* display the adventure architecture if there is one */}
+              {storyEdit.chapters.length > 0 && (
+                <>
+                  <Architecture
+                    titleStory={storyEdit.title}
+                    firstChapter={storyEdit.firstChapter.title}
+                    firstChapterId={storyEdit.firstChapter.id}
+                    chapters={storyEdit.chapters}
+                  />
+                </>
+              )}
 
               <label htmlFor="storyEdit-form-editChoice">
                 Editer :
@@ -123,18 +135,6 @@ const StoryEdit = ({
               )}
 
               <ChapterEdit {...chapterEdit} id={`${chapterEdit.id}`} />
-
-              {/* display the adventure architecture if there is one */}
-              {storyEdit.chapters.length > 0 && (
-                <>
-                  <Architecture
-                    titleStory={storyEdit.title}
-                    firstChapter={storyEdit.firstChapter.title}
-                    firstChapterId={storyEdit.firstChapter.id}
-                    chapters={storyEdit.chapters}
-                  />
-                </>
-              )}
 
             </main>
           )}

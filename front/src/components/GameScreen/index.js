@@ -88,7 +88,7 @@ const GameScreen = ({
                 avgTypingDelay={15}
               >
                 <span>■■■ Initialisation de l'histoire v1.0</span>
-                <Typist.Backspace count={34} delay={600} />
+                <Typist.Backspace count={33} delay={600} />
                 <span>Chargement des chapitres</span>
                 <Typist.Backspace count={24} delay={600} />
                 <span>{currentStory.title.toUpperCase()} by {currentStory.author.username}</span>
@@ -129,12 +129,12 @@ const GameScreen = ({
                   value={showHint === 2 ? (gameLock = `${currentChapter.lockword}`) : `${gameLock}`}
                 />
               </div>
-              <button className="gameScreen-formButton" type="submit">> Tester la combinaison</button>
+              <button className="gameScreen-formButton" type="submit">Tester la combinaison</button>
+              {!showSuccessMessage
+              && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>[Indice]</button>))}
+              {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
             </form>
             )}
-            {!showSuccessMessage
-            && (!trueAnswer && (<button id="hintButton" className="gameScreen-hintButton" type="button" onClick={giveHint} {...showHint !== 0 && document.getElementById('hintButton').setAttribute('disabled', 'disabled')}>[Indice]</button>))}
-            {showHint === 1 && <> {document.getElementById('gameKey').setAttribute('value', `${currentChapter.keyword}`)}</>}
           </div>
         </div>
         <div className="computer-facade">
