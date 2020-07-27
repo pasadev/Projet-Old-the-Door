@@ -37,7 +37,7 @@ const gameMiddleware = (store) => (next) => (action) => {
 
       next(action);
       break;
-}
+    }
     case FETCH_FIRST_CHAPTER:
       axios.get(`${baseURL}/api/v0/chapters/${action.firstChapterId}`)
         .then((response) => {
