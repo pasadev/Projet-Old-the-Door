@@ -36,6 +36,7 @@
 
 @media screen and (min-width: 768px) {
   .aside {
+    top: 4em;
     .aside-content {
       width: 70vw;
     }
@@ -44,21 +45,11 @@
 
 @media screen and (min-width: 1024px) {
   .aside {
-    right: 30px;
+    right: 10px;
+    top: 4em;
     .aside-content {
       width: 50vw;
     }
   }
 }
 
-@media screen and (min-width: 1400px) {
-  .aside {
-    right: 100px;
-  }
-}
-
-@media screen and (min-width: 1680px) {
-  .aside {
-    right: 200px;
-  }
-}
