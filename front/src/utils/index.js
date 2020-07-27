@@ -54,4 +54,4 @@ export const asideData = {
 
 // http://damien-toscano.vpnuser.lan:8000
 // http://maxence-royer.vpnuser.lan:8000
-export const baseURL = 'http://maxence-royer.vpnuser.lan:8000';
+export const baseURL = 'http://damien-toscano.vpnuser.lan:8000';
