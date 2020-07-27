@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 import React, { useEffect } from 'react';
-import { CornerDownRight } from 'react-feather';
+import { CornerDownRight, PlusSquare, MinusSquare } from 'react-feather';
 import PropTypes from 'prop-types';
 
 const Architecture = ({
@@ -45,8 +45,8 @@ const Architecture = ({
   return (
     <section className="architecture">
       {/* Adventure */}
-      {!structureView && <span className="architecture-link" onClick={showStoryStructure}>Sommaire +</span>}
-      {structureView && <span className="architecture-link" onClick={hideStoryStructure}>Sommaire -</span>}
+      {!structureView && <span className="architecture-link" onClick={showStoryStructure}>Sommaire&nbsp;<PlusSquare /></span>}
+      {structureView && <span className="architecture-link" onClick={hideStoryStructure}>Sommaire&nbsp;<MinusSquare /></span>}
       {structureView && (
         <div className="architecture-details">
           {firstChapter !== null && (

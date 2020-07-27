@@ -31,6 +31,8 @@
   }
   .architecture-link {
     margin-bottom: 0.5em;
+    display: flex;
+    align-items: center;
     &:hover {
       color: $backgroundColor;
       background-color: $lightColor;
