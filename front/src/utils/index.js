@@ -55,4 +55,4 @@ export const asideData = {
 // http://damien-toscano.vpnuser.lan:8000
 // http://maxence-royer.vpnuser.lan:8000
 // http://ec2-3-80-166-219.compute-1.amazonaws.com/back
-export const baseURL = 'http://ec2-3-80-166-219.compute-1.amazonaws.com/back';
+export const baseURL = 'http://3.219.236.7/back';
