@@ -351,6 +351,9 @@ class StoryController extends AbstractController
         //Get parties for this stories
         $parties = $partyRepository->findBy(['forStory' => $id]);
 
+        // TODO : Remove parties from adventure creator in Partyrepository
+        //$parties = $partyRepository->findPartiesForStoryStats($id);
+
         $partyNumber = count($parties);
 
         //If we have parties

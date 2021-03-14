@@ -59,4 +59,25 @@ class PartyRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    /**
+     * Return parties for found one story except one for the author
+     *
+     * @param int $StoryId
+     * @return collection
+     */
+    public function findPartiesForStoryStats($StoryId)
+    {
+        $qb = $this->createQueryBuilder('party');
+        // TODO : This is not working
+        $qb->where('party.player.id != story.author.id');
+        $qb->where('party.forStory = :storyId');
+        $qb->setParameter('storyId', $StoryId);
+
+        $qb->leftJoin('party.forStory','story');
+        $qb->addSelect('story');
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
 }
