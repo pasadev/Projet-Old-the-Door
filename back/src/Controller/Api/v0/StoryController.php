@@ -348,11 +348,8 @@ class StoryController extends AbstractController
      */
     public function getTime($id, PartyRepository $partyRepository)
     {
-        //Get parties for this stories
-        $parties = $partyRepository->findBy(['forStory' => $id]);
-
-        // TODO : Remove parties from adventure creator in Partyrepository
-        //$parties = $partyRepository->findPartiesForStoryStats($id);
+        //Get parties for this story, except the ones from the author
+        $parties = $partyRepository->findPartiesForStoryStats($id);
 
         $partyNumber = count($parties);
 

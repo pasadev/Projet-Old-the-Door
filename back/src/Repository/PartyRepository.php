@@ -68,12 +68,11 @@ class PartyRepository extends ServiceEntityRepository
     public function findPartiesForStoryStats($StoryId)
     {
         $qb = $this->createQueryBuilder('party');
-        // TODO : This is not working
-        $qb->where('party.player.id != story.author.id');
-        $qb->where('party.forStory = :storyId');
+        $qb->where('party.player != story.author');
+        $qb->andWhere('party.forStory = :storyId');
         $qb->setParameter('storyId', $StoryId);
 
-        $qb->leftJoin('party.forStory','story');
+        $qb->innerJoin('party.forStory','story');
         $qb->addSelect('story');
 
         $query = $qb->getQuery();
