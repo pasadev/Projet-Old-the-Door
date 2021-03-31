@@ -20,6 +20,12 @@
       color: #1D1E22;
       }
 }
+.storyEdit-link {
+  &:hover{
+    background-color:#6BE145;
+    color: #1D1E22;
+  }
+}
 
 .architecture {
   display: flex;
