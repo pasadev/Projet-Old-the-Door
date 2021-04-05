@@ -8,6 +8,7 @@ import {
   FETCH_ADV_EDIT_CHAPTERS,
   saveAdvEditChapters,
   clearStoryEdit,
+  clearChapterEdit,
   FETCH_CHAPTER_EDIT_SELECTED,
   saveChapterEditSelected,
   SUBMIT_NEW_CHAPTER_FORM,
@@ -18,6 +19,7 @@ import {
   FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,
   saveParentChapterPossibleOptions,
   saveChapterWhitoutParent,
+  fetchAdvEditSelected,
 } from 'src/actions/storyEdit';
 
 import { saveAdventureSelected } from 'src/actions/adventures';
@@ -79,6 +81,7 @@ const storyEditMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.warn(error);
         }).finally(() => {
+          // Ready for some stuff
           store.dispatch(redirectOn());
         });
       next(action);
@@ -112,16 +115,17 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
-        .then(() => {
-          store.dispatch(redirectOn());
+        .then((response) => {
+          store.dispatch(clearStoryEdit());
+          store.dispatch(clearChapterEdit());
+          store.dispatch(fetchAdvEditSelected(response.data.forStory.slug));
+          store.dispatch(displayLoader());
         })
         .catch((error) => {
           console.warn(error);
         })
         .finally(() => {
-          // clear the state and fetch to have the new chapter
-          // store.dispatch(clearChapterEdit());
-          // store.dispatch(clearEditOption());
+          // Ready for some stuff
         });
       next(action);
       break;
@@ -155,16 +159,17 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
-        .then(() => {
-          store.dispatch(redirectOn());
+        .then((response) => {
+          store.dispatch(clearStoryEdit());
+          store.dispatch(clearChapterEdit());
+          store.dispatch(fetchAdvEditSelected(response.data.forStory.slug));
+          store.dispatch(displayLoader());
         })
         .catch((error) => {
           console.warn(error);
         })
         .finally(() => {
-          // clear the state and fetch to have the new chapter
-          // store.dispatch(clearChapterEdit());
-          // store.dispatch(clearEditOption());
+          // Ready for some stuff
         });
       next(action);
       break;
