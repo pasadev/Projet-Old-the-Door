@@ -77,16 +77,12 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveAdventureSelected(response.data));
-          store.dispatch(clearStoryEdit());
-          store.dispatch(clearChapterEdit());
-          store.dispatch(fetchAdvEditSelected(response.data.slug));
-          store.dispatch(displayLoader());
-          // TODO : If we change story slug, it does not change it in the URL, see how to do that
         })
         .catch((error) => {
           console.warn(error);
         }).finally(() => {
           // Ready for some stuff
+          store.dispatch(redirectOn());
         });
       next(action);
       break;
