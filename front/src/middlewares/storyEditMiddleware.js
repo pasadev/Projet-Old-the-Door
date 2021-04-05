@@ -8,6 +8,7 @@ import {
   FETCH_ADV_EDIT_CHAPTERS,
   saveAdvEditChapters,
   clearStoryEdit,
+  clearChapterEdit,
   FETCH_CHAPTER_EDIT_SELECTED,
   saveChapterEditSelected,
   SUBMIT_NEW_CHAPTER_FORM,
@@ -18,6 +19,7 @@ import {
   FETCH_PARENT_CHAPTER_POSSIBLE_OPTIONS,
   saveParentChapterPossibleOptions,
   saveChapterWhitoutParent,
+  fetchAdvEditSelected,
 } from 'src/actions/storyEdit';
 
 import { saveAdventureSelected } from 'src/actions/adventures';
@@ -75,11 +77,15 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           store.dispatch(saveAdventureSelected(response.data));
+          store.dispatch(clearStoryEdit());
+          store.dispatch(clearChapterEdit());
+          store.dispatch(fetchAdvEditSelected(response.data.slug));
+          store.dispatch(displayLoader());
         })
         .catch((error) => {
           console.warn(error);
         }).finally(() => {
-          store.dispatch(redirectOn());
+          // store.dispatch(redirectOn());
         });
       next(action);
       break;
