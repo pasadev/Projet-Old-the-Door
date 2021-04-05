@@ -81,11 +81,12 @@ const storyEditMiddleware = (store) => (next) => (action) => {
           store.dispatch(clearChapterEdit());
           store.dispatch(fetchAdvEditSelected(response.data.slug));
           store.dispatch(displayLoader());
+          // TODO : If we change story slug, it does not change it in the URL, see how to do that
         })
         .catch((error) => {
           console.warn(error);
         }).finally(() => {
-          // store.dispatch(redirectOn());
+          // Ready for some stuff
         });
       next(action);
       break;
@@ -118,16 +119,17 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
-        .then(() => {
-          store.dispatch(redirectOn());
+        .then((response) => {
+          store.dispatch(clearStoryEdit());
+          store.dispatch(clearChapterEdit());
+          store.dispatch(fetchAdvEditSelected(response.data.forStory.slug));
+          store.dispatch(displayLoader());
         })
         .catch((error) => {
           console.warn(error);
         })
         .finally(() => {
-          // clear the state and fetch to have the new chapter
-          // store.dispatch(clearChapterEdit());
-          // store.dispatch(clearEditOption());
+          // Ready for some stuff
         });
       next(action);
       break;
@@ -161,16 +163,17 @@ const storyEditMiddleware = (store) => (next) => (action) => {
       {
         headers: { 'X-AUTH-TOKEN': apiToken },
       })
-        .then(() => {
-          store.dispatch(redirectOn());
+        .then((response) => {
+          store.dispatch(clearStoryEdit());
+          store.dispatch(clearChapterEdit());
+          store.dispatch(fetchAdvEditSelected(response.data.forStory.slug));
+          store.dispatch(displayLoader());
         })
         .catch((error) => {
           console.warn(error);
         })
         .finally(() => {
-          // clear the state and fetch to have the new chapter
-          // store.dispatch(clearChapterEdit());
-          // store.dispatch(clearEditOption());
+          // Ready for some stuff
         });
       next(action);
       break;
